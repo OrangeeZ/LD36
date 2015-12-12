@@ -7,10 +7,11 @@ using UnityEngine;
 using System.Linq;
 using System.Collections.Generic;
 using System.Reflection;
+using System.Text;
 
 public static class GetCsvFromGoogleDocs {
 
-	public static void Get( string url, string type ) {
+	public static void Get( string url, string type, string postfix ) {
 
 		EditorUtility.DisplayProgressBar("Loading", "Requesting csv file. Please wait...", 0f);
 		Debug.Log("Loading csv from: " + url);
@@ -25,14 +26,14 @@ public static class GetCsvFromGoogleDocs {
 				// Let's parse this CSV!
 				TextReader sr = new StringReader( www.text );
 				try {
-					ParseCsv2( sr, type );
+					ParseCsv2( sr, type, postfix );
 				} catch (Exception ex) {
 					Debug.LogException(ex);
 				}
 		});
 	}
 
-	private static void ParseCsv2( TextReader csvReader, string type = null ) {
+	private static void ParseCsv2( TextReader csvReader, string type = null, string postfix = null ) {
 		var parser = new CsvParser( csvReader );
 		var row = parser.Read(); // get first row and
 
@@ -67,7 +68,7 @@ public static class GetCsvFromGoogleDocs {
 				continue;
 			}
 
-			string instanceName = row[0];
+			string instanceName = FixName(row[0], postfix);
 
 			var instance = GetOrCreate(type, instanceName);
 
@@ -81,6 +82,55 @@ public static class GetCsvFromGoogleDocs {
 
 			row = parser.Read();
 		}
+	}
+
+	private static string FixName(string name, string postfix = null)
+	{
+		StringBuilder builder = new StringBuilder();
+
+		int wordStart = -1;
+		int wordEnd = -1;
+		int pushed = 0;
+		// Convert to lower
+		for (int i = 0; i < name.Length; i++) {
+			if (char.IsUpper(name, i)) {
+				if (wordStart != -1) {
+					if (wordEnd != wordStart) {
+						// New word
+						if (builder.Length > 0) {
+							builder.Append("-");
+						}
+						builder.Append(name.Substring(pushed, i - wordStart).ToLower());
+						pushed = i;
+					}
+				} else if (pushed < i){
+					if (builder.Length > 0) {
+						builder.Append("-");
+					}
+					builder.Append(name.Substring(pushed, i).ToLower());
+					pushed = i;
+				}
+				wordStart = i;
+				wordEnd = i;
+			} else {
+				if (wordStart != -1) {
+					wordEnd = i;
+				}
+			}
+		}
+
+		if (pushed < name.Length - 1) {
+			if (builder.Length > 0) {
+				builder.Append("-");
+			}
+			builder.Append(name.Substring(pushed).ToLower());
+		}
+
+		string result = builder.ToString();
+		if (!string.IsNullOrEmpty(postfix)) {
+			result += "-" + postfix;
+		}
+		return result;
 	}
 
 	private static csv.Values CreateValues(string[] fieldNames, string[] row)

@@ -16,6 +16,9 @@ public partial class RemoteDataLoader : ScriptableObject {
 
 	[SerializeField]
 	private string type = string.Empty;
+
+	[SerializeField]
+	private string postfix = string.Empty;
 }
 
 #if UNITY_EDITOR
@@ -29,7 +32,7 @@ public partial class RemoteDataLoader {
 			url = url + "&gid=" + _pageId;
 		}
 
-		GetCsvFromGoogleDocs.Get( url, type );
+		GetCsvFromGoogleDocs.Get( url, type, postfix );
 	}
 
 	[MenuItem( "Tools/Remote Data Loader" )]
