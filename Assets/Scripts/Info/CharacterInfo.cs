@@ -7,7 +7,6 @@ using System.Collections;
 public class CharacterInfo : ScriptableObject {
 
     public CharacterStatusInfo statusInfo;
-    public StatExpressionsInfo statExpressionsInfo;
 
     public CharacterStateControllerInfo stateControllerInfo;
     public CharacterStateControllerInfo weaponStateControllerInfo;
@@ -26,10 +25,10 @@ public class CharacterInfo : ScriptableObject {
         var inputSource = hasInput ? (IInputSource) new ClickInputSource() : gambitListInfo.GetGambitList();
         var pawn = Instantiate( pawnPrefab, startingPosition, Quaternion.identity ) as CharacterPawn;
 
-        var result = new Character( statExpressionsInfo,
+        var result = new Character(
             pawn,
             inputSource,
-            statusInfo.GetInstance( statExpressionsInfo ),
+            statusInfo.GetInstance(),
             stateControllerInfo.GetStateController(),
             weaponStateControllerInfo.GetStateController(),
             teamId,

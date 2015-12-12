@@ -11,9 +11,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec5c6add67d6f4645bba6aa7c2e33249, type: 3}
   m_Name: Player Character
   m_EditorClassIdentifier: 
-  statusInfo: {fileID: 11400000, guid: 7db6004c39572fe40aebe05318a7474f, type: 2}
-  statExpressionsInfo: {fileID: 11400000, guid: 6cff0f7456625de4e89aba71e65adf98,
-    type: 2}
+  statusInfo: {fileID: 11400000, guid: 37bcd00dc954b9d41bf88d1485b6dc9d, type: 2}
   stateControllerInfo: {fileID: 11400000, guid: c64e3268d93ac6d419cfd3ab6fd3a24e,
     type: 2}
   weaponStateControllerInfo: {fileID: 11400000, guid: c1cef3596b0e0c14c96b8d5052943a80,

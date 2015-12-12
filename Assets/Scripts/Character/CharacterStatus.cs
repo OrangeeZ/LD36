@@ -4,28 +4,32 @@ using UniRx;
 
 [Serializable]
 public class CharacterStatus {
+	
+	public IntReactiveProperty Strength;
+	public IntReactiveProperty Agility;
 
-	public IntReactiveProperty strength;
-	public IntReactiveProperty agility;
+	public IReactiveProperty<int> MaxHealth;
+	public IReactiveProperty<float> MoveSpeed;
 
-	public IReactiveProperty<int> maxHealth;
-	public IReactiveProperty<float> moveSpeed;
+	private readonly CharacterStatusInfo _info;
 
-	public CharacterStatus( StatExpressionsInfo expressionsInfo ) {
+	public CharacterStatus(CharacterStatusInfo info) {
 
-		strength = new IntReactiveProperty( 0 );
-		agility = new IntReactiveProperty( 0 );
+		_info = info;
 
-		maxHealth = CreateCalculator( expressionsInfo.HealthExpression ).Select( _ => (int)_ ).ToReactiveProperty();
-		moveSpeed = CreateCalculator( expressionsInfo.MoveSpeedExpression ).Select( _ => (float)_ ).ToReactiveProperty();
+		Strength = new IntReactiveProperty( 0 );
+		Agility = new IntReactiveProperty( 0 );
+
+		MaxHealth = CreateCalculator( _info.HealthExpression ).Select( _ => (int)_ ).ToReactiveProperty();
+		MoveSpeed = CreateCalculator( _info.MoveSpeedExpression ).Select( _ => (float)_ ).ToReactiveProperty();
 	}
 
 	private ReactiveCalculator CreateCalculator( IReactiveProperty<string> expression ) {
 
 		var result = new ReactiveCalculator( expression );
 
-		result.SubscribeProperty( "strength", strength );
-		result.SubscribeProperty( "agility", agility );
+		result.SubscribeProperty( "strength", Strength );
+		result.SubscribeProperty( "agility", Agility );
 
 		return result;
 	}

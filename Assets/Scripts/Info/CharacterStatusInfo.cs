@@ -1,18 +1,26 @@
 ﻿using UnityEngine;
 using System.Collections;
+using Expressions;
+using UniRx;
 
 [CreateAssetMenu( menuName = "Create/Status Info" )]
 public class CharacterStatusInfo : ScriptableObject {
+	
+	[CalculatorExpression]
+	public StringReactiveProperty HealthExpression;
+
+	[CalculatorExpression]
+	public StringReactiveProperty MoveSpeedExpression;
 
 	[SerializeField]
 	private CharacterStatus status;
 
-	public CharacterStatus GetInstance( StatExpressionsInfo statExpressionsInfo ) {
+	public CharacterStatus GetInstance() {
 
-		return new CharacterStatus( statExpressionsInfo ) {
+		return new CharacterStatus( this ) {
 
-			agility = { Value = status.agility.Value },
-			strength = { Value = status.strength.Value }
+			Agility = {Value = status.Agility.Value},
+			Strength = {Value = status.Strength.Value}
 		};
 	}
 }

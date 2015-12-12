@@ -48,7 +48,7 @@ namespace AI.Gambits {
 
 			private void UpdateCanActivate( int health ) {
 
-				canActivate = (float)health / character.status.maxHealth.Value <= info.threshold;
+				canActivate = (float)health / character.status.MaxHealth.Value <= info.threshold;
 			}
 		}
 

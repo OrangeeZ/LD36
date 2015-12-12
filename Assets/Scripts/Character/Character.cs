@@ -34,15 +34,12 @@ public class Character {
     public ItemInfo itemToDrop;
     public float dropProbability = 0.15f;
 
-    private readonly StatExpressionsInfo statExpressions;
-
     private readonly CompositeDisposable _compositeDisposable = new CompositeDisposable();
 
-    public Character( StatExpressionsInfo statExpressions, CharacterPawn pawn, IInputSource inputSource, CharacterStatus status, CharacterStateController stateController, CharacterStateController weaponStateController, int teamId, CharacterInfo info ) {
+    public Character( CharacterPawn pawn, IInputSource inputSource, CharacterStatus status, CharacterStateController stateController, CharacterStateController weaponStateController, int teamId, CharacterInfo info ) {
 
-        this.statExpressions = statExpressions;
-        this.status = status;
-        this.health = new IntReactiveProperty( this.status.maxHealth.Value );
+		this.status = status;
+        this.health = new IntReactiveProperty( this.status.MaxHealth.Value );
         this.pawn = pawn;
         this.inputSource = inputSource;
         this.stateController = stateController;
@@ -63,7 +60,7 @@ public class Character {
         }
 
         Observable.EveryUpdate().Subscribe( OnUpdate ).AddTo( _compositeDisposable );
-        status.moveSpeed.Subscribe( UpdatePawnSpeed ).AddTo( _compositeDisposable );
+        status.MoveSpeed.Subscribe( UpdatePawnSpeed ).AddTo( _compositeDisposable );
         health.Subscribe( OnHealthChange );//.AddTo( _compositeDisposable );
 
         instances.Add( this );
