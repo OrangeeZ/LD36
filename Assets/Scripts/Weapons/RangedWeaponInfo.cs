@@ -1,6 +1,5 @@
 ﻿using UnityEngine;
 using System.Collections;
-using CharacterFramework.Core;
 using Expressions;
 using UniRx;
 using UnityEngine.ScriptableObjectWizard;
@@ -8,131 +7,129 @@ using UnityEngine.ScriptableObjectWizard;
 [Category( "Weapons" )]
 public class RangedWeaponInfo : WeaponInfo {
 
-    [CalculatorExpression]
-    [SerializeField]
-    private StringReactiveProperty _damageExpression;
+	[CalculatorExpression]
+	[SerializeField]
+	private StringReactiveProperty _damageExpression;
 
-    //[SerializeField]
-    //private PlanetProjectile _planetProjectilePrefab;
+	[SerializeField]
+	private Projectile _projectilePrefab;
 
-    [SerializeField]
-    private float _projectileSpeed;
+	[SerializeField]
+	private float _projectileSpeed;
 
-    [SerializeField]
-    private int _clipSize;
+	[SerializeField]
+	private int _clipSize;
 
-    [SerializeField]
-    private float _reloadDuration;
+	[SerializeField]
+	private float _reloadDuration;
 
-    [SerializeField]
-    private AudioClip _sound;
+	[SerializeField]
+	private AudioClip _sound;
 
-    public class RangedWeapon : Weapon<RangedWeaponInfo> {
+	public class RangedWeapon : Weapon<RangedWeaponInfo> {
 
-        public bool isReloading {
-            get {
+		public bool isReloading {
+			get {
 
-                if ( _isReloading && Time.timeSinceLevelLoad > _nextAttackTime ) {
+				if ( _isReloading && Time.timeSinceLevelLoad > _nextAttackTime ) {
 
-                    _isReloading = false;
-                }
+					_isReloading = false;
+				}
 
-                return _isReloading;
-            }
-            private set { _isReloading = value; }
-        }
+				return _isReloading;
+			}
+			private set { _isReloading = value; }
+		}
 
-        public int _ammoInClip { get; private set; }
+		public int _ammoInClip { get; private set; }
 
-        private float _nextAttackTime;
-        private readonly ReactiveCalculator _damageCalculator;
-        private bool _isReloading;
+		private float _nextAttackTime;
+		private readonly ReactiveCalculator _damageCalculator;
+		private bool _isReloading;
 
-        public RangedWeapon( RangedWeaponInfo info ) : base( info ) {
+		public RangedWeapon( RangedWeaponInfo info ) : base( info ) {
 
-            _ammoInClip = info._clipSize;
-            _damageCalculator = new ReactiveCalculator( info._damageExpression );
-            //_damageCalculator.SubscribeProperty( "dangerLevel", GameplayController.instance.dangerLevel );
-        }
+			_ammoInClip = info._clipSize;
+			_damageCalculator = new ReactiveCalculator( info._damageExpression );
+			_damageCalculator.SubscribeProperty( "dangerLevel", GameplayController.instance.dangerLevel );
+		}
 
-        public override void Attack( Character target ) {
+		public override void Attack( Character target ) {
 
-            if ( target == null || Time.timeSinceLevelLoad < _nextAttackTime ) {
+			if ( target == null || Time.timeSinceLevelLoad < _nextAttackTime ) {
 
-                return;
-            }
+				return;
+			}
 
-            isReloading = false;
+			isReloading = false;
 
-            if ( attackCallback != null ) {
+			if ( AttackCallback != null ) {
 
-                attackCallback();
-            }
+				AttackCallback();
+			}
 
-            //var projectile = Instantiate( typedInfo._planetProjectilePrefab );
-            //var targetDirection = character.pawn.planetTransform.GetDirectionTo( target.pawn.planetTransform );
+			var projectile = Instantiate( typedInfo._projectilePrefab );
+			var targetDirection = ( target.pawn.position - character.pawn.position ).normalized;
+			//targetDirection.y *= 1.2f;
 
-            //targetDirection.y *= 1.2f;
+			projectile.Launch( character, targetDirection, typedInfo._projectileSpeed, (int) _damageCalculator.Result.Value );
 
-            //PlanetProjectile.Launch( character, targetDirection, typedInfo._projectileSpeed, (int) _damageCalculator.Result.Value );
+			character.pawn.SetTurretTarget( target.pawn.transform );
 
-            //character.pawn.SetTurretTarget( target.pawn.transform );
+			AudioSource.PlayClipAtPoint( typedInfo._sound, character.pawn.position, 0.5f );
 
-            //AudioSource.PlayClipAtPoint( typedInfo._sound, character.pawn.position, 0.5f );
+			UpdateClipAndAttackTime();
+		}
 
-            UpdateClipAndAttackTime();
-        }
+		public override void Attack( Vector3 direction ) {
 
-        public override void Attack( Vector3 direction ) {
+			if ( Time.timeSinceLevelLoad < _nextAttackTime ) {
 
-            if ( Time.timeSinceLevelLoad < _nextAttackTime ) {
+				return;
+			}
 
-                return;
-            }
+			isReloading = false;
 
-            isReloading = false;
+			if ( AttackCallback != null ) {
 
-            if ( attackCallback != null ) {
+				AttackCallback();
+			}
 
-                attackCallback();
-            }
+			var projectile = Instantiate( typedInfo._projectilePrefab );
+			projectile.Launch( character, direction, typedInfo._projectileSpeed, (int) _damageCalculator.Result.Value );
 
-            //var projectile = Instantiate( typedInfo._planetProjectilePrefab );
-            //projectile.Launch( character as PlanetCharacter, direction, typedInfo._projectileSpeed, (int) _damageCalculator.Result.Value );
+			AudioSource.PlayClipAtPoint( typedInfo._sound, character.pawn.position, 0.5f );
 
-            //AudioSource.PlayClipAtPoint( typedInfo._sound, character.pawn.position, 0.5f );
+			UpdateClipAndAttackTime();
+		}
 
-            UpdateClipAndAttackTime();
-        }
+		public override bool CanAttack( Character target ) {
 
-        public override bool CanAttack( Character target ) {
+			return Vector3.Distance( target.pawn.position, character.pawn.position ) <= typedInfo.attackRange;
+		}
 
-	        return false;
-	        //return target.pawn.planetTransform.GetDistanceTo( character.pawn.position ) <= typedInfo.attackRange;
-        }
+		private void UpdateClipAndAttackTime() {
 
-        private void UpdateClipAndAttackTime() {
+			_ammoInClip--;
 
-            _ammoInClip--;
+			if ( _ammoInClip == 0 ) {
 
-            if ( _ammoInClip == 0 ) {
+				_ammoInClip = typedInfo._clipSize;
 
-                _ammoInClip = typedInfo._clipSize;
+				_nextAttackTime = Time.timeSinceLevelLoad + typedInfo._reloadDuration;
 
-                _nextAttackTime = Time.timeSinceLevelLoad + typedInfo._reloadDuration;
+				isReloading = true;
+			} else {
 
-                isReloading = true;
-            } else {
+				_nextAttackTime = Time.timeSinceLevelLoad + typedInfo.baseAttackSpeed;
+			}
+		}
 
-                _nextAttackTime = Time.timeSinceLevelLoad + typedInfo.baseAttackSpeed;
-            }
-        }
+	}
 
-    }
+	public override Item GetItem() {
 
-    public override Item GetItem() {
-
-        return new RangedWeapon( this );
-    }
+		return new RangedWeapon( this );
+	}
 
 }

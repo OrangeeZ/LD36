@@ -1,6 +1,5 @@
 ﻿using UnityEngine;
 using System.Collections;
-using CharacterFramework.Core;
 using UnityEngine.ScriptableObjectWizard;
 
 [Category( "Weapons" )]
@@ -55,8 +54,7 @@ public class MeleeWeaponInfo : WeaponInfo {
 
 		public override bool CanAttack( Character target ) {
 
-			//return ( target.pawn.position - character.pawn.position ).sqrMagnitude <= typedInfo.attackRange.Pow( 2 );
-			return false;
+			return ( target.pawn.position - character.pawn.position ).sqrMagnitude <= typedInfo.attackRange.Pow( 2 );
 		}
 	}
 

@@ -1,7 +1,6 @@
 ﻿using System;
 using UnityEngine;
 using System.Collections;
-using CharacterFramework.Core;
 using UnityEngine.ScriptableObjectWizard;
 
 [HideInWizard]

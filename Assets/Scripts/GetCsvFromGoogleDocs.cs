@@ -21,7 +21,7 @@ public static class GetCsvFromGoogleDocs {
 
 	private static void ParseCsv( TextReader csvReader ) {
 
-		AssetDatabase.StartAssetEditing();
+		//AssetDatabase.StartAssetEditing();
 
 		var parser = new CsvParser( csvReader );
 		var row = parser.Read(); // get first row and
@@ -50,15 +50,16 @@ public static class GetCsvFromGoogleDocs {
 				continue;
 			}
 
-			var assetPath = Path.Combine( Path.Combine( "Assets/Data/", type.Name ), instanceName );
-			var instance = AssetDatabase.LoadAssetAtPath<ScriptableObject>( assetPath );
+			var assetPath = Path.Combine( "Assets/Data/", type.Name );
+			var assetPathWithName = assetPath + "/" + instanceName + ".asset";
+            var instance = AssetDatabase.LoadAssetAtPath<ScriptableObject>( assetPathWithName );
 
 			if ( instance == null ) {
 
 				instance = ScriptableObject.CreateInstance( type );
 
-				Directory.CreateDirectory( assetPath );
-				AssetDatabase.CreateAsset( instance, assetPath );
+				Directory.CreateDirectory( assetPath ).Attributes = FileAttributes.Normal;
+				AssetDatabase.CreateAsset( instance, assetPathWithName );
 			}
 
 			ParseFields( parser, type, instance );
@@ -66,11 +67,11 @@ public static class GetCsvFromGoogleDocs {
 			// Create an asset
 		}
 
-		AssetDatabase.StopAssetEditing();
+		//AssetDatabase.StopAssetEditing();
 
-		// Save all assets
+		//// Save all assets
 		AssetDatabase.SaveAssets();
-		//AssetDatabase.Refresh();
+		AssetDatabase.Refresh();
 	}
 
 	private static void ParseFields( CsvParser parser, Type type, ScriptableObject target ) {

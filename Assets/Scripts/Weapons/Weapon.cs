@@ -1,12 +1,11 @@
 ﻿using System;
-using CharacterFramework.Core;
 using UnityEngine;
 
 public abstract class Weapon : Item {
 
-	protected Action attackCallback;
+	protected Action AttackCallback;
 
-	protected Vector3 direction;
+	protected Vector3 Direction;
 
 	protected Weapon( ItemInfo info )
 		: base( info ) {
@@ -15,8 +14,8 @@ public abstract class Weapon : Item {
 	public virtual void Setup( Character ownerCharacter, Vector3 direction, Action attackCallback ) {
 
 		this.character = ownerCharacter;
-		this.direction = direction;
-		this.attackCallback = attackCallback;
+		this.Direction = direction;
+		this.AttackCallback = attackCallback;
 	}
 
 	public virtual WeaponInfo GetInfo() {
@@ -35,7 +34,7 @@ public abstract class Weapon : Item {
 
 	public override void Apply() {
 
-		//character.inventory.SetArmSlotItem( ( info as WeaponInfo ).slotType, this );
+		character.inventory.SetArmSlotItem( ( info as WeaponInfo ).slotType, this );
 	}
 }
 
@@ -43,7 +42,7 @@ public abstract class Weapon<T> : Weapon where T : WeaponInfo {
 
 	protected readonly T typedInfo;
 
-	protected Weapon( ItemInfo info )
+	public Weapon( ItemInfo info )
 		: base( info ) {
 
 		this.typedInfo = info as T;
