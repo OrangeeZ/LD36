@@ -19,6 +19,8 @@ public class PlayerCharacterSpawner : MonoBehaviour {
 
 	public WeaponInfo startingWeapon;
 
+	public CharacterStatusEffectInfo startingStatusEffect;
+
 	public CameraBehaviour cameraBehaviour;
 
 	public bool isPlayerCharacter = false;
@@ -53,6 +55,8 @@ public class PlayerCharacterSpawner : MonoBehaviour {
 
 			//GameScreen.instance.statsPanel.SetCharacter( character );
 		}
+
+		character.Status.AddEffect( startingStatusEffect );
 
 		EventSystem.RaiseEvent( new Spawned { Character = character } );
 

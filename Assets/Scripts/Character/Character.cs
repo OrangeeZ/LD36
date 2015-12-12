@@ -78,16 +78,16 @@ public class Character {
         }
     }
 
-    private void OnUpdate( long ticks ) {
+	public void Dispose() {
+
+		_compositeDisposable.Dispose();
+		Health.Dispose();
+	}
+
+	private void OnUpdate( long ticks ) {
 
         StateController.Tick( Time.deltaTime );
         WeaponStateController.Tick( Time.deltaTime );
-    }
-
-    public void Dispose() {
-
-        _compositeDisposable.Dispose();
-        Health.Dispose();
     }
 
     private void UpdatePawnSpeed( float speed ) {

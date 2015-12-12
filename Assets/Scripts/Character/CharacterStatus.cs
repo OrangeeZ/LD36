@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using Expressions;
 using UniRx;
 
@@ -12,6 +13,7 @@ public class CharacterStatus {
 	public IReactiveProperty<float> MoveSpeed;
 
 	private readonly CharacterStatusInfo _info;
+	private List<CharacterStatusEffectInfo> _statusEffects = new List<CharacterStatusEffectInfo>(); 
 
 	public CharacterStatus(CharacterStatusInfo info) {
 
@@ -32,5 +34,19 @@ public class CharacterStatus {
 		result.SubscribeProperty( "agility", Agility );
 
 		return result;
+	}
+
+	public void AddEffect( CharacterStatusEffectInfo statusEffect ) {
+		
+		statusEffect.Add( this );
+
+		_statusEffects.Add( statusEffect );
+    }
+
+	public void RemoveEffect( CharacterStatusEffectInfo statusEffect ) {
+
+		statusEffect.Remove( this );
+
+		_statusEffects.Remove( statusEffect );
 	}
 }
