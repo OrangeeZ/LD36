@@ -1,10 +1,9 @@
 ﻿using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using UniRx;
 using UnityEngine;
-using UnityEngine.ScriptableObjectWizard;
 
-[Category( "Character states" )]
 public class SelectStateOnTargetChange : CharacterStateInfo {
 
 	public CharacterStateInfo[] states;

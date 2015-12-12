@@ -1,10 +1,9 @@
 ﻿using UnityEngine;
 using System.Collections;
-using UnityEngine.ScriptableObjectWizard;
 
 namespace AI.Gambits {
 
-    [Category( "Gambits" )]
+    [CreateAssetMenu( menuName = "Create/Gambits/Wander")]
     public class Wander : GambitInfo {
 
         public float radius = 5f;

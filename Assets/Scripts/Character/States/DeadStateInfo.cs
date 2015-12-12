@@ -1,8 +1,8 @@
 ﻿using System.Collections;
 using UniRx;
-using UnityEngine.ScriptableObjectWizard;
+using UnityEngine;
 
-[Category( "Character states" )]
+[CreateAssetMenu( menuName = "Create/States/Dead" )]
 public class DeadStateInfo : CharacterStateInfo {
 
     private class State : CharacterState<DeadStateInfo> {

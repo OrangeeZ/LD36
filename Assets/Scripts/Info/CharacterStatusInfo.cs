@@ -1,8 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
-using UnityEngine.ScriptableObjectWizard;
 
-[Category( "Character" )]
+[CreateAssetMenu( menuName = "Create/Status Info" )]
 public class CharacterStatusInfo : ScriptableObject {
 
 	[SerializeField]

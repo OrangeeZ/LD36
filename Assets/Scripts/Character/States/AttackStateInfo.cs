@@ -2,9 +2,8 @@
 using UniRx;
 using UnityEngine;
 using System.Collections;
-using UnityEngine.ScriptableObjectWizard;
 
-[Category( "Character states" )]
+[CreateAssetMenu( menuName = "Create/States/Attack target" )]
 public class AttackStateInfo : CharacterStateInfo {
 
     [Serializable]

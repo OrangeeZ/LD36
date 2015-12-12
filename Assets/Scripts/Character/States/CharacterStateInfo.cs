@@ -1,8 +1,6 @@
 ﻿using System;
 using UnityEngine;
-using UnityEngine.ScriptableObjectWizard;
 
-[HideInWizard]
 public abstract class CharacterStateInfo : ScriptableObject {
 
 	[Header( "Animation settings" )]

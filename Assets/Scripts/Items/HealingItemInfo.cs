@@ -1,8 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
-using UnityEngine.ScriptableObjectWizard;
 
-[Category( "Items" )]
+[CreateAssetMenu( menuName = "Create/Items/Healing item" )]
 public class HealingItemInfo : ItemInfo {
 
 	public int healingAmount = 1;

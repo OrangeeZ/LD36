@@ -2,9 +2,8 @@
 using System.Collections;
 using Expressions;
 using UniRx;
-using UnityEngine.ScriptableObjectWizard;
 
-[Category( "Weapons" )]
+[CreateAssetMenu( menuName = "Create/Weapons/Ranged" )]
 public class RangedWeaponInfo : WeaponInfo {
 
 	[CalculatorExpression]
@@ -105,7 +104,7 @@ public class RangedWeaponInfo : WeaponInfo {
 
 		public override bool CanAttack( Character target ) {
 
-			return Vector3.Distance( target.pawn.position, character.pawn.position ) <= typedInfo.attackRange;
+			return Vector3.Distance( target.pawn.position, character.pawn.position ) <= typedInfo.AttackRange;
 		}
 
 		private void UpdateClipAndAttackTime() {
@@ -121,7 +120,7 @@ public class RangedWeaponInfo : WeaponInfo {
 				isReloading = true;
 			} else {
 
-				_nextAttackTime = Time.timeSinceLevelLoad + typedInfo.baseAttackSpeed;
+				_nextAttackTime = Time.timeSinceLevelLoad + typedInfo.BaseAttackSpeed;
 			}
 		}
 

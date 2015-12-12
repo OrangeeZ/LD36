@@ -1,9 +1,8 @@
 ﻿using UniRx;
 using UnityEngine;
 using System.Collections;
-using UnityEngine.ScriptableObjectWizard;
 
-[Category( "Character states" )]
+[CreateAssetMenu( menuName = "Create/States/Pick up item" )]
 public class PickUpItemStateInfo : CharacterStateInfo {
 
 	public float duration = .1f;

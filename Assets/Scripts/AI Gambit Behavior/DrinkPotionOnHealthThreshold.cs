@@ -3,11 +3,11 @@ using System.Linq;
 using UniRx;
 using UnityEngine;
 using System.Collections;
-using UnityEngine.ScriptableObjectWizard;
 
 namespace AI.Gambits {
 
 	//[Category( "Gambits" )]
+	[CreateAssetMenu( menuName = "Create/Gambits/Drink potion on health threshold" )]
 	public class DrinkPotionOnHealthThreshold : GambitInfo {
 
 		[Range( 0, 1f )]

@@ -1,6 +1,5 @@
 ﻿using System;
 using UnityEngine;
-using UnityEngine.ScriptableObjectWizard;
 
 public abstract class Item {
 
@@ -27,7 +26,6 @@ public abstract class Item {
 
 }
 
-[HideInWizard]
 public class ItemInfo : ScriptableObject {
 
     public string name;

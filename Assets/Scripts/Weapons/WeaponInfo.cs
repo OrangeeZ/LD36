@@ -1,16 +1,14 @@
 ﻿using System;
 using UnityEngine;
 using System.Collections;
-using UnityEngine.ScriptableObjectWizard;
 
-[HideInWizard]
 public class WeaponInfo : ItemInfo {
 
-	public int baseDamage;
+	public int BaseDamage;
 
-	public float baseAttackSpeed;
+	public float BaseAttackSpeed;
 
-	public float attackRange = 2f;
+	public float AttackRange = 2f;
 
-	public ArmSlotType slotType = ArmSlotType.Primary;
+	public ArmSlotType SlotType = ArmSlotType.Primary;
 }

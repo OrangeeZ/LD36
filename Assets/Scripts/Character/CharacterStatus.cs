@@ -16,8 +16,8 @@ public class CharacterStatus {
 		strength = new IntReactiveProperty( 0 );
 		agility = new IntReactiveProperty( 0 );
 
-		maxHealth = CreateCalculator( expressionsInfo.healthExpression ).Select( _ => (int)_ ).ToReactiveProperty();
-		moveSpeed = CreateCalculator( expressionsInfo.moveSpeedExpression ).Select( _ => (float)_ ).ToReactiveProperty();
+		maxHealth = CreateCalculator( expressionsInfo.HealthExpression ).Select( _ => (int)_ ).ToReactiveProperty();
+		moveSpeed = CreateCalculator( expressionsInfo.MoveSpeedExpression ).Select( _ => (float)_ ).ToReactiveProperty();
 	}
 
 	private ReactiveCalculator CreateCalculator( IReactiveProperty<string> expression ) {

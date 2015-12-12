@@ -3,9 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using MoreLinq;
 using UnityEngine;
-using UnityEngine.ScriptableObjectWizard;
 
-[Category( "Character" )]
+[CreateAssetMenu( menuName = "Create/State controller" )]
 public class CharacterStateControllerInfo : ScriptableObject {
 
 	[Serializable]

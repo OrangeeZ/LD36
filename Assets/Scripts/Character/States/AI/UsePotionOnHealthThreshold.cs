@@ -2,9 +2,8 @@
 using UniRx;
 using UnityEngine;
 using System.Collections;
-using UnityEngine.ScriptableObjectWizard;
 
-[Category( "Character states" )]
+[CreateAssetMenu( menuName = "Create/States/Use potion on health threshold" )]
 public class UsePotionOnHealthThreshold : CharacterStateInfo {
 
 	public float duration = .5f;

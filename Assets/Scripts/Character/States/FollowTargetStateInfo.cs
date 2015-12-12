@@ -2,9 +2,8 @@
 using UniRx;
 using UnityEngine;
 using System.Collections;
-using UnityEngine.ScriptableObjectWizard;
 
-[Category( "Character states" )]
+[CreateAssetMenu( menuName = "Create/States/Follow" )]
 public class FollowTargetStateInfo : CharacterStateInfo {
 
 	public float minDistance = 1f;

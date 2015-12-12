@@ -1,8 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
-using UnityEngine.ScriptableObjectWizard;
 
-[Category( "Weapons" )]
+[CreateAssetMenu( menuName = "Create/Weapons/Melee" )]
 public class MeleeWeaponInfo : WeaponInfo {
 
 	private class MeleeWeapon : Weapon<MeleeWeaponInfo> {
@@ -28,7 +27,7 @@ public class MeleeWeaponInfo : WeaponInfo {
 				return;
 			}
 
-			nextAttackTime = Time.timeSinceLevelLoad + typedInfo.baseAttackSpeed;
+			nextAttackTime = Time.timeSinceLevelLoad + typedInfo.BaseAttackSpeed;
 
 			//if ( character.Status.GetHitChance() < 100.Random() ) {
 
@@ -37,7 +36,7 @@ public class MeleeWeaponInfo : WeaponInfo {
 			//	return;
 			//}
 
-			target.health.Value -= typedInfo.baseDamage;
+			target.health.Value -= typedInfo.BaseDamage;
 
 			//if ( character.Status.GetCriticalHitChance( target.Status ) > 100.Random() ) {
 
@@ -54,7 +53,7 @@ public class MeleeWeaponInfo : WeaponInfo {
 
 		public override bool CanAttack( Character target ) {
 
-			return ( target.pawn.position - character.pawn.position ).sqrMagnitude <= typedInfo.attackRange.Pow( 2 );
+			return ( target.pawn.position - character.pawn.position ).sqrMagnitude <= typedInfo.AttackRange.Pow( 2 );
 		}
 	}
 

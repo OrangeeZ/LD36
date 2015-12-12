@@ -1,8 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
-using UnityEngine.ScriptableObjectWizard;
 
-[Category( "Character states" )]
+[CreateAssetMenu( menuName = "Create/States/Attack direction" )]
 public class AttackDirectionStateInfo : CharacterStateInfo {
 
     private class State : CharacterState<AttackDirectionStateInfo> {

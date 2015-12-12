@@ -2,14 +2,13 @@
 using UniRx;
 using UnityEngine;
 using System.Collections;
-using UnityEngine.ScriptableObjectWizard;
 
-[Category( "Character" )]
+[CreateAssetMenu( menuName = "Create/Stat Expressions Info" )]
 public class StatExpressionsInfo : ScriptableObject {
 
 	[CalculatorExpression]
-	public StringReactiveProperty healthExpression;
+	public StringReactiveProperty HealthExpression;
 
 	[CalculatorExpression]
-	public StringReactiveProperty moveSpeedExpression;
+	public StringReactiveProperty MoveSpeedExpression;
 }

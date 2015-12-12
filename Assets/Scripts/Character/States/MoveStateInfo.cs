@@ -1,8 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
-using UnityEngine.ScriptableObjectWizard;
 
-[Category( "Character states" )]
+[CreateAssetMenu( menuName = "Create/States/Move" )]
 public class MoveStateInfo : CharacterStateInfo {
 
     private class State : CharacterState<MoveStateInfo> {

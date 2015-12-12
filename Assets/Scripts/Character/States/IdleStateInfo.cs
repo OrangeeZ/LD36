@@ -1,8 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
-using UnityEngine.ScriptableObjectWizard;
+using System.ComponentModel;
 
-[Category( "Character states" )]
+[CreateAssetMenu( menuName = "Create/States/Idle" )]
 public class IdleStateInfo : CharacterStateInfo {
 
 	public class State : CharacterState {

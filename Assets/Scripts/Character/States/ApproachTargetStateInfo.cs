@@ -2,10 +2,9 @@
 using UnityEngine;
 using UniRx;
 using System.Collections;
-using UnityEngine.ScriptableObjectWizard;
 using Utility;
 
-[Category( "Character states" )]
+[CreateAssetMenu( menuName = "Create/States/Approach target" )]
 public class ApproachTargetStateInfo : CharacterStateInfo {
 
 	[Header( "Settings" )]

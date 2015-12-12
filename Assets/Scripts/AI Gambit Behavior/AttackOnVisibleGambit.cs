@@ -1,11 +1,11 @@
 ﻿using System.Collections;
 using System.Linq;
-using UnityEngine.ScriptableObjectWizard;
 using UniRx;
+using UnityEngine;
 
 namespace AI.Gambits {
 
-	[Category( "Gambits" )]
+	[CreateAssetMenu( menuName = "Create/Gambits/Attack on visible" )]
 	public class AttackOnVisibleGambit : GambitInfo {
 
 		private class GambitInternal : Gambit {

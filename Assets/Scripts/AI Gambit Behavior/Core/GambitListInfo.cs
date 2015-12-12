@@ -5,12 +5,10 @@ using System.Monads;
 using UniRx;
 using UnityEngine;
 using System.Collections;
-using UnityEngine.ScriptableObjectWizard;
 
 namespace AI.Gambits {
 
-    [Category( "Gambits" )]
-    public class GambitListInfo : ScriptableObject {
+	public class GambitListInfo : ScriptableObject {
 
         [SerializeField]
         private GambitInfo[] gambitInfos;
