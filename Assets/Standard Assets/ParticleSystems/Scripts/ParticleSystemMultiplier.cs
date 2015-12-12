@@ -22,5 +22,17 @@ namespace UnityStandardAssets.Effects
                 system.Play();
             }
         }
+
+		public void SetScale(float scale)
+		{
+			var systems = GetComponentsInChildren<ParticleSystem>();
+			foreach (ParticleSystem system in systems)
+			{
+				system.startSize = system.startSize / multiplier * scale;
+				system.startSpeed = system.startSpeed / multiplier * scale;
+			}
+			multiplier = scale;
+		}
+
     }
 }
