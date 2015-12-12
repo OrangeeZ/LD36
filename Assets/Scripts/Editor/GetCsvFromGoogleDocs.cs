@@ -6,6 +6,7 @@ using UnityEditor;
 using UnityEngine;
 using System.Linq;
 using System.Collections.Generic;
+using System.Reflection;
 
 public static class GetCsvFromGoogleDocs {
 
@@ -18,13 +19,16 @@ public static class GetCsvFromGoogleDocs {
 				EditorUtility.DisplayProgressBar("Loading", "Requesting csv file. Please wait...", www.progress);
 				return www.isDone; 
 		}, 
-		() => 
-		{
-			EditorUtility.ClearProgressBar();
+		() => {
+				EditorUtility.ClearProgressBar();
 
-			// Let's parse this CSV!
-			TextReader sr = new StringReader( www.text );
-			ParseCsv( sr );
+				// Let's parse this CSV!
+				TextReader sr = new StringReader( www.text );
+				try {
+					ParseCsv2( sr );
+				} catch (Exception ex) {
+					Debug.LogException(ex);
+				}
 		});
 	}
 
@@ -58,6 +62,11 @@ public static class GetCsvFromGoogleDocs {
 		row = parser.Read();
 
 		while (row != null) {
+			if (row.Length < 2 || string.IsNullOrEmpty(row[0])) {
+				row = parser.Read();
+				continue;
+			}
+
 			string instanceName = row[0];
 
 			var instance = GetOrCreate(type, instanceName);
@@ -68,6 +77,7 @@ public static class GetCsvFromGoogleDocs {
 			} else {
 				ParseFields2(row, instance, fieldNames);
 			}
+			Debug.LogFormat("Data object '{0}' saved to \"{1}\"", instance.name, AssetDatabase.GetAssetPath(instance));
 
 			row = parser.Read();
 		}
@@ -143,7 +153,8 @@ public static class GetCsvFromGoogleDocs {
 
 	static ScriptableObject GetOrCreate (string typeName, string instanceName)
 	{
-		var type = Type.GetType (typeName);
+		var assembly = typeof(ICanBeAffected).Assembly;
+		var type = assembly.GetExportedTypes().First((x) => x.Name.Equals(typeName, StringComparison.InvariantCultureIgnoreCase));
 		if (type == null) {
 			Debug.LogWarningFormat ("Type {0} not found", typeName);
 			return null;
@@ -153,6 +164,7 @@ public static class GetCsvFromGoogleDocs {
 		var assetPathWithName = assetPath + "/" + instanceName + ".asset";
 
 		var instance = AssetDatabase.LoadAssetAtPath<ScriptableObject> (assetPathWithName);
+		//instance.name = instanceName;
 		if (instance == null) {
 			instance = ScriptableObject.CreateInstance (type);
 			Directory.CreateDirectory (assetPath).Attributes = FileAttributes.Normal;
