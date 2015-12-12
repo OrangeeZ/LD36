@@ -24,14 +24,14 @@ public class AttackStateInfo : CharacterStateInfo {
 
         public override bool CanBeSet() {
 
-            var weapon = character.inventory.GetArmSlotItem( ArmSlotType.Primary ) as Weapon;
+			var weapon = GetCurrentWeapon();
 
-            return target != null && weapon != null && weapon.CanAttack( target );
+			return target != null && weapon != null && weapon.CanAttack( target );
         }
 
         public override IEnumerable GetEvaluationBlock() {
 
-            var weapon = character.inventory.GetArmSlotItem( ArmSlotType.Primary ) as Weapon;
+	        var weapon = GetCurrentWeapon();
 
             while ( CanBeSet() ) {
 
@@ -41,6 +41,10 @@ public class AttackStateInfo : CharacterStateInfo {
             }
         }
 
+	    private Weapon GetCurrentWeapon() {
+
+		    return character.inventory.GetArmSlotItem( ArmSlotType.Primary ) as Weapon;
+	    }
     }
 
     public override CharacterState GetState() {

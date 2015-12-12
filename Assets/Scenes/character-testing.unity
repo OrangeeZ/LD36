@@ -158,7 +158,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   characterInfo: {fileID: 11400000, guid: 7b310617727577347bfef32ca42e91f2, type: 2}
   startingItems: []
-  startingWeapon: {fileID: 0}
+  startingWeapon: {fileID: 11400000, guid: 79fd1019e281d244a83daa5488ee9a77, type: 2}
   ItemToDrop: {fileID: 0}
   DropProbability: 0.15
   SpawnInterval: 10

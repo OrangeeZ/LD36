@@ -75,7 +75,10 @@ public class RangedWeaponInfo : WeaponInfo {
 
 			character.pawn.SetTurretTarget( target.pawn.transform );
 
-			AudioSource.PlayClipAtPoint( typedInfo._sound, character.pawn.position, 0.5f );
+			if ( typedInfo._sound != null ) {
+
+				AudioSource.PlayClipAtPoint( typedInfo._sound, character.pawn.position, 0.5f );
+			}
 
 			UpdateClipAndAttackTime();
 		}
