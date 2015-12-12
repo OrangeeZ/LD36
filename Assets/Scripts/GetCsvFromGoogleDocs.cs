@@ -41,7 +41,7 @@ public static class GetCsvFromGoogleDocs {
 				row = parser.Read();
 				continue;
 			}
-			var n = row[2];
+			var instanceName = row[2];
 			//  2. trying to get a type
 			var type = Type.GetType( row[1] );
 			if ( type == null ) {
@@ -50,18 +50,15 @@ public static class GetCsvFromGoogleDocs {
 				continue;
 			}
 
-			var assetPath = "Assets/Data/" + type.Name;
-
-			// Type realy exists, trying to set filds...
-			var instance = AssetDatabase.LoadAssetAtPath<ScriptableObject>( assetPath );;
+			var assetPath = Path.Combine( Path.Combine( "Assets/Data/", type.Name ), instanceName );
+			var instance = AssetDatabase.LoadAssetAtPath<ScriptableObject>( assetPath );
 
 			if ( instance == null ) {
 
 				instance = ScriptableObject.CreateInstance( type );
 
-                Directory.CreateDirectory( assetPath );
-				var path = AssetDatabase.GenerateUniqueAssetPath( Path.Combine( assetPath, n + ".asset" ) );
-				AssetDatabase.CreateAsset( instance, path );
+				Directory.CreateDirectory( assetPath );
+				AssetDatabase.CreateAsset( instance, assetPath );
 			}
 
 			ParseFields( parser, type, instance );
