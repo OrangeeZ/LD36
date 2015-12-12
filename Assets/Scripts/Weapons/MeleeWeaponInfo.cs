@@ -1,8 +1,15 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Linq;
 
 [CreateAssetMenu( menuName = "Create/Weapons/Melee" )]
 public class MeleeWeaponInfo : WeaponInfo {
+
+	[SerializeField]
+	private float _attackAngle = 15f;
+
+	[SerializeField]
+	private float _attackRange = 2f;
 
 	private class MeleeWeapon : Weapon<MeleeWeaponInfo> {
 
@@ -49,6 +56,18 @@ public class MeleeWeaponInfo : WeaponInfo {
 			//}
 
 			//Debug.Log( character.Status.GetAttackDelay( info.attackDuration ) );
+		}
+
+		public override void Attack( Vector3 direction ) {
+
+			var charactersToAttack = Helpers.GetCharactersInCone( character.Pawn.position, direction, typedInfo._attackRange, typedInfo._attackAngle );
+			foreach ( var each in charactersToAttack.ToArray() ) {
+
+				if ( character != each ) {
+					
+					each.Health.Value -= typedInfo.BaseDamage;
+				}
+			}
 		}
 
 		public override bool CanAttack( Character target ) {

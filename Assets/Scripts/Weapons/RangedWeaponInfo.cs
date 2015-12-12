@@ -98,7 +98,7 @@ public class RangedWeaponInfo : WeaponInfo {
 			var projectile = Instantiate( typedInfo._projectilePrefab );
 			projectile.Launch( character, direction, typedInfo._projectileSpeed, (int) _damageCalculator.Result.Value );
 
-			AudioSource.PlayClipAtPoint( typedInfo._sound, character.Pawn.position, 0.5f );
+			//AudioSource.PlayClipAtPoint( typedInfo._sound, character.Pawn.position, 0.5f );
 
 			UpdateClipAndAttackTime();
 		}
