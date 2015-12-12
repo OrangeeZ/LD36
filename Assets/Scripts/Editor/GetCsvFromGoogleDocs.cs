@@ -9,14 +9,21 @@ public static class GetCsvFromGoogleDocs {
 
 	public static void Get( string url ) {
 
-		var www = new WWW( url );
-		while ( !www.isDone ) {
-			Thread.Sleep( 1 );
-		}
+		EditorUtility.DisplayProgressBar("Loading", "Requesting csv file. Please wait...", 0f);
 
-		// Let's parse this CSV!
-		TextReader sr = new StringReader( www.text );
-		ParseCsv( sr );
+		var www = new WWW( url );
+		ContinuationManager.Add(() => { 
+				EditorUtility.DisplayProgressBar("Loading", "Requesting csv file. Please wait...", www.progress);
+				return www.isDone; 
+		}, 
+		() => 
+		{
+			EditorUtility.ClearProgressBar();
+
+			// Let's parse this CSV!
+			TextReader sr = new StringReader( www.text );
+			ParseCsv( sr );
+		});
 	}
 
 	private static void ParseCsv( TextReader csvReader ) {

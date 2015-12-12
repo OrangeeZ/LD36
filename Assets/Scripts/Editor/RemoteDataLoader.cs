@@ -11,16 +11,16 @@ public partial class RemoteDataLoader : ScriptableObject {
 	[SerializeField]
 	private string _url = "https://docs.google.com/spreadsheets/d/1vewdQjSxYpgDuyxaV5uC2182Y4kxRRVK3r6u-c_Whp8/export?format=csv";
 
+}
+
+#if UNITY_EDITOR
+public partial class RemoteDataLoader {
+
 	[ContextMenu( "Load remote data" )]
 	private void LoadRemoteData() {
 
 		GetCsvFromGoogleDocs.Get( _url );
 	}
-
-}
-
-#if UNITY_EDITOR
-public partial class RemoteDataLoader {
 
 	[MenuItem( "Tools/Remote Data Loader" )]
 	private static void SelectRemoteDataLoader() {
