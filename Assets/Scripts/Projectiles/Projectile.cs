@@ -38,8 +38,8 @@ public class Projectile : AObject {
         this.direction = direction;
         this.damage = damage;
 
-        transform.position = this.owner.pawn.position;
-        transform.rotation = this.owner.pawn.rotation;
+        transform.position = this.owner.Pawn.position;
+        transform.rotation = this.owner.Pawn.rotation;
 
         timer = new AutoTimer( lifetime );
 
@@ -58,11 +58,11 @@ public class Projectile : AObject {
 
     private void OnTriggerEnter( Collider other ) {
 
-        var otherPawn = other.GetComponent<CharacterPawn>();
+        var otherPawn = other.GetComponent<CharacterPawnBase>();
         
-        if ( otherPawn != null && otherPawn != owner.pawn && otherPawn.character != null && otherPawn.character.teamId != owner.teamId ) {
+        if ( otherPawn != null && otherPawn != owner.Pawn && otherPawn.character != null && otherPawn.character.TeamId != owner.TeamId ) {
 
-            otherPawn.character.health.Value -= 1;
+            otherPawn.character.Health.Value -= 1;
 
             OnHit();
 

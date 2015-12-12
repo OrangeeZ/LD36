@@ -14,12 +14,9 @@ public class ItemView : AObject {
 
         var timer = new AutoTimer( fadeInDuration );
 
-        var currentPosition = localPosition;
-
         while ( timer.ValueNormalized < 1f ) {
 
             transform.localScale = Vector3.one * scaleCurve.Evaluate( timer.ValueNormalized );
-            //transform.localPosition = currentPosition + transform.up * positionCurve.Evaluate( timer.ValueNormalized );
 
             yield return null;
         }

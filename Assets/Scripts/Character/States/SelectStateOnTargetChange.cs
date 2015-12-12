@@ -26,7 +26,7 @@ public class SelectStateOnTargetChange : CharacterStateInfo {
 			//	each.Initialize( stateController );
 			//}
 
-			stateController.character.inputSource.targets.Subscribe( OnTargetChange );
+			stateController.character.InputSource.targets.Subscribe( OnTargetChange );
 		}
 
 		public override bool CanBeSet() {

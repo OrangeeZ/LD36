@@ -28,12 +28,12 @@ public class WaveBase : MonoBehaviour {
 			character.itemToDrop = default ( ItemInfo ); /* fixit */
 			if ( startingWeapon != null ) {
 				var weapon = startingWeapon.GetItem();
-				character.inventory.AddItem( weapon );
+				character.Inventory.AddItem( weapon );
 				weapon.Apply();
 
 				//if ( characterInfo.applyColor ) {
 
-				character.pawn.SetColor( startingWeapon.color );
+				character.Pawn.SetColor( startingWeapon.color );
 				//}
 			}
 		}

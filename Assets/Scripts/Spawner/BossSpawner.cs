@@ -32,10 +32,9 @@ public class BossSpawner : MonoBehaviour {
 
 	private void Start() {
 		_reactCalc = new Expressions.ReactiveCalculator (activation);
-		_reactCalc.SubscribeProperty( "dangerLevel", GameplayController.instance.dangerLevel );
 
 		_reactCalcDeact = new Expressions.ReactiveCalculator (deactivation);
-		_reactCalcDeact.SubscribeProperty( "dangerLevel", GameplayController.instance.dangerLevel );
+		
 		wasSpawned = false;
 	}
 
@@ -57,7 +56,7 @@ public class BossSpawner : MonoBehaviour {
 		character = characterInfo.GetCharacter( startingPosition: transform.position );
 		
 		foreach ( var each in startingItems.Select( _ => _.GetItem() ) ) {
-			character.inventory.AddItem( each );
+			character.Inventory.AddItem( each );
 		}
 
 	    character.itemToDrop = itemToDrop;
@@ -65,19 +64,19 @@ public class BossSpawner : MonoBehaviour {
 		
 		if ( startingWeapon != null ) {
 			var weapon = startingWeapon.GetItem();
-			character.inventory.AddItem( weapon );
+			character.Inventory.AddItem( weapon );
 			weapon.Apply();
 
 		    //if ( characterInfo.applyColor ) {
 		        
-                character.pawn.SetColor( startingWeapon.color );
+                character.Pawn.SetColor( startingWeapon.color );
 		    //}
 		}
 		
 		if ( cameraBehaviour != null ) {
 			var cameraBehaviourInstance = Instantiate( cameraBehaviour );
 			cameraBehaviourInstance.transform.position = transform.position;
-			cameraBehaviourInstance.SetTarget( character.pawn );
+			cameraBehaviourInstance.SetTarget( character.Pawn );
 		}
 
 	}

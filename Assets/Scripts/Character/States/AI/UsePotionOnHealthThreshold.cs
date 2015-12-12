@@ -22,8 +22,8 @@ public class UsePotionOnHealthThreshold : CharacterStateInfo {
 		public override void Initialize( CharacterStateController stateController ) {
 			base.Initialize( stateController );
 
-			stateController.character.health
-				.Where( _ => _ / (float)stateController.character.status.MaxHealth.Value <= typedInfo.threshold )
+			stateController.character.Health
+				.Where( _ => _ / (float)stateController.character.Status.MaxHealth.Value <= typedInfo.threshold )
 				.Subscribe( OnHealthBelowThreshold );
 		}
 
@@ -31,15 +31,15 @@ public class UsePotionOnHealthThreshold : CharacterStateInfo {
 
 			var character = stateController.character;
 
-			var hasPotion = character.inventory.GetItems().FirstOrDefault( where => where.info == typedInfo.potionItemInfo ) != null;
+			var hasPotion = character.Inventory.GetItems().FirstOrDefault( where => where.info == typedInfo.potionItemInfo ) != null;
 
-			return hasPotion && character.health.Value / (float)character.status.MaxHealth.Value <= typedInfo.threshold;
+			return hasPotion && character.Health.Value / (float)character.Status.MaxHealth.Value <= typedInfo.threshold;
 		}
 
 		public override IEnumerable GetEvaluationBlock() {
 
 			var character = stateController.character;
-			var potion = character.inventory.GetItems().FirstOrDefault( where => where.info == typedInfo.potionItemInfo );
+			var potion = character.Inventory.GetItems().FirstOrDefault( where => where.info == typedInfo.potionItemInfo );
 
 			potion.Apply();
 

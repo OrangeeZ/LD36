@@ -28,6 +28,7 @@ GameObject:
   - 4: {fileID: 478932}
   - 114: {fileID: 11455532}
   - 114: {fileID: 11474008}
+  - 65: {fileID: 6592168}
   m_Layer: 0
   m_Name: Dummy Character Pawn
   m_TagString: Untagged
@@ -169,6 +170,18 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!65 &6592168
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 123870}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!65 &6595970
 BoxCollider:
   m_ObjectHideFlags: 1
@@ -223,6 +236,10 @@ Prefab:
       propertyPath: sensor
       value: 
       objectReference: {fileID: 11474008}
+    - target: {fileID: 0}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 123870}

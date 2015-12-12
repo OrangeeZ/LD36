@@ -34,7 +34,7 @@ public abstract class Weapon : Item {
 
 	public override void Apply() {
 
-		character.inventory.SetArmSlotItem( ( info as WeaponInfo ).SlotType, this );
+		character.Inventory.SetArmSlotItem( ( info as WeaponInfo ).SlotType, this );
 	}
 }
 

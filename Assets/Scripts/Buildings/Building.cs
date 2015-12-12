@@ -39,8 +39,6 @@ public class Building : MonoBehaviour {
 
         health -= damage;
 
-        GameplayController.instance.dangerLevel.Value += 1;
-
         if ( health < 0 ) {
 
             Destroy();

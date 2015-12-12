@@ -63,7 +63,7 @@ public abstract class CharacterState {
 
     public void UpdateAnimator() {
 
-        stateController.character.pawn.animatedView.Do( OnAnimationUpdate );
+        stateController.character.Pawn.animatedView.Do( OnAnimationUpdate );
     }
 
     protected virtual void OnAnimationUpdate( CharacterComplexAnimationController animationController ) {

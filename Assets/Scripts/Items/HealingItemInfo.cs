@@ -14,9 +14,9 @@ public class HealingItemInfo : ItemInfo {
 
 		public override void Apply() {
 
-			character.health.Value += ( info as HealingItemInfo ).healingAmount;
+			character.Health.Value += ( info as HealingItemInfo ).healingAmount;
 
-			character.inventory.RemoveItem( this );
+			character.Inventory.RemoveItem( this );
 		}
 	}
 

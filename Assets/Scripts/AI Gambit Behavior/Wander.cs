@@ -24,9 +24,9 @@ namespace AI.Gambits {
                     return false;
                 }
 
-                var point = character.pawn.position + character.pawn.rotation * Random.insideUnitCircle.normalized.ToXZ() * info.radius;
+                var point = character.Pawn.position + character.Pawn.rotation * Random.insideUnitCircle.normalized.ToXZ() * info.radius;
                 
-                character.stateController.GetState<ApproachTargetStateInfo.State>().SetDestination( point );
+                character.StateController.GetState<ApproachTargetStateInfo.State>().SetDestination( point );
 
                 lastExecutionTime = Time.time;
 

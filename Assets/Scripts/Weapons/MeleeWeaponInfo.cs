@@ -36,7 +36,7 @@ public class MeleeWeaponInfo : WeaponInfo {
 			//	return;
 			//}
 
-			target.health.Value -= typedInfo.BaseDamage;
+			target.Health.Value -= typedInfo.BaseDamage;
 
 			//if ( character.Status.GetCriticalHitChance( target.Status ) > 100.Random() ) {
 
@@ -53,7 +53,7 @@ public class MeleeWeaponInfo : WeaponInfo {
 
 		public override bool CanAttack( Character target ) {
 
-			return ( target.pawn.position - character.pawn.position ).sqrMagnitude <= typedInfo.AttackRange.Pow( 2 );
+			return ( target.Pawn.position - character.Pawn.position ).sqrMagnitude <= typedInfo.AttackRange.Pow( 2 );
 		}
 	}
 

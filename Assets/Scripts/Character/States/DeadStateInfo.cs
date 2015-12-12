@@ -14,34 +14,32 @@ public class DeadStateInfo : CharacterStateInfo {
 
             base.Initialize( stateController );
 
-            character.health.Where( _ => _ <= 0 ).Subscribe( _ => stateController.TrySetState( this ) );
+            character.Health.Where( _ => _ <= 0 ).Subscribe( _ => stateController.TrySetState( this ) );
         }
 
         public override bool CanBeSet() {
 
-            return character.health.Value <= 0;
+            return character.Health.Value <= 0;
         }
 
         public override IEnumerable GetEvaluationBlock() {
 
-            character.pawn.ClearDestination();
+            character.Pawn.ClearDestination();
 
-            character.pawn.SetGravityEnabled( true );
+            character.Pawn.SetGravityEnabled( true );
 
-            character.pawn.SetTurretTarget( null );
+            character.Pawn.SetTurretTarget( null );
 
-            GameplayController.instance.dangerLevel.Value += 1;
+            if ( stateController == character.StateController ) {
 
-            if ( stateController == character.stateController ) {
-
-                character.pawn.SetActive( false );
+                character.Pawn.SetActive( false );
 
                 if ( 1f.Random() <= character.dropProbability && character.itemToDrop != null ) {
 
-                    character.itemToDrop.DropItem( character.pawn.transform );
+                    character.itemToDrop.DropItem( character.Pawn.transform );
                 }
 
-                character.pawn.MakeDead();
+                character.Pawn.MakeDead();
             }
 
             while ( CanBeSet() ) {

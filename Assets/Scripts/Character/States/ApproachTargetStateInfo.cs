@@ -32,12 +32,12 @@ public class ApproachTargetStateInfo : CharacterStateInfo {
 
 			base.Initialize( stateController );
 
-			stateController.character.inputSource.targets.Subscribe( SetDestination );
+			stateController.character.InputSource.targets.Subscribe( SetDestination );
 		}
 
 		public override bool CanBeSet() {
 
-			var distanceToDestination = destination.HasValue ? Vector3.Distance( character.pawn.position, destination.Value ) : -1f;
+			var distanceToDestination = destination.HasValue ? Vector3.Distance( character.Pawn.position, destination.Value ) : -1f;
 
 			return destination.HasValue
 			       && distanceToDestination >= typedInfo._minRange
@@ -46,7 +46,7 @@ public class ApproachTargetStateInfo : CharacterStateInfo {
 
 		public override IEnumerable GetEvaluationBlock() {
 
-			var pawn = character.pawn;
+			var pawn = character.Pawn;
 
 			pawn.canFollowDestination = true;
 
@@ -73,7 +73,7 @@ public class ApproachTargetStateInfo : CharacterStateInfo {
 				destination = (Vector3) target;
 			} else if ( target is Character ) {
 
-				destination = ( target as Character ).pawn.transform;
+				destination = ( target as Character ).Pawn.transform;
 			} else if ( target is ItemView ) {
 
 				destination = ( target as ItemView ).transform;

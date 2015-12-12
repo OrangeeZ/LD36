@@ -22,7 +22,7 @@ public class AIInputSource : IInputSource {
 
 		this.targetCharacter = targetCharacter;
 
-		targetCharacter.pawn.GetSphereSensor()
+		targetCharacter.Pawn.GetSphereSensor()
 			.Where( _ => _.character != targetCharacter )
 			.Subscribe( OnSawEnemy );
 	}

@@ -20,7 +20,7 @@ public class PickUpItemStateInfo : CharacterStateInfo {
 
 			base.Initialize( stateController );
 
-			stateController.character.inputSource.targets.OfType<object, ItemView>().Subscribe( SetTarget );
+			stateController.character.InputSource.targets.OfType<object, ItemView>().Subscribe( SetTarget );
 		}
 
 		public override bool CanBeSet() {
@@ -41,7 +41,7 @@ public class PickUpItemStateInfo : CharacterStateInfo {
 			}
 
 			target.NotifyPickUp( character );
-			character.inventory.AddItem( target.item );
+			character.Inventory.AddItem( target.item );
 			target = null;
 		}
 

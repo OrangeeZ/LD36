@@ -17,7 +17,7 @@ public class ItemPickupListener : MonoBehaviour {
 
         if ( itemView != null ) {
 
-            _pawn.character.inventory.AddItem( itemView.item );
+            _pawn.character.Inventory.AddItem( itemView.item );
             itemView.item.Apply();
 
             itemView.NotifyPickUp( _pawn.character );

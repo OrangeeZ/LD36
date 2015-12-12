@@ -32,13 +32,11 @@ public class EnemySpawner : AObject {
 
 	private Expressions.ReactiveCalculator _reactCalcDeact;
 
-	private void Start() {
+	public void Initialize() {
 
 		_reactCalc = new Expressions.ReactiveCalculator( Activation );
-		_reactCalc.SubscribeProperty( "dangerLevel", GameplayController.instance.dangerLevel );
 
 		_reactCalcDeact = new Expressions.ReactiveCalculator( Deactivation );
-		_reactCalcDeact.SubscribeProperty( "dangerLevel", GameplayController.instance.dangerLevel );
 
 		Spawn();
 
@@ -58,7 +56,7 @@ public class EnemySpawner : AObject {
 		_character = characterInfo.GetCharacter( startingPosition: transform.position );
 
 		foreach ( var each in startingItems.Select( _ => _.GetItem() ) ) {
-			_character.inventory.AddItem( each );
+			_character.Inventory.AddItem( each );
 		}
 
 		_character.itemToDrop = ItemToDrop;
@@ -68,7 +66,7 @@ public class EnemySpawner : AObject {
 
 			var weapon = startingWeapon.GetItem();
 
-			_character.inventory.AddItem( weapon );
+			_character.Inventory.AddItem( weapon );
 
 			weapon.Apply();
 		}

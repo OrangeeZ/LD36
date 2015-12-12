@@ -24,10 +24,10 @@ public static class Helpers {
         var maxObjectsPerIteration = 2;
         var objectCounter = 0;
 
-        var affectedCharacters = Character.instances.Where( _ => ( _.pawn.position - point ).magnitude <= radius ).ToArray();
+        var affectedCharacters = Character.Instances.Where( _ => ( _.Pawn.position - point ).magnitude <= radius ).ToArray();
         foreach ( var each in affectedCharacters ) {
 
-            each.health.Value -= amount;
+            each.Health.Value -= amount;
 
             objectCounter++;
 

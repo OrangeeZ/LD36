@@ -13,23 +13,23 @@ public class Character {
 
     }
 
-    public static List<Character> instances = new List<Character>();
+    public static List<Character> Instances = new List<Character>();
 
-    public readonly IntReactiveProperty health;
+    public readonly IntReactiveProperty Health;
 
-    public readonly IInputSource inputSource;
+    public readonly IInputSource InputSource;
 
-    public readonly IInventory inventory;
+    public readonly IInventory Inventory;
 
-    public readonly CharacterPawn pawn;
+    public readonly CharacterPawn Pawn;
 
-    public readonly CharacterStateController stateController;
-    public readonly CharacterStateController weaponStateController;
+    public readonly CharacterStateController StateController;
+    public readonly CharacterStateController WeaponStateController;
 
-    public readonly int teamId;
-    public readonly CharacterInfo info;
+    public readonly int TeamId;
+    public readonly CharacterInfo Info;
 
-    public readonly CharacterStatus status;
+    public readonly CharacterStatus Status;
 
     public ItemInfo itemToDrop;
     public float dropProbability = 0.15f;
@@ -38,20 +38,20 @@ public class Character {
 
     public Character( CharacterPawn pawn, IInputSource inputSource, CharacterStatus status, CharacterStateController stateController, CharacterStateController weaponStateController, int teamId, CharacterInfo info ) {
 
-		this.status = status;
-        this.health = new IntReactiveProperty( this.status.MaxHealth.Value );
-        this.pawn = pawn;
-        this.inputSource = inputSource;
-        this.stateController = stateController;
-        this.weaponStateController = weaponStateController;
-        this.teamId = teamId;
-        this.info = info;
-        this.inventory = new BasicInventory( this );
+		this.Status = status;
+        this.Health = new IntReactiveProperty( this.Status.MaxHealth.Value );
+        this.Pawn = pawn;
+        this.InputSource = inputSource;
+        this.StateController = stateController;
+        this.WeaponStateController = weaponStateController;
+        this.TeamId = teamId;
+        this.Info = info;
+        this.Inventory = new BasicInventory( this );
 
         pawn.SetCharacter( this );
 
-        this.stateController.Initialize( this );
-        this.weaponStateController.Initialize( this );
+        this.StateController.Initialize( this );
+        this.WeaponStateController.Initialize( this );
 
         var inputSourceDisposable = inputSource as IDisposable;
         if ( inputSourceDisposable != null ) {
@@ -61,9 +61,9 @@ public class Character {
 
         Observable.EveryUpdate().Subscribe( OnUpdate ).AddTo( _compositeDisposable );
         status.MoveSpeed.Subscribe( UpdatePawnSpeed ).AddTo( _compositeDisposable );
-        health.Subscribe( OnHealthChange );//.AddTo( _compositeDisposable );
+        Health.Subscribe( OnHealthChange );//.AddTo( _compositeDisposable );
 
-        instances.Add( this );
+        Instances.Add( this );
     }
 
     private void OnHealthChange( int health ) {
@@ -72,7 +72,7 @@ public class Character {
 
             EventSystem.RaiseEvent( new Died { character = this } );
 
-            instances.Remove( this );
+            Instances.Remove( this );
 
             //_compositeDisposable.Dispose();
         }
@@ -80,19 +80,19 @@ public class Character {
 
     private void OnUpdate( long ticks ) {
 
-        stateController.Tick( Time.deltaTime );
-        weaponStateController.Tick( Time.deltaTime );
+        StateController.Tick( Time.deltaTime );
+        WeaponStateController.Tick( Time.deltaTime );
     }
 
     public void Dispose() {
 
         _compositeDisposable.Dispose();
-        health.Dispose();
+        Health.Dispose();
     }
 
     private void UpdatePawnSpeed( float speed ) {
 
-        pawn.SetSpeed( speed );
+        Pawn.SetSpeed( speed );
     }
 
 }

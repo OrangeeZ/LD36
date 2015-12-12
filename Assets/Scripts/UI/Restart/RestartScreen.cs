@@ -16,16 +16,14 @@ public class RestartScreen : UIScreen {
 
     private void OnRestartClick() {
 
-        foreach ( var each in Character.instances ) {
+        foreach ( var each in Character.Instances ) {
             
             each.Dispose();
         }
 
         EventSystem.Reset();
-
-        GameplayController.instance.dangerLevel.Value = 0;
-
-        Character.instances.Clear();
+		
+        Character.Instances.Clear();
 
         Application.LoadLevel( Application.loadedLevel );
     }

@@ -25,7 +25,7 @@ public class FollowThenAttackStateInfo : CharacterStateInfo {
 			followState = stateController.GetStateByInfo( typedInfo.followStateInfo ) as FollowTargetStateInfo.State;
 			attackState = stateController.GetStateByInfo( typedInfo.attackStateInfo ) as AttackStateInfo.State;
 
-			stateController.character.pawn.GetSphereSensor().Subscribe( OnPawnClicked );
+			stateController.character.Pawn.GetSphereSensor().Subscribe( OnPawnClicked );
 		}
 
 		public override bool CanBeSet() {

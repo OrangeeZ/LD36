@@ -24,7 +24,7 @@ namespace AI.Gambits {
 				: base( character ) {
 
 				this.info = info;
-				character.health.Subscribe( UpdateCanActivate );
+				character.Health.Subscribe( UpdateCanActivate );
 			}
 
 			public override bool Execute() {
@@ -34,7 +34,7 @@ namespace AI.Gambits {
 					return false;
 				}
 
-				var item = character.inventory.GetItems().OfType<HealingItemInfo.HealingItem>().FirstOrDefault();
+				var item = character.Inventory.GetItems().OfType<HealingItemInfo.HealingItem>().FirstOrDefault();
 
 				if ( item == null ) {
 
@@ -48,7 +48,7 @@ namespace AI.Gambits {
 
 			private void UpdateCanActivate( int health ) {
 
-				canActivate = (float)health / character.status.MaxHealth.Value <= info.threshold;
+				canActivate = (float)health / character.Status.MaxHealth.Value <= info.threshold;
 			}
 		}
 

@@ -43,7 +43,7 @@ public class AttackStateInfo : CharacterStateInfo {
 
 	    private Weapon GetCurrentWeapon() {
 
-		    return character.inventory.GetArmSlotItem( ArmSlotType.Primary ) as Weapon;
+		    return character.Inventory.GetArmSlotItem( ArmSlotType.Primary ) as Weapon;
 	    }
     }
 

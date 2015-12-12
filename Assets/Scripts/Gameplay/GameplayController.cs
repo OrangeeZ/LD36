@@ -3,16 +3,32 @@ using UnityEngine;
 using System.Collections;
 using UniRx;
 
-public class GameplayController {
+public class GameplayController : MonoBehaviour {
+	
+	[SerializeField]
+	private PlayerCharacterSpawner _playerSpawner;
 
-    private static GameplayController _instance;
+	[SerializeField]
+	private EnemySpawner[] _enemySpawners;
 
-    public static GameplayController instance {
-        get { return _instance ?? ( _instance = new GameplayController() ); }
-    }
+    public static GameplayController Instance { get; private set; }
 
-    public IntReactiveProperty dangerLevel = new IntReactiveProperty( 0 );
+	void Awake() {
 
-    public static int maxDanger = 250;
-    
+		Instance = this;
+	}
+
+	public IEnumerator Start() {
+
+		yield return null;
+
+		_playerSpawner.Initialize();
+
+		//ScreenManager.GetWindow<GameUI>().SetCharacter( _playerSpawner );
+
+		foreach ( var each in _enemySpawners ) {
+			
+			each.Initialize();
+		}
+	}
 }

@@ -22,7 +22,7 @@ public class FollowTargetStateInfo : CharacterStateInfo {
 
 			if ( target != null ) {
 
-				var distance = ( character.pawn.position - target.position ).sqrMagnitude;
+				var distance = ( character.Pawn.position - target.position ).sqrMagnitude;
 
 				return distance < typedInfo.maxDistance.Pow( 2 ) && distance > typedInfo.minDistance.Pow( 2 );
 			}

@@ -50,7 +50,6 @@ public class RangedWeaponInfo : WeaponInfo {
 
 			_ammoInClip = info._clipSize;
 			_damageCalculator = new ReactiveCalculator( info._damageExpression );
-			_damageCalculator.SubscribeProperty( "dangerLevel", GameplayController.instance.dangerLevel );
 		}
 
 		public override void Attack( Character target ) {
@@ -68,16 +67,15 @@ public class RangedWeaponInfo : WeaponInfo {
 			}
 
 			var projectile = Instantiate( typedInfo._projectilePrefab );
-			var targetDirection = ( target.pawn.position - character.pawn.position ).normalized;
-			//targetDirection.y *= 1.2f;
+			var targetDirection = ( target.Pawn.position - character.Pawn.position ).Set( y: 0 ).normalized;
 
 			projectile.Launch( character, targetDirection, typedInfo._projectileSpeed, (int) _damageCalculator.Result.Value );
 
-			character.pawn.SetTurretTarget( target.pawn.transform );
+			character.Pawn.SetTurretTarget( target.Pawn.transform );
 
 			if ( typedInfo._sound != null ) {
 
-				AudioSource.PlayClipAtPoint( typedInfo._sound, character.pawn.position, 0.5f );
+				AudioSource.PlayClipAtPoint( typedInfo._sound, character.Pawn.position, 0.5f );
 			}
 
 			UpdateClipAndAttackTime();
@@ -100,14 +98,14 @@ public class RangedWeaponInfo : WeaponInfo {
 			var projectile = Instantiate( typedInfo._projectilePrefab );
 			projectile.Launch( character, direction, typedInfo._projectileSpeed, (int) _damageCalculator.Result.Value );
 
-			AudioSource.PlayClipAtPoint( typedInfo._sound, character.pawn.position, 0.5f );
+			AudioSource.PlayClipAtPoint( typedInfo._sound, character.Pawn.position, 0.5f );
 
 			UpdateClipAndAttackTime();
 		}
 
 		public override bool CanAttack( Character target ) {
 
-			return Vector3.Distance( target.pawn.position, character.pawn.position ) <= typedInfo.AttackRange;
+			return Vector3.Distance( target.Pawn.position, character.Pawn.position ) <= typedInfo.AttackRange;
 		}
 
 		private void UpdateClipAndAttackTime() {

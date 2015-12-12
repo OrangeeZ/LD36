@@ -15,7 +15,7 @@ namespace AI.Gambits {
 			public GambitInternal( GambitInfo info, Character character )
 				: base( character ) {
                 
-				character.pawn.GetSphereSensor()
+				character.Pawn.GetSphereSensor()
 					.Select( _ => _.character )
 					.Where( _=> _ != null )
 					.Subscribe( OnTargetEnter );
@@ -25,8 +25,8 @@ namespace AI.Gambits {
 
 				if ( attackTarget != null ) {
 
-					character.stateController.GetState<ApproachTargetStateInfo.State>().SetDestination( attackTarget );
-					character.weaponStateController.GetState<AttackStateInfo.State>().SetTarget( attackTarget );
+					character.StateController.GetState<ApproachTargetStateInfo.State>().SetDestination( attackTarget );
+					character.WeaponStateController.GetState<AttackStateInfo.State>().SetTarget( attackTarget );
                     
 					return true;
 				}
@@ -36,7 +36,7 @@ namespace AI.Gambits {
 
 			private void OnTargetEnter( Character target ) {
 
-			    if ( target.teamId != character.teamId ) {
+			    if ( target.TeamId != character.TeamId ) {
 
                     this.attackTarget = target;
 			    }
