@@ -44,7 +44,7 @@ public class CharacterSpawner : MonoBehaviour {
 
         if ( isPlayerCharacter ) {
 
-            GameScreen.instance.statsPanel.SetCharacter( character );
+            //GameScreen.instance.statsPanel.SetCharacter( character );
         }
 
         if ( Spawned != null ) {

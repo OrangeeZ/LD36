@@ -8,10 +8,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 02c5987f04b6761429079d35cfb2a6a0, type: 3}
-  m_Name: Player Stat Expressions
+  m_Script: {fileID: 11500000, guid: 2919310fcb3e35044b2250fb1e689822, type: 3}
+  m_Name: Move Direction
   m_EditorClassIdentifier: 
-  HealthExpression:
-    value: 10
-  MoveSpeedExpression:
-    value: 10
+  animatorStateName: Move

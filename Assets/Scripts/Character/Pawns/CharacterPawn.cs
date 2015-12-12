@@ -113,7 +113,7 @@ public class CharacterPawn : CharacterPawnBase {
 
 		var collider = GetComponent<Collider>();
 
-		collider.enabled = isActive;
+		//collider.enabled = isActive;
 		enabled = isActive;
 	}
 
