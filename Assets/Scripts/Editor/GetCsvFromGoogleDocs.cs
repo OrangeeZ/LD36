@@ -10,10 +10,10 @@ using System.Reflection;
 
 public static class GetCsvFromGoogleDocs {
 
-	public static void Get( string url ) {
+	public static void Get( string url, string type ) {
 
 		EditorUtility.DisplayProgressBar("Loading", "Requesting csv file. Please wait...", 0f);
-
+		Debug.Log("Loading csv from: " + url);
 		var www = new WWW( url );
 		ContinuationManager.Add(() => { 
 				EditorUtility.DisplayProgressBar("Loading", "Requesting csv file. Please wait...", www.progress);
@@ -25,27 +25,27 @@ public static class GetCsvFromGoogleDocs {
 				// Let's parse this CSV!
 				TextReader sr = new StringReader( www.text );
 				try {
-					ParseCsv2( sr );
+					ParseCsv2( sr, type );
 				} catch (Exception ex) {
 					Debug.LogException(ex);
 				}
 		});
 	}
 
-	private static void ParseCsv2( TextReader csvReader ) {
+	private static void ParseCsv2( TextReader csvReader, string type = null ) {
 		var parser = new CsvParser( csvReader );
 		var row = parser.Read(); // get first row and
 
-		string type;
+		if (string.IsNullOrEmpty(type)) {
+			// Read Type info
+			if (row[0] == "type") {
+				type = row[1];
 
-		// Read Type info
-		if (row[0] == "type") {
-			type = row[1];
-
-			row = parser.Read();
-		} else {
-			Debug.LogError("Worksheet must declare 'Type' in first wor");
-			return;
+				row = parser.Read();
+			} else {
+				Debug.LogError("Worksheet must declare 'Type' in first wor");
+				return;
+			}
 		}
 
 		// Read fields
