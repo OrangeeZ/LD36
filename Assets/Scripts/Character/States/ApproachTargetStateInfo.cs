@@ -86,7 +86,7 @@ public class ApproachTargetStateInfo : CharacterStateInfo {
 		}
 
 		private void OnDestinationUpdate( Vector3 destination ) {
-
+			Debug.Log( destination );
 			this.destination = destination;
 
 			stateController.TrySetState( this, allowEnterSameState: true );

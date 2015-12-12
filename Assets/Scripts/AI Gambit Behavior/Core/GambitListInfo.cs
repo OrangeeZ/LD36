@@ -8,6 +8,7 @@ using System.Collections;
 
 namespace AI.Gambits {
 
+	[CreateAssetMenu(menuName = "Create/Gambit List Info")]
 	public class GambitListInfo : ScriptableObject {
 
         [SerializeField]
