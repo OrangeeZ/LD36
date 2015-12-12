@@ -4,6 +4,8 @@ using System.Threading;
 using CsvHelper;
 using UnityEditor;
 using UnityEngine;
+using System.Linq;
+using System.Collections.Generic;
 
 public static class GetCsvFromGoogleDocs {
 
@@ -24,6 +26,81 @@ public static class GetCsvFromGoogleDocs {
 			TextReader sr = new StringReader( www.text );
 			ParseCsv( sr );
 		});
+	}
+
+	private static void ParseCsv2( TextReader csvReader ) {
+		var parser = new CsvParser( csvReader );
+		var row = parser.Read(); // get first row and
+
+		string type;
+
+		// Read Type info
+		if (row[0] == "type") {
+			type = row[1];
+
+			row = parser.Read();
+		} else {
+			Debug.LogError("Worksheet must declare 'Type' in first wor");
+			return;
+		}
+
+		// Read fields
+		string[] fieldNames;
+		while (row != null && row[0] != "ID") {
+			row = parser.Read();
+		}
+		if (row == null) {
+			Debug.LogError("Can't find header!");
+			return;
+		}
+
+		fieldNames = row;
+		row = parser.Read();
+
+		while (row != null) {
+			string instanceName = row[0];
+
+			var instance = GetOrCreate(type, instanceName);
+
+			if (instance is ICsvConfigurable) {
+				ICsvConfigurable configurable = (ICsvConfigurable)instance;
+				configurable.Configure(CreateValues(fieldNames, row));
+			} else {
+				ParseFields2(row, instance, fieldNames);
+			}
+
+			row = parser.Read();
+		}
+	}
+
+	private static csv.Values CreateValues(string[] fieldNames, string[] row)
+	{
+		var dict = new Dictionary<string, string>();
+		for (int i = 1; i < row.Length; i++) {
+			dict.Add(fieldNames[i], row[i]);
+		}
+		return new csv.Values(dict);
+	}
+
+	private static void ParseFields2(string[] row, ScriptableObject target, string[] fieldNames) {
+		var type = target.GetType();
+
+		for (int i = 1; i < row.Length; i++) {
+			string fieldName = fieldNames[i];
+			string fieldValue = row[i];
+
+			var field = type.GetField(fieldName);
+			if (field == null) {
+				Debug.LogErrorFormat("Type {0} doesn't contains field {1}", type.Name, fieldName);
+				return;
+			}
+			try {
+				field.SetValue(target, Convert.ChangeType(fieldValue, field.FieldType));
+			} catch (Exception ex) {
+				Debug.LogErrorFormat("Can't set value {0} of field '{1}' to object '{1}'", fieldValue, fieldName, target.name, target);
+				return;
+			}
+		}
 	}
 
 	private static void ParseCsv( TextReader csvReader ) {
@@ -50,26 +127,9 @@ public static class GetCsvFromGoogleDocs {
 			}
 			var instanceName = row[2];
 			//  2. trying to get a type
-			var type = Type.GetType( row[1] );
-			if ( type == null ) {
-				Debug.LogWarningFormat( "Type {0} not found", row[1] );
-				row = parser.Read();
-				continue;
-			}
+			ScriptableObject instance = GetOrCreate (row[1], instanceName);
 
-			var assetPath = Path.Combine( "Assets/Data/", type.Name );
-			var assetPathWithName = assetPath + "/" + instanceName + ".asset";
-            var instance = AssetDatabase.LoadAssetAtPath<ScriptableObject>( assetPathWithName );
-
-			if ( instance == null ) {
-
-				instance = ScriptableObject.CreateInstance( type );
-
-				Directory.CreateDirectory( assetPath ).Attributes = FileAttributes.Normal;
-				AssetDatabase.CreateAsset( instance, assetPathWithName );
-			}
-
-			ParseFields( parser, type, instance );
+			ParseFields( parser, instance );
 
 			// Create an asset
 		}
@@ -81,7 +141,28 @@ public static class GetCsvFromGoogleDocs {
 		AssetDatabase.Refresh();
 	}
 
-	private static void ParseFields( CsvParser parser, Type type, ScriptableObject target ) {
+	static ScriptableObject GetOrCreate (string typeName, string instanceName)
+	{
+		var type = Type.GetType (typeName);
+		if (type == null) {
+			Debug.LogWarningFormat ("Type {0} not found", typeName);
+			return null;
+		}
+
+		var assetPath = Path.Combine ("Assets/Data/", type.Name);
+		var assetPathWithName = assetPath + "/" + instanceName + ".asset";
+
+		var instance = AssetDatabase.LoadAssetAtPath<ScriptableObject> (assetPathWithName);
+		if (instance == null) {
+			instance = ScriptableObject.CreateInstance (type);
+			Directory.CreateDirectory (assetPath).Attributes = FileAttributes.Normal;
+			AssetDatabase.CreateAsset (instance, assetPathWithName);
+		}
+		return instance;
+	}
+
+	private static void ParseFields( CsvParser parser, ScriptableObject target ) {
+		var type = target.GetType();
 
 		while ( true ) {
 			// get next row and check it
