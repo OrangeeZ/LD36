@@ -26,6 +26,7 @@ public class ItemView : AObject {
     public void NotifyPickUp( Character character ) {
 
 		if (giver != null) {
+
 			giver.OnPickedUp();
 		}
 

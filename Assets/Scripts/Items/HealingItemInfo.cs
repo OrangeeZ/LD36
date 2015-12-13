@@ -19,7 +19,7 @@ public class HealingItemInfo : ItemInfo, ICsvConfigurable {
 
 			var info = this.info as HealingItemInfo;
 
-			character.Health.Value += info.HealingAmount;
+			Character.Health.Value += info.HealingAmount;
 
 			if ( info.HealingDuration > 0 ) {
 
@@ -27,7 +27,7 @@ public class HealingItemInfo : ItemInfo, ICsvConfigurable {
 			}
 			
 
-			character.Inventory.RemoveItem( this );
+			Character.Inventory.RemoveItem( this );
 		}
 
 		private IEnumerable HealingCoroutine( float duration, float speed ) {
@@ -37,7 +37,7 @@ public class HealingItemInfo : ItemInfo, ICsvConfigurable {
 			var timer = new AutoTimer( duration );
 			while ( timer.ValueNormalized != 1f ) {
 
-				character.Health.Value += speed * Time.deltaTime;
+				Character.Health.Value += speed * Time.deltaTime;
 
 				yield return null;
 			}

@@ -11,13 +11,6 @@ public abstract class Weapon : Item {
 		: base( info ) {
 	}
 
-	public virtual void Setup( Character ownerCharacter, Vector3 direction, Action attackCallback ) {
-
-		this.character = ownerCharacter;
-		this.Direction = direction;
-		this.AttackCallback = attackCallback;
-	}
-
 	public virtual WeaponInfo GetInfo() {
 
 		return null;
@@ -34,7 +27,7 @@ public abstract class Weapon : Item {
 
 	public override void Apply() {
 
-		character.Inventory.SetArmSlotItem( ( info as WeaponInfo ).SlotType, this );
+		Character.Inventory.SetArmSlotItem( ( info as WeaponInfo ).SlotType, this );
 	}
 }
 

@@ -22,6 +22,10 @@ public interface IInventory {
 
 	void RemoveItem( Item item );
 
+	void RemoveItem<T>() where T : Item;
+
+	int GetItemCount<T>() where T: Item;
+
 	IEnumerable<Item> GetItems();
 
 	bool SetBodySlotItem( BodySlotType bodySlotType, Item item );
@@ -32,6 +36,3 @@ public interface IInventory {
 
 	Item GetArmSlotItem( ArmSlotType armSlotType );
 }
-
-//[System.Serializable]
-//public class IInventoryContainer : IUnifiedContainer<IInventory> { }

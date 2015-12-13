@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using System.Monads;
 using UnityEngine;
 using System.Collections;
@@ -34,6 +35,16 @@ public class BasicInventory : IInventory {
 	public void RemoveItem( Item item ) {
 
 		items.Remove( item );
+	}
+
+	public void RemoveItem<T>() where T : Item {
+
+		items.Remove( items.FirstOrDefault( _ => _ is T ) );
+	}
+
+	public int GetItemCount<T>() where T : Item {
+
+		return items.OfType<T>().Count();
 	}
 
 	public IEnumerable<Item> GetItems() {

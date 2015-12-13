@@ -1,9 +1,12 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using System.Collections;
+using System.Runtime.CompilerServices;
 using System.Xml.Schema;
 using csv;
 using Expressions;
 using UniRx;
+using UnityEngine.Serialization;
 
 [CreateAssetMenu( menuName = "Create/Weapons/Ranged" )]
 public class RangedWeaponInfo : WeaponInfo {
@@ -18,11 +21,11 @@ public class RangedWeaponInfo : WeaponInfo {
 	[SerializeField]
 	private float _projectileSpeed;
 
-	[SerializeField]
-	private int _clipSize;
+	[FormerlySerializedAs( "_clipSize" )]
+	public int ClipSize;
 
-	[SerializeField]
-	private float _reloadDuration;
+	[FormerlySerializedAs( "_reloadDuration" )]
+	public float ReloadDuration;
 
 	[SerializeField]
 	private int _projectilesPerShot;
@@ -39,41 +42,35 @@ public class RangedWeaponInfo : WeaponInfo {
 	[SerializeField]
 	private float _projectileLifetime;
 
+	[SerializeField]
+	private RangedWeaponBehaviourInfo _weaponBehaviourInfo;
+
 	public class RangedWeapon : Weapon<RangedWeaponInfo> {
-
-		public bool isReloading {
-			get {
-
-				if ( _isReloading && Time.timeSinceLevelLoad > _nextAttackTime ) {
-
-					_isReloading = false;
-				}
-
-				return _isReloading;
-			}
-			private set { _isReloading = value; }
-		}
 
 		public int AmmoInClip { get; private set; }
 
-		private float _nextAttackTime;
-		//private readonly ReactiveCalculator _damageCalculator;
-		private bool _isReloading;
+		private RangedWeaponBehaviour _behaviour;
 
 		public RangedWeapon( RangedWeaponInfo info ) : base( info ) {
 
-			AmmoInClip = info._clipSize;
-			//_damageCalculator = new ReactiveCalculator( info._damageExpression );
+			AmmoInClip = info.ClipSize;
+		}
+
+		public override void SetCharacter( Character character ) {
+
+			base.SetCharacter( character );
+
+			_behaviour = typedInfo._weaponBehaviourInfo.GetBehaviour();
+			_behaviour.Initialize( Inventory, typedInfo );
+
 		}
 
 		public override void Attack( Character target, EnemyCharacterStatusInfo statusInfo ) {
 
-			if ( target == null || Time.timeSinceLevelLoad < _nextAttackTime ) {
+			if ( target == null || _behaviour.IsReloading ) {
 
 				return;
 			}
-
-			isReloading = false;
 
 			if ( AttackCallback != null ) {
 
@@ -83,35 +80,33 @@ public class RangedWeaponInfo : WeaponInfo {
 			for ( var i = 0; i < typedInfo._projectilesPerShot; ++i ) {
 
 				var projectile = GetProjectileInstance();
-				var targetDirection = ( target.Pawn.position - character.Pawn.position ).Set( y: 0 ).normalized;
+				var targetDirection = ( target.Pawn.position - Character.Pawn.position ).Set( y: 0 ).normalized;
 				var projectileDirection = GetOffsetDirection( targetDirection, i );
 
-				projectile.Launch( character, projectileDirection, typedInfo._projectileSpeed, typedInfo.BaseDamage, typedInfo.CanFriendlyFire );
+				projectile.Launch( Character, projectileDirection, typedInfo._projectileSpeed, typedInfo.BaseDamage, typedInfo.CanFriendlyFire );
 
-				UpdateClipAndAttackTime();
+				_behaviour.TryShoot();
 
-				if ( isReloading ) {
+				if ( _behaviour.IsReloading ) {
 
 					break;
 				}
 			}
 
-			character.Pawn.SetTurretTarget( target.Pawn.transform );
+			Character.Pawn.SetTurretTarget( target.Pawn.transform );
 
 			if ( typedInfo._sound != null ) {
 
-				AudioSource.PlayClipAtPoint( typedInfo._sound, character.Pawn.position, 0.5f );
+				AudioSource.PlayClipAtPoint( typedInfo._sound, Character.Pawn.position, 0.5f );
 			}
 		}
 
 		public override void Attack( Vector3 direction ) {
 
-			if ( Time.timeSinceLevelLoad < _nextAttackTime ) {
+			if ( _behaviour.IsReloading ) {
 
 				return;
 			}
-
-			isReloading = false;
 
 			if ( AttackCallback != null ) {
 
@@ -123,38 +118,25 @@ public class RangedWeaponInfo : WeaponInfo {
 				var projectile = GetProjectileInstance();
 				var projectileDirection = GetOffsetDirection( direction, i );
 
-				projectile.Launch( character, projectileDirection, typedInfo._projectileSpeed, typedInfo.BaseDamage, typedInfo.CanFriendlyFire );
+				projectile.Launch( Character, projectileDirection, typedInfo._projectileSpeed, typedInfo.BaseDamage, typedInfo.CanFriendlyFire );
 
-				UpdateClipAndAttackTime();
+				_behaviour.TryShoot();
 
-				if ( isReloading ) {
+				if ( _behaviour.IsReloading ) {
 
 					break;
 				}
 			}
-			//AudioSource.PlayClipAtPoint( typedInfo._sound, character.Pawn.position, 0.5f );
+
+			if ( typedInfo._sound != null ) {
+
+				AudioSource.PlayClipAtPoint( typedInfo._sound, Character.Pawn.position, 0.5f );
+			}
 		}
 
 		public override bool CanAttack( Character target ) {
 
-			return Vector3.Distance( target.Pawn.position, character.Pawn.position ) <= typedInfo.AttackRange;
-		}
-
-		protected virtual void UpdateClipAndAttackTime() {
-
-			AmmoInClip--;
-
-			if ( AmmoInClip == 0 ) {
-
-				AmmoInClip = typedInfo._clipSize;
-
-				_nextAttackTime = Time.timeSinceLevelLoad + typedInfo._reloadDuration;
-
-				isReloading = true;
-			} else {
-
-				_nextAttackTime = Time.timeSinceLevelLoad + typedInfo.BaseAttackSpeed;
-			}
+			return Vector3.Distance( target.Pawn.position, Character.Pawn.position ) <= typedInfo.AttackRange;
 		}
 
 		private Vector3 GetOffsetDirection( Vector3 direction, int index ) {
@@ -192,13 +174,13 @@ public class RangedWeaponInfo : WeaponInfo {
 
 		base.Configure( values );
 
-		_reloadDuration = BaseAttackSpeed;
+		ReloadDuration = BaseAttackSpeed;
 
 		_projectileSpeed = values.Get( "Projectile Speed", 0f );
 		_projectilesPerShot = values.Get( "BulletsPerBurst", 1 );
 		_projectileLifetime = values.Get( "ProjectileLifetime", 1f );
 		_shotConeAngle = values.Get( "BurstAngle", 0 );
-		_clipSize = values.Get( "Clip Size", _projectilesPerShot );
+		ClipSize = values.Get( "Clip Size", _projectilesPerShot );
 		_projectilePrefab = values.GetPrefabWithComponent<Projectile>( "Projectile", fixName: false );
 	}
 

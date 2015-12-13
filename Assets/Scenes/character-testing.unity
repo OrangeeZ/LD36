@@ -95,7 +95,7 @@ GameObject:
   - 4: {fileID: 72741598}
   - 114: {fileID: 72741599}
   m_Layer: 0
-  m_Name: Item Spawner [cone-gun]
+  m_Name: Item Spawner [acorn-gun]
   m_TagString: Untagged
   m_Icon: {fileID: -1412012063857583412, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -124,7 +124,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0a70641cadcc18b49a5d725179d74e43, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  info: {fileID: 11400000, guid: 37da7061e77fee8469b47684ddd518ad, type: 2}
+  info: {fileID: 11400000, guid: fae18eb5475498e4284bb419ca54234c, type: 2}
 --- !u!1 &121987413
 GameObject:
   m_ObjectHideFlags: 0
@@ -949,6 +949,46 @@ MonoBehaviour:
   _inAnimation: {fileID: 0}
   _outAnimation: {fileID: 0}
   _healthBar: {fileID: 422260679}
+--- !u!1 &1320257303
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 1320257305}
+  - 114: {fileID: 1320257304}
+  m_Layer: 0
+  m_Name: Item Spawner [Acorn Ammo]
+  m_TagString: Untagged
+  m_Icon: {fileID: -1412012063857583412, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1320257304
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1320257303}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0a70641cadcc18b49a5d725179d74e43, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  info: {fileID: 11400000, guid: 9a15771819d65de47b304a41321ac41b, type: 2}
+--- !u!4 &1320257305
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1320257303}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 28.4, y: 1.38, z: -47.11}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 25
 --- !u!1 &1331829056
 GameObject:
   m_ObjectHideFlags: 0

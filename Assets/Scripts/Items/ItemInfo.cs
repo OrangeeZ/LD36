@@ -5,18 +5,19 @@ public abstract class Item {
 
     public readonly ItemInfo info;
 
-    protected IInventory inventory;
+    protected IInventory Inventory;
 
-    protected Character character;
+    protected Character Character;
 
     protected Item( ItemInfo info ) {
 
         this.info = info;
     }
 
-    public void SetCharacter( Character character ) {
+    public virtual void SetCharacter( Character character ) {
 
-        this.character = character;
+        Character = character;
+	    Inventory = character.Inventory;
     }
 
     public virtual void Apply() {
