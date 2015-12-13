@@ -28,3 +28,4 @@ MonoBehaviour:
   _deviationCoefficient: 0
   _shotConeAngle: 15
   _sound: {fileID: 0}
+  _projectileLifetime: 1
