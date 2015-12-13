@@ -9,33 +9,43 @@ public class GameplayController : MonoBehaviour {
 	private PlayerCharacterSpawner _playerSpawner;
 
 	[SerializeField]
-	private EnemySpawner[] _enemySpawners;
+	private SpawnerBase[] _enemySpawners;
 
     public static GameplayController Instance { get; private set; }
 
 	void Awake() {
-
 		Instance = this;
 	}
 
 	public IEnumerator Start() {
-
 		yield return null;
-
 		_playerSpawner.Initialize();
-
-		//ScreenManager.GetWindow<GameUI>().SetCharacter( _playerSpawner );
-
 		foreach ( var each in _enemySpawners ) {
-			
 			each.Initialize();
 		}
 	}
 
 	[ContextMenu("Hook dependencies")]
 	private void HookDependencies() {
-
 		_playerSpawner = FindObjectOfType<PlayerCharacterSpawner>();
-		_enemySpawners = FindObjectsOfType<EnemySpawner>();
+
+
+		var sp = FindObjectsOfType<EnemySpawner>();
+		var oneSp = FindObjectsOfType<OneEnemySpawner>();
+
+		int length = 0;
+		length += (sp != null) ? sp.Length : 0;
+		length += (oneSp != null) ? oneSp.Length : 0;
+
+		_enemySpawners = new SpawnerBase[length];
+		int i = 0;
+		if (sp != null) {
+			sp.CopyTo (_enemySpawners, 0);
+			i += sp.Length;
+		}
+		if (oneSp != null) {
+			oneSp.CopyTo (_enemySpawners, i);
+			i += oneSp.Length;
+		}
 	}
 }

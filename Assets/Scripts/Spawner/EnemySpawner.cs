@@ -3,7 +3,7 @@ using System.Linq;
 using UnityEngine;
 using UniRx;
 
-public class EnemySpawner : AObject {
+public class EnemySpawner : SpawnerBase {
 
 	public Action<Character> Spawned;
 
