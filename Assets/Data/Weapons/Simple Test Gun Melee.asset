@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dd52a18b43b396c4499e1df91ec30071, type: 3}
+  m_Name: Simple Test Gun Melee
+  m_EditorClassIdentifier: 
+  name: 
+  groundView: {fileID: 0}
+  inventoryIcon: {fileID: 0}
+  color: {r: 0, g: 0, b: 0, a: 0}
+  BaseDamage: 1
+  BaseAttackSpeed: 1
+  AttackRange: 10
+  SlotType: 0
+  _damageExpression:
+    value: 6
+  _projectilePrefab: {fileID: 11433014, guid: 48862396712465c409d8375150370077, type: 2}
+  _projectileSpeed: 80
+  _clipSize: 2
+  _reloadDuration: 2
+  _projectilesPerShot: 5
+  _deviationCoefficient: 0
+  _coneAngle: 30
+  _sound: {fileID: 0}
