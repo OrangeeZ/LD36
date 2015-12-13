@@ -1,19 +1,8 @@
-﻿using System;
+﻿using csv;
 using UnityEngine;
-using System.Collections;
-using System.Runtime.CompilerServices;
-using System.Xml.Schema;
-using csv;
-using Expressions;
-using UniRx;
-using UnityEngine.Serialization;
 
 [CreateAssetMenu( menuName = "Create/Weapons/Ranged" )]
 public class RangedWeaponInfo : WeaponInfo {
-
-	//[CalculatorExpression]
-	//[SerializeField]
-	//private StringReactiveProperty _damageExpression;
 
 	[SerializeField]
 	private Projectile _projectilePrefab;
@@ -21,10 +10,7 @@ public class RangedWeaponInfo : WeaponInfo {
 	[SerializeField]
 	private float _projectileSpeed;
 
-	[FormerlySerializedAs( "_clipSize" )]
 	public int ClipSize;
-
-	[FormerlySerializedAs( "_reloadDuration" )]
 	public float ReloadDuration;
 
 	[SerializeField]
@@ -49,11 +35,19 @@ public class RangedWeaponInfo : WeaponInfo {
 
 		public int AmmoInClip { get; private set; }
 
+		public float BaseAttackSpeed {
+			get { return Character.Status.ModifierCalculator.CalculateFinalValue( ModifierType.BaseAttackSpeed, BaseAttackSpeed ); }
+		}
+
+		public int ClipSize { get; private set; }
+		public float ReloadDuration { get; set; }
+
 		private RangedWeaponBehaviour _behaviour;
 
 		public RangedWeapon( RangedWeaponInfo info ) : base( info ) {
 
-			AmmoInClip = info.ClipSize;
+			ClipSize = info.ClipSize;
+			ReloadDuration = info.ReloadDuration;
 		}
 
 		public override void SetCharacter( Character character ) {
@@ -61,7 +55,7 @@ public class RangedWeaponInfo : WeaponInfo {
 			base.SetCharacter( character );
 
 			_behaviour = typedInfo._weaponBehaviourInfo.GetBehaviour();
-			_behaviour.Initialize( Inventory, typedInfo );
+			_behaviour.Initialize( Inventory, this );
 
 		}
 
@@ -83,7 +77,9 @@ public class RangedWeaponInfo : WeaponInfo {
 				var targetDirection = ( target.Pawn.position - Character.Pawn.position ).Set( y: 0 ).normalized;
 				var projectileDirection = GetOffsetDirection( targetDirection, i );
 
-				projectile.Launch( Character, projectileDirection, typedInfo._projectileSpeed, typedInfo.BaseDamage, typedInfo.CanFriendlyFire );
+				var finalDamage = Character.Status.ModifierCalculator.CalculateFinalValue( ModifierType.BaseDamage, typedInfo.BaseDamage );
+
+				projectile.Launch( Character, projectileDirection, typedInfo._projectileSpeed, finalDamage, typedInfo.CanFriendlyFire );
 
 				_behaviour.TryShoot();
 
@@ -118,7 +114,9 @@ public class RangedWeaponInfo : WeaponInfo {
 				var projectile = GetProjectileInstance();
 				var projectileDirection = GetOffsetDirection( direction, i );
 
-				projectile.Launch( Character, projectileDirection, typedInfo._projectileSpeed, typedInfo.BaseDamage, typedInfo.CanFriendlyFire );
+				var finalDamage = Character.Status.ModifierCalculator.CalculateFinalValue( ModifierType.BaseDamage, typedInfo.BaseDamage );
+
+				projectile.Launch( Character, projectileDirection, typedInfo._projectileSpeed, finalDamage, typedInfo.CanFriendlyFire );
 
 				_behaviour.TryShoot();
 

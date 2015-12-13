@@ -9,6 +9,8 @@ public class HealingItemInfo : ItemInfo, ICsvConfigurable {
 	public float HealingDuration;
 	public float HealingPerSecond;
 
+	public ModifierType ModifierType;
+
 	public class HealingItem : Item {
 
 		public HealingItem( ItemInfo info ) : base( info ) {
@@ -25,7 +27,6 @@ public class HealingItemInfo : ItemInfo, ICsvConfigurable {
 
 				new PMonad().Add( HealingCoroutine( info.HealingDuration, info.HealingPerSecond ) ).Execute();
 			}
-			
 
 			Character.Inventory.RemoveItem( this );
 		}
@@ -42,6 +43,7 @@ public class HealingItemInfo : ItemInfo, ICsvConfigurable {
 				yield return null;
 			}
 		}
+
 	}
 
 	public override Item GetItem() {
@@ -54,6 +56,12 @@ public class HealingItemInfo : ItemInfo, ICsvConfigurable {
 		HealingAmount = values.Get( "HpMax", 0f );
 		HealingDuration = values.Get( "HealDuration", 0f );
 		HealingPerSecond = values.Get( "HpPerSec", 0f );
+
+		var id = values.Get( "id", string.Empty );
+		if ( !id.IsNullOrEmpty() ) {
+
+			ModifierType = id == "water" ? ModifierType.WaterHealthRestore : ModifierType.ManureHealthRestore;
+		}
 	}
 
 }

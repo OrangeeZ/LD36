@@ -25,13 +25,13 @@ public class DefaultRangedBehaviourInfo : RangedWeaponBehaviourInfo {
 
 		private bool _isReloading;
 		private float _nextAttackTime;
-		private RangedWeaponInfo _info;
+		private RangedWeaponInfo.RangedWeapon _ownerWeapon;
 
-		public override void Initialize( IInventory ownerInventory, RangedWeaponInfo info ) {
+		public override void Initialize( IInventory ownerInventory, RangedWeaponInfo.RangedWeapon ownerWeapon ) {
 
-			_info = info;
+			_ownerWeapon = ownerWeapon;
 
-			AmmoInClip = _info.ClipSize;
+			AmmoInClip = _ownerWeapon.ClipSize;
 		}
 
 		public override void TryShoot() {
@@ -40,14 +40,14 @@ public class DefaultRangedBehaviourInfo : RangedWeaponBehaviourInfo {
 
 			if ( AmmoInClip == 0 ) {
 
-				AmmoInClip = _info.ClipSize;
+				AmmoInClip = _ownerWeapon.ClipSize;
 
-				_nextAttackTime = Time.timeSinceLevelLoad + _info.ReloadDuration;
+				_nextAttackTime = Time.timeSinceLevelLoad + _ownerWeapon.ReloadDuration;
 
 				IsReloading = true;
 			} else {
 
-				_nextAttackTime = Time.timeSinceLevelLoad + _info.BaseAttackSpeed;
+				_nextAttackTime = Time.timeSinceLevelLoad + _ownerWeapon.BaseAttackSpeed;
 			}
 		}
 

@@ -18,3 +18,4 @@ MonoBehaviour:
   HealingAmount: 0
   HealingDuration: 3
   HealingPerSecond: 0.5
+  ModifierType: 0

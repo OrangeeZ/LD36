@@ -15,16 +15,16 @@ MonoBehaviour:
   groundView: {fileID: 11488804, guid: 8d03d4a4a777a0e499ba1e113db4a8dc, type: 2}
   inventoryIcon: {fileID: 0}
   color: {r: 0, g: 0, b: 0, a: 0}
-  BaseDamage: 1
+  BaseDamage: 3
   BaseAttackSpeed: 1
   AttackRange: 1
   CanFriendlyFire: 0
   SlotType: 0
   _projectilePrefab: {fileID: 11433014, guid: 608acec83ae17a746919b5d8ad070295, type: 2}
   _projectileSpeed: 20
-  ClipSize: 3
+  ClipSize: 1
   ReloadDuration: 1
-  _projectilesPerShot: 3
+  _projectilesPerShot: 1
   _deviationCoefficient: 0
   _shotConeAngle: 30
   _sound: {fileID: 0}

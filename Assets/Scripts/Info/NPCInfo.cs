@@ -10,6 +10,7 @@ public class NPCInfo : ScriptableObject, ICsvConfigurable
 	{
 		var weapon = values.GetScriptableObject<ItemInfo>("ChangeWeapon");
 		var ability = values.GetScriptableObject<ItemInfo>("Ability");
+
 		itemInfo = weapon ?? ability;
 	}
 }

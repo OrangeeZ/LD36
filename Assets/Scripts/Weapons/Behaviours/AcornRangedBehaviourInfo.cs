@@ -8,7 +8,7 @@ public class AcornRangedBehaviourInfo : RangedWeaponBehaviourInfo {
 	private class AcornRangedBehaviour : RangedWeaponBehaviour {
 
 		private float _nextAttackTime;
-		private RangedWeaponInfo _info;
+		private RangedWeaponInfo.RangedWeapon _ownerWeapon;
 		private IInventory _ownerInventory;
 
 		public override bool IsReloading {
@@ -16,9 +16,9 @@ public class AcornRangedBehaviourInfo : RangedWeaponBehaviourInfo {
 			protected set { }
 		}
 
-		public override void Initialize( IInventory ownerInventory, RangedWeaponInfo info ) {
+		public override void Initialize( IInventory ownerInventory, RangedWeaponInfo.RangedWeapon ownerWeapon ) {
 
-			_info = info;
+			_ownerWeapon = ownerWeapon;
 			_ownerInventory = ownerInventory;
 		}
 
@@ -26,7 +26,7 @@ public class AcornRangedBehaviourInfo : RangedWeaponBehaviourInfo {
 
 			if ( !IsReloading ) {
 				
-				_nextAttackTime = Time.timeSinceLevelLoad + _info.BaseAttackSpeed;
+				_nextAttackTime = Time.timeSinceLevelLoad + _ownerWeapon.BaseAttackSpeed;
 
 				_ownerInventory.RemoveItem<AcornAmmoItemInfo.AcornAmmo>();
 			}
