@@ -30,7 +30,9 @@ public class CharacterStatus {
 		MoveSpeed = new ReactiveProperty<float>( Info.MoveSpeed );
 
 		ModifierCalculator = new ModifierCalculator();
-    }
+
+		ModifierCalculator.Changed += OnModifiersChange;
+	}
 
 	public void AddEffect( CharacterStatusEffectInfo statusEffect ) {
 
@@ -41,4 +43,11 @@ public class CharacterStatus {
 
 		_statusEffects.Remove( statusEffect );
 	}
+
+	private void OnModifiersChange() {
+
+		MoveSpeed.Value = ModifierCalculator.CalculateFinalValue( ModifierType.BaseMoveSpeed, MoveSpeed.Value );
+		//MaxHealth = ModifierCalculator.CalculateFinalValue( Base )
+	}
+
 }

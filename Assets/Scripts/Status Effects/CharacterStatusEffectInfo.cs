@@ -11,21 +11,23 @@ public enum ModifierType {
 
 	ThornsDamage,
 
-	SunHealthRestore,
-	ManureHealthRestore,
-	WaterHealthRestore,
+	SunHealthRestore,//
+	ManureHealthRestore,//
+	WaterHealthRestore,//
 
 	BurningTimerDuration,
 	DebuffTimerDuration,
 
-	BaseAttackSpeed,
+	BaseAttackSpeed,//
 	BaseRegeneration,
-	BaseMoveSpeed,
-	BaseDamage
+	BaseMoveSpeed,//
+	BaseDamage//
 
 }
 
 public class ModifierCalculator {
+
+	public Action Changed;
 
 	private readonly Dictionary<ModifierType, List<OffsetValue>> _modifiers = new Dictionary<ModifierType, List<OffsetValue>>();
 
@@ -46,11 +48,21 @@ public class ModifierCalculator {
 				_modifiers[modifierType].Add( modifier );
 				break;
 		}
+
+		if ( Changed != null ) {
+
+			Changed();
+		}
 	}
 
 	public void Remove( ModifierType modifierType, OffsetValue modifier ) {
 
 		_modifiers[modifierType].Remove( modifier );
+
+		if ( Changed != null ) {
+
+			Changed();
+		}
 	}
 
 	public float CalculateFinalValue( ModifierType modifierType, float baseValue ) {

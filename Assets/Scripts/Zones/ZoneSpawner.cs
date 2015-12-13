@@ -24,11 +24,15 @@ public class ZoneSpawner : MonoBehaviour {
 
 	private void Update() {
 
-		if ( _healingAmount <= 0 ) return;
+		if ( _healingAmount <= 0 ) {
+
+			return;
+		}
 
 		foreach ( var each in _characters ) {
 
-			var healingPerDeltaTime = _zoneInfo.HealingSpeed * Time.deltaTime;
+			var healingAmount = each.Status.ModifierCalculator.CalculateFinalValue( ModifierType.SunHealthRestore, _zoneInfo.HealingSpeed );
+			var healingPerDeltaTime = healingAmount * Time.deltaTime;
 
 			each.Health.Value += healingPerDeltaTime;
 			_healingAmount -= healingPerDeltaTime;

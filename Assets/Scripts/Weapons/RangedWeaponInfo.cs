@@ -1,12 +1,5 @@
-﻿using System;
+﻿using csv;
 using UnityEngine;
-using System.Collections;
-using System.Runtime.CompilerServices;
-using System.Xml.Schema;
-using csv;
-using Expressions;
-using UniRx;
-using UnityEngine.Serialization;
 
 [CreateAssetMenu( menuName = "Create/Weapons/Ranged" )]
 public class RangedWeaponInfo : WeaponInfo {
@@ -84,7 +77,9 @@ public class RangedWeaponInfo : WeaponInfo {
 				var targetDirection = ( target.Pawn.position - Character.Pawn.position ).Set( y: 0 ).normalized;
 				var projectileDirection = GetOffsetDirection( targetDirection, i );
 
-				projectile.Launch( Character, projectileDirection, typedInfo._projectileSpeed, typedInfo.BaseDamage, typedInfo.CanFriendlyFire );
+				var finalDamage = Character.Status.ModifierCalculator.CalculateFinalValue( ModifierType.BaseDamage, typedInfo.BaseDamage );
+
+				projectile.Launch( Character, projectileDirection, typedInfo._projectileSpeed, finalDamage, typedInfo.CanFriendlyFire );
 
 				_behaviour.TryShoot();
 
@@ -119,7 +114,9 @@ public class RangedWeaponInfo : WeaponInfo {
 				var projectile = GetProjectileInstance();
 				var projectileDirection = GetOffsetDirection( direction, i );
 
-				projectile.Launch( Character, projectileDirection, typedInfo._projectileSpeed, typedInfo.BaseDamage, typedInfo.CanFriendlyFire );
+				var finalDamage = Character.Status.ModifierCalculator.CalculateFinalValue( ModifierType.BaseDamage, typedInfo.BaseDamage );
+
+				projectile.Launch( Character, projectileDirection, typedInfo._projectileSpeed, finalDamage, typedInfo.CanFriendlyFire );
 
 				_behaviour.TryShoot();
 

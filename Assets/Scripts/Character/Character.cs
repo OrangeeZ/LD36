@@ -71,6 +71,8 @@ public class Character {
 		Health.Subscribe( OnHealthChange ); //.AddTo( _compositeDisposable );
 
 		Instances.Add( this );
+
+		Status.ModifierCalculator.Changed += OnModifiersChange;
 	}
 
 	private void OnHealthChange( float health ) {
@@ -82,6 +84,8 @@ public class Character {
 			Instances.Remove( this );
 
 			//_compositeDisposable.Dispose();
+
+			Status.ModifierCalculator.Changed -= OnModifiersChange;
 		}
 	}
 
@@ -114,4 +118,7 @@ public class Character {
 		Pawn.SetSpeed( speed );
 	}
 
+	private void OnModifiersChange() {
+
+	}
 }
