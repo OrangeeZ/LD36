@@ -31,4 +31,11 @@ public class GameplayController : MonoBehaviour {
 			each.Initialize();
 		}
 	}
+
+	[ContextMenu("Hook dependencies")]
+	private void HookDepencies() {
+
+		_playerSpawner = FindObjectOfType<PlayerCharacterSpawner>();
+		_enemySpawners = FindObjectsOfType<EnemySpawner>();
+	}
 }
