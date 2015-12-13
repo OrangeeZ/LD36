@@ -22,9 +22,10 @@ public class AssetHelper {
 
 	public static IEnumerable<T> GetAllAssetsOfType<T>() where T : Object {
 
-		return AssetDatabase.GetAllAssetPaths()
-			.Select( _ => AssetDatabase.LoadAssetAtPath( _, typeof( T ) ) )
-			.OfType<T>();
+		var guids = AssetDatabase.FindAssets( "t: " + typeof ( T ).Name );
+		var paths = guids.Select( _ => AssetDatabase.GUIDToAssetPath( _ ) );
+
+		return paths.Select( _ => AssetDatabase.LoadAssetAtPath<T>( _ ) );
 	}
 
 	public static IEnumerable<T> GetAllPrefabsWithBehaviour<T>() where T : Behaviour {
