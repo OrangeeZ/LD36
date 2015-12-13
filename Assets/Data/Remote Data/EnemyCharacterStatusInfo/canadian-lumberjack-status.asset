@@ -23,3 +23,4 @@ MonoBehaviour:
   Weapon1: {fileID: 11400000, guid: 47b706ea9a43b1f45a5bb3287f901d06, type: 2}
   ItemsToDrop: []
   PawnPrefab: {fileID: 11467564, guid: 28903826c6f753e42a8d2f5e9ea10c8d, type: 2}
+  DropChance: 0.26

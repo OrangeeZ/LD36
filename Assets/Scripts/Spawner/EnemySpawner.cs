@@ -11,7 +11,6 @@ public class EnemySpawner : SpawnerBase {
 	public EnemyCharacterStatusInfo characterStatusInfo;
 
 	public ItemInfo[] startingItems;
-	public float DropProbability = 0.15f;
 
 	public float SpawnInterval;
 	public float SpawnMoveSpeed;
@@ -55,7 +54,7 @@ public class EnemySpawner : SpawnerBase {
 		}
 
 		_character.ItemsToDrop = characterStatusInfo.ItemsToDrop;
-		_character.dropProbability = DropProbability;
+		_character.dropProbability = characterStatusInfo.DropChance;
 
 		var weapon = characterStatusInfo.Weapon1.GetItem();
 		_character.Inventory.AddItem( weapon );

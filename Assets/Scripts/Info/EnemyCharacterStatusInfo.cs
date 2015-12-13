@@ -8,6 +8,7 @@ public class EnemyCharacterStatusInfo : CharacterStatusInfo {
 	public RangedWeaponInfo Weapon1;
 	public ItemInfo[] ItemsToDrop;
 	public EnemyCharacterPawn PawnPrefab;
+	public float DropChance;
 	//public float AttackRange;
 	//public float SplashRadius;
 	//public bool CanFriendlyFire;
@@ -19,6 +20,7 @@ public class EnemyCharacterStatusInfo : CharacterStatusInfo {
 		AggroRadius = values.Get( "AgroRadius", 0 );
 		Weapon1 = values.GetScriptableObject<RangedWeaponInfo>( "Weapon1" );
 		ItemsToDrop = values.GetScriptableObjects<ItemInfo>( "DroppedItems" );
+		DropChance = values.Get( "DropChance", 0f );
 		PawnPrefab = values.GetPrefabWithComponent<EnemyCharacterPawn>( "Visual", fixName: false );
 
 		//AttackRange = values.Get( "AttackRange", 0 );
