@@ -50,7 +50,7 @@ public class UsePotionOnHealthThreshold : CharacterStateInfo {
 			}
 		}
 
-		private void OnHealthBelowThreshold( int health ) {
+		private void OnHealthBelowThreshold( float health ) {
 
 			stateController.TrySetState( this );
 		}

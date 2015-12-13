@@ -12,17 +12,13 @@ public class CharacterInfo : ScriptableObject {
     public CharacterStateControllerInfo weaponStateControllerInfo;
     public CharacterPawn pawnPrefab;
 
-    public GambitListInfo gambitListInfo;
-
     public int teamId = 0;
-
-    public bool hasInput;
 
     public bool applyColor = true;
 
     public virtual Character GetCharacter( Vector3 startingPosition ) {
 
-        var inputSource = hasInput ? (IInputSource) new ClickInputSource() : gambitListInfo.GetGambitList();
+        var inputSource = new ClickInputSource();
         var pawn = Instantiate( pawnPrefab, startingPosition, Quaternion.identity ) as CharacterPawn;
 
         var result = new Character(
@@ -33,11 +29,6 @@ public class CharacterInfo : ScriptableObject {
             weaponStateControllerInfo.GetStateController(),
             teamId,
             this );
-
-        if ( !hasInput ) {
-
-            ( inputSource as GambitListInfo.GambitList ).Initialize( result );
-        }
 
         return result;
     }

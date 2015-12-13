@@ -317,7 +317,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1af7877ec42364b078dbcf64e3dd4eb6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  characterInfo: {fileID: 11400000, guid: 7b310617727577347bfef32ca42e91f2, type: 2}
+  characterInfo: {fileID: 11400000, guid: 97961ddbd0b964946be328e4a4e3e18e, type: 2}
   startingItems: []
   startingWeapon: {fileID: 11400000, guid: 79fd1019e281d244a83daa5488ee9a77, type: 2}
   ItemToDrop: {fileID: 0}

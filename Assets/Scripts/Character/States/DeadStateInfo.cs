@@ -30,7 +30,9 @@ public class DeadStateInfo : CharacterStateInfo {
 
             character.Pawn.SetTurretTarget( null );
 
-            if ( stateController == character.StateController ) {
+	        character.Pawn.ClearDestination();
+
+			if ( stateController == character.StateController ) {
 
                 character.Pawn.SetActive( false );
 

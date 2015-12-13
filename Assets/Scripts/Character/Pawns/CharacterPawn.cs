@@ -80,7 +80,7 @@ public class CharacterPawn : CharacterPawnBase {
 		return ( otherPawn.position - position ).normalized;
 	}
 
-	public void ClearDestination() {
+	public virtual void ClearDestination() {
 
 		_destination = null;
 	}

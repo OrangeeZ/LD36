@@ -15,7 +15,7 @@ public class Character {
 
     public static List<Character> Instances = new List<Character>();
 
-    public readonly IntReactiveProperty Health;
+    public readonly FloatReactiveProperty Health;
 
     public readonly IInputSource InputSource;
 
@@ -39,7 +39,7 @@ public class Character {
     public Character( CharacterPawn pawn, IInputSource inputSource, CharacterStatus status, CharacterStateController stateController, CharacterStateController weaponStateController, int teamId, CharacterInfo info ) {
 
 		this.Status = status;
-        this.Health = new IntReactiveProperty( this.Status.MaxHealth.Value );
+        this.Health = new FloatReactiveProperty( this.Status.MaxHealth.Value );
         this.Pawn = pawn;
         this.InputSource = inputSource;
         this.StateController = stateController;
@@ -66,7 +66,7 @@ public class Character {
         Instances.Add( this );
     }
 
-    private void OnHealthChange( int health ) {
+    private void OnHealthChange( float health ) {
 
         if ( health <= 0 ) {
 

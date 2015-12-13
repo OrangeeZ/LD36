@@ -11,4 +11,9 @@ public class EnemyCharacterPawn : CharacterPawn {
 		_navMeshAgent.SetDestination( destination );
 	}
 
+	public override void ClearDestination() {
+		
+		_navMeshAgent.Stop();
+	}
+
 }

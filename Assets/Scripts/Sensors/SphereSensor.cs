@@ -5,7 +5,15 @@ using System.Collections;
 
 public class SphereSensor : MonoBehaviour, IObservable<CharacterPawnBase> {
 
+	[SerializeField]
+	private SphereCollider _collider;
+
     private readonly Subject<CharacterPawnBase> _pawnSubject = new Subject<CharacterPawnBase>();
+
+	public void SetRadius( float radius ) {
+
+		_collider.radius = radius;
+	}
 
     public IDisposable Subscribe( IObserver<CharacterPawnBase> observer ) {
 

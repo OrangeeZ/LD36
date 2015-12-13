@@ -5,19 +5,15 @@ using UniRx;
 
 [CreateAssetMenu( menuName = "Create/Status Info" )]
 public class CharacterStatusInfo : ScriptableObject, ICsvConfigurable {
-	
-	[CalculatorExpression]
-	public StringReactiveProperty HealthExpression;
 
-	[CalculatorExpression]
-	public StringReactiveProperty MoveSpeedExpression;
+	//[SerializeField]
+	public float MaxHealth;
 
-	[SerializeField]
-	private float maxHP;
-	[SerializeField]
-	private float speed;
-	[SerializeField]
-	private float dmg;
+	//[SerializeField]
+	public float MoveSpeed;
+
+	//[SerializeField]
+	public float Damage;
 
 	[SerializeField]
 	private CharacterStatus status;
@@ -31,10 +27,11 @@ public class CharacterStatusInfo : ScriptableObject, ICsvConfigurable {
 		};
 	}
 
-	public void Configure (csv.Values values)
-	{
-		maxHP = values.Get("MaxHP", maxHP);
-		speed = values.Get("Speed", maxHP);
-		dmg = values.Get("DMG", maxHP);
+	public void Configure( csv.Values values ) {
+
+		MaxHealth = values.Get( "MaxHP", MaxHealth );
+		MoveSpeed = values.Get( "Speed", MoveSpeed );
+		Damage = values.Get( "DMG", Damage );
 	}
+
 }
