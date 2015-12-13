@@ -8,9 +8,9 @@ using UniRx;
 [CreateAssetMenu( menuName = "Create/Weapons/Ranged" )]
 public class RangedWeaponInfo : WeaponInfo {
 
-	[CalculatorExpression]
-	[SerializeField]
-	private StringReactiveProperty _damageExpression;
+	//[CalculatorExpression]
+	//[SerializeField]
+	//private StringReactiveProperty _damageExpression;
 
 	[SerializeField]
 	private Projectile _projectilePrefab;
@@ -54,13 +54,13 @@ public class RangedWeaponInfo : WeaponInfo {
 		public int _ammoInClip { get; private set; }
 
 		private float _nextAttackTime;
-		private readonly ReactiveCalculator _damageCalculator;
+		//private readonly ReactiveCalculator _damageCalculator;
 		private bool _isReloading;
 
 		public RangedWeapon( RangedWeaponInfo info ) : base( info ) {
 
 			_ammoInClip = info._clipSize;
-			_damageCalculator = new ReactiveCalculator( info._damageExpression );
+			//_damageCalculator = new ReactiveCalculator( info._damageExpression );
 		}
 
 		public override void Attack( Character target, EnemyCharacterStatusInfo statusInfo ) {
@@ -82,7 +82,7 @@ public class RangedWeaponInfo : WeaponInfo {
 				var projectile = Instantiate( typedInfo._projectilePrefab );
 				var targetDirection = ( target.Pawn.position - character.Pawn.position ).Set( y: 0 ).normalized;
 
-				projectile.Launch( character, targetDirection, typedInfo._projectileSpeed, (int) _damageCalculator.Result.Value );
+				projectile.Launch( character, targetDirection, typedInfo._projectileSpeed, typedInfo.BaseDamage, typedInfo.CanFriendlyFire );
 				UpdateClipAndAttackTime();
 			}
 
@@ -113,7 +113,7 @@ public class RangedWeaponInfo : WeaponInfo {
                 var projectile = Instantiate( typedInfo._projectilePrefab );
 				var projectileDirection = GetOffsetDirection( direction, i );
 
-				projectile.Launch( character, projectileDirection, typedInfo._projectileSpeed, (int) _damageCalculator.Result.Value );
+				projectile.Launch( character, projectileDirection, typedInfo._projectileSpeed, typedInfo.BaseDamage, typedInfo.CanFriendlyFire );
 
 				UpdateClipAndAttackTime();
 			}

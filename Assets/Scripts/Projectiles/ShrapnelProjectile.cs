@@ -17,7 +17,7 @@ public class ShrapnelProjectile : Projectile {
 
             var instance = Instantiate( each );
 
-            instance.Launch( owner, direction + transform.rotation * Random.insideUnitCircle.normalized.ToXZ() * maxDisplacement, speed, ( damage * damageScale ).CeilToInt() );
+            instance.Launch( Owner, Direction + transform.rotation * Random.insideUnitCircle.normalized.ToXZ() * maxDisplacement, Speed, ( damage * damageScale ).CeilToInt(), CanFriendlyFire );
 
             instance.transform.position = transform.position;
             instance.transform.rotation = transform.rotation;

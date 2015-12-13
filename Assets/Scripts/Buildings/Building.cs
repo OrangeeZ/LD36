@@ -24,7 +24,7 @@ public class Building : MonoBehaviour {
 
     public virtual void Hit( Projectile projectile ) {
 
-        Hit( projectile.damage );
+        //Hit( projectile.damage );
     }
 
     public virtual void Hit( int damage ) {

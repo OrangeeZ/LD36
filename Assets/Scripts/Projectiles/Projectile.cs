@@ -4,44 +4,46 @@ public class Projectile : AObject {
 
     public float lifetime = 3f;
 
-    public int damage { get; protected set; }
+    public float damage { get; protected set; }
 
     public float weight = 1f;
 
-    private AutoTimer timer;
+    private AutoTimer _timer;
 
-    protected Vector3 direction;
+    protected Vector3 Direction;
 
-    protected Character owner;
+    protected Character Owner;
 
-    protected float speed;
+    protected float Speed;
+	protected bool CanFriendlyFire;
 
-    private void Awake() {
+	private void Awake() {
 
         enabled = false;
     }
 
     private void Update() {
 
-        if ( timer.ValueNormalized >= 1f ) {
+        if ( _timer.ValueNormalized >= 1f ) {
 
             OnLifetimeExpire();
         }
 
-        position += direction * speed * Time.deltaTime;
+        position += Direction * Speed * Time.deltaTime;
     }
 
-    public void Launch( Character owner, Vector3 direction, float speed, int damage ) {
+    public void Launch( Character owner, Vector3 direction, float speed, float damage, bool canFriendlyFire ) {
 
-        this.owner = owner;
-        this.speed = speed;
-        this.direction = direction;
+        this.Owner = owner;
+        this.Speed = speed;
+        this.Direction = direction;
         this.damage = damage;
+	    this.CanFriendlyFire = canFriendlyFire;
 
-        transform.position = this.owner.Pawn.position;
-        transform.rotation = this.owner.Pawn.rotation;
+        transform.position = this.Owner.Pawn.position;
+        transform.rotation = this.Owner.Pawn.rotation;
 
-        timer = new AutoTimer( lifetime );
+        _timer = new AutoTimer( lifetime );
 
         enabled = true;
     }
@@ -60,13 +62,17 @@ public class Projectile : AObject {
 
         var otherPawn = other.GetComponent<CharacterPawnBase>();
         
-        if ( otherPawn != null && otherPawn != owner.Pawn && otherPawn.character != null && otherPawn.character.TeamId != owner.TeamId ) {
+        if ( otherPawn != null && otherPawn != Owner.Pawn && otherPawn.character != null ) {
 
-            otherPawn.character.Health.Value -= 1;
+	        var canAttackTarget = !CanFriendlyFire || otherPawn.character.TeamId != Owner.TeamId;
 
-            OnHit();
+	        if ( canAttackTarget ) {
+		        otherPawn.character.Health.Value -= 1;
 
-            return;
+		        OnHit();
+	        }
+
+	        return;
         }
 
         var otherBuilding = other.GetComponent<Building>();
