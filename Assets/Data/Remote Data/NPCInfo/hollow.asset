@@ -11,5 +11,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 23aafce0ebd260140bd894b77b613433, type: 3}
   m_Name: hollow
   m_EditorClassIdentifier: 
-  itemInfo: {fileID: 0}
+  itemInfo: {fileID: 11400000, guid: 30572480f4325294c92c9f743b5d8ccc, type: 2}
   groundView: {fileID: 11425952, guid: 7ae0b60c0692cf8428a0dd4b94d25961, type: 2}

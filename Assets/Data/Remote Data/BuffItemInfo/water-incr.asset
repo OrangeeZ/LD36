@@ -12,11 +12,10 @@ MonoBehaviour:
   m_Name: water-incr
   m_EditorClassIdentifier: 
   Name: 
-  groundView: {fileID: 0}
+  groundView: {fileID: 11488804, guid: 8d03d4a4a777a0e499ba1e113db4a8dc, type: 2}
   inventoryIcon: {fileID: 0}
   color: {r: 0, g: 0, b: 0, a: 0}
-  ModifierType: 0
+  ModifierType: 4
   ModifierValue:
-    value: 0
+    value: 1
     valueType: 0
-  _statusEffectInfo: {fileID: 0}

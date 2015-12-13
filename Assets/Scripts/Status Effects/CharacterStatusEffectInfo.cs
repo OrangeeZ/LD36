@@ -67,7 +67,7 @@ public class ModifierCalculator {
 
 	public float CalculateFinalValue( ModifierType modifierType, float baseValue ) {
 
-		if ( modifierType == ModifierType.None ) {
+		if ( modifierType == ModifierType.None || !_modifiers.ContainsKey( modifierType ) ) {
 
 			return baseValue;
 		}

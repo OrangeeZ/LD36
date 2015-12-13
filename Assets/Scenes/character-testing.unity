@@ -193,6 +193,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   NpcListInfo: {fileID: 11400000, guid: a46219fed2bf5c24491db477d4e11234, type: 2}
+  OverriderNpcInfo: {fileID: 0}
 --- !u!4 &136743867
 Transform:
   m_ObjectHideFlags: 0
