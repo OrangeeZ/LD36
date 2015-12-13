@@ -17,6 +17,7 @@ public class EnemyCharacterStatusInfo : CharacterStatusInfo {
 
 		AggroRadius = values.Get( "AgroRadius", 0 );
 		Weapon1 = values.GetScriptableObject<RangedWeaponInfo>( "Weapon1" );
+		ItemsToDrop = values.GetScriptableObjects<ItemInfo>( "DroppedItems" );
 		//AttackRange = values.Get( "AttackRange", 0 );
 		//SplashRadius = values.Get( "SplashRadius", 0 );
 		//CanFriendlyFire = values.Get( "FriendlyFire", "no" ) == "yes";

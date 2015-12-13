@@ -93,38 +93,41 @@ namespace csv {
 			}
 		}
 
+		public T[] GetScriptableObjects<T>( string name ) where T : ScriptableObject {
+
+			var names = Get( name, string.Empty ).Split( ',', ' ' );
+
+			return names.Select( _ => LoadScriptableObject<T>( _ ) ).Where( _ => _ != null ).ToArray();
+		}
+
 		public T GetScriptableObject<T>( string name ) where T : ScriptableObject {
 
 			var assetName = Get( name, string.Empty );
 
-			if ( assetName.IsNullOrEmpty() ) {
-				return null;
-			}
-
-			assetName = Utility.FixName( assetName );
-
 			return LoadScriptableObject<T>( assetName );
-		}
-
-		public T[] GetScriptableObjects<T>( string name ) where T : ScriptableObject {
-
-			var names = Get( name, string.Empty ).Split( ',' );
-			return names.Select( _ => LoadScriptableObject<T>( _ ) ).ToArray();
 		}
 
 		private T LoadScriptableObject<T>( string name ) where T : ScriptableObject {
 
-			var guid = AssetDatabase.FindAssets( "t:" + typeof( T ).Name + " " + name ).FirstOrDefault();
+			name = Utility.FixName( name );
+
+			if ( name.IsNullOrEmpty() ) {
+
+				return null;
+			}
+
+			var guid = AssetDatabase.FindAssets( "t:" + typeof ( T ).Name + " " + name ).FirstOrDefault();
 			if ( guid != null ) {
 
 				var path = AssetDatabase.GUIDToAssetPath( guid );
 				return AssetDatabase.LoadAssetAtPath<T>( path );
 			}
 
-			Debug.LogFormat( "Could not find {0}", "t:" + typeof( T ).Name + " " + name );
+			Debug.LogFormat( "Could not find {0}", "t:" + typeof ( T ).Name + " " + name );
 
 			return null;
 		}
+
 	}
 
 }

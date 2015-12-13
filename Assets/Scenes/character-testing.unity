@@ -622,8 +622,7 @@ MonoBehaviour:
   characterStatusInfo: {fileID: 11400000, guid: db9a7c71697910c4b933a5c95b0153b1,
     type: 2}
   startingItems: []
-  ItemToDrop: {fileID: 0}
-  DropProbability: 0.15
+  DropProbability: 1
   SpawnInterval: 10
   SpawnMoveSpeed: 10
   Activation:
@@ -781,7 +780,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 17
+  m_RootOrder: 21
 --- !u!1 &1232410972
 GameObject:
   m_ObjectHideFlags: 0
@@ -1209,7 +1208,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 16
+  m_RootOrder: 20
 --- !u!1001 &1682114689
 Prefab:
   m_ObjectHideFlags: 0
