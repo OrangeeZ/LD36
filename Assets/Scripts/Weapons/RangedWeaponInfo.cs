@@ -11,20 +11,13 @@ using UnityEngine.Serialization;
 [CreateAssetMenu( menuName = "Create/Weapons/Ranged" )]
 public class RangedWeaponInfo : WeaponInfo {
 
-	//[CalculatorExpression]
-	//[SerializeField]
-	//private StringReactiveProperty _damageExpression;
-
 	[SerializeField]
 	private Projectile _projectilePrefab;
 
 	[SerializeField]
 	private float _projectileSpeed;
 
-	[FormerlySerializedAs( "_clipSize" )]
 	public int ClipSize;
-
-	[FormerlySerializedAs( "_reloadDuration" )]
 	public float ReloadDuration;
 
 	[SerializeField]
@@ -49,11 +42,19 @@ public class RangedWeaponInfo : WeaponInfo {
 
 		public int AmmoInClip { get; private set; }
 
+		public float BaseAttackSpeed {
+			get { return Character.Status.ModifierCalculator.CalculateFinalValue( ModifierType.BaseAttackSpeed, BaseAttackSpeed ); }
+		}
+
+		public int ClipSize { get; private set; }
+		public float ReloadDuration { get; set; }
+
 		private RangedWeaponBehaviour _behaviour;
 
 		public RangedWeapon( RangedWeaponInfo info ) : base( info ) {
 
-			AmmoInClip = info.ClipSize;
+			ClipSize = info.ClipSize;
+			ReloadDuration = info.ReloadDuration;
 		}
 
 		public override void SetCharacter( Character character ) {
@@ -61,7 +62,7 @@ public class RangedWeaponInfo : WeaponInfo {
 			base.SetCharacter( character );
 
 			_behaviour = typedInfo._weaponBehaviourInfo.GetBehaviour();
-			_behaviour.Initialize( Inventory, typedInfo );
+			_behaviour.Initialize( Inventory, this );
 
 		}
 

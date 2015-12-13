@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using Expressions;
 using UniRx;
 
@@ -14,6 +15,8 @@ public class CharacterStatus {
 
 	public readonly CharacterStatusInfo Info;
 
+	public readonly ModifierCalculator ModifierCalculator;
+
 	private List<CharacterStatusEffectInfo> _statusEffects = new List<CharacterStatusEffectInfo>();
 
 	public CharacterStatus( CharacterStatusInfo info ) {
@@ -23,19 +26,11 @@ public class CharacterStatus {
 		Strength = new IntReactiveProperty( 0 );
 		Agility = new IntReactiveProperty( 0 );
 
-		MaxHealth = new ReactiveProperty<float>( Info.MaxHealth ); //CreateCalculator( _info.HealthExpression ).Select( _ => (int)_ ).ToReactiveProperty();
-		MoveSpeed = new ReactiveProperty<float>( Info.MoveSpeed ); //CreateCalculator( _info.MoveSpeedExpression ).Select( _ => (float)_ ).ToReactiveProperty();
-	}
+		MaxHealth = new ReactiveProperty<float>( Info.MaxHealth );
+		MoveSpeed = new ReactiveProperty<float>( Info.MoveSpeed );
 
-	private ReactiveCalculator CreateCalculator( IReactiveProperty<string> expression ) {
-
-		var result = new ReactiveCalculator( expression );
-
-		result.SubscribeProperty( "strength", Strength );
-		result.SubscribeProperty( "agility", Agility );
-
-		return result;
-	}
+		ModifierCalculator = new ModifierCalculator();
+    }
 
 	public void AddEffect( CharacterStatusEffectInfo statusEffect ) {
 
@@ -46,5 +41,4 @@ public class CharacterStatus {
 
 		_statusEffects.Remove( statusEffect );
 	}
-
 }
