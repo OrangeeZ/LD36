@@ -16,10 +16,10 @@ public class CharacterInfo : ScriptableObject {
 
     public bool applyColor = true;
 
-    public virtual Character GetCharacter( Vector3 startingPosition, CharacterStatusInfo replacementStatusInfo = null ) {
+    public virtual Character GetCharacter( Vector3 startingPosition, CharacterStatusInfo replacementStatusInfo = null, CharacterPawn replacementPawnPrefab = null ) {
 
         var inputSource = new ClickInputSource();
-        var pawn = Instantiate( pawnPrefab, startingPosition, Quaternion.identity ) as CharacterPawn;
+        var pawn = Instantiate( replacementPawnPrefab == null ? pawnPrefab : replacementPawnPrefab, startingPosition, Quaternion.identity ) as CharacterPawn;
 
         var result = new Character(
             pawn,

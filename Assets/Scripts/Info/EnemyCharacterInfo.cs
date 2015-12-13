@@ -9,10 +9,10 @@ public class EnemyCharacterInfo : CharacterInfo {
 
 	public GambitListInfo GambitListInfo;
 
-	public override Character GetCharacter( Vector3 startingPosition, CharacterStatusInfo replacementStatusInfo = null ) {
+	public override Character GetCharacter( Vector3 startingPosition, CharacterStatusInfo replacementStatusInfo = null, CharacterPawn replacementPawnPrefab = null ) {
 
 		var inputSource = GambitListInfo.GetGambitList();
-		var pawn = Instantiate( pawnPrefab, startingPosition, Quaternion.identity ) as CharacterPawn;
+		var pawn = Instantiate( replacementPawnPrefab == null ? pawnPrefab : replacementPawnPrefab, startingPosition, Quaternion.identity ) as CharacterPawn;
 
 		var status = replacementStatusInfo == null ? EnemyStatusInfo.GetInstance() : replacementStatusInfo.GetInstance();
 

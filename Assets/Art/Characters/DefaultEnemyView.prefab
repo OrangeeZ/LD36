@@ -30,7 +30,7 @@ GameObject:
   - 195: {fileID: 19567632}
   - 65: {fileID: 6516108}
   m_Layer: 0
-  m_Name: Dummy Enemy Character Pawn
+  m_Name: DefaultEnemyView
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

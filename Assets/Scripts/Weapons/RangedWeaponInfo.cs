@@ -176,7 +176,7 @@ public class RangedWeaponInfo : WeaponInfo {
 		_projectilesPerShot = values.Get( "BulletsPerBurst", 1 );
 		_shotConeAngle = values.Get( "BurstAngle", 0 );
 		_clipSize = values.Get( "Clip Size", _projectilesPerShot );
-		_projectilePrefab = values.GetPrefabWithComponent<Projectile>( "Projectile" );
+		_projectilePrefab = values.GetPrefabWithComponent<Projectile>( "Projectile", fixName: false );
 	}
 
 }

@@ -22,3 +22,4 @@ MonoBehaviour:
   AggroRadius: 10
   Weapon1: {fileID: 11400000, guid: 05a3c7cd0e0b0a14db9d5243e78a7d01, type: 2}
   ItemsToDrop: []
+  PawnPrefab: {fileID: 11467564, guid: 28903826c6f753e42a8d2f5e9ea10c8d, type: 2}
