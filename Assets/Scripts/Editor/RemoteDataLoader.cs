@@ -23,6 +23,18 @@ public partial class RemoteDataLoader : ScriptableObject {
 
 #if UNITY_EDITOR
 public partial class RemoteDataLoader {
+
+	[MenuItem("Tools/Load all remote data")]
+	public static void LoadAllRemoteData() {
+		
+		var loaders = AssetHelper.GetAllAssetsOfType<RemoteDataLoader>();
+		foreach ( var each in loaders ) {
+			
+			each.LoadRemoteData();
+		}
+
+		Debug.Log( "Finished loading remote data" );
+	}
 	
 	[ContextMenu( "Load remote data" )]
 	public void LoadRemoteData() {
@@ -34,17 +46,6 @@ public partial class RemoteDataLoader {
 
 		GetCsvFromGoogleDocs.Get( url, type, postfix );
 	}
-
-	[MenuItem( "Tools/Remote Data Loader" )]
-	private static void SelectRemoteDataLoader() {
-
-		var loader = AssetDatabase.LoadAssetAtPath<RemoteDataLoader>( "Assets/Data/Remote Data Loader.asset" );
-		if ( loader != null ) {
-
-			Selection.activeObject = loader;
-		}
-	}
-
 }
 
 #endif
