@@ -7,12 +7,10 @@ public class EnemySpawner : AObject {
 
 	public Action<Character> Spawned;
 
-	public CharacterInfo characterInfo;
-	public CharacterStatusInfo characterStatusInfo;
+	public EnemyCharacterInfo characterInfo;
+	public EnemyCharacterStatusInfo characterStatusInfo;
 
 	public ItemInfo[] startingItems;
-
-	public WeaponInfo startingWeapon;
 
 	public ItemInfo ItemToDrop;
 	public float DropProbability = 0.15f;
@@ -63,14 +61,10 @@ public class EnemySpawner : AObject {
 		_character.itemToDrop = ItemToDrop;
 		_character.dropProbability = DropProbability;
 
-		if ( startingWeapon != null ) {
+		var weapon = characterStatusInfo.Weapon1.GetItem();
+		_character.Inventory.AddItem( weapon );
 
-			var weapon = startingWeapon.GetItem();
-
-			_character.Inventory.AddItem( weapon );
-
-			weapon.Apply();
-		}
+		weapon.Apply();
 	}
 
 	private void Update() {

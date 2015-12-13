@@ -18,7 +18,7 @@ public class WeaponInfo : ItemInfo, ICsvConfigurable {
 	public virtual void Configure( Values values ) {
 
 		BaseDamage = values.Get( "DMG", 0f );
-		BaseAttackSpeed = values.Get( "Base attack speed", 0f );
+		BaseAttackSpeed = values.Get( "Base attack speed", 1f );
 
 		var attackRangeValue = values.Get( "AtkRange", "0f" );
 		if ( attackRangeValue == "max" ) {
