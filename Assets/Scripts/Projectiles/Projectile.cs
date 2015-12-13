@@ -5,6 +5,7 @@ public class Projectile : AObject {
     public float lifetime = 3f;
 
     public float damage { get; protected set; }
+	public float LifeFraction { get { return _timer.ValueNormalized; } }
 
     public float weight = 1f;
 
@@ -22,7 +23,7 @@ public class Projectile : AObject {
         enabled = false;
     }
 
-    private void Update() {
+	protected virtual void Update() {
 
         if ( _timer.ValueNormalized >= 1f ) {
 
@@ -50,7 +51,7 @@ public class Projectile : AObject {
 
     public virtual void OnHit() {
 
-        Destroy( gameObject );
+		Release ();
     }
 
 	public virtual void OnContact(Collider other)
@@ -60,8 +61,13 @@ public class Projectile : AObject {
 
     public virtual void OnLifetimeExpire() {
 
-        Destroy( gameObject );
+		Release();
     }
+
+	protected virtual void Release ()
+	{
+		Destroy (gameObject);
+	}
 
     private void OnTriggerEnter( Collider other ) {
 

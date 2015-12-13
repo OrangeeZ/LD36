@@ -26,5 +26,5 @@ MonoBehaviour:
   _reloadDuration: 0.1
   _projectilesPerShot: 2
   _deviationCoefficient: 0
-  _shotConeAngle: 10
+  _shotConeAngle: 15
   _sound: {fileID: 0}

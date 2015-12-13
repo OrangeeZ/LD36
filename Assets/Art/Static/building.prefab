@@ -26,7 +26,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 117988}
   m_LocalRotation: {x: -0.5000001, y: -0.50000006, z: -0.49999988, w: 0.50000006}
-  m_LocalPosition: {x: -17.9, y: -0.7, z: -22.6}
+  m_LocalPosition: {x: -17.9, y: -0.7, z: -46.6}
   m_LocalScale: {x: 100, y: 100, z: 100}
   m_Children: []
   m_Father: {fileID: 0}
@@ -88,7 +88,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   defaultBurning: {fileID: 11478512, guid: b704517b727158340a9576f258625c47, type: 2}
-  scaleMultiplier: 32
+  scaleMultiplier: 8
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

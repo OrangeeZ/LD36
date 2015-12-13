@@ -45,7 +45,7 @@ MonoBehaviour:
   stacks: 5
   stackDuration: 1
   maxStacks: 10
-  visualScaleMax: 2
+  visualScaleMax: 1
   scaleMultiplier: 1
   visualPrefab: {fileID: 100000, guid: fb5a641975cc7cb44b87318f4729f7ef, type: 2}
 --- !u!1001 &100100000
@@ -67,6 +67,10 @@ Prefab:
       propertyPath: visualPrefab
       value: 
       objectReference: {fileID: 100000, guid: fb5a641975cc7cb44b87318f4729f7ef, type: 2}
+    - target: {fileID: 0}
+      propertyPath: visualScaleMax
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 118344}
