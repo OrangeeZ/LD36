@@ -68,7 +68,7 @@ public static class GetCsvFromGoogleDocs {
 				continue;
 			}
 
-			string instanceName = FixName(row[0], postfix);
+			string instanceName = csv.Utility.FixName( row[0], postfix);
 
 			var instance = GetOrCreate(type, instanceName);
 
@@ -82,55 +82,6 @@ public static class GetCsvFromGoogleDocs {
 
 			row = parser.Read();
 		}
-	}
-
-	private static string FixName(string name, string postfix = null)
-	{
-		StringBuilder builder = new StringBuilder();
-
-		int wordStart = -1;
-		int wordEnd = -1;
-		int pushed = 0;
-		// Convert to lower
-		for (int i = 0; i < name.Length; i++) {
-			if (char.IsUpper(name, i)) {
-				if (wordStart != -1) {
-					if (wordEnd != wordStart) {
-						// New word
-						if (builder.Length > 0) {
-							builder.Append("-");
-						}
-						builder.Append(name.Substring(pushed, i - wordStart).ToLower());
-						pushed = i;
-					}
-				} else if (pushed < i){
-					if (builder.Length > 0) {
-						builder.Append("-");
-					}
-					builder.Append(name.Substring(pushed, i).ToLower());
-					pushed = i;
-				}
-				wordStart = i;
-				wordEnd = i;
-			} else {
-				if (wordStart != -1) {
-					wordEnd = i;
-				}
-			}
-		}
-
-		if (pushed < name.Length - 1) {
-			if (builder.Length > 0) {
-				builder.Append("-");
-			}
-			builder.Append(name.Substring(pushed).ToLower());
-		}
-
-		string result = builder.ToString();
-		if (!string.IsNullOrEmpty(postfix)) {
-			result += "-" + postfix;
-		}
-		return result;
 	}
 
 	private static csv.Values CreateValues(string[] fieldNames, string[] row)
