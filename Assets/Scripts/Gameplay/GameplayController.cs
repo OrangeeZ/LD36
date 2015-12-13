@@ -33,7 +33,7 @@ public class GameplayController : MonoBehaviour {
 	}
 
 	[ContextMenu("Hook dependencies")]
-	private void HookDepencies() {
+	private void HookDependencies() {
 
 		_playerSpawner = FindObjectOfType<PlayerCharacterSpawner>();
 		_enemySpawners = FindObjectsOfType<EnemySpawner>();
