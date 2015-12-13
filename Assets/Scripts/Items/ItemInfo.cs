@@ -28,7 +28,7 @@ public abstract class Item {
 
 public class ItemInfo : ScriptableObject {
 
-    public string name;
+    public string Name;
 
     public ItemView groundView;
 

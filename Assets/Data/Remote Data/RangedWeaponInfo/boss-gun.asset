@@ -11,8 +11,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dd52a18b43b396c4499e1df91ec30071, type: 3}
   m_Name: boss-gun
   m_EditorClassIdentifier: 
-  name: 
-  groundView: {fileID: 0}
+  Name: 
+  groundView: {fileID: 11488804, guid: 8d03d4a4a777a0e499ba1e113db4a8dc, type: 2}
   inventoryIcon: {fileID: 0}
   color: {r: 0, g: 0, b: 0, a: 0}
   BaseDamage: 0
@@ -26,5 +26,5 @@ MonoBehaviour:
   _reloadDuration: 0
   _projectilesPerShot: 0
   _deviationCoefficient: 0
-  _coneAngle: 0
+  _shotConeAngle: 0
   _sound: {fileID: 0}
