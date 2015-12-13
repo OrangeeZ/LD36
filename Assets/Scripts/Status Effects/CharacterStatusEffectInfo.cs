@@ -9,15 +9,19 @@ public class CharacterStatusEffectInfo : ScriptableObject {
 	public int AmmoDelta;
 	public float ViewRadiusDelta;
 
-	public virtual void Add( CharacterStatus status ) {
+	public virtual void Add( Character target ) {
 
-		status.MaxHealth.Value += HealthDelta;
-		status.MoveSpeed.Value += MoveSpeedDelta;
+		target.Status.AddEffect( this );
+
+		target.Status.MaxHealth.Value += HealthDelta;
+		target.Status.MoveSpeed.Value += MoveSpeedDelta;
 	}
 
-	public virtual void Remove( CharacterStatus status ) {
+	public virtual void Remove( Character target ) {
 
-		status.MaxHealth.Value -= HealthDelta;
-		status.MoveSpeed.Value -= MoveSpeedDelta;
+		target.Status.RemoveEffect( this );
+
+		target.Status.MaxHealth.Value -= HealthDelta;
+		target.Status.MoveSpeed.Value -= MoveSpeedDelta;
 	}
 }

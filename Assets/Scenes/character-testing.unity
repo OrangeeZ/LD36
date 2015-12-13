@@ -175,7 +175,7 @@ GameObject:
   - 4: {fileID: 136743867}
   - 114: {fileID: 136743866}
   m_Layer: 0
-  m_Name: NPC Spawner [cactus]
+  m_Name: NPC Spawner [Test NPC Info]
   m_TagString: Untagged
   m_Icon: {fileID: 419385456094870383, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -192,7 +192,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f3dd0ad67bf2d8949aa4ed87164d97cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  info: {fileID: 11400000, guid: db5badea88f51a14db8492bbd818d123, type: 2}
+  info: {fileID: 11400000, guid: fb18bb1b349bec7489f30625c7387517, type: 2}
 --- !u!4 &136743867
 Transform:
   m_ObjectHideFlags: 0

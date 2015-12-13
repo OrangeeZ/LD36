@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Name: Player Status
   m_EditorClassIdentifier: 
   MaxHealth: 1
-  MoveSpeed: 1
+  MoveSpeed: 10
   Damage: 1
   status:
     Strength:

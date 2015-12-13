@@ -5,7 +5,7 @@ using UniRx;
 
 [Serializable]
 public class CharacterStatus {
-	
+
 	public IntReactiveProperty Strength;
 	public IntReactiveProperty Agility;
 
@@ -14,17 +14,17 @@ public class CharacterStatus {
 
 	public readonly CharacterStatusInfo Info;
 
-	private List<CharacterStatusEffectInfo> _statusEffects = new List<CharacterStatusEffectInfo>(); 
+	private List<CharacterStatusEffectInfo> _statusEffects = new List<CharacterStatusEffectInfo>();
 
-	public CharacterStatus(CharacterStatusInfo info) {
+	public CharacterStatus( CharacterStatusInfo info ) {
 
 		Info = info;
 
 		Strength = new IntReactiveProperty( 0 );
 		Agility = new IntReactiveProperty( 0 );
 
-		MaxHealth = new ReactiveProperty<float>(Info.MaxHealth);//CreateCalculator( _info.HealthExpression ).Select( _ => (int)_ ).ToReactiveProperty();
-		MoveSpeed = new ReactiveProperty<float>(Info.MoveSpeed);//CreateCalculator( _info.MoveSpeedExpression ).Select( _ => (float)_ ).ToReactiveProperty();
+		MaxHealth = new ReactiveProperty<float>( Info.MaxHealth ); //CreateCalculator( _info.HealthExpression ).Select( _ => (int)_ ).ToReactiveProperty();
+		MoveSpeed = new ReactiveProperty<float>( Info.MoveSpeed ); //CreateCalculator( _info.MoveSpeedExpression ).Select( _ => (float)_ ).ToReactiveProperty();
 	}
 
 	private ReactiveCalculator CreateCalculator( IReactiveProperty<string> expression ) {
@@ -38,16 +38,13 @@ public class CharacterStatus {
 	}
 
 	public void AddEffect( CharacterStatusEffectInfo statusEffect ) {
-		
-		statusEffect.Add( this );
 
 		_statusEffects.Add( statusEffect );
-    }
+	}
 
 	public void RemoveEffect( CharacterStatusEffectInfo statusEffect ) {
 
-		statusEffect.Remove( this );
-
 		_statusEffects.Remove( statusEffect );
 	}
+
 }
