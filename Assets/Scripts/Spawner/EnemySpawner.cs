@@ -14,18 +14,19 @@ public class EnemySpawner : SpawnerBase {
 
 	public float SpawnInterval;
 	public float SpawnMoveSpeed;
+	public int SpawnLimit;
+
 	private float _startTime;
+	private int _spawnCount;
 
 	private Character _character;
 
 	[Expressions.CalculatorExpression]
 	public StringReactiveProperty Activation;
-
 	private Expressions.ReactiveCalculator _reactCalc;
 
 	[Expressions.CalculatorExpression]
 	public StringReactiveProperty Deactivation;
-
 	private Expressions.ReactiveCalculator _reactCalcDeact;
 
 	public override void Initialize() {
@@ -44,6 +45,10 @@ public class EnemySpawner : SpawnerBase {
 		}
 
 		if ( _reactCalcDeact.Result.Value >= 0 ) {
+			return;
+		}
+
+		if (SpawnLimit > 0 && _spawnCount >= SpawnLimit) {
 			return;
 		}
 
