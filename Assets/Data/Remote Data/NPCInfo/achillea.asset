@@ -1,0 +1,15 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 23aafce0ebd260140bd894b77b613433, type: 3}
+  m_Name: achillea
+  m_EditorClassIdentifier: 
+  itemInfo: {fileID: 0}
+  groundView: {fileID: 11425952, guid: 7ae0b60c0692cf8428a0dd4b94d25961, type: 2}

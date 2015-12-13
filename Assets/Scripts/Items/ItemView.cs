@@ -4,6 +4,7 @@ using System.Collections;
 public class ItemView : AObject {
 
     public Item item;
+	public NPCView giver;
 
     public float fadeInDuration = 1f;
 
@@ -23,6 +24,10 @@ public class ItemView : AObject {
     }
 
     public void NotifyPickUp( Character character ) {
+
+		if (giver != null) {
+			giver.OnPickedUp();
+		}
 
         Destroy( gameObject );
     }

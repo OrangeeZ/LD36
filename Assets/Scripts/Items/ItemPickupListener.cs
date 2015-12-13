@@ -13,7 +13,13 @@ public class ItemPickupListener : MonoBehaviour {
 
     private void OnTriggerEnter( Collider other ) {
 
-        var itemView = other.GetComponent<ItemView>();
+		var itemView = other.GetComponent<ItemView>();
+		if (itemView == null) {
+			var npcView = other.GetComponent<NPCView>();
+			if (npcView != null) {
+				itemView = npcView.itemView;
+			}
+		}
 
         if ( itemView != null ) {
 
@@ -22,7 +28,7 @@ public class ItemPickupListener : MonoBehaviour {
             itemView.item.Apply();
 
             itemView.NotifyPickUp( _pawn.character );
-        }
+		}
     }
 
 }

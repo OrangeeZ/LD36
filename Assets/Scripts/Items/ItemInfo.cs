@@ -41,7 +41,7 @@ public class ItemInfo : ScriptableObject {
         throw new NotImplementedException();
     }
 
-    public void DropItem( Transform transform ) {
+    public ItemView DropItem( Transform transform ) {
 
         var item = GetItem();
 
@@ -49,6 +49,8 @@ public class ItemInfo : ScriptableObject {
 
         view.item = item;
         view.SetColor( color );
+
+		return view;
     }
 
 }
