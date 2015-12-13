@@ -84,7 +84,7 @@ NavMeshSettings:
     minRegionArea: 2
     cellSize: 0.16666667
     manualCellSize: 0
-  m_NavMeshData: {fileID: 0}
+  m_NavMeshData: {fileID: 23800000, guid: 9b24eb02095910249bbf74734a984b9a, type: 2}
 --- !u!1 &1001494
 GameObject:
   m_ObjectHideFlags: 0
@@ -2912,6 +2912,7 @@ MonoBehaviour:
   - {fileID: 2097930782}
   - {fileID: 2102081167}
   - {fileID: 2138888035}
+  _zoneSpawners: []
 --- !u!4 &214418332
 Transform:
   m_ObjectHideFlags: 0
@@ -19299,7 +19300,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!23 &1337117234
 MeshRenderer:
