@@ -51,21 +51,19 @@ public class EnemySpawner : SpawnerBase {
 		if (SpawnLimit > 0 && _spawnCount >= SpawnLimit) {
 			return;
 		}
-
+		_spawnCount += 1;
+			
 		_character = characterInfo.GetCharacter( startingPosition: transform.position, replacementStatusInfo: characterStatusInfo );
-
 		foreach ( var each in startingItems.Select( _ => _.GetItem() ) ) {
 			_character.Inventory.AddItem( each );
 		}
 
 		if ( characterStatusInfo != null ) {
-
 			_character.ItemsToDrop = characterStatusInfo.ItemsToDrop;
 			_character.dropProbability = characterStatusInfo.DropChance;
 
 			var weapon = characterStatusInfo.Weapon1.GetItem();
 			_character.Inventory.AddItem( weapon );
-
 			weapon.Apply();
 		}
 
