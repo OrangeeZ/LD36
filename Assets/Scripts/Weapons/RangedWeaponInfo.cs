@@ -36,6 +36,9 @@ public class RangedWeaponInfo : WeaponInfo {
 	[SerializeField]
 	private AudioClip _sound;
 
+	[SerializeField]
+	private float _projectileLifetime;
+
 	public class RangedWeapon : Weapon<RangedWeaponInfo> {
 
 		public bool isReloading {
@@ -51,7 +54,7 @@ public class RangedWeaponInfo : WeaponInfo {
 			private set { _isReloading = value; }
 		}
 
-		public int _ammoInClip { get; private set; }
+		public int AmmoInClip { get; private set; }
 
 		private float _nextAttackTime;
 		//private readonly ReactiveCalculator _damageCalculator;
@@ -59,7 +62,7 @@ public class RangedWeaponInfo : WeaponInfo {
 
 		public RangedWeapon( RangedWeaponInfo info ) : base( info ) {
 
-			_ammoInClip = info._clipSize;
+			AmmoInClip = info._clipSize;
 			//_damageCalculator = new ReactiveCalculator( info._damageExpression );
 		}
 
@@ -79,12 +82,18 @@ public class RangedWeaponInfo : WeaponInfo {
 
 			for ( var i = 0; i < typedInfo._projectilesPerShot; ++i ) {
 
-				var projectile = Instantiate( typedInfo._projectilePrefab );
+				var projectile = GetProjectileInstance();
 				var targetDirection = ( target.Pawn.position - character.Pawn.position ).Set( y: 0 ).normalized;
 				var projectileDirection = GetOffsetDirection( targetDirection, i );
 
 				projectile.Launch( character, projectileDirection, typedInfo._projectileSpeed, typedInfo.BaseDamage, typedInfo.CanFriendlyFire );
+
 				UpdateClipAndAttackTime();
+
+				if ( isReloading ) {
+
+					break;
+				}
 			}
 
 			character.Pawn.SetTurretTarget( target.Pawn.transform );
@@ -111,12 +120,17 @@ public class RangedWeaponInfo : WeaponInfo {
 
 			for ( var i = 0; i < typedInfo._projectilesPerShot; ++i ) {
 
-                var projectile = Instantiate( typedInfo._projectilePrefab );
+				var projectile = GetProjectileInstance();
 				var projectileDirection = GetOffsetDirection( direction, i );
 
 				projectile.Launch( character, projectileDirection, typedInfo._projectileSpeed, typedInfo.BaseDamage, typedInfo.CanFriendlyFire );
 
 				UpdateClipAndAttackTime();
+
+				if ( isReloading ) {
+
+					break;
+				}
 			}
 			//AudioSource.PlayClipAtPoint( typedInfo._sound, character.Pawn.position, 0.5f );
 		}
@@ -126,13 +140,13 @@ public class RangedWeaponInfo : WeaponInfo {
 			return Vector3.Distance( target.Pawn.position, character.Pawn.position ) <= typedInfo.AttackRange;
 		}
 
-		private void UpdateClipAndAttackTime() {
+		protected virtual void UpdateClipAndAttackTime() {
 
-			_ammoInClip--;
+			AmmoInClip--;
 
-			if ( _ammoInClip == 0 ) {
+			if ( AmmoInClip == 0 ) {
 
-				_ammoInClip = typedInfo._clipSize;
+				AmmoInClip = typedInfo._clipSize;
 
 				_nextAttackTime = Time.timeSinceLevelLoad + typedInfo._reloadDuration;
 
@@ -148,15 +162,23 @@ public class RangedWeaponInfo : WeaponInfo {
 			var totalOffsetCount = typedInfo._projectilesPerShot;
 			var coneAngle = typedInfo._shotConeAngle;
 
-            if ( totalOffsetCount == 1 ) {
+			if ( totalOffsetCount == 1 ) {
 
 				return direction;
 			}
 
-			var normalizedOffsetIndex = (float)index / totalOffsetCount;
+			var normalizedOffsetIndex = (float) index / totalOffsetCount;
 			var rotator = Quaternion.AngleAxis( Mathf.Lerp( -coneAngle, coneAngle, normalizedOffsetIndex ), Vector3.up );
 
 			return rotator * direction;
+		}
+
+		private Projectile GetProjectileInstance() {
+
+			var result = Instantiate( typedInfo._projectilePrefab );
+			result.Lifetime = typedInfo._projectileLifetime;
+
+			return result;
 		}
 
 	}
@@ -174,6 +196,7 @@ public class RangedWeaponInfo : WeaponInfo {
 
 		_projectileSpeed = values.Get( "Projectile Speed", 0f );
 		_projectilesPerShot = values.Get( "BulletsPerBurst", 1 );
+		_projectileLifetime = values.Get( "ProjectileLifetime", 1f );
 		_shotConeAngle = values.Get( "BurstAngle", 0 );
 		_clipSize = values.Get( "Clip Size", _projectilesPerShot );
 		_projectilePrefab = values.GetPrefabWithComponent<Projectile>( "Projectile", fixName: false );

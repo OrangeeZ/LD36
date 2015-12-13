@@ -1,10 +1,12 @@
 ﻿using UnityEngine;
+using UnityEngine.Serialization;
 
 public class Projectile : AObject {
 
-    public float lifetime = 3f;
+	[FormerlySerializedAs( "lifetime" )]
+    public float Lifetime = 3f;
 
-    public float damage { get; protected set; }
+    public float Damage { get; protected set; }
 	public float LifeFraction { get { return _timer.ValueNormalized; } }
 
     public float weight = 1f;
@@ -38,13 +40,13 @@ public class Projectile : AObject {
         this.Owner = owner;
         this.Speed = speed;
         this.Direction = direction;
-        this.damage = damage;
+        this.Damage = damage;
 	    this.CanFriendlyFire = canFriendlyFire;
 
         transform.position = this.Owner.Pawn.position;
         transform.rotation = this.Owner.Pawn.rotation;
 
-        _timer = new AutoTimer( lifetime );
+        _timer = new AutoTimer( Lifetime );
 
         enabled = true;
     }

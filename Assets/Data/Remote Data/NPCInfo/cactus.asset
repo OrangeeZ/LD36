@@ -11,5 +11,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 23aafce0ebd260140bd894b77b613433, type: 3}
   m_Name: cactus
   m_EditorClassIdentifier: 
-  itemInfo: {fileID: 11400000, guid: 7aa9e2fac7db9b144b79b214764d963e, type: 2}
+  itemInfo: {fileID: 11400000, guid: 00b6438fe1099a44cad6f30831ffef26, type: 2}
   groundView: {fileID: 11425952, guid: 7ae0b60c0692cf8428a0dd4b94d25961, type: 2}
