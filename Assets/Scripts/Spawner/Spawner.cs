@@ -3,7 +3,7 @@ using System.Collections;
 
 
 public class SpawnerBase : AObject{
-	void Initialize()
+	public void Initialize()
 	{
 	}
 }
