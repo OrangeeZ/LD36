@@ -1,0 +1,39 @@
+﻿using System;
+using System.Linq;
+using UnityEngine;
+using UniRx;
+
+public class OneEnemySpawner : AObject {
+
+	public Action<Character> Spawned;
+	public EnemyCharacterInfo characterInfo;
+	public EnemyCharacterStatusInfo characterStatusInfo;
+	public ItemInfo[] startingItems;
+	public ItemInfo ItemToDrop;
+	public float DropProbability = 0.15f;
+
+
+	private Character _character;
+
+
+	public void Initialize() {
+		Spawn();
+	}
+
+
+	private void Spawn() {
+		_character = characterInfo.GetCharacter( startingPosition: transform.position, replacementStatusInfo: characterStatusInfo );
+
+		foreach ( var each in startingItems.Select( _ => _.GetItem() ) ) {
+			_character.Inventory.AddItem( each );
+		}
+
+		_character.itemToDrop = ItemToDrop;
+		_character.dropProbability = DropProbability;
+
+		var weapon = characterStatusInfo.Weapon1.GetItem();
+		_character.Inventory.AddItem( weapon );
+
+		weapon.Apply();
+	}
+}

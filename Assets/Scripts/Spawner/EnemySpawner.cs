@@ -11,7 +11,6 @@ public class EnemySpawner : AObject {
 	public EnemyCharacterStatusInfo characterStatusInfo;
 
 	public ItemInfo[] startingItems;
-	
 	public float DropProbability = 0.15f;
 
 	public float SpawnInterval;
@@ -31,11 +30,8 @@ public class EnemySpawner : AObject {
 	private Expressions.ReactiveCalculator _reactCalcDeact;
 
 	public void Initialize() {
-
 		_reactCalc = new Expressions.ReactiveCalculator( Activation );
-
 		_reactCalcDeact = new Expressions.ReactiveCalculator( Deactivation );
-
 		Spawn();
 
 	}
@@ -67,7 +63,6 @@ public class EnemySpawner : AObject {
 	}
 
 	private void Update() {
-
 		_startTime += Time.deltaTime;
 
 		if ( _startTime >= SpawnInterval ) {
