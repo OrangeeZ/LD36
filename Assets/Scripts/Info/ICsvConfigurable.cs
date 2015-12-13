@@ -93,24 +93,52 @@ namespace csv {
 			}
 		}
 
+		public T[] GetScriptableObjects<T>( string name ) where T : ScriptableObject {
+
+			var names = Get( name, string.Empty ).Split( ',', ' ' );
+
+			return names.Select( _ => LoadScriptableObject<T>( _ ) ).Where( _ => _ != null ).ToArray();
+		}
+
 		public T GetScriptableObject<T>( string name ) where T : ScriptableObject {
 
 			var assetName = Get( name, string.Empty );
 
-			if ( assetName.IsNullOrEmpty() ) {
+			return LoadScriptableObject<T>( assetName );
+		}
+
+		public T GetPrefabWithComponent<T>( string name, bool fixName ) where T : Component {
+
+			var assetName = Get( name, string.Empty );
+
+			if ( fixName ) {
+				
+				assetName = Utility.FixName( assetName );
+			}
+
+			var guids = AssetDatabase.FindAssets( "t: prefab " + assetName );
+			var paths = guids.Select( _ => AssetDatabase.GUIDToAssetPath( _ ) );
+
+			return paths.Select( _ => AssetDatabase.LoadAssetAtPath<T>( _ ) ).FirstOrDefault();
+		}
+
+		private T LoadScriptableObject<T>( string name ) where T : ScriptableObject {
+
+			name = Utility.FixName( name );
+
+			if ( name.IsNullOrEmpty() ) {
+
 				return null;
 			}
 
-			assetName = Utility.FixName( assetName );
-
-			var guid = AssetDatabase.FindAssets( "t:" + typeof ( T ).Name + " " + assetName ).FirstOrDefault();
+			var guid = AssetDatabase.FindAssets( "t:" + typeof ( T ).Name + " " + name ).FirstOrDefault();
 			if ( guid != null ) {
 
 				var path = AssetDatabase.GUIDToAssetPath( guid );
 				return AssetDatabase.LoadAssetAtPath<T>( path );
 			}
 
-			Debug.LogFormat( "Could not find {0}", "t:" + typeof ( T ).Name + " " + assetName );
+			Debug.LogFormat( "Could not find {0}", "t:" + typeof ( T ).Name + " " + name );
 
 			return null;
 		}

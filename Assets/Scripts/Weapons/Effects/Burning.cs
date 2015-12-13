@@ -17,6 +17,7 @@ public class Burning : MonoBehaviour
 
 	public float maxStacks = 10;
 	public float visualScaleMax = 4f;
+	public float scaleMultiplier = 1f;
 	public GameObject visualPrefab;
 
 	private GameObject visual;
@@ -46,7 +47,7 @@ public class Burning : MonoBehaviour
 				yield break;
 			}
 
-			visualScaler.SetScale(Mathf.Clamp01(stacks / maxStacks) * visualScaleMax);
+			visualScaler.SetScale(Mathf.Clamp01(stacks / maxStacks) * visualScaleMax * scaleMultiplier);
 
 			float chance = Random.Range(0f, 1f) * stacks;
 			if (chance >= 1 - spreadChance) {
@@ -64,32 +65,24 @@ public class Burning : MonoBehaviour
 
 	void Spread()
 	{
-		var objects = GameObject.FindObjectsOfType<ICanBeAffected>();
+		var objects = GameObject.FindObjectsOfType<ICanBurn>();
 
 		for (int i = 0; i < objects.Length; i++) {
 			var obj = objects[i];
+			if (obj == this) {
+				continue;
+			}
+
 			var dist = transform.position - obj.transform.position;
-			if (dist.magnitude <= spreadRange) {
-				var burning = obj.GetComponent<Burning>();
-				if (burning != null) {
-					burning.stacks++;
-					float factor = 1f / burning.stacks;
-					burning.spreadChance = Mathf.Lerp(burning.spreadChance, spreadChance, factor);
-					burning.enabled = true;
-				} else {
-					burning = obj.gameObject.AddComponent<Burning>();
-					burning.visualPrefab = visualPrefab;
-					burning.spreadRange = spreadRange;
-					burning.spreadChance = spreadChance * spreadLowering;
-					burning.stacks = 1f;
-				}
+			if (dist.magnitude <= spreadRange * scaleMultiplier) {
+				obj.Burn(this);
 			}
 		}
 	}
 
 	void OnDrawGizmosSelected()
 	{
-		Gizmos.DrawWireSphere(transform.position, spreadRange);
+		Gizmos.DrawWireSphere(transform.position, spreadRange * scaleMultiplier);
 	}
 }
 

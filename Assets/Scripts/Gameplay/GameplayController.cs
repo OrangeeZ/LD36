@@ -9,26 +9,34 @@ public class GameplayController : MonoBehaviour {
 	private PlayerCharacterSpawner _playerSpawner;
 
 	[SerializeField]
-	private EnemySpawner[] _enemySpawners;
+	private SpawnerBase[] _enemySpawners;
+
+	[SerializeField]
+	private ZoneSpawner[] _zoneSpawners;
 
     public static GameplayController Instance { get; private set; }
 
 	void Awake() {
-
 		Instance = this;
 	}
 
 	public IEnumerator Start() {
-
 		yield return null;
-
 		_playerSpawner.Initialize();
-
-		//ScreenManager.GetWindow<GameUI>().SetCharacter( _playerSpawner );
-
 		foreach ( var each in _enemySpawners ) {
+			each.Initialize();
+		}
+
+		foreach ( var each in _zoneSpawners ) {
 			
 			each.Initialize();
 		}
+	}
+
+	[ContextMenu("Hook dependencies")]
+	private void HookDependencies() {
+		_playerSpawner = FindObjectOfType<PlayerCharacterSpawner>();
+		_enemySpawners = FindObjectsOfType<SpawnerBase>();
+		_zoneSpawners = FindObjectsOfType<ZoneSpawner>();
 	}
 }

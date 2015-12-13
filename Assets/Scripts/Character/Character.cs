@@ -31,7 +31,7 @@ public class Character {
 
     public readonly CharacterStatus Status;
 
-    public ItemInfo itemToDrop;
+    public ItemInfo[] ItemsToDrop;
     public float dropProbability = 0.15f;
 
     private readonly CompositeDisposable _compositeDisposable = new CompositeDisposable();

@@ -25,7 +25,7 @@ public class WaveBase : MonoBehaviour {
 		Debug.Log( 123124 );
 		foreach ( var spawner in Spawners ) {
 			var character = characterInfo.GetCharacter( startingPosition: spawner.transform.position );
-			character.itemToDrop = default ( ItemInfo ); /* fixit */
+			//character.ItemsToDrop = default ( ItemInfo ); /* fixit */
 			if ( startingWeapon != null ) {
 				var weapon = startingWeapon.GetItem();
 				character.Inventory.AddItem( weapon );

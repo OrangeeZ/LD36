@@ -59,7 +59,7 @@ public class BossSpawner : MonoBehaviour {
 			character.Inventory.AddItem( each );
 		}
 
-	    character.itemToDrop = itemToDrop;
+	    //character.ItemsToDrop = itemToDrop;
 	    character.dropProbability = dropProbability;
 		
 		if ( startingWeapon != null ) {

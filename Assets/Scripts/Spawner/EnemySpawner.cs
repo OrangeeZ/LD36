@@ -3,7 +3,7 @@ using System.Linq;
 using UnityEngine;
 using UniRx;
 
-public class EnemySpawner : AObject {
+public class EnemySpawner : SpawnerBase {
 
 	public Action<Character> Spawned;
 
@@ -11,9 +11,6 @@ public class EnemySpawner : AObject {
 	public EnemyCharacterStatusInfo characterStatusInfo;
 
 	public ItemInfo[] startingItems;
-
-	public ItemInfo ItemToDrop;
-	public float DropProbability = 0.15f;
 
 	public float SpawnInterval;
 	public float SpawnMoveSpeed;
@@ -31,12 +28,10 @@ public class EnemySpawner : AObject {
 
 	private Expressions.ReactiveCalculator _reactCalcDeact;
 
-	public void Initialize() {
+	public override void Initialize() {
 
 		_reactCalc = new Expressions.ReactiveCalculator( Activation );
-
 		_reactCalcDeact = new Expressions.ReactiveCalculator( Deactivation );
-
 		Spawn();
 
 	}
@@ -58,8 +53,8 @@ public class EnemySpawner : AObject {
 			_character.Inventory.AddItem( each );
 		}
 
-		_character.itemToDrop = ItemToDrop;
-		_character.dropProbability = DropProbability;
+		_character.ItemsToDrop = characterStatusInfo.ItemsToDrop;
+		_character.dropProbability = characterStatusInfo.DropChance;
 
 		var weapon = characterStatusInfo.Weapon1.GetItem();
 		_character.Inventory.AddItem( weapon );
@@ -68,7 +63,6 @@ public class EnemySpawner : AObject {
 	}
 
 	private void Update() {
-
 		_startTime += Time.deltaTime;
 
 		if ( _startTime >= SpawnInterval ) {

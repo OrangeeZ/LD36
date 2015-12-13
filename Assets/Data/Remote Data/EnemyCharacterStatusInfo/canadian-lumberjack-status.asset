@@ -11,15 +11,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a505d78e5be8bc34eb07117209f0d1b6, type: 3}
   m_Name: canadian-lumberjack-status
   m_EditorClassIdentifier: 
-  MaxHealth: 0
-  MoveSpeed: 0
+  MaxHealth: 1
+  MoveSpeed: 1
   Damage: 0
   status:
     Strength:
       value: 0
     Agility:
       value: 0
-  AggroRadius: 0
-  AttackRange: 0
-  SplashRadius: 0
-  CanFriendlyFire: 0
+  AggroRadius: 10
+  Weapon1: {fileID: 11400000, guid: 47b706ea9a43b1f45a5bb3287f901d06, type: 2}
+  ItemsToDrop: []
+  PawnPrefab: {fileID: 11467564, guid: 28903826c6f753e42a8d2f5e9ea10c8d, type: 2}
+  DropChance: 0.26
