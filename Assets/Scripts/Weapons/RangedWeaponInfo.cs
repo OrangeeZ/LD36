@@ -170,7 +170,8 @@ public class RangedWeaponInfo : WeaponInfo {
 		base.Configure( values );
 
 		_projectileSpeed = values.Get( "Projectile Speed", 0f );
-		_projectilesPerShot = values.Get( "FireSize", 1 );
+		_clipSize = values.Get( "Clip Size", 1 );
+		_projectilesPerShot = 1;//values.Get( "FireSize", 1 );
 	}
 
 }

@@ -322,7 +322,6 @@ MonoBehaviour:
   characterStatusInfo: {fileID: 11400000, guid: db9a7c71697910c4b933a5c95b0153b1,
     type: 2}
   startingItems: []
-  startingWeapon: {fileID: 11400000, guid: 79fd1019e281d244a83daa5488ee9a77, type: 2}
   ItemToDrop: {fileID: 0}
   DropProbability: 0.15
   SpawnInterval: 10
