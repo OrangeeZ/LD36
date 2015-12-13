@@ -78,15 +78,14 @@ public class ModifierCalculator {
 }
 
 [CreateAssetMenu( menuName = "Create/Status effect info" )]
-public class CharacterStatusEffectInfo : ScriptableObject, ICsvConfigurable {
+public class CharacterStatusEffectInfo : ScriptableObject {
 
 	public int HealthDelta;
 	public float MoveSpeedDelta;
 	public int AmmoDelta;
 	public float ViewRadiusDelta;
 
-	public ModifierType ModifierType;
-	public OffsetValue ModifierValue;
+	
 
 	public virtual void Add( Character target ) {
 
@@ -95,7 +94,7 @@ public class CharacterStatusEffectInfo : ScriptableObject, ICsvConfigurable {
 		target.Status.MaxHealth.Value += HealthDelta;
 		target.Status.MoveSpeed.Value += MoveSpeedDelta;
 
-		target.Status.ModifierCalculator.Add( ModifierType, ModifierValue );
+		
 	}
 
 	public virtual void Remove( Character target ) {
@@ -105,66 +104,6 @@ public class CharacterStatusEffectInfo : ScriptableObject, ICsvConfigurable {
 		target.Status.MaxHealth.Value -= HealthDelta;
 		target.Status.MoveSpeed.Value -= MoveSpeedDelta;
 
-		target.Status.ModifierCalculator.Remove( ModifierType, ModifierValue );
+		//target.Status.ModifierCalculator.Remove( ModifierType, ModifierValue );
 	}
-
-	public void Configure( Values values ) {
-
-		ModifierType = ParseModifierType( values.Get( "AffectedStat", string.Empty ) );
-		ModifierValue = new OffsetValue( values.Get( "Amount", -1f ), ParseOffsetValueType( values.Get( "ActType", string.Empty ) ) );
-	}
-
-	private ModifierType ParseModifierType( string inputString ) {
-
-		switch ( inputString ) {
-
-			case "ThornsDmg":
-				return ModifierType.ThornsDamage;
-
-			case "SunHPrestore":
-				return ModifierType.SunHealthRestore;
-
-			case "BaseMoveSpeed":
-				return ModifierType.BaseMoveSpeed;
-
-			case "ManureHPAdd":
-				return ModifierType.ManureHealthRestore;
-
-			case "WaterHPrestore":
-				return ModifierType.WaterHealthRestore;
-
-			case "DamageKoef":
-				return ModifierType.BaseDamage;
-
-			case "BurningTimer":
-				return ModifierType.BurningTimerDuration;
-
-			case "Base attack speed":
-				return ModifierType.BaseAttackSpeed;
-
-			case "DebuffTimer":
-				return ModifierType.DebuffTimerDuration;
-
-			case "BaseRegeneration":
-				return ModifierType.BaseAttackSpeed;
-
-			default:
-				return ModifierType.None;
-
-		}
-	}
-
-	private OffsetValue.OffsetValueType ParseOffsetValueType( string inputString ) {
-
-		switch ( inputString ) {
-
-			case "add":
-				return OffsetValue.OffsetValueType.Constant;
-
-			case "mul":
-			default:
-				return OffsetValue.OffsetValueType.Rate;
-		}
-	}
-
 }
