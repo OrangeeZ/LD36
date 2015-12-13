@@ -178,6 +178,9 @@ public static class GetCsvFromGoogleDocs {
 			Directory.CreateDirectory (assetPath).Attributes = FileAttributes.Normal;
 			AssetDatabase.CreateAsset (instance, assetPathWithName);
 		}
+		
+		EditorUtility.SetDirty( instance );
+
 		return instance;
 	}
 
