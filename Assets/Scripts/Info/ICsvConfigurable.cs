@@ -103,18 +103,28 @@ namespace csv {
 
 			assetName = Utility.FixName( assetName );
 
-			var guid = AssetDatabase.FindAssets( "t:" + typeof ( T ).Name + " " + assetName ).FirstOrDefault();
+			return LoadScriptableObject<T>( assetName );
+		}
+
+		public T[] GetScriptableObjects<T>( string name ) where T : ScriptableObject {
+
+			var names = Get( name, string.Empty ).Split( ',' );
+			return names.Select( _ => LoadScriptableObject<T>( _ ) ).ToArray();
+		}
+
+		private T LoadScriptableObject<T>( string name ) where T : ScriptableObject {
+
+			var guid = AssetDatabase.FindAssets( "t:" + typeof( T ).Name + " " + name ).FirstOrDefault();
 			if ( guid != null ) {
 
 				var path = AssetDatabase.GUIDToAssetPath( guid );
 				return AssetDatabase.LoadAssetAtPath<T>( path );
 			}
 
-			Debug.LogFormat( "Could not find {0}", "t:" + typeof ( T ).Name + " " + assetName );
+			Debug.LogFormat( "Could not find {0}", "t:" + typeof( T ).Name + " " + name );
 
 			return null;
 		}
-
 	}
 
 }

@@ -1,10 +1,13 @@
 ﻿using UnityEngine;
 using System.Collections;
+using csv;
 
 [CreateAssetMenu( menuName = "Create/Items/Healing item" )]
-public class HealingItemInfo : ItemInfo {
+public class HealingItemInfo : ItemInfo, ICsvConfigurable {
 
-	public int healingAmount = 1;
+	public float HealingAmount = 1;
+	public float HealingDuration;
+	public float HealingPerSecond;
 
 	public class HealingItem : Item {
 
@@ -14,9 +17,30 @@ public class HealingItemInfo : ItemInfo {
 
 		public override void Apply() {
 
-			character.Health.Value += ( info as HealingItemInfo ).healingAmount;
+			var info = this.info as HealingItemInfo;
+
+			character.Health.Value += info.HealingAmount;
+
+			if ( info.HealingDuration > 0 ) {
+
+				new PMonad().Add( HealingCoroutine( info.HealingDuration, info.HealingPerSecond ) ).Execute();
+			}
+			
 
 			character.Inventory.RemoveItem( this );
+		}
+
+		private IEnumerable HealingCoroutine( float duration, float speed ) {
+
+			yield return null;
+
+			var timer = new AutoTimer( duration );
+			while ( timer.ValueNormalized != 1f ) {
+
+				character.Health.Value += speed * Time.deltaTime;
+
+				yield return null;
+			}
 		}
 	}
 
@@ -25,8 +49,11 @@ public class HealingItemInfo : ItemInfo {
 		return new HealingItem( this );
 	}
 
-	//public override void Apply( Character target ) {
+	public void Configure( Values values ) {
 
-	//	target.health.Value += healingAmount;
-	//}
+		HealingAmount = values.Get( "HpMax", 0f );
+		HealingDuration = values.Get( "HealDuration", 0f );
+		HealingPerSecond = values.Get( "HpPerSec", 0f );
+	}
+
 }

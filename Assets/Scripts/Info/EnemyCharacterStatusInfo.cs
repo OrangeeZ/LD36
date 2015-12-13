@@ -6,6 +6,7 @@ public class EnemyCharacterStatusInfo : CharacterStatusInfo {
 
 	public float AggroRadius;
 	public RangedWeaponInfo Weapon1;
+	public ItemInfo[] ItemsToDrop;
 	//public float AttackRange;
 	//public float SplashRadius;
 	//public bool CanFriendlyFire;
