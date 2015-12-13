@@ -53,6 +53,11 @@ public class Projectile : AObject {
         Destroy( gameObject );
     }
 
+	public virtual void OnContact(Collider other)
+	{
+		
+	}
+
     public virtual void OnLifetimeExpire() {
 
         Destroy( gameObject );
@@ -69,18 +74,20 @@ public class Projectile : AObject {
 	        if ( canAttackTarget ) {
 		        otherPawn.character.Health.Value -= 1;
 
+				OnContact(other);
 		        OnHit();
 	        }
 
 	        return;
         }
 
+		OnContact(other);
+
         var otherBuilding = other.GetComponent<Building>();
 
         if ( otherBuilding != null ) {
 
             otherBuilding.Hit( this );
-
             OnHit();
         }
     }

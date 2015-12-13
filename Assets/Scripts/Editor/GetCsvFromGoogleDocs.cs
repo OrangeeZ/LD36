@@ -161,7 +161,7 @@ public static class GetCsvFromGoogleDocs {
 
 	static ScriptableObject GetOrCreate (string typeName, string instanceName)
 	{
-		var assembly = typeof(ICanBeAffected).Assembly;
+		var assembly = typeof(ICanBurn).Assembly;
 		var type = assembly.GetExportedTypes().First((x) => x.Name.Equals(typeName, StringComparison.InvariantCultureIgnoreCase));
 		if (type == null) {
 			Debug.LogWarningFormat ("Type {0} not found", typeName);
