@@ -9,19 +9,23 @@ public class EnemyCharacterInfo : CharacterInfo {
 
 	public GambitListInfo GambitListInfo;
 
-	public override Character GetCharacter( Vector3 startingPosition ) {
+	public override Character GetCharacter( Vector3 startingPosition, CharacterStatusInfo replacementStatusInfo = null ) {
 
 		var inputSource = GambitListInfo.GetGambitList();
 		var pawn = Instantiate( pawnPrefab, startingPosition, Quaternion.identity ) as CharacterPawn;
 
-		var result = new Character(
+		var status = replacementStatusInfo == null ? EnemyStatusInfo.GetInstance() : replacementStatusInfo.GetInstance();
+
+        var result = new Character(
 			pawn,
 			inputSource,
-			EnemyStatusInfo.GetInstance(),
+			status,
 			stateControllerInfo.GetStateController(),
 			weaponStateControllerInfo.GetStateController(),
 			teamId,
 			this );
+
+		pawn.GetSphereSensor().SetRadius( ( status.Info as EnemyCharacterStatusInfo ).AggroRadius );
 
 		inputSource.Initialize( result );
 

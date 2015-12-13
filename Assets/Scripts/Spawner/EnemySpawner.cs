@@ -8,6 +8,7 @@ public class EnemySpawner : AObject {
 	public Action<Character> Spawned;
 
 	public CharacterInfo characterInfo;
+	public CharacterStatusInfo characterStatusInfo;
 
 	public ItemInfo[] startingItems;
 
@@ -53,7 +54,7 @@ public class EnemySpawner : AObject {
 			return;
 		}
 
-		_character = characterInfo.GetCharacter( startingPosition: transform.position );
+		_character = characterInfo.GetCharacter( startingPosition: transform.position, replacementStatusInfo: characterStatusInfo );
 
 		foreach ( var each in startingItems.Select( _ => _.GetItem() ) ) {
 			_character.Inventory.AddItem( each );

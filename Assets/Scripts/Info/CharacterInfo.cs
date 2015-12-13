@@ -16,7 +16,7 @@ public class CharacterInfo : ScriptableObject {
 
     public bool applyColor = true;
 
-    public virtual Character GetCharacter( Vector3 startingPosition ) {
+    public virtual Character GetCharacter( Vector3 startingPosition, CharacterStatusInfo replacementStatusInfo = null ) {
 
         var inputSource = new ClickInputSource();
         var pawn = Instantiate( pawnPrefab, startingPosition, Quaternion.identity ) as CharacterPawn;
@@ -24,7 +24,7 @@ public class CharacterInfo : ScriptableObject {
         var result = new Character(
             pawn,
             inputSource,
-            statusInfo.GetInstance(),
+			replacementStatusInfo == null ? statusInfo.GetInstance() : replacementStatusInfo.GetInstance(),
             stateControllerInfo.GetStateController(),
             weaponStateControllerInfo.GetStateController(),
             teamId,
@@ -32,5 +32,4 @@ public class CharacterInfo : ScriptableObject {
 
         return result;
     }
-
 }

@@ -14,6 +14,7 @@ public class PlayerCharacterSpawner : MonoBehaviour {
 	}
 
 	public CharacterInfo characterInfo;
+	public CharacterStatusInfo characterStatusInfo;
 
 	public ItemInfo[] startingItems;
 
@@ -29,7 +30,7 @@ public class PlayerCharacterSpawner : MonoBehaviour {
 
 	public void Initialize() {
 
-		character = characterInfo.GetCharacter( startingPosition: transform.position );
+		character = characterInfo.GetCharacter( startingPosition: transform.position, replacementStatusInfo: characterStatusInfo );
 
 		foreach ( var each in startingItems.Select( _ => _.GetItem() ) ) {
 
