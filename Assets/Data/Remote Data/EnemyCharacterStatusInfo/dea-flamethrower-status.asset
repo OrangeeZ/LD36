@@ -11,8 +11,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a505d78e5be8bc34eb07117209f0d1b6, type: 3}
   m_Name: dea-flamethrower-status
   m_EditorClassIdentifier: 
-  MaxHealth: 1
-  MoveSpeed: 1
+  MaxHealth: 70
+  MoveSpeed: 2
   Damage: 0
   status:
     Strength:
@@ -21,6 +21,7 @@ MonoBehaviour:
       value: 0
   AggroRadius: 10
   Weapon1: {fileID: 11400000, guid: c29a225c87a86884a85a3eef0fad7fbd, type: 2}
-  ItemsToDrop: []
+  ItemsToDrop:
+  - {fileID: 11400000, guid: f970764d33e64b748bd71bf104c7084f, type: 2}
   PawnPrefab: {fileID: 11467564, guid: 28903826c6f753e42a8d2f5e9ea10c8d, type: 2}
   DropChance: 0.28
