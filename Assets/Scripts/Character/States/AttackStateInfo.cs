@@ -35,9 +35,9 @@ public class AttackStateInfo : CharacterStateInfo {
 
             while ( CanBeSet() ) {
 
-                weapon.Attack( target );
+				weapon.Attack( target, character.Status.Info as EnemyCharacterStatusInfo );
 
-                yield return null;
+				yield return null;
             }
         }
 

@@ -27,7 +27,7 @@ public class CharacterStatusInfo : ScriptableObject, ICsvConfigurable {
 		};
 	}
 
-	public void Configure( csv.Values values ) {
+	public virtual void Configure( csv.Values values ) {
 
 		MaxHealth = values.Get( "MaxHP", MaxHealth );
 		MoveSpeed = values.Get( "Speed", MoveSpeed );

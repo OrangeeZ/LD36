@@ -9,9 +9,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d6e456ffd01f8c7429c9aebf4741671a, type: 3}
-  m_Name: EnemiesLoader
+  m_Name: Weapons Loader
   m_EditorClassIdentifier: 
   _url: https://docs.google.com/spreadsheets/d/1vewdQjSxYpgDuyxaV5uC2182Y4kxRRVK3r6u-c_Whp8/export?format=csv
-  _pageId: 1240334723
-  type: CharacterStatusInfo
-  postfix: status
+  _pageId: 842110793
+  type: RangedWeaponInfo
+  postfix: 

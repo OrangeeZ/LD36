@@ -6,6 +6,17 @@ public class EnemyCharacterStatusInfo : CharacterStatusInfo {
 
 	public float AggroRadius;
 	public float AttackRange;
+	public float SplashRadius;
 	public bool CanFriendlyFire;
+
+	public override void Configure( csv.Values values ) {
+
+		base.Configure( values );
+
+		AggroRadius = values.Get( "AgroRadius", 0 );
+		AttackRange = values.Get( "AttackRange", 0 );
+		SplashRadius = values.Get( "SplashRadius", 0 );
+		CanFriendlyFire = values.Get( "FriendlyFire", "no" ) == "yes";
+	}
 
 }

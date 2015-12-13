@@ -12,18 +12,19 @@ public class CharacterStatus {
 	public IReactiveProperty<float> MaxHealth;
 	public IReactiveProperty<float> MoveSpeed;
 
-	private readonly CharacterStatusInfo _info;
+	public readonly CharacterStatusInfo Info;
+
 	private List<CharacterStatusEffectInfo> _statusEffects = new List<CharacterStatusEffectInfo>(); 
 
 	public CharacterStatus(CharacterStatusInfo info) {
 
-		_info = info;
+		Info = info;
 
 		Strength = new IntReactiveProperty( 0 );
 		Agility = new IntReactiveProperty( 0 );
 
-		MaxHealth = new ReactiveProperty<float>(_info.MaxHealth);//CreateCalculator( _info.HealthExpression ).Select( _ => (int)_ ).ToReactiveProperty();
-		MoveSpeed = new ReactiveProperty<float>(_info.MoveSpeed);//CreateCalculator( _info.MoveSpeedExpression ).Select( _ => (float)_ ).ToReactiveProperty();
+		MaxHealth = new ReactiveProperty<float>(Info.MaxHealth);//CreateCalculator( _info.HealthExpression ).Select( _ => (int)_ ).ToReactiveProperty();
+		MoveSpeed = new ReactiveProperty<float>(Info.MoveSpeed);//CreateCalculator( _info.MoveSpeedExpression ).Select( _ => (float)_ ).ToReactiveProperty();
 	}
 
 	private ReactiveCalculator CreateCalculator( IReactiveProperty<string> expression ) {

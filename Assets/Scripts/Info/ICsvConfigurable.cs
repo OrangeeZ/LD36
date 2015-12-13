@@ -1,6 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
+using UnityEditor;
 
 namespace csv
 {
@@ -40,7 +42,19 @@ namespace csv
 			} catch (System.Exception ex) {
 				return default(T);
 			}
-		} 
+		}
+
+		public T GetScriptableObject<T>( string name ) where T : ScriptableObject {
+
+			var guid = AssetDatabase.FindAssets( "t:" + typeof ( T ).Name ).FirstOrDefault();
+			if ( guid != null ) {
+
+				var path = AssetDatabase.GUIDToAssetPath( guid );
+				return AssetDatabase.LoadAssetAtPath<T>( path );
+			}
+
+			return null;
+		}
 	}
 }
 

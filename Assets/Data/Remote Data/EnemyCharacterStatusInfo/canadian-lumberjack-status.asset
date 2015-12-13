@@ -8,18 +8,18 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6128ac0c5673a5143be0dfeebe2ae356, type: 3}
-  m_Name: boss-status
+  m_Script: {fileID: 11500000, guid: a505d78e5be8bc34eb07117209f0d1b6, type: 3}
+  m_Name: canadian-lumberjack-status
   m_EditorClassIdentifier: 
-  HealthExpression:
-    value: 
-  MoveSpeedExpression:
-    value: 
-  maxHP: 0
-  speed: 0
-  dmg: 0
+  MaxHealth: 0
+  MoveSpeed: 0
+  Damage: 0
   status:
     Strength:
       value: 0
     Agility:
       value: 0
+  AggroRadius: 0
+  AttackRange: 0
+  SplashRadius: 0
+  CanFriendlyFire: 0

@@ -137,6 +137,13 @@ public static class GetCsvFromGoogleDocs {
 	{
 		var dict = new Dictionary<string, string>();
 		for (int i = 1; i < row.Length; i++) {
+
+			if ( dict.ContainsKey( fieldNames[i] ) ) {
+				
+				Debug.LogFormat( "They key is duplicate: {0}:{1}", fieldNames[i], row[i] );
+				continue;
+			}
+
 			dict.Add(fieldNames[i], row[i]);
 		}
 		return new csv.Values(dict);
@@ -210,7 +217,7 @@ public static class GetCsvFromGoogleDocs {
 			return null;
 		}
 
-		var assetPath = Path.Combine ("Assets/Data/", type.Name);
+		var assetPath = Path.Combine ("Assets/Data/Remote Data/", type.Name);
 		var assetPathWithName = assetPath + "/" + instanceName + ".asset";
 
 		var instance = AssetDatabase.LoadAssetAtPath<ScriptableObject> (assetPathWithName);

@@ -25,16 +25,9 @@ public class AttackDirectionStateInfo : CharacterStateInfo {
 				var direction = ( Input.mousePosition - Camera.main.WorldToScreenPoint( character.Pawn.position ) );
 				direction.z = direction.y;
 				direction = direction.Set( y: 0 ).normalized;
-                var target = TargetSelector.SelectTarget( character, direction );
 
-				if ( target != null ) {
-
-					weapon.Attack( target );
-				} else {
-
-					weapon.Attack( direction );
-				}
-
+				weapon.Attack( direction );
+				
 				yield return null;
 			}
 		}

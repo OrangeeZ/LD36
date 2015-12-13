@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Xml.Schema;
+using csv;
 using Expressions;
 using UniRx;
 
@@ -62,7 +63,7 @@ public class RangedWeaponInfo : WeaponInfo {
 			_damageCalculator = new ReactiveCalculator( info._damageExpression );
 		}
 
-		public override void Attack( Character target ) {
+		public override void Attack( Character target, EnemyCharacterStatusInfo statusInfo ) {
 
 			if ( target == null || Time.timeSinceLevelLoad < _nextAttackTime ) {
 
@@ -162,6 +163,14 @@ public class RangedWeaponInfo : WeaponInfo {
 	public override Item GetItem() {
 
 		return new RangedWeapon( this );
+	}
+
+	public override void Configure( Values values ) {
+
+		base.Configure( values );
+
+		_projectileSpeed = values.Get( "Projectile Speed", 0f );
+		_projectilesPerShot = values.Get( "FireSize", 1 );
 	}
 
 }

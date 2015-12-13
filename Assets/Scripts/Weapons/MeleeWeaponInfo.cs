@@ -22,7 +22,7 @@ public class MeleeWeaponInfo : WeaponInfo {
 
 		}
 
-		public override void Attack( Character target ) {
+		public override void Attack( Character target, EnemyCharacterStatusInfo statusInfo ) {
 
 			if ( Time.timeSinceLevelLoad < nextAttackTime ) {
 

@@ -23,7 +23,7 @@ public abstract class Weapon : Item {
 		return null;
 	}
 
-	public virtual void Attack( Character target ) {}
+	public virtual void Attack( Character target, EnemyCharacterStatusInfo statusInfo ) {}
 
     public virtual void Attack( Vector3 direction ) {}
 
