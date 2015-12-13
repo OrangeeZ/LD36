@@ -864,9 +864,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   characterInfo: {fileID: 11400000, guid: 97961ddbd0b964946be328e4a4e3e18e, type: 2}
-  characterStatusInfo: {fileID: 0}
+  characterStatusInfo: {fileID: 11400000, guid: db9a7c71697910c4b933a5c95b0153b1,
+    type: 2}
   startingItems: []
-  DropProbability: 0.15
 --- !u!1 &66835707
 GameObject:
   m_ObjectHideFlags: 0
@@ -2658,9 +2658,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   characterInfo: {fileID: 11400000, guid: 97961ddbd0b964946be328e4a4e3e18e, type: 2}
-  characterStatusInfo: {fileID: 0}
+  characterStatusInfo: {fileID: 11400000, guid: db9a7c71697910c4b933a5c95b0153b1,
+    type: 2}
   startingItems: []
-  DropProbability: 0.15
 --- !u!1 &196709465
 GameObject:
   m_ObjectHideFlags: 0
@@ -4089,9 +4089,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   characterInfo: {fileID: 11400000, guid: 97961ddbd0b964946be328e4a4e3e18e, type: 2}
-  characterStatusInfo: {fileID: 0}
+  characterStatusInfo: {fileID: 11400000, guid: db9a7c71697910c4b933a5c95b0153b1,
+    type: 2}
   startingItems: []
-  DropProbability: 0.15
 --- !u!1 &270623592
 GameObject:
   m_ObjectHideFlags: 0
@@ -5649,9 +5649,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   characterInfo: {fileID: 11400000, guid: 97961ddbd0b964946be328e4a4e3e18e, type: 2}
-  characterStatusInfo: {fileID: 0}
+  characterStatusInfo: {fileID: 11400000, guid: db9a7c71697910c4b933a5c95b0153b1,
+    type: 2}
   startingItems: []
-  DropProbability: 0.15
 --- !u!1 &409929837
 GameObject:
   m_ObjectHideFlags: 0
@@ -6066,9 +6066,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   characterInfo: {fileID: 11400000, guid: 97961ddbd0b964946be328e4a4e3e18e, type: 2}
-  characterStatusInfo: {fileID: 0}
+  characterStatusInfo: {fileID: 11400000, guid: db9a7c71697910c4b933a5c95b0153b1,
+    type: 2}
   startingItems: []
-  DropProbability: 0.15
 --- !u!1 &435984909
 GameObject:
   m_ObjectHideFlags: 0
@@ -6418,9 +6418,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   characterInfo: {fileID: 11400000, guid: 97961ddbd0b964946be328e4a4e3e18e, type: 2}
-  characterStatusInfo: {fileID: 0}
+  characterStatusInfo: {fileID: 11400000, guid: db9a7c71697910c4b933a5c95b0153b1,
+    type: 2}
   startingItems: []
-  DropProbability: 0.15
 --- !u!1 &454448655
 GameObject:
   m_ObjectHideFlags: 0
@@ -6489,9 +6489,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   characterInfo: {fileID: 11400000, guid: 97961ddbd0b964946be328e4a4e3e18e, type: 2}
-  characterStatusInfo: {fileID: 0}
+  characterStatusInfo: {fileID: 11400000, guid: db9a7c71697910c4b933a5c95b0153b1,
+    type: 2}
   startingItems: []
-  DropProbability: 0.15
 --- !u!1 &457090615
 GameObject:
   m_ObjectHideFlags: 0
@@ -6682,9 +6682,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   characterInfo: {fileID: 11400000, guid: 97961ddbd0b964946be328e4a4e3e18e, type: 2}
-  characterStatusInfo: {fileID: 0}
+  characterStatusInfo: {fileID: 11400000, guid: db9a7c71697910c4b933a5c95b0153b1,
+    type: 2}
   startingItems: []
-  DropProbability: 0.15
 --- !u!1 &476333054
 GameObject:
   m_ObjectHideFlags: 0
@@ -7721,9 +7721,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   characterInfo: {fileID: 11400000, guid: 97961ddbd0b964946be328e4a4e3e18e, type: 2}
-  characterStatusInfo: {fileID: 0}
+  characterStatusInfo: {fileID: 11400000, guid: db9a7c71697910c4b933a5c95b0153b1,
+    type: 2}
   startingItems: []
-  DropProbability: 0.15
 --- !u!1 &532917093
 GameObject:
   m_ObjectHideFlags: 0
@@ -10527,9 +10527,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   characterInfo: {fileID: 11400000, guid: 97961ddbd0b964946be328e4a4e3e18e, type: 2}
-  characterStatusInfo: {fileID: 0}
+  characterStatusInfo: {fileID: 11400000, guid: db9a7c71697910c4b933a5c95b0153b1,
+    type: 2}
   startingItems: []
-  DropProbability: 0.15
 --- !u!1 &748729299
 GameObject:
   m_ObjectHideFlags: 0
@@ -11188,9 +11188,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   characterInfo: {fileID: 11400000, guid: 97961ddbd0b964946be328e4a4e3e18e, type: 2}
-  characterStatusInfo: {fileID: 0}
+  characterStatusInfo: {fileID: 11400000, guid: db9a7c71697910c4b933a5c95b0153b1,
+    type: 2}
   startingItems: []
-  DropProbability: 0.15
 --- !u!1 &787678693
 GameObject:
   m_ObjectHideFlags: 0
@@ -11231,9 +11231,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   characterInfo: {fileID: 11400000, guid: 97961ddbd0b964946be328e4a4e3e18e, type: 2}
-  characterStatusInfo: {fileID: 0}
+  characterStatusInfo: {fileID: 11400000, guid: db9a7c71697910c4b933a5c95b0153b1,
+    type: 2}
   startingItems: []
-  DropProbability: 0.15
 --- !u!1 &789763746
 GameObject:
   m_ObjectHideFlags: 0
@@ -12904,9 +12904,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   characterInfo: {fileID: 11400000, guid: 97961ddbd0b964946be328e4a4e3e18e, type: 2}
-  characterStatusInfo: {fileID: 0}
+  characterStatusInfo: {fileID: 11400000, guid: db9a7c71697910c4b933a5c95b0153b1,
+    type: 2}
   startingItems: []
-  DropProbability: 0.15
 --- !u!1 &902596215
 GameObject:
   m_ObjectHideFlags: 0
@@ -13022,9 +13022,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   characterInfo: {fileID: 11400000, guid: 97961ddbd0b964946be328e4a4e3e18e, type: 2}
-  characterStatusInfo: {fileID: 0}
+  characterStatusInfo: {fileID: 11400000, guid: db9a7c71697910c4b933a5c95b0153b1,
+    type: 2}
   startingItems: []
-  DropProbability: 0.15
 --- !u!1 &904967388
 GameObject:
   m_ObjectHideFlags: 0
@@ -13636,9 +13636,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   characterInfo: {fileID: 11400000, guid: 97961ddbd0b964946be328e4a4e3e18e, type: 2}
-  characterStatusInfo: {fileID: 0}
+  characterStatusInfo: {fileID: 11400000, guid: db9a7c71697910c4b933a5c95b0153b1,
+    type: 2}
   startingItems: []
-  DropProbability: 0.15
 --- !u!1 &937061870
 GameObject:
   m_ObjectHideFlags: 0
@@ -14719,9 +14719,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   characterInfo: {fileID: 11400000, guid: 97961ddbd0b964946be328e4a4e3e18e, type: 2}
-  characterStatusInfo: {fileID: 0}
+  characterStatusInfo: {fileID: 11400000, guid: db9a7c71697910c4b933a5c95b0153b1,
+    type: 2}
   startingItems: []
-  DropProbability: 0.15
 --- !u!1 &982879284
 GameObject:
   m_ObjectHideFlags: 0
@@ -14762,9 +14762,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   characterInfo: {fileID: 11400000, guid: 97961ddbd0b964946be328e4a4e3e18e, type: 2}
-  characterStatusInfo: {fileID: 0}
+  characterStatusInfo: {fileID: 11400000, guid: db9a7c71697910c4b933a5c95b0153b1,
+    type: 2}
   startingItems: []
-  DropProbability: 0.15
 --- !u!1 &984492691
 GameObject:
   m_ObjectHideFlags: 0
@@ -15339,9 +15339,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   characterInfo: {fileID: 11400000, guid: 97961ddbd0b964946be328e4a4e3e18e, type: 2}
-  characterStatusInfo: {fileID: 0}
+  characterStatusInfo: {fileID: 11400000, guid: db9a7c71697910c4b933a5c95b0153b1,
+    type: 2}
   startingItems: []
-  DropProbability: 0.15
 --- !u!1 &1017412663
 GameObject:
   m_ObjectHideFlags: 0
@@ -16042,9 +16042,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   characterInfo: {fileID: 11400000, guid: 97961ddbd0b964946be328e4a4e3e18e, type: 2}
-  characterStatusInfo: {fileID: 0}
+  characterStatusInfo: {fileID: 11400000, guid: db9a7c71697910c4b933a5c95b0153b1,
+    type: 2}
   startingItems: []
-  DropProbability: 0.15
 --- !u!1 &1071726008
 GameObject:
   m_ObjectHideFlags: 0
@@ -16085,9 +16085,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   characterInfo: {fileID: 11400000, guid: 97961ddbd0b964946be328e4a4e3e18e, type: 2}
-  characterStatusInfo: {fileID: 0}
+  characterStatusInfo: {fileID: 11400000, guid: db9a7c71697910c4b933a5c95b0153b1,
+    type: 2}
   startingItems: []
-  DropProbability: 0.15
 --- !u!1 &1073259777
 GameObject:
   m_ObjectHideFlags: 0
@@ -17589,9 +17589,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   characterInfo: {fileID: 11400000, guid: 97961ddbd0b964946be328e4a4e3e18e, type: 2}
-  characterStatusInfo: {fileID: 0}
+  characterStatusInfo: {fileID: 11400000, guid: db9a7c71697910c4b933a5c95b0153b1,
+    type: 2}
   startingItems: []
-  DropProbability: 0.15
 --- !u!1 &1187750454
 GameObject:
   m_ObjectHideFlags: 0
@@ -17941,9 +17941,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   characterInfo: {fileID: 11400000, guid: 97961ddbd0b964946be328e4a4e3e18e, type: 2}
-  characterStatusInfo: {fileID: 0}
+  characterStatusInfo: {fileID: 11400000, guid: db9a7c71697910c4b933a5c95b0153b1,
+    type: 2}
   startingItems: []
-  DropProbability: 0.15
 --- !u!1 &1228865002
 GameObject:
   m_ObjectHideFlags: 0
@@ -18841,9 +18841,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   characterInfo: {fileID: 11400000, guid: 97961ddbd0b964946be328e4a4e3e18e, type: 2}
-  characterStatusInfo: {fileID: 0}
+  characterStatusInfo: {fileID: 11400000, guid: db9a7c71697910c4b933a5c95b0153b1,
+    type: 2}
   startingItems: []
-  DropProbability: 0.15
 --- !u!1 &1298577704
 GameObject:
   m_ObjectHideFlags: 0
@@ -20410,9 +20410,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   characterInfo: {fileID: 11400000, guid: 97961ddbd0b964946be328e4a4e3e18e, type: 2}
-  characterStatusInfo: {fileID: 0}
+  characterStatusInfo: {fileID: 11400000, guid: db9a7c71697910c4b933a5c95b0153b1,
+    type: 2}
   startingItems: []
-  DropProbability: 0.15
 --- !u!1 &1435146183
 GameObject:
   m_ObjectHideFlags: 0
@@ -21211,9 +21211,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   characterInfo: {fileID: 11400000, guid: 97961ddbd0b964946be328e4a4e3e18e, type: 2}
-  characterStatusInfo: {fileID: 0}
+  characterStatusInfo: {fileID: 11400000, guid: db9a7c71697910c4b933a5c95b0153b1,
+    type: 2}
   startingItems: []
-  DropProbability: 0.15
 --- !u!1 &1508291937
 GameObject:
   m_ObjectHideFlags: 0
@@ -22831,9 +22831,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   characterInfo: {fileID: 11400000, guid: 97961ddbd0b964946be328e4a4e3e18e, type: 2}
-  characterStatusInfo: {fileID: 0}
+  characterStatusInfo: {fileID: 11400000, guid: db9a7c71697910c4b933a5c95b0153b1,
+    type: 2}
   startingItems: []
-  DropProbability: 0.15
 --- !u!1 &1606931895
 GameObject:
   m_ObjectHideFlags: 0
@@ -25578,9 +25578,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   characterInfo: {fileID: 11400000, guid: 97961ddbd0b964946be328e4a4e3e18e, type: 2}
-  characterStatusInfo: {fileID: 0}
+  characterStatusInfo: {fileID: 11400000, guid: db9a7c71697910c4b933a5c95b0153b1,
+    type: 2}
   startingItems: []
-  DropProbability: 0.15
 --- !u!1 &1764774445
 GameObject:
   m_ObjectHideFlags: 0
@@ -27225,9 +27225,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   characterInfo: {fileID: 11400000, guid: 97961ddbd0b964946be328e4a4e3e18e, type: 2}
-  characterStatusInfo: {fileID: 0}
+  characterStatusInfo: {fileID: 11400000, guid: db9a7c71697910c4b933a5c95b0153b1,
+    type: 2}
   startingItems: []
-  DropProbability: 0.15
 --- !u!1 &1895127858
 GameObject:
   m_ObjectHideFlags: 0
@@ -27418,9 +27418,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   characterInfo: {fileID: 11400000, guid: 97961ddbd0b964946be328e4a4e3e18e, type: 2}
-  characterStatusInfo: {fileID: 0}
+  characterStatusInfo: {fileID: 11400000, guid: db9a7c71697910c4b933a5c95b0153b1,
+    type: 2}
   startingItems: []
-  DropProbability: 0.15
 --- !u!1 &1912308564
 GameObject:
   m_ObjectHideFlags: 0
@@ -27564,9 +27564,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   characterInfo: {fileID: 11400000, guid: 97961ddbd0b964946be328e4a4e3e18e, type: 2}
-  characterStatusInfo: {fileID: 0}
+  characterStatusInfo: {fileID: 11400000, guid: db9a7c71697910c4b933a5c95b0153b1,
+    type: 2}
   startingItems: []
-  DropProbability: 0.15
 --- !u!1 &1921261792
 GameObject:
   m_ObjectHideFlags: 0
@@ -28478,9 +28478,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   characterInfo: {fileID: 11400000, guid: 97961ddbd0b964946be328e4a4e3e18e, type: 2}
-  characterStatusInfo: {fileID: 0}
+  characterStatusInfo: {fileID: 11400000, guid: db9a7c71697910c4b933a5c95b0153b1,
+    type: 2}
   startingItems: []
-  DropProbability: 0.15
 --- !u!1 &1963544287
 GameObject:
   m_ObjectHideFlags: 0
@@ -30432,9 +30432,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   characterInfo: {fileID: 11400000, guid: 97961ddbd0b964946be328e4a4e3e18e, type: 2}
-  characterStatusInfo: {fileID: 0}
+  characterStatusInfo: {fileID: 11400000, guid: db9a7c71697910c4b933a5c95b0153b1,
+    type: 2}
   startingItems: []
-  DropProbability: 0.15
 --- !u!1 &2087905109
 GameObject:
   m_ObjectHideFlags: 0
@@ -30709,9 +30709,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   characterInfo: {fileID: 11400000, guid: 97961ddbd0b964946be328e4a4e3e18e, type: 2}
-  characterStatusInfo: {fileID: 0}
+  characterStatusInfo: {fileID: 11400000, guid: db9a7c71697910c4b933a5c95b0153b1,
+    type: 2}
   startingItems: []
-  DropProbability: 0.15
 --- !u!1 &2100925186
 GameObject:
   m_ObjectHideFlags: 0
@@ -30827,9 +30827,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   characterInfo: {fileID: 11400000, guid: 97961ddbd0b964946be328e4a4e3e18e, type: 2}
-  characterStatusInfo: {fileID: 0}
+  characterStatusInfo: {fileID: 11400000, guid: db9a7c71697910c4b933a5c95b0153b1,
+    type: 2}
   startingItems: []
-  DropProbability: 0.15
 --- !u!1 &2107035170
 GameObject:
   m_ObjectHideFlags: 0
@@ -31465,9 +31465,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   characterInfo: {fileID: 11400000, guid: 97961ddbd0b964946be328e4a4e3e18e, type: 2}
-  characterStatusInfo: {fileID: 0}
+  characterStatusInfo: {fileID: 11400000, guid: db9a7c71697910c4b933a5c95b0153b1,
+    type: 2}
   startingItems: []
-  DropProbability: 0.15
 --- !u!1 &2146681624
 GameObject:
   m_ObjectHideFlags: 0
