@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Xml.Schema;
 using Expressions;
 using UniRx;
 
@@ -21,6 +22,15 @@ public class RangedWeaponInfo : WeaponInfo {
 
 	[SerializeField]
 	private float _reloadDuration;
+
+	[SerializeField]
+	private int _projectilesPerShot;
+
+	[SerializeField]
+	private float _deviationCoefficient;
+
+	[SerializeField]
+	private float _coneAngle;
 
 	[SerializeField]
 	private AudioClip _sound;
@@ -66,10 +76,14 @@ public class RangedWeaponInfo : WeaponInfo {
 				AttackCallback();
 			}
 
-			var projectile = Instantiate( typedInfo._projectilePrefab );
-			var targetDirection = ( target.Pawn.position - character.Pawn.position ).Set( y: 0 ).normalized;
+			for ( var i = 0; i < typedInfo._projectilesPerShot; ++i ) {
 
-			projectile.Launch( character, targetDirection, typedInfo._projectileSpeed, (int) _damageCalculator.Result.Value );
+				var projectile = Instantiate( typedInfo._projectilePrefab );
+				var targetDirection = ( target.Pawn.position - character.Pawn.position ).Set( y: 0 ).normalized;
+
+				projectile.Launch( character, targetDirection, typedInfo._projectileSpeed, (int) _damageCalculator.Result.Value );
+				UpdateClipAndAttackTime();
+			}
 
 			character.Pawn.SetTurretTarget( target.Pawn.transform );
 
@@ -77,8 +91,6 @@ public class RangedWeaponInfo : WeaponInfo {
 
 				AudioSource.PlayClipAtPoint( typedInfo._sound, character.Pawn.position, 0.5f );
 			}
-
-			UpdateClipAndAttackTime();
 		}
 
 		public override void Attack( Vector3 direction ) {
@@ -95,12 +107,16 @@ public class RangedWeaponInfo : WeaponInfo {
 				AttackCallback();
 			}
 
-			var projectile = Instantiate( typedInfo._projectilePrefab );
-			projectile.Launch( character, direction, typedInfo._projectileSpeed, (int) _damageCalculator.Result.Value );
+			for ( var i = 0; i < typedInfo._projectilesPerShot; ++i ) {
 
+                var projectile = Instantiate( typedInfo._projectilePrefab );
+				var projectileDirection = GetOffsetDirection( direction, i );
+
+				projectile.Launch( character, projectileDirection, typedInfo._projectileSpeed, (int) _damageCalculator.Result.Value );
+
+				UpdateClipAndAttackTime();
+			}
 			//AudioSource.PlayClipAtPoint( typedInfo._sound, character.Pawn.position, 0.5f );
-
-			UpdateClipAndAttackTime();
 		}
 
 		public override bool CanAttack( Character target ) {
@@ -123,6 +139,22 @@ public class RangedWeaponInfo : WeaponInfo {
 
 				_nextAttackTime = Time.timeSinceLevelLoad + typedInfo.BaseAttackSpeed;
 			}
+		}
+
+		private Vector3 GetOffsetDirection( Vector3 direction, int index ) {
+
+			var totalOffsetCount = typedInfo._projectilesPerShot;
+			var coneAngle = typedInfo._coneAngle;
+
+            if ( totalOffsetCount == 1 ) {
+
+				return direction;
+			}
+
+			var normalizedOffsetIndex = (float)index / totalOffsetCount;
+			var rotator = Quaternion.AngleAxis( Mathf.Lerp( -coneAngle, coneAngle, normalizedOffsetIndex ), Vector3.up );
+
+			return rotator * direction;
 		}
 
 	}
