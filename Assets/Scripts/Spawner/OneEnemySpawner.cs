@@ -10,14 +10,11 @@ public class OneEnemySpawner : SpawnerBase {
 	public EnemyCharacterStatusInfo characterStatusInfo;
 	public ItemInfo[] startingItems;
 
-
 	private Character _character;
-
 
 	public override void Initialize() {
 		Spawn();
 	}
-
 
 	private void Spawn() {
 		_character = characterInfo.GetCharacter( startingPosition: transform.position, replacementStatusInfo: characterStatusInfo );
@@ -26,12 +23,17 @@ public class OneEnemySpawner : SpawnerBase {
 			_character.Inventory.AddItem( each );
 		}
 
-		_character.ItemsToDrop = characterStatusInfo.ItemsToDrop;
-		_character.dropProbability = characterStatusInfo.DropChance;
+		if ( characterStatusInfo != null ) {
 
-		var weapon = characterStatusInfo.Weapon1.GetItem();
-		_character.Inventory.AddItem( weapon );
+			_character.ItemsToDrop = characterStatusInfo.ItemsToDrop;
 
-		weapon.Apply();
+			_character.dropProbability = characterStatusInfo.DropChance;
+
+			var weapon = characterStatusInfo.Weapon1.GetItem();
+			_character.Inventory.AddItem( weapon );
+
+			weapon.Apply();
+		}
 	}
+
 }

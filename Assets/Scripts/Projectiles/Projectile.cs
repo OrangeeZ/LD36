@@ -4,100 +4,102 @@ using UnityEngine.Serialization;
 public class Projectile : AObject {
 
 	[FormerlySerializedAs( "lifetime" )]
-    public float Lifetime = 3f;
+	public float Lifetime = 3f;
 
-    public float Damage { get; protected set; }
-	public float LifeFraction { get { return _timer.ValueNormalized; } }
+	public float Damage { get; protected set; }
 
-    public float weight = 1f;
+	public float LifeFraction {
+		get { return _timer.ValueNormalized; }
+	}
 
-    private AutoTimer _timer;
+	public float weight = 1f;
 
-    protected Vector3 Direction;
+	private AutoTimer _timer;
 
-    protected Character Owner;
+	protected Vector3 Direction;
 
-    protected float Speed;
+	protected Character Owner;
+
+	protected float Speed;
 	protected bool CanFriendlyFire;
 
 	private void Awake() {
 
-        enabled = false;
-    }
+		enabled = false;
+	}
 
 	protected virtual void Update() {
 
-        if ( _timer.ValueNormalized >= 1f ) {
+		if ( _timer.ValueNormalized >= 1f ) {
 
-            OnLifetimeExpire();
-        }
+			OnLifetimeExpire();
+		}
 
-        position += Direction * Speed * Time.deltaTime;
-    }
-
-    public void Launch( Character owner, Vector3 direction, float speed, float damage, bool canFriendlyFire ) {
-
-        this.Owner = owner;
-        this.Speed = speed;
-        this.Direction = direction;
-        this.Damage = damage;
-	    this.CanFriendlyFire = canFriendlyFire;
-
-        transform.position = this.Owner.Pawn.position;
-        transform.rotation = this.Owner.Pawn.rotation;
-
-        _timer = new AutoTimer( Lifetime );
-
-        enabled = true;
-    }
-
-    public virtual void OnHit() {
-
-		Release ();
-    }
-
-	public virtual void OnContact(Collider other)
-	{
-		
+		position += Direction * Speed * Time.deltaTime;
 	}
 
-    public virtual void OnLifetimeExpire() {
+	public void Launch( Character owner, Vector3 direction, float speed, float damage, bool canFriendlyFire ) {
+
+		this.Owner = owner;
+		this.Speed = speed;
+		this.Direction = direction;
+		this.Damage = damage;
+		this.CanFriendlyFire = canFriendlyFire;
+
+		transform.position = this.Owner.Pawn.position;
+		transform.rotation = this.Owner.Pawn.rotation;
+
+		_timer = new AutoTimer( Lifetime );
+
+		enabled = true;
+	}
+
+	public virtual void OnHit() {
 
 		Release();
-    }
-
-	protected virtual void Release ()
-	{
-		Destroy (gameObject);
 	}
 
-    private void OnTriggerEnter( Collider other ) {
+	public virtual void OnContact( Collider other ) {
 
-        var otherPawn = other.GetComponent<CharacterPawnBase>();
-        
-        if ( otherPawn != null && otherPawn != Owner.Pawn && otherPawn.character != null ) {
+	}
 
-	        var canAttackTarget = !CanFriendlyFire || otherPawn.character.TeamId != Owner.TeamId;
+	public virtual void OnLifetimeExpire() {
 
-	        if ( canAttackTarget ) {
-		        otherPawn.character.Health.Value -= 1;
+		Release();
+	}
 
-				OnContact(other);
-		        OnHit();
-	        }
+	protected virtual void Release() {
+		Destroy( gameObject );
+	}
 
-	        return;
-        }
+	private void OnTriggerEnter( Collider other ) {
 
-		OnContact(other);
+		var otherPawn = other.GetComponent<CharacterPawnBase>();
 
-        var otherBuilding = other.GetComponent<Building>();
+		if ( otherPawn != null && otherPawn != Owner.Pawn && otherPawn.character != null ) {
 
-        if ( otherBuilding != null ) {
+			var canAttackTarget = !CanFriendlyFire || otherPawn.character.TeamId != Owner.TeamId;
 
-            otherBuilding.Hit( this );
-            OnHit();
-        }
-    }
+			if ( canAttackTarget ) {
+
+				otherPawn.character.Damage( Damage );
+
+				OnContact( other );
+				OnHit();
+			}
+
+			return;
+		}
+
+		OnContact( other );
+
+		var otherBuilding = other.GetComponent<Building>();
+
+		if ( otherBuilding != null ) {
+
+			otherBuilding.Hit( this );
+			OnHit();
+		}
+	}
 
 }

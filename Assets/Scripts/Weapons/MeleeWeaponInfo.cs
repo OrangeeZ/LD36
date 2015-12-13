@@ -43,7 +43,7 @@ public class MeleeWeaponInfo : WeaponInfo {
 			//	return;
 			//}
 
-			target.Health.Value -= typedInfo.BaseDamage;
+			target.Damage( typedInfo.BaseDamage );
 
 			//if ( character.Status.GetCriticalHitChance( target.Status ) > 100.Random() ) {
 
@@ -64,8 +64,8 @@ public class MeleeWeaponInfo : WeaponInfo {
 			foreach ( var each in charactersToAttack.ToArray() ) {
 
 				if ( Character != each ) {
-					
-					each.Health.Value -= typedInfo.BaseDamage;
+
+					each.Damage( typedInfo.BaseDamage );
 				}
 			}
 		}
@@ -74,10 +74,12 @@ public class MeleeWeaponInfo : WeaponInfo {
 
 			return ( target.Pawn.position - Character.Pawn.position ).sqrMagnitude <= typedInfo.AttackRange.Pow( 2 );
 		}
+
 	}
 
 	public override Item GetItem() {
 
 		return new MeleeWeapon( this );
 	}
+
 }

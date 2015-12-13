@@ -36,7 +36,7 @@ public class EffectSpawner : AObject {
 
     private void OnCharacterDie( Character.Died diedEvent ) {
 
-        Instantiate( explosion, diedEvent.character.Pawn.position, diedEvent.character.Pawn.rotation );
+        Instantiate( explosion, diedEvent.Character.Pawn.position, diedEvent.Character.Pawn.rotation );
     }
 
 }

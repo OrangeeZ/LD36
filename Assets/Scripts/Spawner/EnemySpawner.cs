@@ -53,13 +53,17 @@ public class EnemySpawner : SpawnerBase {
 			_character.Inventory.AddItem( each );
 		}
 
-		_character.ItemsToDrop = characterStatusInfo.ItemsToDrop;
-		_character.dropProbability = characterStatusInfo.DropChance;
+		if ( characterStatusInfo != null ) {
 
-		var weapon = characterStatusInfo.Weapon1.GetItem();
-		_character.Inventory.AddItem( weapon );
+			_character.ItemsToDrop = characterStatusInfo.ItemsToDrop;
+			_character.dropProbability = characterStatusInfo.DropChance;
 
-		weapon.Apply();
+			var weapon = characterStatusInfo.Weapon1.GetItem();
+			_character.Inventory.AddItem( weapon );
+
+			weapon.Apply();
+		}
+
 	}
 
 	private void Update() {
