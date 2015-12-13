@@ -28,10 +28,11 @@ public class ZoneSpawner : MonoBehaviour {
 
 		foreach ( var each in _characters ) {
 
-			each.Health.Value += _zoneInfo.HealingSpeed * Time.deltaTime;
-		}
+			var healingPerDeltaTime = _zoneInfo.HealingSpeed * Time.deltaTime;
 
-		_healingAmount -= _zoneInfo.HealingSpeed * Time.deltaTime;
+			each.Health.Value += healingPerDeltaTime;
+			_healingAmount -= healingPerDeltaTime;
+		}
 	}
 
 	private void OnCharacterEnter( Character character ) {

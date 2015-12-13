@@ -16,8 +16,6 @@ MonoBehaviour:
     type: 2}
   weaponStateControllerInfo: {fileID: 11400000, guid: c1cef3596b0e0c14c96b8d5052943a80,
     type: 2}
-  pawnPrefab: {fileID: 11455532, guid: 19b14e6ac1774714ca0b89ccba9f7b53, type: 2}
-  gambitListInfo: {fileID: 0}
+  pawnPrefab: {fileID: 11401518, guid: b60dcc73d06834e4f85923db52f3b5ed, type: 2}
   teamId: 0
-  hasInput: 1
   applyColor: 1
