@@ -25,7 +25,7 @@ public partial class RemoteDataLoader : ScriptableObject {
 public partial class RemoteDataLoader {
 	
 	[ContextMenu( "Load remote data" )]
-	private void LoadRemoteData() {
+	public void LoadRemoteData() {
 
 		string url = _url;
 		if (!string.IsNullOrEmpty(_pageId)) {
