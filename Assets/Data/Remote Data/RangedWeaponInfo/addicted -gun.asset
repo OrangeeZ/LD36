@@ -21,10 +21,10 @@ MonoBehaviour:
   CanFriendlyFire: 0
   SlotType: 0
   _projectilePrefab: {fileID: 11433014, guid: 608acec83ae17a746919b5d8ad070295, type: 2}
-  _projectileSpeed: 1
+  _projectileSpeed: 10
   _clipSize: 1
   _reloadDuration: 0
-  _projectilesPerShot: 0
+  _projectilesPerShot: 1
   _deviationCoefficient: 0
-  _coneAngle: 0
+  _shotConeAngle: 30
   _sound: {fileID: 0}

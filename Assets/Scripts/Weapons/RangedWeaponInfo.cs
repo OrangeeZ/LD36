@@ -31,7 +31,7 @@ public class RangedWeaponInfo : WeaponInfo {
 	private float _deviationCoefficient;
 
 	[SerializeField]
-	private float _coneAngle;
+	private float _shotConeAngle;
 
 	[SerializeField]
 	private AudioClip _sound;
@@ -81,8 +81,9 @@ public class RangedWeaponInfo : WeaponInfo {
 
 				var projectile = Instantiate( typedInfo._projectilePrefab );
 				var targetDirection = ( target.Pawn.position - character.Pawn.position ).Set( y: 0 ).normalized;
+				var projectileDirection = GetOffsetDirection( targetDirection, i );
 
-				projectile.Launch( character, targetDirection, typedInfo._projectileSpeed, typedInfo.BaseDamage, typedInfo.CanFriendlyFire );
+				projectile.Launch( character, projectileDirection, typedInfo._projectileSpeed, typedInfo.BaseDamage, typedInfo.CanFriendlyFire );
 				UpdateClipAndAttackTime();
 			}
 
@@ -145,7 +146,7 @@ public class RangedWeaponInfo : WeaponInfo {
 		private Vector3 GetOffsetDirection( Vector3 direction, int index ) {
 
 			var totalOffsetCount = typedInfo._projectilesPerShot;
-			var coneAngle = typedInfo._coneAngle;
+			var coneAngle = typedInfo._shotConeAngle;
 
             if ( totalOffsetCount == 1 ) {
 
@@ -169,9 +170,12 @@ public class RangedWeaponInfo : WeaponInfo {
 
 		base.Configure( values );
 
+		_reloadDuration = BaseAttackSpeed;
+
 		_projectileSpeed = values.Get( "Projectile Speed", 0f );
-		_clipSize = values.Get( "Clip Size", 1 );
-		_projectilesPerShot = 1;//values.Get( "FireSize", 1 );
+		_projectilesPerShot = values.Get( "BulletsPerBurst", 1 );
+		_shotConeAngle = values.Get( "BurstAngle", 0 );
+		_clipSize = values.Get( "Clip Size", _projectilesPerShot );
 	}
 
 }
