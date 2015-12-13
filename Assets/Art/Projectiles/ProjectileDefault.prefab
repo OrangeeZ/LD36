@@ -14,7 +14,7 @@ GameObject:
   - 114: {fileID: 11433014}
   - 54: {fileID: 5438154}
   m_Layer: 0
-  m_Name: Simple Test Projectile Melee
+  m_Name: ProjectileDefault
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -91,7 +91,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71e974a8a2dd2ba44b7726fcb994d819, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lifetime: 0.1
+  lifetime: 3
   weight: 1
 --- !u!135 &13517266
 SphereCollider:
@@ -143,10 +143,6 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: weight
       value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 0}
-      propertyPath: lifetime
-      value: 0.1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

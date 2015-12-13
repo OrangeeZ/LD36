@@ -107,6 +107,17 @@ namespace csv {
 			return LoadScriptableObject<T>( assetName );
 		}
 
+		public T GetPrefabWithComponent<T>( string name ) where T : Component {
+
+			var assetName = Get( name, string.Empty );
+			assetName = Utility.FixName( assetName );
+
+			var guids = AssetDatabase.FindAssets( "t: prefab " + assetName );
+			var paths = guids.Select( _ => AssetDatabase.GUIDToAssetPath( _ ) );
+
+			return paths.Select( _ => AssetDatabase.LoadAssetAtPath<T>( _ ) ).FirstOrDefault();
+		}
+
 		private T LoadScriptableObject<T>( string name ) where T : ScriptableObject {
 
 			name = Utility.FixName( name );
