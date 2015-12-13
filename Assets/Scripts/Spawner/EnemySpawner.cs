@@ -29,7 +29,8 @@ public class EnemySpawner : SpawnerBase {
 
 	private Expressions.ReactiveCalculator _reactCalcDeact;
 
-	public void Initialize() {
+	public override void Initialize() {
+
 		_reactCalc = new Expressions.ReactiveCalculator( Activation );
 		_reactCalcDeact = new Expressions.ReactiveCalculator( Deactivation );
 		Spawn();

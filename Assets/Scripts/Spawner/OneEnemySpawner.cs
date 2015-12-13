@@ -15,7 +15,7 @@ public class OneEnemySpawner : SpawnerBase {
 	private Character _character;
 
 
-	public void Initialize() {
+	public override void Initialize() {
 		Spawn();
 	}
 
