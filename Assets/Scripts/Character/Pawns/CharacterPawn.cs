@@ -151,12 +151,11 @@ public class CharacterPawn : CharacterPawnBase {
 		//GetComponentsInChildren<Renderer>().MapImmediate( _ => _.material.color += Color.black * 0.8f );
 	}
 
-	[ContextMenu("Add level")]
-	public void AddLevel() {
+	public void AddLevel( float scaleBonus ) {
 
 		if ( _levelingController != null ) {
-			
-			_levelingController.AddLevel();
+
+			_levelingController.AddLevel( scaleBonus );
 		}
 	}
 

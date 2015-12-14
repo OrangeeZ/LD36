@@ -2,28 +2,28 @@
 using System.Collections;
 using System;
 
-public class NPCView : AObject
-{
+public class NPCView : AObject {
+
 	public Transform itemSpawnPoint;
 	public NPCInfo npc;
 	public bool destroyOnPickup;
 
 	public ItemView itemView { get; private set; }
 
-	void Start()
-	{
-		itemView = npc.itemInfo.DropItem (itemSpawnPoint ?? transform);
+	private void Start() {
+
+		itemView = npc.itemInfo.DropItem( itemSpawnPoint ?? transform );
 		itemView.giver = this;
 	}
 
-	public void OnPickedUp( Character character )
-	{
-		character.Pawn.AddLevel();
+	public void OnPickedUp( Character character ) {
 
-		if (destroyOnPickup) {
+		character.Pawn.AddLevel( npc.CharacterScaleBonus );
 
-			Destroy(gameObject);
+		if ( destroyOnPickup ) {
+
+			Destroy( gameObject );
 		}
 	}
-}
 
+}

@@ -3,8 +3,8 @@ using System.Collections;
 
 public class CharacterPawnLevelingController : MonoBehaviour {
 
-	[SerializeField]
-	private float _scalePerLevel = 0.05f;
+	//[SerializeField]
+	//private float _scalePerLevel = 0.05f;
 
 	[SerializeField]
 	private float _duration;
@@ -22,7 +22,7 @@ public class CharacterPawnLevelingController : MonoBehaviour {
 		}
 	}
 
-	public void AddLevel() {
+	public void AddLevel( float scaleBonus ) {
 
 		if ( _currentLevel >= _levelingObjects.Length ) {
 
@@ -30,7 +30,7 @@ public class CharacterPawnLevelingController : MonoBehaviour {
 		}
 
 		StartCoroutine( ScaleAnimation( _levelingObjects[_currentLevel], Vector3.zero, _levelingObjects[_currentLevel].transform.localScale ) );
-		StartCoroutine( ScaleAnimation( gameObject, gameObject.transform.localScale, gameObject.transform.localScale + Vector3.one * _scalePerLevel ) );
+		StartCoroutine( ScaleAnimation( gameObject, gameObject.transform.localScale, gameObject.transform.localScale + Vector3.one * scaleBonus ) );
 
 		_currentLevel++;
 	}
