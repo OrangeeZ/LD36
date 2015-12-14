@@ -64,6 +64,11 @@ public class Projectile : AObject {
 
 		_timer = new AutoTimer( Lifetime );
 
+		var colorer = GetComponent<ProjectileColorer>();
+		if (colorer != null) {
+			colorer.Apply(Owner.TeamId != 0);
+		}
+
 		enabled = true;
 	}
 
