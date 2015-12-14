@@ -20,10 +20,10 @@ public class EffectSpawner : AObject {
 
         //EventSystem.Events.SubscribeOfType<BuildingDestructionEffect.Destroyed>( OnBuildingDestruction );
 
-	    EventSystem.Events.SubscribeOfType<ItemPickupListener.PickedUp>( Listener );
+	    EventSystem.Events.SubscribeOfType<ItemView.PickedUp>( Listener );
     }
 
-	private void Listener( ItemPickupListener.PickedUp pickedUp ) {
+	private void Listener( ItemView.PickedUp pickedUp ) {
 
 		Instantiate( ItemPickupEffect, pickedUp.ItemView.transform.position );
 	}

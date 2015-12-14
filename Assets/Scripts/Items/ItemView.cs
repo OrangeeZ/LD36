@@ -1,7 +1,14 @@
 ﻿using UnityEngine;
 using System.Collections;
+using Packages.EventSystem;
 
 public class ItemView : AObject {
+
+	public class PickedUp : IEventBase {
+
+		public ItemView ItemView;
+
+	}
 
 	public Item item;
 	public NPCView giver;
@@ -29,6 +36,8 @@ public class ItemView : AObject {
 
 			giver.OnPickedUp( character );
 		}
+		
+		EventSystem.RaiseEvent( new PickedUp { ItemView = this } );
 
 		Destroy( gameObject );
 	}
