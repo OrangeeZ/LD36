@@ -25,6 +25,7 @@ public class ApproachTargetStateInfo : CharacterStateInfo {
 
 		private TargetPosition destination;
 		private bool _isFirstTimeNotice = true;
+		private bool _targetIsCharacter = false;
 
 		public State( CharacterStateInfo info ) : base( info ) {
 		}
@@ -47,7 +48,7 @@ public class ApproachTargetStateInfo : CharacterStateInfo {
 
 		public override IEnumerable GetEvaluationBlock() {
 
-			if ( _isFirstTimeNotice ) {
+			if ( _isFirstTimeNotice && _targetIsCharacter ) {
 
 				var enemyInfo = character.Status.Info as EnemyCharacterStatusInfo;
 				var sound = enemyInfo.EnemySpottedSound.RandomElement();
@@ -92,6 +93,8 @@ public class ApproachTargetStateInfo : CharacterStateInfo {
 
 				destination = (Vector3) target;
 			} else if ( target is Character ) {
+
+				_targetIsCharacter = true;
 
 				destination = ( target as Character ).Pawn.transform;
 			} else if ( target is ItemView ) {
