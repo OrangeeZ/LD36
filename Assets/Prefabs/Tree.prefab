@@ -43,7 +43,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 415700}
-  - 135: {fileID: 13531452}
+  - 136: {fileID: 13692346}
   m_Layer: 0
   m_Name: Tree
   m_TagString: Environment
@@ -339,8 +339,8 @@ MonoBehaviour:
   leafPrefab: {fileID: 100000, guid: 84012ac9c18f10d448db48d8fcf1a36d, type: 3}
   leavesMaterial: {fileID: 2100000, guid: 466acb1dfb4fda64584d40d8ebcf9b42, type: 2}
   leavesObject: {fileID: 192818}
---- !u!135 &13531452
-SphereCollider:
+--- !u!136 &13692346
+CapsuleCollider:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
@@ -348,16 +348,41 @@ SphereCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 2
   m_Radius: 0.34
-  m_Center: {x: 0, y: 1.13, z: 0}
+  m_Height: 5
+  m_Direction: 1
+  m_Center: {x: 0, y: 2.39, z: 0}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
-    m_Modifications: []
+    m_Modifications:
+    - target: {fileID: 0}
+      propertyPath: m_Center.y
+      value: 2.39
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_Radius
+      value: 1.12
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_Height
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_Direction
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_Center.x
+      value: -0.68
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 145214}
