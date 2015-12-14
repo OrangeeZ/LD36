@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Packages.EventSystem;
+using UnityEngine;
 using UnityEngine.Serialization;
 
 public class Projectile : AObject {
@@ -14,6 +15,8 @@ public class Projectile : AObject {
 	public float weight = 1f;
 
 	public bool DelayedDestroy = false;
+
+	public bool NeedsSplashEffect = false;
 
 	private AutoTimer _timer;
 
@@ -43,7 +46,7 @@ public class Projectile : AObject {
 		position += Direction * Speed * Time.deltaTime;
 
 		if ( _isDestroyed && Time.frameCount - _frameCountStart >= 4 ) {
-			
+
 			Destroy( gameObject );
 		}
 	}
@@ -65,8 +68,8 @@ public class Projectile : AObject {
 		_timer = new AutoTimer( Lifetime );
 
 		var colorer = GetComponent<ProjectileColorer>();
-		if (colorer != null) {
-			colorer.Apply(Owner.IsEnemy());
+		if ( colorer != null ) {
+			colorer.Apply( Owner.IsEnemy() );
 		}
 
 		enabled = true;
@@ -91,6 +94,11 @@ public class Projectile : AObject {
 		if ( !_splashRange.IsNan() && _splashRange > 0f ) {
 
 			Helpers.DoSplashDamage( transform.position, _splashRange, Damage, teamToSkip: CanFriendlyFire ? -1 : Owner.TeamId );
+
+			if ( NeedsSplashEffect ) {
+
+				EventSystem.RaiseEvent( new Helpers.SplashDamage {position = position, radius = _splashRange * 0.5f} );
+			}
 		}
 
 		_isDestroyed = true;
@@ -128,7 +136,7 @@ public class Projectile : AObject {
 		OnContact( other );
 
 		if ( other.tag == "Environment" ) {
-			
+
 			OnHit();
 		}
 

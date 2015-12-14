@@ -15,10 +15,10 @@ MonoBehaviour:
   groundView: {fileID: 11488804, guid: 8d03d4a4a777a0e499ba1e113db4a8dc, type: 2}
   inventoryIcon: {fileID: 0}
   color: {r: 0, g: 0, b: 0, a: 0}
-  BaseDamage: 50
+  BaseDamage: 40
   BaseAttackSpeed: 2.5
   AttackRange: 10
-  CanFriendlyFire: 1
+  CanFriendlyFire: 0
   SlotType: 0
   _projectilePrefab: {fileID: 11433014, guid: 608acec83ae17a746919b5d8ad070295, type: 2}
   _projectileSpeed: 7
@@ -28,7 +28,7 @@ MonoBehaviour:
   _shotConeAngle: 30
   _sounds: []
   _projectileLifetime: 3
-  _splashDamageRadius: 5
+  _splashDamageRadius: 3
   _weaponBehaviourInfo: {fileID: 11400000, guid: 5f105bd2d1fd7c44da9bbb2f92392799,
     type: 2}
   _abilityOnPickup: {fileID: 0}

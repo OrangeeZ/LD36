@@ -2450,7 +2450,7 @@ MonoBehaviour:
   _gunYOffset: 0.5
   _weight: 1
   _startingHeight: 5
-  _rotationToDirectionSpeed: 300
+  _rotationToDirectionSpeed: 800
   _sphereCollider: {fileID: 0}
   _characterController: {fileID: 14355484}
   _subTransform: {fileID: 0}
@@ -2732,7 +2732,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 0}
       propertyPath: _rotationToDirectionSpeed
-      value: 300
+      value: 800
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: _characterController

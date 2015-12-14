@@ -27,11 +27,6 @@ public static class Helpers {
 	public static void DoSplashDamage( Vector3 point, float radius, float amount, int teamToSkip ) {
 
 		new PMonad().Add( GradualDestroy( point, radius, amount, teamToSkip ) ).Execute();
-
-		if ( teamToSkip < 0 ) {
-			
-			EventSystem.RaiseEvent( new SplashDamage {position = point, radius = radius * 0.5f} );
-		}
 	}
 
 	private static IEnumerable GradualDestroy( Vector3 point, float radius, float amount, int teamToSkip ) {
