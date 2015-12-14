@@ -16,16 +16,18 @@ public class CharacterComplexAnimationController : MonoBehaviour {
 
 	public void SetBool( string name, bool value ) {
 
+		if ( name.IsNullOrEmpty() ) {
+
+			return;
+		}
+
 		if ( !lastState.IsNullOrEmpty() ) {
 
 			animators.SetBool( lastState, false );
 		}
 
-		if ( name.Any() ) {
-
-			animators.SetBool( name, value );
-		}
-
+		animators.SetBool( name, value );
+		
 		lastState = name;
 	}
 }

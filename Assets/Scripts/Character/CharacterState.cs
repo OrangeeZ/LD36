@@ -76,7 +76,7 @@ public abstract class CharacterState {
 
 	    if ( pawn._weaponAnimationController ) {
 
-			pawn._weaponAnimationController.SetBool( info.animatorStateName, true );
+			pawn._weaponAnimationController.SetBool( info.weaponAnimatorStateName, true );
 	    }
     }
 
