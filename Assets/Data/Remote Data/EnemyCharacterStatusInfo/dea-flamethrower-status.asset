@@ -24,8 +24,9 @@ MonoBehaviour:
   Weapon1: {fileID: 11400000, guid: c29a225c87a86884a85a3eef0fad7fbd, type: 2}
   ItemsToDrop:
   - {fileID: 11400000, guid: 3919ded62de057f4eb456d92caaeb77d, type: 2}
+  - {fileID: 11400000, guid: c3fafe990f8c6fe4c88f57b2b1a30363, type: 2}
   PawnPrefab: {fileID: 11467564, guid: cfcf6a5c5f5f55e4f947a55eef90f962, type: 2}
-  DropChance: 0.3
+  DropChance: 0.5
   EnemySpottedSound:
   - {fileID: 8300000, guid: 08c345835379443519ce9e466366b132, type: 3}
   SpawnInterval: 60

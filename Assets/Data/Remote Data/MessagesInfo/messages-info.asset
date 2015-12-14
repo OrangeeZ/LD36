@@ -14,3 +14,11 @@ MonoBehaviour:
   messages:
   - id: msg_1
     text: Die!!!!!
+  - id: addict_noticed
+    text: Dude, the tree...
+  - id: lumberjack_noticed
+    text: FINALLY SOMETHING WORTH MY AXE
+  - id: chainsaw_noticed
+    text: ARR!!
+  - id: pyro_noticed
+    text: MMM!! MM!!!!

@@ -7,7 +7,6 @@ public class ZoneSpawner : MonoBehaviour {
 
 	public bool IsDrained { get; private set; }
 
-	//[SerializeField]
 	private float _autoDrainSpeed = 10f;
 
 	[SerializeField]
@@ -28,6 +27,9 @@ public class ZoneSpawner : MonoBehaviour {
 		_view.CharacterExited += OnCharacterExit;
 
 		_healingAmount = _zoneInfo.HealthPool;
+
+		_isAutoDrainStarted = false;
+		IsDrained = false;
 	}
 
 	public void StartAutoDrain() {

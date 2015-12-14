@@ -28,3 +28,4 @@ MonoBehaviour:
   EnemySpottedSound: []
   SpawnInterval: 0
   SpeakChance: 0.2
+  SpeakLineId: 
