@@ -25,6 +25,9 @@ public class CharacterPawn : CharacterPawnBase {
 	[SerializeField]
 	private SimpleSphereCollider _sphereCollider;
 
+	[SerializeField]
+	private CharacterController _characterController;
+
 	private Vector3? _destination;
 	private bool _isGravityEnabled;
 	private float _ySpeed;
@@ -71,7 +74,16 @@ public class CharacterPawn : CharacterPawnBase {
 
 	public override void MoveDirection( Vector3 direction ) {
 
-		position += direction * speed * Time.deltaTime;
+		var directionDelta = direction * speed * Time.deltaTime;
+
+		if ( _characterController == null ) {
+
+			position += directionDelta;
+		} else {
+
+			_characterController.Move( directionDelta + Vector3.down * Time.deltaTime );
+		}
+
 		rotation = Quaternion.RotateTowards( rotation, Quaternion.LookRotation( direction, Vector3.up ), _rotationToDirectionSpeed * Time.deltaTime );
 	}
 

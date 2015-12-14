@@ -42,6 +42,7 @@ GameObject:
   - 4: {fileID: 488316}
   - 33: {fileID: 3385490}
   - 23: {fileID: 2367792}
+  - 65: {fileID: 6564684}
   m_Layer: 0
   m_Name: wooden_fence
   m_TagString: Untagged
@@ -107,8 +108,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 102750}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 8.83, y: 0, z: -10.66}
+  m_LocalRotation: {x: 0, y: -0.45326865, z: 0, w: 0.891374}
+  m_LocalPosition: {x: 8.21, y: 0, z: -1.4}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 466540}
@@ -355,6 +356,18 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!65 &6564684
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 136438}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.1258088, y: 0.0019999987, z: 0.030000003}
+  m_Center: {x: -0.036487855, y: -0.000000701425, z: 0.014999996}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

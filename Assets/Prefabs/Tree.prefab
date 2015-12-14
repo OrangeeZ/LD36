@@ -43,6 +43,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 415700}
+  - 135: {fileID: 13531452}
   m_Layer: 0
   m_Name: Tree
   m_TagString: Untagged
@@ -107,7 +108,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 145214}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 8.5, y: 0, z: -13.2}
+  m_LocalPosition: {x: -8.85, y: 0, z: 1.53}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 451876}
@@ -338,6 +339,18 @@ MonoBehaviour:
   leafPrefab: {fileID: 100000, guid: 84012ac9c18f10d448db48d8fcf1a36d, type: 3}
   leavesMaterial: {fileID: 2100000, guid: 466acb1dfb4fda64584d40d8ebcf9b42, type: 2}
   leavesObject: {fileID: 192818}
+--- !u!135 &13531452
+SphereCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 145214}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.34
+  m_Center: {x: 0, y: 1.13, z: 0}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
