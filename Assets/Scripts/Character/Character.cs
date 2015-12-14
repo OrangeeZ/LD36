@@ -102,6 +102,21 @@ public class Character {
 		}
 	}
 
+	public void Heal( float amount ) {
+
+		if ( Health.Value == Status.MaxHealth.Value ) {
+
+			return;
+		}
+
+		var healAmount = Mathf.Min( Status.MaxHealth.Value - Health.Value, amount );
+
+		if ( healAmount > 0 ) {
+			
+			Health.Value += healAmount;
+		}
+	}
+
 	public void Damage( float amount ) {
 
 		if ( Health.Value <= 0 ) {

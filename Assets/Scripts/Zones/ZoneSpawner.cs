@@ -49,7 +49,7 @@ public class ZoneSpawner : MonoBehaviour {
 			var healingAmount = each.Status.ModifierCalculator.CalculateFinalValue( ModifierType.SunHealthRestore, _zoneInfo.HealingSpeed );
 			var healingPerDeltaTime = healingAmount * Time.deltaTime;
 
-			each.Health.Value += healingPerDeltaTime;
+			each.Heal( healingPerDeltaTime );
 			_healingAmount -= healingPerDeltaTime;
 		}
 
@@ -73,7 +73,7 @@ public class ZoneSpawner : MonoBehaviour {
 
 		Destroy( _view );
 		_characters.Clear();
-    }
+	}
 
 	private void OnCharacterEnter( Character character ) {
 

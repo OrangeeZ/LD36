@@ -22,7 +22,7 @@ public class HealingItemInfo : ItemInfo, ICsvConfigurable {
 
 			var info = this.info as HealingItemInfo;
 
-			Character.Health.Value += info.HealingAmount;
+			Character.Heal(info.HealingAmount);
 
 			if ( info.HealingDuration > 0 ) {
 
@@ -39,7 +39,7 @@ public class HealingItemInfo : ItemInfo, ICsvConfigurable {
 			var timer = new AutoTimer( duration );
 			while ( timer.ValueNormalized != 1f ) {
 
-				Character.Health.Value += speed * Time.deltaTime;
+				Character.Heal( speed * Time.deltaTime );
 
 				yield return null;
 			}
