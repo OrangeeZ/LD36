@@ -100,6 +100,13 @@ public class Projectile : AObject {
 
 		OnContact( other );
 
+		Debug.Log( other.tag );
+
+		if ( other.tag == "Environment" ) {
+			
+			OnHit();
+		}
+
 		var otherBuilding = other.GetComponent<Building>();
 
 		if ( otherBuilding != null ) {
