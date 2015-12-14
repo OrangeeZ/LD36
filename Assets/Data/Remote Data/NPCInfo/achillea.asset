@@ -13,4 +13,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemInfo: {fileID: 11400000, guid: d104736becf735649ba1ae22a13094a7, type: 2}
   groundView: {fileID: 11425952, guid: 7ae0b60c0692cf8428a0dd4b94d25961, type: 2}
-  CharacterScaleBonus: 0.19
+  CharacterScaleBonus: 0.5
