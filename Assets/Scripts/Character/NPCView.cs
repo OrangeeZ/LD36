@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System;
 
 public class NPCView : AObject
 {
@@ -15,9 +16,12 @@ public class NPCView : AObject
 		itemView.giver = this;
 	}
 
-	public void OnPickedUp()
+	public void OnPickedUp( Character character )
 	{
+		character.Pawn.AddLevel();
+
 		if (destroyOnPickup) {
+
 			Destroy(gameObject);
 		}
 	}

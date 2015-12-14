@@ -37,6 +37,9 @@ public class CharacterPawn : CharacterPawnBase {
 	[SerializeField]
 	private Transform _subTransform;
 
+	[SerializeField]
+	private CharacterPawnLevelingController _levelingController;
+
 	private void Update() {
 
 		if ( _isGravityEnabled ) {
@@ -146,6 +149,15 @@ public class CharacterPawn : CharacterPawnBase {
 
 		//GetComponentsInChildren<Rotator>().MapImmediate( Destroy );
 		//GetComponentsInChildren<Renderer>().MapImmediate( _ => _.material.color += Color.black * 0.8f );
+	}
+
+	[ContextMenu("Add level")]
+	public void AddLevel() {
+
+		if ( _levelingController != null ) {
+			
+			_levelingController.AddLevel();
+		}
 	}
 
 	private void ApplyPunishingForce() {
