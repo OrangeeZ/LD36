@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Name: Weapon Idle
   m_EditorClassIdentifier: 
   animatorStateName: 
-  weaponAnimatorStateName: Idle
+  weaponAnimatorStateName: Torso.Idle
