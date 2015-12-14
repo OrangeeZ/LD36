@@ -63,6 +63,7 @@ public class CharacterPawn : CharacterPawnBase {
 	public override void MoveDirection( Vector3 direction ) {
 
 		position += direction * speed * Time.deltaTime;
+		rotation = Quaternion.RotateTowards( rotation, Quaternion.LookRotation( direction, Vector3.up ), _rotationToDirectionSpeed * Time.deltaTime );
 	}
 
 	public override void SetDestination( Vector3 destination ) {
