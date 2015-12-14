@@ -36,7 +36,9 @@ public class RangedWeaponInfo : WeaponInfo {
 		public int AmmoInClip { get; private set; }
 
 		public float BaseAttackSpeed {
-			get { return Character.Status.ModifierCalculator.CalculateFinalValue( ModifierType.BaseAttackSpeed, BaseAttackSpeed ); }
+			get {
+				return Character.Status.ModifierCalculator.CalculateFinalValue( ModifierType.BaseAttackSpeed, typedInfo.BaseAttackSpeed );
+			}
 		}
 
 		public int ClipSize { get; private set; }

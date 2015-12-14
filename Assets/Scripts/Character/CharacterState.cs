@@ -63,12 +63,21 @@ public abstract class CharacterState {
 
     public void UpdateAnimator() {
 
-        stateController.character.Pawn.animatedView.Do( OnAnimationUpdate );
+	    if ( character.Pawn != null ) {
+		    
+			OnAnimationUpdate( character.Pawn );
+	    }
+        //stateController.character.Pawn.animatedView.Do( OnAnimationUpdate );
     }
 
-    protected virtual void OnAnimationUpdate( CharacterComplexAnimationController animationController ) {
-        
-        animationController.SetBool( info.animatorStateName, true );
+    protected virtual void OnAnimationUpdate( CharacterPawn pawn ) {
+
+		pawn._animationController.SetBool( info.animatorStateName, true );
+
+	    if ( pawn._weaponAnimationController ) {
+
+			pawn._weaponAnimationController.SetBool( info.weaponAnimatorStateName, true );
+	    }
     }
 
 }

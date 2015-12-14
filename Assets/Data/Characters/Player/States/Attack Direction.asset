@@ -11,4 +11,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 44b3e52c7cef1534993b374e55c7639b, type: 3}
   m_Name: Attack Direction
   m_EditorClassIdentifier: 
-  animatorStateName: 
+  animatorStateName: Attack

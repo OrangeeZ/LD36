@@ -12,15 +12,15 @@ MonoBehaviour:
   m_Name: boss-status
   m_EditorClassIdentifier: 
   MaxHealth: 10000
-  MoveSpeed: 1
+  MoveSpeed: 2
   Damage: 0
   status:
     Strength:
       value: 0
     Agility:
       value: 0
-  AggroRadius: 10
+  AggroRadius: 15
   Weapon1: {fileID: 11400000, guid: c3e9dd5a480786144a173126ee098340, type: 2}
   ItemsToDrop: []
   PawnPrefab: {fileID: 11467564, guid: 28903826c6f753e42a8d2f5e9ea10c8d, type: 2}
-  DropChance: 0.31
+  DropChance: 0

@@ -19,9 +19,9 @@ MonoBehaviour:
       value: 0
     Agility:
       value: 0
-  AggroRadius: 10
+  AggroRadius: 15
   Weapon1: {fileID: 11400000, guid: c29a225c87a86884a85a3eef0fad7fbd, type: 2}
   ItemsToDrop:
   - {fileID: 11400000, guid: 3919ded62de057f4eb456d92caaeb77d, type: 2}
   PawnPrefab: {fileID: 11467564, guid: 28903826c6f753e42a8d2f5e9ea10c8d, type: 2}
-  DropChance: 0.28
+  DropChance: 0.3

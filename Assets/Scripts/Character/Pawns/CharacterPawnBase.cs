@@ -10,7 +10,8 @@ public class CharacterPawnBase : AObject {
 	private SphereSensor sensor;
     
 	[SerializeField]
-	private CharacterComplexAnimationController _animationController;
+	public CharacterComplexAnimationController _animationController;
+	public CharacterComplexAnimationController _weaponAnimationController;
 
 	public CharacterComplexAnimationController animatedView { get; private set; }
 

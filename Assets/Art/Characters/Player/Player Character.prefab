@@ -479,7 +479,7 @@ Transform:
   m_GameObject: {fileID: 108376}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.15, y: 0.15, z: 0.15}
   m_Children:
   - {fileID: 458536}
   - {fileID: 499128}
@@ -492,7 +492,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 141358}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3.2955694, y: 1.87, z: -57.37}
+  m_LocalPosition: {x: 0, y: 0, z: -57.37}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 462538}
@@ -864,8 +864,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 1, y: 2, z: 1}
+  m_Center: {x: 0, y: 1, z: 0}
 --- !u!65 &6582520
 BoxCollider:
   m_ObjectHideFlags: 1
@@ -876,8 +876,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 1, y: 2, z: 1}
+  m_Center: {x: 0, y: 1, z: 0}
 --- !u!95 &9532122
 Animator:
   serializedVersion: 3
@@ -887,7 +887,7 @@ Animator:
   m_GameObject: {fileID: 108376}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: e7d71d86a0b8fc44a9a4d630600ccdb9, type: 3}
-  m_Controller: {fileID: 9100000, guid: e9fd4ce5978526644b1ce26fbd28bfc3, type: 2}
+  m_Controller: {fileID: 9100000, guid: a56442e351a349b40a8d103aa63f14cf, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -908,11 +908,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sensor: {fileID: 11443828}
   _animationController: {fileID: 11477632}
+  _weaponAnimationController: {fileID: 0}
   canFollowDestination: 0
   turret: {fileID: 0}
   _weight: 1
   _startingHeight: 5
-  _rotationToDirectionSpeed: 100
+  _rotationToDirectionSpeed: 300
   _sphereCollider: {fileID: 0}
   _subTransform: {fileID: 0}
 --- !u!114 &11443828
@@ -962,7 +963,7 @@ SkinnedMeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_Materials:
-  - {fileID: 2100000, guid: 5526e5b9443dc264698a22bcc0143d8f, type: 2}
+  - {fileID: 2100000, guid: c0aad8627d6114d428ac24b792f68a30, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 1
@@ -1017,7 +1018,11 @@ Prefab:
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
-    m_Modifications: []
+    m_Modifications:
+    - target: {fileID: 0}
+      propertyPath: _rotationToDirectionSpeed
+      value: 300
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 141358}

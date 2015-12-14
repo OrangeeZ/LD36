@@ -5,6 +5,7 @@ public abstract class CharacterStateInfo : ScriptableObject {
 
 	[Header( "Animation settings" )]
 	public string animatorStateName;
+	public string weaponAnimatorStateName;
 
 	public virtual CharacterState GetState() {
 

@@ -29,7 +29,12 @@ public class ModifierCalculator {
 
 	public Action Changed;
 
-	private readonly Dictionary<ModifierType, List<OffsetValue>> _modifiers = new Dictionary<ModifierType, List<OffsetValue>>();
+	private readonly Dictionary<ModifierType, List<OffsetValue>> _modifiers;
+
+	public ModifierCalculator() {
+
+		_modifiers = new Dictionary<ModifierType, List<OffsetValue>>();
+	}
 
 	public void Add( ModifierType modifierType, OffsetValue modifier ) {
 
@@ -56,6 +61,11 @@ public class ModifierCalculator {
 	}
 
 	public void Remove( ModifierType modifierType, OffsetValue modifier ) {
+
+		if ( !_modifiers.ContainsKey( modifierType ) ) {
+
+			return;
+		}
 
 		_modifiers[modifierType].Remove( modifier );
 

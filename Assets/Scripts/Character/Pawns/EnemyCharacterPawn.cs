@@ -11,9 +11,15 @@ public class EnemyCharacterPawn : CharacterPawn {
 		_navMeshAgent.SetDestination( destination );
 	}
 
+	public override float GetDistanceToDestination() {
+
+		return _navMeshAgent.remainingDistance;
+	}
+
 	public override void ClearDestination() {
 		
-		_navMeshAgent.Stop();
+		//_navMeshAgent.Stop();
+		_navMeshAgent.destination = transform.position;
 	}
 
 }

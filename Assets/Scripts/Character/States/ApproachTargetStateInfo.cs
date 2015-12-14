@@ -40,15 +40,13 @@ public class ApproachTargetStateInfo : CharacterStateInfo {
 			var distanceToDestination = destination.HasValue ? Vector3.Distance( character.Pawn.position, destination.Value ) : -1f;
 
 			return destination.HasValue
-			       && distanceToDestination >= typedInfo._minRange
-			       && distanceToDestination <= typedInfo._maxRange;
+			       && distanceToDestination > typedInfo._minRange
+			       && distanceToDestination < typedInfo._maxRange;
 		}
 
 		public override IEnumerable GetEvaluationBlock() {
 
 			var pawn = character.Pawn;
-
-			pawn.canFollowDestination = true;
 
 			do {
 
@@ -56,12 +54,15 @@ public class ApproachTargetStateInfo : CharacterStateInfo {
 
 				pawn.SetDestination( destination.Value );
 
-			} while ( pawn.GetDistanceToDestination() > typedInfo._minRange && pawn.GetDistanceToDestination() < typedInfo._maxRange );
+				yield return null;
 
-			pawn.canFollowDestination = false;
+				//pawn.SetDestination( destination.Value );
+				
+			} while ( pawn.GetDistanceToDestination() > typedInfo._minRange && pawn.GetDistanceToDestination() < typedInfo._maxRange );
 
 			if ( typedInfo._clearTargetOnReach ) {
 
+				pawn.ClearDestination();
 				destination = null;
 			}
 		}
