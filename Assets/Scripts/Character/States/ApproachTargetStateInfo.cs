@@ -49,14 +49,15 @@ public class ApproachTargetStateInfo : CharacterStateInfo {
 			var pawn = character.Pawn;
 
 			pawn.canFollowDestination = true;
+			pawn.SetDestination( destination.Value );
 
 			do {
 
 				yield return null;
 
-				pawn.SetDestination( destination.Value );
-
 			} while ( pawn.GetDistanceToDestination() > typedInfo._minRange && pawn.GetDistanceToDestination() < typedInfo._maxRange );
+
+			pawn.ClearDestination();
 
 			pawn.canFollowDestination = false;
 

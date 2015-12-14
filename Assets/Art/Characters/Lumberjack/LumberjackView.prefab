@@ -9,6 +9,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 402058}
   - 114: {fileID: 11484046}
+  - 114: {fileID: 11466218}
   m_Layer: 0
   m_Name: View
   m_TagString: Untagged
@@ -737,6 +738,19 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &11466218
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 101766}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 92748a4eccde1d1438ca6b9e1588b6b8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animators:
+  - {fileID: 9529360}
 --- !u!114 &11467564
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -750,6 +764,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sensor: {fileID: 11477594}
   _animationController: {fileID: 11484046}
+  _weaponAnimationController: {fileID: 11466218}
   canFollowDestination: 0
   turret: {fileID: 0}
   _weight: 1
@@ -860,7 +875,7 @@ NavMeshAgent:
   m_Speed: 3.5
   m_Acceleration: 8
   avoidancePriority: 50
-  m_AngularSpeed: 360
+  m_AngularSpeed: 480
   m_StoppingDistance: 0
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
@@ -902,7 +917,7 @@ Prefab:
       objectReference: {fileID: 13583872}
     - target: {fileID: 0}
       propertyPath: m_AngularSpeed
-      value: 360
+      value: 480
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

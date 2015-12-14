@@ -864,8 +864,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 1, y: 2, z: 1}
+  m_Center: {x: 0, y: 1, z: 0}
 --- !u!65 &6582520
 BoxCollider:
   m_ObjectHideFlags: 1
@@ -876,8 +876,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 1, y: 2, z: 1}
+  m_Center: {x: 0, y: 1, z: 0}
 --- !u!95 &9532122
 Animator:
   serializedVersion: 3
@@ -908,6 +908,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sensor: {fileID: 11443828}
   _animationController: {fileID: 11477632}
+  _weaponAnimationController: {fileID: 0}
   canFollowDestination: 0
   turret: {fileID: 0}
   _weight: 1

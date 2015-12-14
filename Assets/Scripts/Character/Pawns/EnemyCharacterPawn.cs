@@ -17,7 +17,7 @@ public class EnemyCharacterPawn : CharacterPawn {
 	}
 	public override void ClearDestination() {
 		
-		_navMeshAgent.Stop();
+		_navMeshAgent.destination = transform.position;
 	}
 
 }
