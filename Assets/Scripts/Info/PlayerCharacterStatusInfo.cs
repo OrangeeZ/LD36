@@ -10,6 +10,8 @@ public class PlayerCharacterStatusInfo : CharacterStatusInfo {
 
 	public RangedWeaponInfo BaseWeapon;
 
+	public float SpeedBonusPerItem;
+
 	public override CharacterStatus GetInstance() {
 
 		var result = base.GetInstance();
@@ -43,6 +45,8 @@ public class PlayerCharacterStatusInfo : CharacterStatusInfo {
 		}
 
 		BaseWeapon = values.GetScriptableObject<RangedWeaponInfo>( "BaseWeapon" );
+
+		SpeedBonusPerItem = values.Get( "SpeedUpProgress", 0f );
 	}
 
 }

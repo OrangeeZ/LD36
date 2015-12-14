@@ -17,10 +17,12 @@ public class GameplayController : MonoBehaviour {
     public static GameplayController Instance { get; private set; }
 
 	void Awake() {
+
 		Instance = this;
 	}
 
 	public IEnumerator Start() {
+
 		yield return null;
 
 		_playerSpawner.Initialize();
@@ -29,7 +31,10 @@ public class GameplayController : MonoBehaviour {
 			each.Initialize();
 		}
 
-		_zoneSpawnController.Initialize();
+		if ( _zoneSpawnController != null ) {
+
+			_zoneSpawnController.Initialize();
+		}
 	}
 
 	[ContextMenu("Hook dependencies")]

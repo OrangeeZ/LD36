@@ -39,3 +39,4 @@ MonoBehaviour:
   - value: 10
     valueType: 0
   BaseWeapon: {fileID: 11400000, guid: 8f8ff88c690fff944b186897ea57d095, type: 2}
+  SpeedBonusPerItem: 0.5

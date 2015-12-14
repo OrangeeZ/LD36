@@ -20,6 +20,12 @@ public class NPCView : AObject {
 
 		character.Pawn.AddLevel( npc.CharacterScaleBonus );
 
+		var playerCharacterStatusInfo = character.Status.Info as PlayerCharacterStatusInfo;
+		if ( playerCharacterStatusInfo != null ) {
+
+			character.Status.ModifierCalculator.Add( ModifierType.BaseMoveSpeed, new OffsetValue( playerCharacterStatusInfo.SpeedBonusPerItem, OffsetValue.OffsetValueType.Constant ) );
+		}
+
 		if ( destroyOnPickup ) {
 
 			Destroy( gameObject );
