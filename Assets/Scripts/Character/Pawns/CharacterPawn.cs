@@ -68,6 +68,10 @@ public class CharacterPawn : CharacterPawnBase {
 		//	}
 		//}
 
+		if ( _characterController != null ) {
+
+			_characterController.Move( Vector3.down * Time.deltaTime * 2f );
+		}
 	}
 
 	public Vector3 GetWeaponPosition() {
@@ -84,7 +88,7 @@ public class CharacterPawn : CharacterPawnBase {
 			position += directionDelta;
 		} else {
 
-			_characterController.Move( directionDelta + Vector3.down * Time.deltaTime );
+			_characterController.Move( directionDelta );
 		}
 
 		rotation = Quaternion.RotateTowards( rotation, Quaternion.LookRotation( direction, Vector3.up ), _rotationToDirectionSpeed * Time.deltaTime );
