@@ -27,4 +27,11 @@ public class EnemyCharacterPawn : CharacterPawn {
 		_navMeshAgent.destination = transform.position;
 	}
 
+	public override void MakeDead() {
+
+		base.MakeDead();
+
+		_navMeshAgent.Stop();
+	}
+
 }
