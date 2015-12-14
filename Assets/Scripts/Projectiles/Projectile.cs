@@ -57,11 +57,6 @@ public class Projectile : AObject {
 
 	public virtual void OnHit() {
 
-		if ( !_splashRange.IsNan() && _splashRange > 0f ) {
-
-			Helpers.DoSplashDamage( transform.position, _splashRange, Damage, teamToSkip: CanFriendlyFire ? -1 : Owner.TeamId );
-		}
-
 		Release();
 	}
 
@@ -75,6 +70,11 @@ public class Projectile : AObject {
 	}
 
 	protected virtual void Release() {
+
+		if ( !_splashRange.IsNan() && _splashRange > 0f ) {
+
+			Helpers.DoSplashDamage( transform.position, _splashRange, Damage, teamToSkip: CanFriendlyFire ? -1 : Owner.TeamId );
+		}
 
 		Destroy( gameObject );
 	}
