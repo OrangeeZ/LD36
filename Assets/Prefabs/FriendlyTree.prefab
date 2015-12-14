@@ -25,6 +25,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 416448}
+  - 114: {fileID: 11476718}
   m_Layer: 0
   m_Name: FriendlyTree
   m_TagString: Untagged
@@ -166,6 +167,19 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &11476718
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 122864}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f3dd0ad67bf2d8949aa4ed87164d97cc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  NpcListInfo: {fileID: 11400000, guid: a46219fed2bf5c24491db477d4e11234, type: 2}
+  OverriderNpcInfo: {fileID: 0}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

@@ -13611,7 +13611,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 122864, guid: 30aa25e57a9704c6bb0a260d717f733d, type: 2}
       propertyPath: m_Name
-      value: FriendlyTree (1)
+      value: NPC Spawner [null]
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 30aa25e57a9704c6bb0a260d717f733d, type: 2}
@@ -26855,6 +26855,23 @@ Prefab:
 Transform:
   m_PrefabParentObject: {fileID: 438914, guid: f842ee6e7b950474497df9682650cfa3, type: 2}
   m_PrefabInternal: {fileID: 930948244}
+--- !u!1 &932201219 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 122864, guid: 30aa25e57a9704c6bb0a260d717f733d, type: 2}
+  m_PrefabInternal: {fileID: 409463447}
+--- !u!114 &932201220
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 932201219}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f3dd0ad67bf2d8949aa4ed87164d97cc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  NpcListInfo: {fileID: 11400000, guid: a46219fed2bf5c24491db477d4e11234, type: 2}
+  OverriderNpcInfo: {fileID: 0}
 --- !u!1001 &932742469
 Prefab:
   m_ObjectHideFlags: 0
