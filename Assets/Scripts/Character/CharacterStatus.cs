@@ -46,7 +46,7 @@ public class CharacterStatus {
 
 	private void OnModifiersChange() {
 
-		MoveSpeed.Value = ModifierCalculator.CalculateFinalValue( ModifierType.BaseMoveSpeed, MoveSpeed.Value );
+		MoveSpeed.Value = ModifierCalculator.CalculateFinalValue( ModifierType.BaseMoveSpeed, Info.MoveSpeed );
 		//MaxHealth = ModifierCalculator.CalculateFinalValue( Base )
 	}
 

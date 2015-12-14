@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using System.Collections;
 using Packages.EventSystem;
 using UniRx;
@@ -6,22 +7,31 @@ using UnityStandardAssets.Effects;
 
 public class EffectSpawner : AObject {
 
-    public GameObject explosion;
+    //public GameObject explosion;
     public GameObject splashExplosion;
-    public GameObject buildingExplosion;
+    //public GameObject buildingExplosion;
+
+	public GameObject ItemPickupEffect;
 
     private void Start() {
 
-        EventSystem.Events.SubscribeOfType<Character.Died>( OnCharacterDie );
+        //EventSystem.Events.SubscribeOfType<Character.Died>( OnCharacterDie );
         EventSystem.Events.SubscribeOfType<Helpers.SplashDamage>( OnSplashDamage );
 
-        EventSystem.Events.SubscribeOfType<BuildingDestructionEffect.Destroyed>( OnBuildingDestruction );
+        //EventSystem.Events.SubscribeOfType<BuildingDestructionEffect.Destroyed>( OnBuildingDestruction );
+
+	    EventSystem.Events.SubscribeOfType<ItemPickupListener.PickedUp>( Listener );
     }
 
-    private void OnBuildingDestruction( BuildingDestructionEffect.Destroyed buildingDestroyedEvent ) {
+	private void Listener( ItemPickupListener.PickedUp pickedUp ) {
 
-        Instantiate( buildingExplosion, buildingDestroyedEvent.target.position, buildingDestroyedEvent.target.rotation );
-    }
+		Instantiate( ItemPickupEffect, pickedUp.ItemView.transform.position );
+	}
+
+	//private void OnBuildingDestruction( BuildingDestructionEffect.Destroyed buildingDestroyedEvent ) {
+
+ //       Instantiate( buildingExplosion, buildingDestroyedEvent.target.position, buildingDestroyedEvent.target.rotation );
+ //   }
 
     private void OnSplashDamage( Helpers.SplashDamage splashDamageEvent ) {
 
@@ -34,9 +44,9 @@ public class EffectSpawner : AObject {
         }
     }
 
-    private void OnCharacterDie( Character.Died diedEvent ) {
+    //private void OnCharacterDie( Character.Died diedEvent ) {
 
-        Instantiate( explosion, diedEvent.Character.Pawn.position, diedEvent.Character.Pawn.rotation );
-    }
+    //    Instantiate( explosion, diedEvent.Character.Pawn.position, diedEvent.Character.Pawn.rotation );
+    //}
 
 }

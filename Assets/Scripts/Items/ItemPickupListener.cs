@@ -1,7 +1,14 @@
 ﻿using UnityEngine;
 using System.Collections;
+using Packages.EventSystem;
 
 public class ItemPickupListener : MonoBehaviour {
+
+	public class PickedUp : IEventBase {
+
+		public ItemView ItemView;
+
+	}
 
 	[SerializeField]
 	private CharacterPawnBase _pawn;
@@ -23,6 +30,8 @@ public class ItemPickupListener : MonoBehaviour {
 		}
 
 		if ( itemView != null ) {
+
+			EventSystem.RaiseEvent( new PickedUp { ItemView = itemView } );
 
 			_pawn.character.Inventory.AddItem( itemView.item );
 
