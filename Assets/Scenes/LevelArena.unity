@@ -31448,6 +31448,7 @@ MonoBehaviour:
   - {fileID: 390506421}
   - {fileID: 680807070}
   _autoDrainInterval: 15
+  ZonesInTheSameTime: 5
 --- !u!4 &688914873
 Transform:
   m_ObjectHideFlags: 0

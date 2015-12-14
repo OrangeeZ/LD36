@@ -6,15 +6,17 @@ public class ZoneSpawnController : MonoBehaviour {
 	[SerializeField]
 	private ZoneSpawner[] _zoneSpawners;
 
-	private ZoneSpawner _currentZone;
+	private ZoneSpawner[] _currentZone;
 
 	[SerializeField]
 	private float _autoDrainInterval;
 
 	private float _zoneTimer = 0f;
 
-	public void Initialize() {
+	public int ZonesInTheSameTime;
 
+	public void Initialize() {
+		_currentZone = new ZoneSpawner[ZonesInTheSameTime];
 		enabled = true;
 	}
 
@@ -25,18 +27,25 @@ public class ZoneSpawnController : MonoBehaviour {
 
 	private void Update() {
 
-		if ( _currentZone == null || _currentZone.IsDrained ) {
-
-			_currentZone = _zoneSpawners.RandomElement();
-			_currentZone.Initialize();
-
-			_zoneTimer = 0f;
-		}
-
+		var flagStartAutoDrain = false;
 		if ( ( _zoneTimer += Time.deltaTime ) >= _autoDrainInterval ) {
-
-			_currentZone.StartAutoDrain();
+			flagStartAutoDrain = true;
 		}
+
+		for (int i = 0; i < ZonesInTheSameTime; i++) {
+			if ( _currentZone[i] == null || _currentZone[i].IsDrained ) {
+				_currentZone[i] = _zoneSpawners.RandomElement();
+				_currentZone[i].Initialize();
+				_zoneTimer = 0f;
+
+				if (flagStartAutoDrain) {
+					_currentZone [i].StartAutoDrain ();
+				}
+			}
+
+
+		}
+
 	}
 
 	[ContextMenu( "Hook zones" )]
