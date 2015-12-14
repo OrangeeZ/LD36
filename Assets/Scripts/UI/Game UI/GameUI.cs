@@ -32,8 +32,12 @@ public class GameUI : UIScreen {
 		if ( _character != null ) {
 
 			_healthBar.value = _character.Health.Value / _character.Status.MaxHealth.Value;
-			_healthValue.text = _character.Health.Value.ToString();
-			_acornValue.text = _character.Inventory.GetItemCount<AcornAmmoItemInfo.AcornAmmo>().ToString();
+			_healthValue.text = _character.Health.Value.RoundToInt().ToString();
+
+			var acornCount = _character.Inventory.GetItemCount<AcornAmmoItemInfo.AcornAmmo>();
+
+			//_acornValue.enabled = acornCount > 0;
+			_acornValue.text = acornCount.ToString();
 		}
 	}
 

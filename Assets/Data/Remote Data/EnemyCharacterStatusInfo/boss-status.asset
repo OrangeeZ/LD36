@@ -27,5 +27,6 @@ MonoBehaviour:
   DropChance: 0
   EnemySpottedSound: []
   SpawnInterval: 0
+  MaxLiveEnemiesPerSpawner: 0
   SpeakChance: 0.2
   SpeakLineId: 

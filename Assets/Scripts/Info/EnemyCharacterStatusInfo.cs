@@ -10,7 +10,9 @@ public class EnemyCharacterStatusInfo : CharacterStatusInfo {
 	public EnemyCharacterPawn PawnPrefab;
 	public float DropChance;
 	public AudioClip[] EnemySpottedSound;
+
 	public float SpawnInterval;
+	public float MaxLiveEnemiesPerSpawner;
 
 	public float SpeakChance;
 	public string SpeakLineId;
@@ -25,6 +27,8 @@ public class EnemyCharacterStatusInfo : CharacterStatusInfo {
 		DropChance = values.Get( "DropChance", 0f );
 		SpawnInterval = values.Get( "RespawnTimer", -1f );
 		SpeakChance = values.Get( "SpeakChance", 0.2f );
+
+		MaxLiveEnemiesPerSpawner = values.Get( "MaxRespCount", 1f );
 		PawnPrefab = values.GetPrefabWithComponent<EnemyCharacterPawn>( "Visual", fixName: false );
 
 		//AttackRange = values.Get( "AttackRange", 0 );

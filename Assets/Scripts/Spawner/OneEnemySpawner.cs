@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UniRx;
@@ -10,11 +11,10 @@ public class OneEnemySpawner : SpawnerBase {
 	public EnemyCharacterStatusInfo characterStatusInfo;
 	public ItemInfo[] startingItems;
 
-	//public float Interval = 20f;
 	private float _lastSpawnTime = 0f;
 	private bool _isActive = false;
 
-	private Character _character;
+	private List<Character> _characters = new List<Character>();
 
 	public override void Initialize() {
 
@@ -25,22 +25,30 @@ public class OneEnemySpawner : SpawnerBase {
 
 	private void Spawn() {
 
-		_character = characterInfo.GetCharacter( startingPosition: transform.position, replacementStatusInfo: characterStatusInfo );
+		_characters.RemoveAll( where => where.Health.Value <= 0 );
+
+		if ( _characters.Count >= characterStatusInfo.MaxLiveEnemiesPerSpawner ) {
+
+			return;
+		}
+
+		var character = characterInfo.GetCharacter( startingPosition: transform.position, replacementStatusInfo: characterStatusInfo );
+		_characters.Add( character );
 
 		foreach ( var each in startingItems.Select( _ => _.GetItem() ) ) {
 
-			_character.Inventory.AddItem( each );
+			character.Inventory.AddItem( each );
 		}
 
 		if ( characterStatusInfo != null ) {
 
-			_character.ItemsToDrop = characterStatusInfo.ItemsToDrop;
+			character.ItemsToDrop = characterStatusInfo.ItemsToDrop;
 
-			_character.dropProbability = characterStatusInfo.DropChance;
-			_character.speakProbability = characterStatusInfo.SpeakChance;
+			character.dropProbability = characterStatusInfo.DropChance;
+			character.speakProbability = characterStatusInfo.SpeakChance;
 
 			var weapon = characterStatusInfo.Weapon1.GetItem();
-			_character.Inventory.AddItem( weapon );
+			character.Inventory.AddItem( weapon );
 
 			weapon.Apply();
 		}
