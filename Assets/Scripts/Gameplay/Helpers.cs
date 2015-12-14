@@ -24,20 +24,25 @@ public static class Helpers {
 		//var charactersInCone =
 	}
 
-	public static void DoSplashDamage( Vector3 point, float radius, int amount ) {
+	public static void DoSplashDamage( Vector3 point, float radius, float amount, int teamToSkip ) {
 
-		new PMonad().Add( GradualDestroy( point, radius, amount ) ).Execute();
+		new PMonad().Add( GradualDestroy( point, radius, amount, teamToSkip ) ).Execute();
 
 		EventSystem.RaiseEvent( new SplashDamage {position = point, radius = radius * 0.5f} );
 	}
 
-	private static IEnumerable GradualDestroy( Vector3 point, float radius, int amount ) {
+	private static IEnumerable GradualDestroy( Vector3 point, float radius, float amount, int teamToSkip ) {
 
 		var maxObjectsPerIteration = 2;
 		var objectCounter = 0;
 
 		var affectedCharacters = Character.Instances.Where( _ => ( _.Pawn.position - point ).magnitude <= radius ).ToArray();
 		foreach ( var each in affectedCharacters ) {
+
+			if ( each.TeamId == teamToSkip ) {
+
+				continue;
+			}
 
 			each.Damage( amount );
 
@@ -51,21 +56,21 @@ public static class Helpers {
 			}
 		}
 
-		var affectedBuildings = Building.instances.Where( _ => _.sphereCollider.Intersects( point, radius ) ).ToList();
-		affectedBuildings.Sort( ( a, b ) => ( a.transform.position - point ).magnitude.CompareTo( ( b.transform.position - point ).magnitude ) );
-		foreach ( var each in affectedBuildings ) {
+		//var affectedBuildings = Building.instances.Where( _ => _.sphereCollider.Intersects( point, radius ) ).ToList();
+		//affectedBuildings.Sort( ( a, b ) => ( a.transform.position - point ).magnitude.CompareTo( ( b.transform.position - point ).magnitude ) );
+		//foreach ( var each in affectedBuildings ) {
 
-			each.Hit( amount );
+		//	each.Hit( amount );
 
-			objectCounter++;
+		//	objectCounter++;
 
-			if ( objectCounter >= maxObjectsPerIteration ) {
+		//	if ( objectCounter >= maxObjectsPerIteration ) {
 
-				objectCounter = 0;
+		//		objectCounter = 0;
 
-				yield return null;
-			}
-		}
+		//		yield return null;
+		//	}
+		//}
 	}
 
 }

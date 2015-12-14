@@ -3,43 +3,43 @@ using System.Collections;
 
 public class ItemView : AObject {
 
-    public Item item;
+	public Item item;
 	public NPCView giver;
 
-    public float fadeInDuration = 1f;
+	public float fadeInDuration = 1f;
 
-    public AnimationCurve scaleCurve;
-    public AnimationCurve positionCurve;
+	public AnimationCurve scaleCurve;
+	public AnimationCurve positionCurve;
 
-    private IEnumerator Start() {
+	private IEnumerator Start() {
 
-        var timer = new AutoTimer( fadeInDuration );
+		var timer = new AutoTimer( fadeInDuration );
 
-        while ( timer.ValueNormalized < 1f ) {
+		while ( timer.ValueNormalized < 1f ) {
 
-            transform.localScale = Vector3.one * scaleCurve.Evaluate( timer.ValueNormalized );
+			transform.localScale = Vector3.one * scaleCurve.Evaluate( timer.ValueNormalized );
 
-            yield return null;
-        }
-    }
+			yield return null;
+		}
+	}
 
-    public void NotifyPickUp( Character character ) {
+	public void NotifyPickUp( Character character ) {
 
-		if (giver != null) {
+		if ( giver != null ) {
 
-			giver.OnPickedUp();
+			giver.OnPickedUp( character );
 		}
 
-        Destroy( gameObject );
-    }
+		Destroy( gameObject );
+	}
 
-    public void SetColor( Color baseColor ) {
+	public void SetColor( Color baseColor ) {
 
-        var renderers = GetComponentsInChildren<Renderer>();
-        foreach ( var each in renderers ) {
+		var renderers = GetComponentsInChildren<Renderer>();
+		foreach ( var each in renderers ) {
 
-            each.material.SetColor( "_Color", baseColor );
-        }
-    }
+			each.material.SetColor( "_Color", baseColor );
+		}
+	}
 
 }

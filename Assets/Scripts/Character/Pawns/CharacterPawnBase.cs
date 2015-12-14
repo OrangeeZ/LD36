@@ -56,4 +56,8 @@ public class CharacterPawnBase : AObject {
 
         return Vector3.forward;
     }
+
+	public virtual void MakeDead() {
+		
+	}
 }

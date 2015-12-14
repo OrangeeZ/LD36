@@ -4,9 +4,6 @@ using System.Collections;
 [CreateAssetMenu( menuName = "Create/Status effects/Regen acorns" )]
 public class RegenAcornsStatusEffectInfo : CharacterStatusEffectInfo {
 
-	public int MaxAcorns = 10;
-	public float RegenDuration = 0.5f;
-
 	public AcornAmmoItemInfo AcornAmmoItemInfo;
 
 	public override void Add( Character target ) {
@@ -20,15 +17,39 @@ public class RegenAcornsStatusEffectInfo : CharacterStatusEffectInfo {
 
 	private IEnumerable RegenAcorns( Character target ) {
 
-		var timer = new AutoTimer( RegenDuration );
+		var timer = default ( AutoTimer );
 
 		while ( true ) {
 
-			if ( timer.ValueNormalized == 1f ) {
+			var acornRegenValue = target.Status.ModifierCalculator.CalculateFinalValue( ModifierType.BaseAcornRegen, 0f );
+			if ( acornRegenValue <= 0 ) {
 
-				timer.Reset();
+				yield return null;
 
-				target.Inventory.AddItem( AcornAmmoItemInfo.GetItem() );
+				continue;
+			}
+
+			if ( timer != null ) {
+
+				if ( timer.ValueNormalized == 1f ) {
+
+					var acornCount = target.Inventory.GetItemCount<AcornAmmoItemInfo.AcornAmmo>();
+					if ( acornCount >= target.Status.ModifierCalculator.CalculateFinalValue( ModifierType.MaxAcorns, 0f ) ) {
+
+						yield return null;
+						continue;
+					}
+
+					target.Inventory.AddItem( AcornAmmoItemInfo.GetItem() );
+
+					timer = null;
+				}
+
+			} else {
+
+				var regenDuration = 1f / acornRegenValue;
+				
+				timer = new AutoTimer( regenDuration );
 			}
 
 			yield return null;

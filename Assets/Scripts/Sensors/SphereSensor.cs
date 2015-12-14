@@ -10,6 +10,22 @@ public class SphereSensor : MonoBehaviour, IObservable<CharacterPawnBase> {
 
     private readonly Subject<CharacterPawnBase> _pawnSubject = new Subject<CharacterPawnBase>();
 
+	void OnEnable() {
+
+		if ( _collider != null ) {
+			
+			_collider.enabled = true;
+		}
+	}
+
+	void OnDisable() {
+
+		if ( _collider != null ) {
+
+			_collider.enabled = false;
+		}
+	}
+
 	public void SetRadius( float radius ) {
 
 		_collider.radius = radius;

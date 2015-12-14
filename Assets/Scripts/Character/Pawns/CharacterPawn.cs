@@ -1,4 +1,5 @@
-﻿using System.CodeDom;
+﻿using System;
+using System.CodeDom;
 using UnityEngine;
 using System.Collections;
 using System.Linq;
@@ -8,6 +9,9 @@ public class CharacterPawn : CharacterPawnBase {
 	public bool canFollowDestination;
 
 	public GameObject turret;
+
+	[SerializeField]
+	private float _gunYOffset = 0.5f;
 
 	[SerializeField]
 	private float _weight = 1f;
@@ -21,6 +25,9 @@ public class CharacterPawn : CharacterPawnBase {
 	[SerializeField]
 	private SimpleSphereCollider _sphereCollider;
 
+	[SerializeField]
+	private CharacterController _characterController;
+
 	private Vector3? _destination;
 	private bool _isGravityEnabled;
 	private float _ySpeed;
@@ -29,6 +36,9 @@ public class CharacterPawn : CharacterPawnBase {
 
 	[SerializeField]
 	private Transform _subTransform;
+
+	[SerializeField]
+	private CharacterPawnLevelingController _levelingController;
 
 	private void Update() {
 
@@ -58,11 +68,29 @@ public class CharacterPawn : CharacterPawnBase {
 		//	}
 		//}
 
+		if ( _characterController != null ) {
+
+			_characterController.Move( Vector3.down * Time.deltaTime * 2f );
+		}
+	}
+
+	public Vector3 GetWeaponPosition() {
+
+		return position + Vector3.up * _gunYOffset;
 	}
 
 	public override void MoveDirection( Vector3 direction ) {
 
-		position += direction * speed * Time.deltaTime;
+		var directionDelta = direction * speed * Time.deltaTime;
+
+		if ( _characterController == null ) {
+
+			position += directionDelta;
+		} else {
+
+			_characterController.Move( directionDelta );
+		}
+
 		rotation = Quaternion.RotateTowards( rotation, Quaternion.LookRotation( direction, Vector3.up ), _rotationToDirectionSpeed * Time.deltaTime );
 	}
 
@@ -118,10 +146,21 @@ public class CharacterPawn : CharacterPawnBase {
 		enabled = isActive;
 	}
 
-	public void MakeDead() {
+	public override void MakeDead() {
 
-		GetComponentsInChildren<Rotator>().MapImmediate( Destroy );
-		GetComponentsInChildren<Renderer>().MapImmediate( _ => _.material.color += Color.black * 0.8f );
+		GetSphereSensor().enabled = false;
+		GetComponent<Collider>().enabled = false;
+
+		//GetComponentsInChildren<Rotator>().MapImmediate( Destroy );
+		//GetComponentsInChildren<Renderer>().MapImmediate( _ => _.material.color += Color.black * 0.8f );
+	}
+
+	public void AddLevel( float scaleBonus ) {
+
+		if ( _levelingController != null ) {
+
+			_levelingController.AddLevel( scaleBonus );
+		}
 	}
 
 	private void ApplyPunishingForce() {

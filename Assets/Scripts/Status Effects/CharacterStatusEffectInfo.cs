@@ -11,17 +11,78 @@ public enum ModifierType {
 
 	ThornsDamage,
 
-	SunHealthRestore,//
-	ManureHealthRestore,//
-	WaterHealthRestore,//
+	SunHealthRestore, //
+	ManureHealthRestore, //
+	WaterHealthRestore, //
 
 	BurningTimerDuration,
 	DebuffTimerDuration,
 
-	BaseAttackSpeed,//
+	BaseAttackSpeed, //
 	BaseRegeneration,
-	BaseMoveSpeed,//
-	BaseDamage//
+	BaseMoveSpeed, //
+	BaseDamage,
+	BaseAcornRegen, //
+	MaxAcorns
+}
+
+public static class ModifierUtility {
+
+	public static ModifierType ParseModifierType( string inputString ) {
+
+		switch ( inputString ) {
+
+			case "ThornsDmg":
+				return ModifierType.ThornsDamage;
+
+			case "SunHPrestore":
+				return ModifierType.SunHealthRestore;
+
+			case "BaseMoveSpeed":
+				return ModifierType.BaseMoveSpeed;
+
+			case "ManureHPAdd":
+				return ModifierType.ManureHealthRestore;
+
+			case "WaterHPrestore":
+				return ModifierType.WaterHealthRestore;
+
+			case "DamageKoef":
+				return ModifierType.BaseDamage;
+
+			case "BurningTimer":
+				return ModifierType.BurningTimerDuration;
+
+			case "Base attack speed":
+				return ModifierType.BaseAttackSpeed;
+
+			case "DebuffTimer":
+				return ModifierType.DebuffTimerDuration;
+
+			case "BaseRegeneration":
+				return ModifierType.BaseAttackSpeed;
+
+			case "BaseAcornRegen":
+				return ModifierType.BaseAcornRegen;
+
+			default:
+				return ModifierType.None;
+
+		}
+	}
+
+	public static OffsetValue.OffsetValueType ParseOffsetValueType( string inputString ) {
+
+		switch ( inputString ) {
+
+			case "add":
+				return OffsetValue.OffsetValueType.Constant;
+
+			case "mul":
+			default:
+				return OffsetValue.OffsetValueType.Rate;
+		}
+	}
 
 }
 
@@ -95,8 +156,6 @@ public class CharacterStatusEffectInfo : ScriptableObject {
 	public int AmmoDelta;
 	public float ViewRadiusDelta;
 
-	
-
 	public virtual void Add( Character target ) {
 
 		target.Status.AddEffect( this );
@@ -104,7 +163,6 @@ public class CharacterStatusEffectInfo : ScriptableObject {
 		target.Status.MaxHealth.Value += HealthDelta;
 		target.Status.MoveSpeed.Value += MoveSpeedDelta;
 
-		
 	}
 
 	public virtual void Remove( Character target ) {
@@ -116,4 +174,5 @@ public class CharacterStatusEffectInfo : ScriptableObject {
 
 		//target.Status.ModifierCalculator.Remove( ModifierType, ModifierValue );
 	}
+
 }

@@ -11,6 +11,12 @@ public class GameUI : UIScreen {
 	[SerializeField]
 	private Slider _healthBar;
 
+	[SerializeField]
+	private Text _healthValue;
+
+	[SerializeField]
+	private Text _acornValue;
+
 	private void Awake() {
 
 		EventSystem.Events.SubscribeOfType<PlayerCharacterSpawner.Spawned>( SetCharacter );
@@ -25,7 +31,9 @@ public class GameUI : UIScreen {
 
 		if ( _character != null ) {
 
-			_healthBar.value = (float) _character.Health.Value / _character.Status.MaxHealth.Value;
+			_healthBar.value = _character.Health.Value / _character.Status.MaxHealth.Value;
+			_healthValue.text = _character.Health.Value.ToString();
+			_acornValue.text = _character.Inventory.GetItemCount<AcornAmmoItemInfo.AcornAmmo>().ToString();
 		}
 	}
 

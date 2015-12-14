@@ -14,7 +14,7 @@ public class PlayerCharacterSpawner : MonoBehaviour {
 	}
 
 	public CharacterInfo characterInfo;
-	public CharacterStatusInfo characterStatusInfo;
+	public PlayerCharacterStatusInfo characterStatusInfo;
 
 	public ItemInfo[] startingItems;
 
@@ -37,9 +37,15 @@ public class PlayerCharacterSpawner : MonoBehaviour {
 			character.Inventory.AddItem( each );
 		}
 
+		var weaponInfo = characterStatusInfo.BaseWeapon as WeaponInfo;
 		if ( startingWeapon != null ) {
 
-			var weapon = startingWeapon.GetItem();
+			weaponInfo = startingWeapon;
+		}
+
+		if ( weaponInfo != null ) {
+
+			var weapon = weaponInfo.GetItem();
 
 			character.Inventory.AddItem( weapon );
 			weapon.Apply();
@@ -57,7 +63,7 @@ public class PlayerCharacterSpawner : MonoBehaviour {
 			//GameScreen.instance.statsPanel.SetCharacter( character );
 		}
 
-		character.Status.AddEffect( startingStatusEffect );
+		startingStatusEffect.Add( character );
 
 		EventSystem.RaiseEvent( new Spawned { Character = character } );
 

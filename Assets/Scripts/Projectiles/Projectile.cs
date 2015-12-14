@@ -3,8 +3,7 @@ using UnityEngine.Serialization;
 
 public class Projectile : AObject {
 
-	[FormerlySerializedAs( "lifetime" )]
-	public float Lifetime = 3f;
+	public float Lifetime;
 
 	public float Damage { get; protected set; }
 
@@ -14,6 +13,8 @@ public class Projectile : AObject {
 
 	public float weight = 1f;
 
+	public bool DelayedDestroy = false;
+
 	private AutoTimer _timer;
 
 	protected Vector3 Direction;
@@ -22,6 +23,10 @@ public class Projectile : AObject {
 
 	protected float Speed;
 	protected bool CanFriendlyFire;
+	private float _splashRange;
+
+	private bool _isDestroyed = false;
+	private int _frameCountStart;
 
 	private void Awake() {
 
@@ -36,9 +41,14 @@ public class Projectile : AObject {
 		}
 
 		position += Direction * Speed * Time.deltaTime;
+
+		if ( _isDestroyed && Time.frameCount - _frameCountStart >= 4 ) {
+			
+			Destroy( gameObject );
+		}
 	}
 
-	public void Launch( Character owner, Vector3 direction, float speed, float damage, bool canFriendlyFire ) {
+	public void Launch( Character owner, Vector3 direction, float speed, float damage, bool canFriendlyFire, float splashRange ) {
 
 		this.Owner = owner;
 		this.Speed = speed;
@@ -46,7 +56,10 @@ public class Projectile : AObject {
 		this.Damage = damage;
 		this.CanFriendlyFire = canFriendlyFire;
 
-		transform.position = this.Owner.Pawn.position;
+		_splashRange = splashRange;
+		_frameCountStart = Time.frameCount;
+
+		transform.position = this.Owner.Pawn.GetWeaponPosition();
 		transform.rotation = this.Owner.Pawn.rotation;
 
 		_timer = new AutoTimer( Lifetime );
@@ -69,10 +82,26 @@ public class Projectile : AObject {
 	}
 
 	protected virtual void Release() {
-		Destroy( gameObject );
+
+		if ( !_splashRange.IsNan() && _splashRange > 0f ) {
+
+			Helpers.DoSplashDamage( transform.position, _splashRange, Damage, teamToSkip: CanFriendlyFire ? -1 : Owner.TeamId );
+		}
+
+		_isDestroyed = true;
+
+		if ( !DelayedDestroy ) {
+
+			Destroy( gameObject );
+		}
 	}
 
 	private void OnTriggerEnter( Collider other ) {
+
+		if ( _isDestroyed ) {
+
+			return;
+		}
 
 		var otherPawn = other.GetComponent<CharacterPawnBase>();
 
@@ -92,6 +121,11 @@ public class Projectile : AObject {
 		}
 
 		OnContact( other );
+
+		if ( other.tag == "Environment" ) {
+			
+			OnHit();
+		}
 
 		var otherBuilding = other.GetComponent<Building>();
 

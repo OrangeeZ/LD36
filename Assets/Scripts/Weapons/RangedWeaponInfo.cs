@@ -17,9 +17,6 @@ public class RangedWeaponInfo : WeaponInfo {
 	private int _projectilesPerShot;
 
 	[SerializeField]
-	private float _deviationCoefficient;
-
-	[SerializeField]
 	private float _shotConeAngle;
 
 	[SerializeField]
@@ -29,7 +26,13 @@ public class RangedWeaponInfo : WeaponInfo {
 	private float _projectileLifetime;
 
 	[SerializeField]
+	private float _splashDamageRadius;
+
+	[SerializeField]
 	private RangedWeaponBehaviourInfo _weaponBehaviourInfo;
+
+	[SerializeField]
+	private BuffItemInfo _abilityOnPickup;
 
 	public class RangedWeapon : Weapon<RangedWeaponInfo> {
 
@@ -59,6 +62,13 @@ public class RangedWeaponInfo : WeaponInfo {
 			_behaviour = typedInfo._weaponBehaviourInfo.GetBehaviour();
 			_behaviour.Initialize( Inventory, this );
 
+			if ( typedInfo._abilityOnPickup != null ) {
+
+				var buffItem = typedInfo._abilityOnPickup.GetItem();
+
+				buffItem.SetCharacter( character );
+				buffItem.Apply();
+			}
 		}
 
 		public override void Attack( Character target, EnemyCharacterStatusInfo statusInfo ) {
@@ -81,7 +91,7 @@ public class RangedWeaponInfo : WeaponInfo {
 
 				var finalDamage = Character.Status.ModifierCalculator.CalculateFinalValue( ModifierType.BaseDamage, typedInfo.BaseDamage );
 
-				projectile.Launch( Character, projectileDirection, typedInfo._projectileSpeed, finalDamage, typedInfo.CanFriendlyFire );
+				projectile.Launch( Character, projectileDirection, typedInfo._projectileSpeed, finalDamage, typedInfo.CanFriendlyFire, typedInfo._splashDamageRadius );
 
 				_behaviour.TryShoot();
 
@@ -118,7 +128,7 @@ public class RangedWeaponInfo : WeaponInfo {
 
 				var finalDamage = Character.Status.ModifierCalculator.CalculateFinalValue( ModifierType.BaseDamage, typedInfo.BaseDamage );
 
-				projectile.Launch( Character, projectileDirection, typedInfo._projectileSpeed, finalDamage, typedInfo.CanFriendlyFire );
+				projectile.Launch( Character, projectileDirection, typedInfo._projectileSpeed, finalDamage, typedInfo.CanFriendlyFire, typedInfo._splashDamageRadius );
 
 				_behaviour.TryShoot();
 
@@ -180,6 +190,9 @@ public class RangedWeaponInfo : WeaponInfo {
 		_projectilesPerShot = values.Get( "BulletsPerBurst", 1 );
 		_projectileLifetime = values.Get( "ProjectileLifetime", 1f );
 		_shotConeAngle = values.Get( "BurstAngle", 0 );
+		_splashDamageRadius = values.Get( "SplashRadius", float.NaN );
+		_abilityOnPickup = values.GetScriptableObject<BuffItemInfo>( "AbilityOnPickup" );
+
 		ClipSize = values.Get( "Clip Size", _projectilesPerShot );
 		_projectilePrefab = values.GetPrefabWithComponent<Projectile>( "Projectile", fixName: false );
 	}

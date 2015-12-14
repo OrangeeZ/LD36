@@ -1,0 +1,41 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f3e2eaa14a8550d419e10beb2e37187d, type: 3}
+  m_Name: bushman
+  m_EditorClassIdentifier: 
+  MaxHealth: 100
+  MoveSpeed: 2
+  Damage: 0
+  MaxAcorns: 0
+  status:
+    Strength:
+      value: 0
+    Agility:
+      value: 0
+  ModifierTypes: 0800000005000000060000000400000002000000030000000a0000000c000000
+  OffsetValues:
+  - value: 0
+    valueType: 0
+  - value: 10
+    valueType: 0
+  - value: 10
+    valueType: 0
+  - value: 1
+    valueType: 0
+  - value: 1
+    valueType: 0
+  - value: 5
+    valueType: 0
+  - value: 1
+    valueType: 0
+  - value: 10
+    valueType: 0
+  BaseWeapon: {fileID: 11400000, guid: 8f8ff88c690fff944b186897ea57d095, type: 2}

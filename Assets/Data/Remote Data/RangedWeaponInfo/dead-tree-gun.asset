@@ -16,18 +16,19 @@ MonoBehaviour:
   inventoryIcon: {fileID: 0}
   color: {r: 0, g: 0, b: 0, a: 0}
   BaseDamage: 0
-  BaseAttackSpeed: 1
-  AttackRange: 5
+  BaseAttackSpeed: 0.1
+  AttackRange: 7
   CanFriendlyFire: 0
   SlotType: 0
   _projectilePrefab: {fileID: 11433014, guid: 608acec83ae17a746919b5d8ad070295, type: 2}
   _projectileSpeed: 20
-  ClipSize: 3
-  ReloadDuration: 1
-  _projectilesPerShot: 3
-  _deviationCoefficient: 0
-  _shotConeAngle: 30
+  ClipSize: 24
+  ReloadDuration: 0.1
+  _projectilesPerShot: 24
+  _shotConeAngle: 15
   _sound: {fileID: 0}
-  _projectileLifetime: 1
+  _projectileLifetime: 5
+  _splashDamageRadius: 5
   _weaponBehaviourInfo: {fileID: 11400000, guid: 5f105bd2d1fd7c44da9bbb2f92392799,
     type: 2}
+  _abilityOnPickup: {fileID: 0}
