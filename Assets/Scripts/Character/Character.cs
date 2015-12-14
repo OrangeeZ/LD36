@@ -101,6 +101,11 @@ public class Character {
 		EventSystem.RaiseEvent( new RecievedDamage {Character = this, Damage = amount} );
 	}
 
+	public bool IsEnemy()
+	{
+		return TeamId != 0;
+	}
+
 	public void Dispose() {
 
 		_compositeDisposable.Dispose();

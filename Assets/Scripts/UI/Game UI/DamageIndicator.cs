@@ -9,13 +9,24 @@ public class DamageIndicator : MonoBehaviour {
 
 	[SerializeField]
 	private float _distanceDelta;
+	[SerializeField]
+	private float _spreadDelta = 0.5f;
 
 	[SerializeField]
 	private float _duration;
 
-	public void Initialize( float damage ) {
+	[SerializeField]
+	private Color _enemyColor = Color.yellow;
+	[SerializeField]
+	private Color _playerColor = Color.red;
+
+
+	public void Initialize( float damage, bool isEnemy ) {
 
 		_value.text = damage.ToString();
+		_value.color = isEnemy ? _enemyColor : _playerColor;
+
+		transform.position += new Vector3(Random.Range(-_spreadDelta, _spreadDelta), 0);
 
 		StartCoroutine( PlayAnimation() );
 	}

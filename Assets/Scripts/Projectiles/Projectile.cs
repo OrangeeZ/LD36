@@ -66,7 +66,7 @@ public class Projectile : AObject {
 
 		var colorer = GetComponent<ProjectileColorer>();
 		if (colorer != null) {
-			colorer.Apply(Owner.TeamId != 0);
+			colorer.Apply(Owner.IsEnemy());
 		}
 
 		enabled = true;

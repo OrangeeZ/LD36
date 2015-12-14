@@ -26,7 +26,7 @@ public class DamageIndicatorController : MonoBehaviour {
 		var instance = Instantiate( _damageIndicator );
 		instance.transform.position = Camera.main.WorldToScreenPoint( recievedDamage.Character.Pawn.position );
 		instance.transform.SetParent( transform );
-		instance.Initialize( recievedDamage.Damage );
+		instance.Initialize( recievedDamage.Damage, recievedDamage.Character.IsEnemy() );
 	}
 
 }
