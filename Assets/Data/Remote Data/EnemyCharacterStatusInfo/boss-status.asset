@@ -26,3 +26,4 @@ MonoBehaviour:
   PawnPrefab: {fileID: 11467564, guid: 28903826c6f753e42a8d2f5e9ea10c8d, type: 2}
   DropChance: 0
   EnemySpottedSound: []
+  SpawnInterval: 0
