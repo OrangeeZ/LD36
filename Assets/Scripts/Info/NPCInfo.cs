@@ -5,6 +5,7 @@ public class NPCInfo : ScriptableObject, ICsvConfigurable
 {
 	public ItemInfo itemInfo;
 	public NPCView groundView;
+	public float RechargeTimer;
 
 	public float CharacterScaleBonus;
 
@@ -16,6 +17,7 @@ public class NPCInfo : ScriptableObject, ICsvConfigurable
 		itemInfo = weapon ?? ability;
 
 		CharacterScaleBonus = values.Get( "CharacterScaleBonus", 0f );
+		RechargeTimer = values.Get( "RechargeTimer", float.NaN );
 	}
 }
 
