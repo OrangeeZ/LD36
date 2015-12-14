@@ -283,7 +283,7 @@ MonoBehaviour:
   characterInfo: {fileID: 11400000, guid: 75fa4e0652b8a644fb92082b140e9b60, type: 2}
   characterStatusInfo: {fileID: 0}
   startingItems: []
-  startingWeapon: {fileID: 11400000, guid: ff23e3af3e51a0248b57810068c81ed4, type: 2}
+  startingWeapon: {fileID: 11400000, guid: c0b3f1aa37a1aed44a12ac769938c54e, type: 2}
   startingStatusEffect: {fileID: 11400000, guid: 0c5dde11c88c8fc4e9e3e9c10c3e60a8,
     type: 2}
   cameraBehaviour: {fileID: 11456982, guid: b0d70a7b03f08794794ffb6b7959ba27, type: 2}

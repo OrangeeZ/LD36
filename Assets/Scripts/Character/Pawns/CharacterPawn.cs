@@ -118,10 +118,13 @@ public class CharacterPawn : CharacterPawnBase {
 		enabled = isActive;
 	}
 
-	public void MakeDead() {
+	public override void MakeDead() {
 
-		GetComponentsInChildren<Rotator>().MapImmediate( Destroy );
-		GetComponentsInChildren<Renderer>().MapImmediate( _ => _.material.color += Color.black * 0.8f );
+		GetSphereSensor().enabled = false;
+		GetComponent<Collider>().enabled = false;
+
+		//GetComponentsInChildren<Rotator>().MapImmediate( Destroy );
+		//GetComponentsInChildren<Renderer>().MapImmediate( _ => _.material.color += Color.black * 0.8f );
 	}
 
 	private void ApplyPunishingForce() {
