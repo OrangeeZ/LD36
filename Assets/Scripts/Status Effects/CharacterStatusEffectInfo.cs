@@ -22,8 +22,8 @@ public enum ModifierType {
 	BaseRegeneration,
 	BaseMoveSpeed, //
 	BaseDamage,
-	BaseAcornRegen //
-
+	BaseAcornRegen, //
+	MaxAcorns
 }
 
 public static class ModifierUtility {

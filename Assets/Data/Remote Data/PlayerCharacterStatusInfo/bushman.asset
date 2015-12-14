@@ -20,7 +20,7 @@ MonoBehaviour:
       value: 0
     Agility:
       value: 0
-  ModifierTypes: 0800000005000000060000000400000002000000030000000a000000
+  ModifierTypes: 0800000005000000060000000400000002000000030000000a0000000c000000
   OffsetValues:
   - value: 0
     valueType: 0
@@ -35,5 +35,7 @@ MonoBehaviour:
   - value: 5
     valueType: 0
   - value: 1
+    valueType: 0
+  - value: 10
     valueType: 0
   BaseWeapon: {fileID: 11400000, guid: 8f8ff88c690fff944b186897ea57d095, type: 2}

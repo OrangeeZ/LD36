@@ -25,7 +25,7 @@ public class PlayerCharacterStatusInfo : CharacterStatusInfo {
 
 		base.Configure( values );
 
-		var fields = new Dictionary<string, ModifierType> {{"BaseRegeneration", ModifierType.BaseRegeneration}, {"BurningTimer", ModifierType.BurningTimerDuration}, {"DebuffTimer", ModifierType.DebuffTimerDuration}, {"WaterHPRestore", ModifierType.WaterHealthRestore}, {"SunHPrestore", ModifierType.SunHealthRestore}, {"ManureHPAdd", ModifierType.ManureHealthRestore}, {"DamageKoef", ModifierType.BaseDamage}};
+		var fields = new Dictionary<string, ModifierType> {{"BaseRegeneration", ModifierType.BaseRegeneration}, {"BurningTimer", ModifierType.BurningTimerDuration}, {"DebuffTimer", ModifierType.DebuffTimerDuration}, {"WaterHPRestore", ModifierType.WaterHealthRestore}, {"SunHPrestore", ModifierType.SunHealthRestore}, {"ManureHPAdd", ModifierType.ManureHealthRestore}, {"DamageKoef", ModifierType.BaseDamage}, {"MaxAcorns", ModifierType.MaxAcorns}};
 
 		MaxHealth = values.Get( "baseHP", MaxHealth );
 		MoveSpeed = values.Get( "baseSpeed", MoveSpeed );
