@@ -76,15 +76,11 @@ public class ModifierCalculator {
 	}
 
 	public float CalculateFinalValue( ModifierType modifierType, float baseValue ) {
-		
-		Debug.Log( "Before Calculate" );
 
 		if ( modifierType == ModifierType.None || !_modifiers.ContainsKey( modifierType ) ) {
 
 			return baseValue;
 		}
-
-		Debug.Log( "Before Before Calculate" );
 
 		return _modifiers[modifierType].Aggregate( baseValue, ( total, each ) => each.Add( total ) );
 	}
