@@ -29,6 +29,6 @@ MonoBehaviour:
   EnemySpottedSound:
   - {fileID: 8300000, guid: 01d69ce9876ac4ad89998813c069852d, type: 3}
   SpawnInterval: 30
-  MaxLiveEnemiesPerSpawner: 10
+  MaxLiveEnemiesPerSpawner: 5
   SpeakChance: 0.2
   SpeakLineId: chainsaw_noticed
