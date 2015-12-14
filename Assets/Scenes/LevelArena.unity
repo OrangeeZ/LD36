@@ -2961,7 +2961,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 6803629}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3.45, y: 0, z: 8.24}
+  m_LocalPosition: {x: 3.26, y: 0, z: 1.11}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1794720331}
@@ -4125,7 +4125,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 36591628}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.9000006, y: 0, z: 10.09}
+  m_LocalPosition: {x: -1.41, y: 0, z: 7.25}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1039091193}
@@ -6230,6 +6230,49 @@ Prefab:
 Transform:
   m_PrefabParentObject: {fileID: 438914, guid: f842ee6e7b950474497df9682650cfa3, type: 2}
   m_PrefabInternal: {fileID: 87223981}
+--- !u!1 &87528351
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 87528352}
+  - 114: {fileID: 87528353}
+  m_Layer: 0
+  m_Name: One Enemy Spawner [addicted-status]
+  m_TagString: Untagged
+  m_Icon: {fileID: -964228994112308473, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &87528352
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 87528351}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 19.09, y: 0, z: 67.88}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1039091193}
+  m_RootOrder: 14
+--- !u!114 &87528353
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 87528351}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: df65fe5f7732142729e2a9ad2126eba8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  characterInfo: {fileID: 11400000, guid: 97961ddbd0b964946be328e4a4e3e18e, type: 2}
+  characterStatusInfo: {fileID: 11400000, guid: db9a7c71697910c4b933a5c95b0153b1,
+    type: 2}
+  startingItems: []
 --- !u!1001 &89999536
 Prefab:
   m_ObjectHideFlags: 0
@@ -7692,7 +7735,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 124572340}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -41.96, y: 0, z: 5.18}
+  m_LocalPosition: {x: -41.42, y: 0, z: 49.16}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1039091193}
@@ -9732,6 +9775,49 @@ Prefab:
 Transform:
   m_PrefabParentObject: {fileID: 415700, guid: 7ac1b598839ea4a73a82bcc1cfd0d6b8, type: 2}
   m_PrefabInternal: {fileID: 152631333}
+--- !u!1 &154929168
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 154929169}
+  - 114: {fileID: 154929170}
+  m_Layer: 0
+  m_Name: One Enemy Spawner [dea-flamethrower-status]
+  m_TagString: Untagged
+  m_Icon: {fileID: -964228994112308473, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &154929169
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 154929168}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.31, y: 0, z: 30.21}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1794720331}
+  m_RootOrder: 10
+--- !u!114 &154929170
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 154929168}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: df65fe5f7732142729e2a9ad2126eba8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  characterInfo: {fileID: 11400000, guid: 97961ddbd0b964946be328e4a4e3e18e, type: 2}
+  characterStatusInfo: {fileID: 11400000, guid: cfa38eb0961d3ec4d80f3c1a31f02b0b,
+    type: 2}
+  startingItems: []
 --- !u!1001 &155659376
 Prefab:
   m_ObjectHideFlags: 0
@@ -10360,7 +10446,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 173761603}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -5.22, y: 0, z: 4.45}
+  m_LocalPosition: {x: -10.18, y: 0, z: 11.66}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1039091193}
@@ -12604,6 +12690,49 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 7ac1b598839ea4a73a82bcc1cfd0d6b8, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &229423267
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 229423268}
+  - 114: {fileID: 229423269}
+  m_Layer: 0
+  m_Name: One Enemy Spawner [dea-flamethrower-status]
+  m_TagString: Untagged
+  m_Icon: {fileID: -964228994112308473, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &229423268
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 229423267}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -21.77, y: 0, z: 30.19}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1794720331}
+  m_RootOrder: 9
+--- !u!114 &229423269
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 229423267}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: df65fe5f7732142729e2a9ad2126eba8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  characterInfo: {fileID: 11400000, guid: 97961ddbd0b964946be328e4a4e3e18e, type: 2}
+  characterStatusInfo: {fileID: 11400000, guid: cfa38eb0961d3ec4d80f3c1a31f02b0b,
+    type: 2}
+  startingItems: []
 --- !u!1001 &231882196
 Prefab:
   m_ObjectHideFlags: 0
@@ -13504,6 +13633,49 @@ Prefab:
 Transform:
   m_PrefabParentObject: {fileID: 415700, guid: 7ac1b598839ea4a73a82bcc1cfd0d6b8, type: 2}
   m_PrefabInternal: {fileID: 246139867}
+--- !u!1 &246445614
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 246445615}
+  - 114: {fileID: 246445616}
+  m_Layer: 0
+  m_Name: One Enemy Spawner [chainsaw-man-status]
+  m_TagString: Untagged
+  m_Icon: {fileID: -964228994112308473, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &246445615
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 246445614}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -5.64, y: 0, z: 1.39}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1794720331}
+  m_RootOrder: 11
+--- !u!114 &246445616
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 246445614}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: df65fe5f7732142729e2a9ad2126eba8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  characterInfo: {fileID: 11400000, guid: 97961ddbd0b964946be328e4a4e3e18e, type: 2}
+  characterStatusInfo: {fileID: 11400000, guid: 89b63c112979530488a94fe2fb4066d1,
+    type: 2}
+  startingItems: []
 --- !u!1001 &249401824
 Prefab:
   m_ObjectHideFlags: 0
@@ -16436,7 +16608,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 310261430}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -22.01, y: 0, z: 23.05}
+  m_LocalPosition: {x: -30.9, y: 0, z: 29.21}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1794720331}
@@ -23446,7 +23618,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 475041865}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -32.52, y: 0, z: 5.58}
+  m_LocalPosition: {x: -13.47, y: 0, z: 45.56}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1039091193}
@@ -29534,6 +29706,49 @@ Prefab:
 Transform:
   m_PrefabParentObject: {fileID: 415700, guid: 7ac1b598839ea4a73a82bcc1cfd0d6b8, type: 2}
   m_PrefabInternal: {fileID: 614174360}
+--- !u!1 &614214709
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 614214710}
+  - 114: {fileID: 614214711}
+  m_Layer: 0
+  m_Name: One Enemy Spawner [addicted-status]
+  m_TagString: Untagged
+  m_Icon: {fileID: -964228994112308473, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &614214710
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 614214709}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -40.7, y: 0, z: 78.4}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1039091193}
+  m_RootOrder: 18
+--- !u!114 &614214711
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 614214709}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: df65fe5f7732142729e2a9ad2126eba8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  characterInfo: {fileID: 11400000, guid: 97961ddbd0b964946be328e4a4e3e18e, type: 2}
+  characterStatusInfo: {fileID: 11400000, guid: db9a7c71697910c4b933a5c95b0153b1,
+    type: 2}
+  startingItems: []
 --- !u!1 &614438468
 GameObject:
   m_ObjectHideFlags: 0
@@ -29717,7 +29932,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 616873151}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 21.78, y: 0, z: -0.86}
+  m_LocalPosition: {x: 14.86, y: 0, z: -2.11}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1794720331}
@@ -29921,6 +30136,49 @@ Prefab:
 Transform:
   m_PrefabParentObject: {fileID: 415700, guid: 7ac1b598839ea4a73a82bcc1cfd0d6b8, type: 2}
   m_PrefabInternal: {fileID: 632118100}
+--- !u!1 &638009027
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 638009028}
+  - 114: {fileID: 638009029}
+  m_Layer: 0
+  m_Name: One Enemy Spawner [chainsaw-man-status]
+  m_TagString: Untagged
+  m_Icon: {fileID: -964228994112308473, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &638009028
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 638009027}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -26.76, y: 0, z: -3.07}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1794720331}
+  m_RootOrder: 13
+--- !u!114 &638009029
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 638009027}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: df65fe5f7732142729e2a9ad2126eba8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  characterInfo: {fileID: 11400000, guid: 97961ddbd0b964946be328e4a4e3e18e, type: 2}
+  characterStatusInfo: {fileID: 11400000, guid: 89b63c112979530488a94fe2fb4066d1,
+    type: 2}
+  startingItems: []
 --- !u!1001 &639530887
 Prefab:
   m_ObjectHideFlags: 0
@@ -30669,6 +30927,49 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 7ac1b598839ea4a73a82bcc1cfd0d6b8, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &667189124
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 667189125}
+  - 114: {fileID: 667189126}
+  m_Layer: 0
+  m_Name: One Enemy Spawner [addicted-status]
+  m_TagString: Untagged
+  m_Icon: {fileID: -964228994112308473, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &667189125
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 667189124}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -38.3, y: 0, z: 95.9}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1039091193}
+  m_RootOrder: 20
+--- !u!114 &667189126
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 667189124}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: df65fe5f7732142729e2a9ad2126eba8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  characterInfo: {fileID: 11400000, guid: 97961ddbd0b964946be328e4a4e3e18e, type: 2}
+  characterStatusInfo: {fileID: 11400000, guid: db9a7c71697910c4b933a5c95b0153b1,
+    type: 2}
+  startingItems: []
 --- !u!1001 &667589349
 Prefab:
   m_ObjectHideFlags: 0
@@ -31467,6 +31768,49 @@ Transform:
   - {fileID: 303364289}
   m_Father: {fileID: 0}
   m_RootOrder: 13
+--- !u!1 &688926606
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 688926607}
+  - 114: {fileID: 688926608}
+  m_Layer: 0
+  m_Name: One Enemy Spawner [addicted-status]
+  m_TagString: Untagged
+  m_Icon: {fileID: -964228994112308473, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &688926607
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 688926606}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -12.7, y: 0, z: 94.3}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1039091193}
+  m_RootOrder: 17
+--- !u!114 &688926608
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 688926606}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: df65fe5f7732142729e2a9ad2126eba8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  characterInfo: {fileID: 11400000, guid: 97961ddbd0b964946be328e4a4e3e18e, type: 2}
+  characterStatusInfo: {fileID: 11400000, guid: db9a7c71697910c4b933a5c95b0153b1,
+    type: 2}
+  startingItems: []
 --- !u!1001 &689227494
 Prefab:
   m_ObjectHideFlags: 0
@@ -32770,7 +33114,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 723688867}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -36.74, y: 0, z: 0.73}
+  m_LocalPosition: {x: -32.41, y: 0, z: -0.83}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1039091193}
@@ -33682,6 +34026,49 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 7ac1b598839ea4a73a82bcc1cfd0d6b8, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &742792580
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 742792581}
+  - 114: {fileID: 742792582}
+  m_Layer: 0
+  m_Name: One Enemy Spawner [chainsaw-man-status]
+  m_TagString: Untagged
+  m_Icon: {fileID: -964228994112308473, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &742792581
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 742792580}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -16.83, y: 0, z: 1.5}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1794720331}
+  m_RootOrder: 12
+--- !u!114 &742792582
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 742792580}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: df65fe5f7732142729e2a9ad2126eba8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  characterInfo: {fileID: 11400000, guid: 97961ddbd0b964946be328e4a4e3e18e, type: 2}
+  characterStatusInfo: {fileID: 11400000, guid: 89b63c112979530488a94fe2fb4066d1,
+    type: 2}
+  startingItems: []
 --- !u!1001 &742853918
 Prefab:
   m_ObjectHideFlags: 0
@@ -34124,6 +34511,49 @@ Prefab:
 Transform:
   m_PrefabParentObject: {fileID: 438914, guid: f842ee6e7b950474497df9682650cfa3, type: 2}
   m_PrefabInternal: {fileID: 755123633}
+--- !u!1 &757882231
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 757882232}
+  - 114: {fileID: 757882233}
+  m_Layer: 0
+  m_Name: One Enemy Spawner [addicted-status]
+  m_TagString: Untagged
+  m_Icon: {fileID: -964228994112308473, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &757882232
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 757882231}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 9.5, y: 0, z: 94.2}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1039091193}
+  m_RootOrder: 16
+--- !u!114 &757882233
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 757882231}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: df65fe5f7732142729e2a9ad2126eba8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  characterInfo: {fileID: 11400000, guid: 97961ddbd0b964946be328e4a4e3e18e, type: 2}
+  characterStatusInfo: {fileID: 11400000, guid: db9a7c71697910c4b933a5c95b0153b1,
+    type: 2}
+  startingItems: []
 --- !u!1001 &758729944
 Prefab:
   m_ObjectHideFlags: 0
@@ -34260,6 +34690,49 @@ Transform:
 Transform:
   m_PrefabParentObject: {fileID: 415700, guid: 7ac1b598839ea4a73a82bcc1cfd0d6b8, type: 2}
   m_PrefabInternal: {fileID: 178110567}
+--- !u!1 &762556648
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 762556649}
+  - 114: {fileID: 762556650}
+  m_Layer: 0
+  m_Name: One Enemy Spawner [addicted-status]
+  m_TagString: Untagged
+  m_Icon: {fileID: -964228994112308473, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &762556649
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 762556648}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 15.6, y: 0, z: 27.64}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1039091193}
+  m_RootOrder: 13
+--- !u!114 &762556650
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 762556648}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: df65fe5f7732142729e2a9ad2126eba8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  characterInfo: {fileID: 11400000, guid: 97961ddbd0b964946be328e4a4e3e18e, type: 2}
+  characterStatusInfo: {fileID: 11400000, guid: db9a7c71697910c4b933a5c95b0153b1,
+    type: 2}
+  startingItems: []
 --- !u!1001 &764163503
 Prefab:
   m_ObjectHideFlags: 0
@@ -42599,6 +43072,49 @@ Prefab:
 Transform:
   m_PrefabParentObject: {fileID: 415700, guid: 7ac1b598839ea4a73a82bcc1cfd0d6b8, type: 2}
   m_PrefabInternal: {fileID: 950257491}
+--- !u!1 &950709401
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 950709402}
+  - 114: {fileID: 950709403}
+  m_Layer: 0
+  m_Name: One Enemy Spawner [addicted-status]
+  m_TagString: Untagged
+  m_Icon: {fileID: -964228994112308473, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &950709402
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 950709401}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -22.7, y: 0, z: 70.3}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1039091193}
+  m_RootOrder: 19
+--- !u!114 &950709403
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 950709401}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: df65fe5f7732142729e2a9ad2126eba8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  characterInfo: {fileID: 11400000, guid: 97961ddbd0b964946be328e4a4e3e18e, type: 2}
+  characterStatusInfo: {fileID: 11400000, guid: db9a7c71697910c4b933a5c95b0153b1,
+    type: 2}
+  startingItems: []
 --- !u!1001 &951665738
 Prefab:
   m_ObjectHideFlags: 0
@@ -46088,6 +46604,17 @@ Transform:
   - {fileID: 475041866}
   - {fileID: 1184453607}
   - {fileID: 1274767120}
+  - {fileID: 1690879090}
+  - {fileID: 1566183215}
+  - {fileID: 1652262869}
+  - {fileID: 762556649}
+  - {fileID: 87528352}
+  - {fileID: 1074782768}
+  - {fileID: 757882232}
+  - {fileID: 688926607}
+  - {fileID: 614214710}
+  - {fileID: 950709402}
+  - {fileID: 667189125}
   m_Father: {fileID: 0}
   m_RootOrder: 11
 --- !u!1001 &1040673030
@@ -47184,6 +47711,49 @@ Prefab:
 Transform:
   m_PrefabParentObject: {fileID: 415700, guid: 7ac1b598839ea4a73a82bcc1cfd0d6b8, type: 2}
   m_PrefabInternal: {fileID: 1074405317}
+--- !u!1 &1074782767
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 1074782768}
+  - 114: {fileID: 1074782769}
+  m_Layer: 0
+  m_Name: One Enemy Spawner [addicted-status]
+  m_TagString: Untagged
+  m_Icon: {fileID: -964228994112308473, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1074782768
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1074782767}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 18.5, y: 0, z: 86}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1039091193}
+  m_RootOrder: 15
+--- !u!114 &1074782769
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1074782767}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: df65fe5f7732142729e2a9ad2126eba8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  characterInfo: {fileID: 11400000, guid: 97961ddbd0b964946be328e4a4e3e18e, type: 2}
+  characterStatusInfo: {fileID: 11400000, guid: db9a7c71697910c4b933a5c95b0153b1,
+    type: 2}
+  startingItems: []
 --- !u!1001 &1076210509
 Prefab:
   m_ObjectHideFlags: 0
@@ -48537,7 +49107,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1109662046}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -31.45, y: 0, z: 22.65}
+  m_LocalPosition: {x: 9.02, y: 0, z: 23.68}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1794720331}
@@ -48905,7 +49475,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1114320451}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4.2200003, y: 0, z: 4.8499994}
+  m_LocalPosition: {x: 3.35, y: 0, z: 11.55}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1039091193}
@@ -52337,7 +52907,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1184453606}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4.38, y: 0, z: -1.97}
+  m_LocalPosition: {x: 4.18, y: 0, z: -4.4}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1039091193}
@@ -66482,7 +67052,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1504538752}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -7.69, y: 0, z: 26.42}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1039091193}
@@ -69047,6 +69617,49 @@ Prefab:
 Transform:
   m_PrefabParentObject: {fileID: 415700, guid: 7ac1b598839ea4a73a82bcc1cfd0d6b8, type: 2}
   m_PrefabInternal: {fileID: 1564534153}
+--- !u!1 &1566183214
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 1566183215}
+  - 114: {fileID: 1566183216}
+  m_Layer: 0
+  m_Name: One Enemy Spawner [addicted-status]
+  m_TagString: Untagged
+  m_Icon: {fileID: -964228994112308473, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1566183215
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1566183214}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 9.09, y: 0, z: 31.51}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1039091193}
+  m_RootOrder: 11
+--- !u!114 &1566183216
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1566183214}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: df65fe5f7732142729e2a9ad2126eba8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  characterInfo: {fileID: 11400000, guid: 97961ddbd0b964946be328e4a4e3e18e, type: 2}
+  characterStatusInfo: {fileID: 11400000, guid: db9a7c71697910c4b933a5c95b0153b1,
+    type: 2}
+  startingItems: []
 --- !u!4 &1566367036 stripped
 Transform:
   m_PrefabParentObject: {fileID: 415700, guid: 7ac1b598839ea4a73a82bcc1cfd0d6b8, type: 2}
@@ -70602,7 +71215,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1610903759}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 17.4, y: 0, z: 1.11}
+  m_LocalPosition: {x: 15.11, y: 0, z: -9.77}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1794720331}
@@ -72267,7 +72880,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1651230486}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 12.18, y: 0, z: 5.56}
+  m_LocalPosition: {x: 8.52, y: 0, z: 8.94}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1794720331}
@@ -72310,7 +72923,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1651505218}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -25.33, y: 0, z: 28.29}
+  m_LocalPosition: {x: -11.13, y: 0, z: 30.36}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1794720331}
@@ -72328,6 +72941,49 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   characterInfo: {fileID: 11400000, guid: 97961ddbd0b964946be328e4a4e3e18e, type: 2}
   characterStatusInfo: {fileID: 11400000, guid: cfa38eb0961d3ec4d80f3c1a31f02b0b,
+    type: 2}
+  startingItems: []
+--- !u!1 &1652262868
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 1652262869}
+  - 114: {fileID: 1652262870}
+  m_Layer: 0
+  m_Name: One Enemy Spawner [addicted-status]
+  m_TagString: Untagged
+  m_Icon: {fileID: -964228994112308473, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1652262869
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1652262868}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 4.44, y: 0, z: 28.11}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1039091193}
+  m_RootOrder: 12
+--- !u!114 &1652262870
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1652262868}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: df65fe5f7732142729e2a9ad2126eba8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  characterInfo: {fileID: 11400000, guid: 97961ddbd0b964946be328e4a4e3e18e, type: 2}
+  characterStatusInfo: {fileID: 11400000, guid: db9a7c71697910c4b933a5c95b0153b1,
     type: 2}
   startingItems: []
 --- !u!1001 &1654031383
@@ -73969,6 +74625,49 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 7ac1b598839ea4a73a82bcc1cfd0d6b8, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &1690879089
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 1690879090}
+  - 114: {fileID: 1690879091}
+  m_Layer: 0
+  m_Name: One Enemy Spawner [canadian-lumberjack-status]
+  m_TagString: Untagged
+  m_Icon: {fileID: -964228994112308473, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1690879090
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1690879089}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -15.23, y: 0, z: -14.09}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1039091193}
+  m_RootOrder: 10
+--- !u!114 &1690879091
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1690879089}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: df65fe5f7732142729e2a9ad2126eba8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  characterInfo: {fileID: 11400000, guid: 97961ddbd0b964946be328e4a4e3e18e, type: 2}
+  characterStatusInfo: {fileID: 11400000, guid: 296cfa92dfab50844b77b04119a29074,
+    type: 2}
+  startingItems: []
 --- !u!1001 &1692667627
 Prefab:
   m_ObjectHideFlags: 0
@@ -79629,6 +80328,11 @@ Transform:
   - {fileID: 310261431}
   - {fileID: 616873152}
   - {fileID: 950242462}
+  - {fileID: 229423268}
+  - {fileID: 154929169}
+  - {fileID: 246445615}
+  - {fileID: 742792581}
+  - {fileID: 638009028}
   m_Father: {fileID: 0}
   m_RootOrder: 12
 --- !u!1001 &1795598165
@@ -80466,7 +81170,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1814414682}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -35.84, y: 0, z: 10.82}
+  m_LocalPosition: {x: -41.2, y: 0, z: 13.06}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1039091193}
@@ -93287,7 +93991,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2145095409}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 21.62, y: 0, z: 5.96}
+  m_LocalPosition: {x: 15.12, y: 0, z: -17.77}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1794720331}

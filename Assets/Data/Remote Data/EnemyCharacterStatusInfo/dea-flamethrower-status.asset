@@ -29,7 +29,7 @@ MonoBehaviour:
   DropChance: 0.5
   EnemySpottedSound:
   - {fileID: 8300000, guid: 08c345835379443519ce9e466366b132, type: 3}
-  SpawnInterval: 60
-  MaxLiveEnemiesPerSpawner: 3
+  SpawnInterval: 30
+  MaxLiveEnemiesPerSpawner: 4
   SpeakChance: 0.2
   SpeakLineId: pyro_noticed
