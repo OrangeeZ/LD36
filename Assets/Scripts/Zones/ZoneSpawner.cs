@@ -11,13 +11,15 @@ public class ZoneSpawner : MonoBehaviour {
 	private List<Character> _characters = new List<Character>();
 
 	private float _healingAmount;
+	private ZoneView _view;
 
 	public void Initialize() {
 
-		var view = Instantiate( _zoneInfo.ZonePrefab, transform.position, transform.rotation ) as ZoneView;
+		_view = Instantiate( _zoneInfo.ZonePrefab, transform.position, transform.rotation ) as ZoneView;
 
-		view.CharacterEntered += OnCharacterEnter;
-		view.CharacterExited += OnCharacterExit;
+		_view.transform.localScale = _zoneInfo.Size;
+		_view.CharacterEntered += OnCharacterEnter;
+		_view.CharacterExited += OnCharacterExit;
 
 		_healingAmount = _zoneInfo.HealthPool;
 	}
@@ -37,6 +39,9 @@ public class ZoneSpawner : MonoBehaviour {
 			each.Health.Value += healingPerDeltaTime;
 			_healingAmount -= healingPerDeltaTime;
 		}
+
+		var rate = _healingAmount / _zoneInfo.HealthPool;
+		_view.UpdateIntensity( rate );
 	}
 
 	private void OnCharacterEnter( Character character ) {
