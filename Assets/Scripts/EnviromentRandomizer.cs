@@ -5,10 +5,12 @@ using System.Collections.Generic;
 public class EnviromentRandomizer : MonoBehaviour
 
 {
-    public GameObject[] trees;
+     
 
-    void treeRotate()
+    [ContextMenu("Random tree rotate")]
+   public void treeRotate()
     {
+        GameObject[] trees;
         trees = GameObject.FindGameObjectsWithTag("Tree");
 
         for (int i = 0; i < trees.Length; i++)
