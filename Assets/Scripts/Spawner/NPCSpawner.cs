@@ -14,6 +14,8 @@ public class NPCSpawner : AObject {
 	private void Start() {
 
 		_currentInfo = OverriderNpcInfo == null ? NpcListInfo.Infos.RandomElement() : OverriderNpcInfo;
+
+		Spawn();
 	}
 
 	private void Spawn() {
