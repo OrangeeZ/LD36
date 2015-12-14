@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using System.Collections;
 using csv;
 
@@ -62,6 +63,8 @@ public class HealingItemInfo : ItemInfo, ICsvConfigurable {
 
 			ModifierType = id == "water" ? ModifierType.WaterHealthRestore : ModifierType.ManureHealthRestore;
 		}
+
+		Name = values.Get( "Name", string.Empty );
 	}
 
 }

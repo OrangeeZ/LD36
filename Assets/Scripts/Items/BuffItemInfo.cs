@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using System.Collections;
 using csv;
 
@@ -36,8 +37,6 @@ public class BuffItemInfo : ItemInfo, ICsvConfigurable {
 
 		ModifierType = ModifierUtility.ParseModifierType( values.Get( "AffectedStat", string.Empty ) );
 		ModifierValue = new OffsetValue( values.Get( "Amount", -1f ), ModifierUtility.ParseOffsetValueType( values.Get( "ActType", string.Empty ) ) );
+		Name = values.Get( "Name", string.Empty );
 	}
-
-	
-
 }

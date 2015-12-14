@@ -11,7 +11,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b5011977a31c3f46b02f76488051fd8, type: 3}
   m_Name: water
   m_EditorClassIdentifier: 
-  Name: 
+  Name: WATER
   groundView: {fileID: 11488804, guid: 8d03d4a4a777a0e499ba1e113db4a8dc, type: 2}
   inventoryIcon: {fileID: 0}
   color: {r: 0, g: 0, b: 0, a: 0}
