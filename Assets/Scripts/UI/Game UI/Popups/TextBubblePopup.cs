@@ -13,11 +13,11 @@ public class TextBubblePopup : MonoBehaviour {
 	private Transform _target;
 	private float _duration;
 
-	public void Initialize( Transform target, string textId ) {
+	public void Initialize( Transform target, string text ) {
 
 		_target = target;
-		_duration = textId.Length * _secondsPerStringChar;
-
+		_duration = text.Length * _secondsPerStringChar;
+		_message.text = text;
 	}
 
 	// Update is called once per frame

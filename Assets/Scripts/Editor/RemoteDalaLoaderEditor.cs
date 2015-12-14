@@ -10,6 +10,7 @@ public class RemoteDalaLoaderEditor : Editor
 	SerializedProperty _pageId;
 	SerializedProperty _type;
 	SerializedProperty _postfix;
+	SerializedProperty _regime;
 
 	int _selectedType;
 	string[] _types;
@@ -20,6 +21,7 @@ public class RemoteDalaLoaderEditor : Editor
 		_pageId = serializedObject.FindProperty("_pageId");
 		_type = serializedObject.FindProperty("type");
 		_postfix = serializedObject.FindProperty("postfix");
+		_regime = serializedObject.FindProperty("_regime");
 
 		var types = typeof(ICsvConfigurable).Assembly.GetExportedTypes();
 		_types = types.Where(t => t.IsSubclassOf(typeof(ScriptableObject))).Select(t => t.Name).ToArray();
@@ -33,6 +35,7 @@ public class RemoteDalaLoaderEditor : Editor
 		EditorGUILayout.PropertyField(_url);
 		EditorGUILayout.PropertyField(_pageId);
 		EditorGUILayout.PropertyField(_postfix);
+		EditorGUILayout.PropertyField(_regime);
 
 		EditorGUILayout.PropertyField(_type);
 

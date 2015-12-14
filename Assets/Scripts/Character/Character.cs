@@ -20,6 +20,12 @@ public class Character {
 
 	}
 
+	public struct Speach : IEventBase {
+
+		public Character Character;
+		public string messageId;
+	}
+
 	public static List<Character> Instances = new List<Character>();
 
 	public readonly FloatReactiveProperty Health;
@@ -40,6 +46,7 @@ public class Character {
 
 	public ItemInfo[] ItemsToDrop;
 	public float dropProbability = 0.15f;
+	public float speakProbability = 0.15f;
 
 	private readonly CompositeDisposable _compositeDisposable = new CompositeDisposable();
 
@@ -80,6 +87,10 @@ public class Character {
 		if ( health <= 0 ) {
 
 			EventSystem.RaiseEvent( new Died {Character = this} );
+
+			if ( 1f.Random() <= speakProbability ) {
+				EventSystem.RaiseEvent( new Speach {Character = this} );
+			}
 
 			Instances.Remove( this );
 

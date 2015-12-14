@@ -5,6 +5,12 @@ using UnityEditor;
 
 #endif
 
+public enum CsvParseRegime
+{
+	ObjectPerRow,
+	ObjectPerTable,
+}
+
 [CreateAssetMenu( fileName = "Remote Data Loader", menuName = "Data/Remote Data Loader" )]
 public partial class RemoteDataLoader : ScriptableObject {
 
@@ -19,6 +25,9 @@ public partial class RemoteDataLoader : ScriptableObject {
 
 	[SerializeField]
 	private string postfix = string.Empty;
+
+	[SerializeField]
+	private CsvParseRegime _regime = CsvParseRegime.ObjectPerRow;
 }
 
 #if UNITY_EDITOR
@@ -44,7 +53,7 @@ public partial class RemoteDataLoader {
 			url = url + "&gid=" + _pageId;
 		}
 
-		GetCsvFromGoogleDocs.Get( url, type, postfix );
+		GetCsvFromGoogleDocs.Get( url, type, _regime, postfix );
 	}
 }
 

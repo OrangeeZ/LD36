@@ -11,7 +11,7 @@ using System.Text;
 
 public static class GetCsvFromGoogleDocs {
 
-	public static void Get( string url, string type, string postfix ) {
+	public static void Get( string url, string type, CsvParseRegime regime, string postfix ) {
 
 		EditorUtility.DisplayProgressBar("Loading", "Requesting csv file. Please wait...", 0f);
 		Debug.Log("Loading csv from: " + url);
@@ -26,7 +26,12 @@ public static class GetCsvFromGoogleDocs {
 				// Let's parse this CSV!
 				TextReader sr = new StringReader( www.text );
 				try {
-					ParseCsv2( sr, type, postfix );
+					if (regime == CsvParseRegime.ObjectPerRow) {
+						ParseCsv2( sr, type, postfix );
+					}
+					else {
+						ParseCsv_Sopog(sr, type, postfix);
+					}
 				} catch (Exception ex) {
 					Debug.LogException(ex);
 				}
@@ -82,6 +87,69 @@ public static class GetCsvFromGoogleDocs {
 
 			row = parser.Read();
 		}
+	}
+
+	private static void ParseCsv_Sopog( TextReader csvReader, string type = null, string postfix = null ) {
+		var parser = new CsvParser( csvReader );
+		var row = parser.Read(); // get first row and
+
+		if (string.IsNullOrEmpty(type)) {
+			// Read Type info
+			if (row[0] == "type") {
+				type = row[1];
+
+				row = parser.Read();
+			} else {
+				Debug.LogError("Worksheet must declare 'Type' in first wor");
+				return;
+			}
+		}
+
+		// Read fields
+		string[] fieldNames;
+		while (row != null && row[0] != "ID") {
+			row = parser.Read();
+		}
+		if (row == null) {
+			Debug.LogError("Can't find header!");
+			return;
+		}
+
+		fieldNames = row;
+
+		string instanceName = csv.Utility.FixName(type, postfix);
+		var instance = GetOrCreate(type, instanceName);
+		if (instance is ICsvConfigurable) {
+			ICsvConfigurable configurable = (ICsvConfigurable)instance;
+			configurable.Configure(CreateValues(fieldNames, parser));
+			Debug.LogFormat("Data object '{0}' saved to \"{1}\"", instance.name, AssetDatabase.GetAssetPath(instance));
+		} else {
+			Debug.LogError("This Csv parse regime can't work with not ICsvConfigurable objects!");
+		}
+
+	}
+
+	private static csv.Values CreateValues(string[] fieldNames, CsvParser parser)
+	{
+		var dict = new Dictionary<string, string>();
+		var row = parser.Read();
+
+		while (row != null) {
+			if (row.Length < 2 || string.IsNullOrEmpty(row[0])) {
+				row = parser.Read();
+				continue;
+			}
+
+			if (row.Length > 2) {
+				Debug.LogError("This Csv parse regime can't parse rows with more than 2 columns!");
+				break;
+			}
+
+			dict.Add(row[0], row[1]);
+
+			row = parser.Read();
+		}
+		return new csv.Values(dict);
 	}
 
 	private static csv.Values CreateValues(string[] fieldNames, string[] row)
