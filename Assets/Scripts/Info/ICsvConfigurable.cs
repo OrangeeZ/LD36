@@ -3,7 +3,10 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+
+#if UNITY_EDITOR
 using UnityEditor;
+#endif
 
 namespace csv {
 
@@ -99,7 +102,10 @@ namespace csv {
 
 			var names = Get( name, string.Empty ).Split( ',', ' ' );
 
+#if UNITY_EDITOR
 			return names.Select( _ => LoadScriptableObject<T>( _ ) ).Where( _ => _ != null ).ToArray();
+#endif
+			return null;
 		}
 
 		public T GetScriptableObject<T>( string name ) where T : ScriptableObject {
@@ -118,10 +124,13 @@ namespace csv {
 				assetName = Utility.FixName( assetName );
 			}
 
+#if UNITY_EDITOR
 			var guids = AssetDatabase.FindAssets( "t: prefab " + assetName );
 			var paths = guids.Select( _ => AssetDatabase.GUIDToAssetPath( _ ) );
 
 			return paths.Select( _ => AssetDatabase.LoadAssetAtPath<T>( _ ) ).FirstOrDefault();
+#endif
+			return null;
 		}
 
 		private T LoadScriptableObject<T>( string name ) where T : ScriptableObject {
@@ -133,6 +142,7 @@ namespace csv {
 				return null;
 			}
 
+#if UNITY_EDITOR
 			var guid = AssetDatabase.FindAssets( "t:" + typeof ( T ).Name + " " + name ).FirstOrDefault();
 			if ( guid != null ) {
 
@@ -141,6 +151,7 @@ namespace csv {
 			}
 
 			Debug.LogFormat( "Could not find {0}", "t:" + typeof ( T ).Name + " " + name );
+#endif
 
 			return null;
 		}
