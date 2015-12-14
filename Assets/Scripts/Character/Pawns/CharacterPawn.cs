@@ -1,4 +1,5 @@
-﻿using System.CodeDom;
+﻿using System;
+using System.CodeDom;
 using UnityEngine;
 using System.Collections;
 using System.Linq;
@@ -8,6 +9,9 @@ public class CharacterPawn : CharacterPawnBase {
 	public bool canFollowDestination;
 
 	public GameObject turret;
+
+	[SerializeField]
+	private float _gunYOffset = 0.5f;
 
 	[SerializeField]
 	private float _weight = 1f;
@@ -58,6 +62,11 @@ public class CharacterPawn : CharacterPawnBase {
 		//	}
 		//}
 
+	}
+
+	public Vector3 GetWeaponPosition() {
+
+		return position + Vector3.up * _gunYOffset;
 	}
 
 	public override void MoveDirection( Vector3 direction ) {

@@ -25,7 +25,7 @@ MonoBehaviour:
   ClipSize: 3
   ReloadDuration: 0.1
   _projectilesPerShot: 3
-  _shotConeAngle: 30
+  _shotConeAngle: 10
   _sound: {fileID: 0}
   _projectileLifetime: 1
   _splashDamageRadius: 5

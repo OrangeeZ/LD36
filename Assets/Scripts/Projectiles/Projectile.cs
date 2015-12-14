@@ -3,7 +3,7 @@ using UnityEngine.Serialization;
 
 public class Projectile : AObject {
 
-	public float Lifetime = 3f;
+	public float Lifetime;
 
 	public float Damage { get; protected set; }
 
@@ -47,7 +47,7 @@ public class Projectile : AObject {
 		this.CanFriendlyFire = canFriendlyFire;
 		_splashRange = splashRange;
 
-		transform.position = this.Owner.Pawn.position;
+		transform.position = this.Owner.Pawn.GetWeaponPosition();
 		transform.rotation = this.Owner.Pawn.rotation;
 
 		_timer = new AutoTimer( Lifetime );

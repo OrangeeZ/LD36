@@ -28,6 +28,6 @@ MonoBehaviour:
   _shotConeAngle: 5
   _sound: {fileID: 0}
   _projectileLifetime: 1
-  _splashDamageRadius: 1
+  _splashDamageRadius: 2
   _weaponBehaviourInfo: {fileID: 11400000, guid: 5f105bd2d1fd7c44da9bbb2f92392799,
     type: 2}
