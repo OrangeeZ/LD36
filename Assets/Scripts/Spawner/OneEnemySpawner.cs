@@ -37,6 +37,7 @@ public class OneEnemySpawner : SpawnerBase {
 			_character.ItemsToDrop = characterStatusInfo.ItemsToDrop;
 
 			_character.dropProbability = characterStatusInfo.DropChance;
+			_character.speakProbability = characterStatusInfo.SpeakChance;
 
 			var weapon = characterStatusInfo.Weapon1.GetItem();
 			_character.Inventory.AddItem( weapon );

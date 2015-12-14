@@ -68,6 +68,8 @@ namespace csv {
 			_values = values;
 		}
 
+		public Dictionary<string, string> Raw { get { return _values; } }
+
 		public T Get<T>( string name ) {
 			return Get<T>( _values[name] );
 		}

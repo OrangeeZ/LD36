@@ -11,6 +11,7 @@ public class EnemyCharacterStatusInfo : CharacterStatusInfo {
 	public float DropChance;
 	public AudioClip[] EnemySpottedSound;
 	public float SpawnInterval;
+	public float SpeakChance;
 	//public float AttackRange;
 	//public float SplashRadius;
 	//public bool CanFriendlyFire;
@@ -24,6 +25,7 @@ public class EnemyCharacterStatusInfo : CharacterStatusInfo {
 		ItemsToDrop = values.GetScriptableObjects<ItemInfo>( "DroppedItems" );
 		DropChance = values.Get( "DropChance", 0f );
 		SpawnInterval = values.Get( "RespawnTimer", -1f );
+		SpeakChance = values.Get( "SpeakChance", 0.2f );
 		PawnPrefab = values.GetPrefabWithComponent<EnemyCharacterPawn>( "Visual", fixName: false );
 
 		//AttackRange = values.Get( "AttackRange", 0 );
