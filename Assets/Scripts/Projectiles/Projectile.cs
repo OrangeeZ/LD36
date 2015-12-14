@@ -3,7 +3,6 @@ using UnityEngine.Serialization;
 
 public class Projectile : AObject {
 
-	[FormerlySerializedAs( "lifetime" )]
 	public float Lifetime = 3f;
 
 	public float Damage { get; protected set; }
@@ -22,6 +21,7 @@ public class Projectile : AObject {
 
 	protected float Speed;
 	protected bool CanFriendlyFire;
+	private float _splashRange;
 
 	private void Awake() {
 
@@ -38,13 +38,14 @@ public class Projectile : AObject {
 		position += Direction * Speed * Time.deltaTime;
 	}
 
-	public void Launch( Character owner, Vector3 direction, float speed, float damage, bool canFriendlyFire ) {
+	public void Launch( Character owner, Vector3 direction, float speed, float damage, bool canFriendlyFire, float splashRange ) {
 
 		this.Owner = owner;
 		this.Speed = speed;
 		this.Direction = direction;
 		this.Damage = damage;
 		this.CanFriendlyFire = canFriendlyFire;
+		_splashRange = splashRange;
 
 		transform.position = this.Owner.Pawn.position;
 		transform.rotation = this.Owner.Pawn.rotation;
@@ -55,6 +56,11 @@ public class Projectile : AObject {
 	}
 
 	public virtual void OnHit() {
+
+		if ( !_splashRange.IsNan() && _splashRange > 0f ) {
+
+			Helpers.DoSplashDamage( transform.position, _splashRange, Damage, teamToSkip: CanFriendlyFire ? -1 : Owner.TeamId );
+		}
 
 		Release();
 	}
@@ -69,6 +75,7 @@ public class Projectile : AObject {
 	}
 
 	protected virtual void Release() {
+
 		Destroy( gameObject );
 	}
 

@@ -17,9 +17,6 @@ public class RangedWeaponInfo : WeaponInfo {
 	private int _projectilesPerShot;
 
 	[SerializeField]
-	private float _deviationCoefficient;
-
-	[SerializeField]
 	private float _shotConeAngle;
 
 	[SerializeField]
@@ -27,6 +24,9 @@ public class RangedWeaponInfo : WeaponInfo {
 
 	[SerializeField]
 	private float _projectileLifetime;
+
+	[SerializeField]
+	private float _splashDamageRadius;
 
 	[SerializeField]
 	private RangedWeaponBehaviourInfo _weaponBehaviourInfo;
@@ -81,7 +81,7 @@ public class RangedWeaponInfo : WeaponInfo {
 
 				var finalDamage = Character.Status.ModifierCalculator.CalculateFinalValue( ModifierType.BaseDamage, typedInfo.BaseDamage );
 
-				projectile.Launch( Character, projectileDirection, typedInfo._projectileSpeed, finalDamage, typedInfo.CanFriendlyFire );
+				projectile.Launch( Character, projectileDirection, typedInfo._projectileSpeed, finalDamage, typedInfo.CanFriendlyFire, typedInfo._splashDamageRadius );
 
 				_behaviour.TryShoot();
 
@@ -118,7 +118,7 @@ public class RangedWeaponInfo : WeaponInfo {
 
 				var finalDamage = Character.Status.ModifierCalculator.CalculateFinalValue( ModifierType.BaseDamage, typedInfo.BaseDamage );
 
-				projectile.Launch( Character, projectileDirection, typedInfo._projectileSpeed, finalDamage, typedInfo.CanFriendlyFire );
+				projectile.Launch( Character, projectileDirection, typedInfo._projectileSpeed, finalDamage, typedInfo.CanFriendlyFire, typedInfo._splashDamageRadius );
 
 				_behaviour.TryShoot();
 
@@ -180,6 +180,8 @@ public class RangedWeaponInfo : WeaponInfo {
 		_projectilesPerShot = values.Get( "BulletsPerBurst", 1 );
 		_projectileLifetime = values.Get( "ProjectileLifetime", 1f );
 		_shotConeAngle = values.Get( "BurstAngle", 0 );
+		_splashDamageRadius = values.Get( "SplashRadius", float.NaN );
+
 		ClipSize = values.Get( "Clip Size", _projectilesPerShot );
 		_projectilePrefab = values.GetPrefabWithComponent<Projectile>( "Projectile", fixName: false );
 	}

@@ -17,17 +17,17 @@ MonoBehaviour:
   color: {r: 0, g: 0, b: 0, a: 0}
   BaseDamage: 1
   BaseAttackSpeed: 1
-  AttackRange: 1
+  AttackRange: 2
   CanFriendlyFire: 1
   SlotType: 0
-  _projectilePrefab: {fileID: 11433014, guid: 608acec83ae17a746919b5d8ad070295, type: 2}
+  _projectilePrefab: {fileID: 11471386, guid: ab10b2850fda526478017591a42ea08a, type: 2}
   _projectileSpeed: 20
   ClipSize: 1
   ReloadDuration: 1
   _projectilesPerShot: 1
-  _deviationCoefficient: 0
   _shotConeAngle: 30
   _sound: {fileID: 0}
-  _projectileLifetime: 1
+  _projectileLifetime: 0.3
+  _splashDamageRadius: 3
   _weaponBehaviourInfo: {fileID: 11400000, guid: 5f105bd2d1fd7c44da9bbb2f92392799,
     type: 2}
