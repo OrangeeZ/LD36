@@ -21,7 +21,8 @@ public enum ModifierType {
 	BaseAttackSpeed,//
 	BaseRegeneration,
 	BaseMoveSpeed,//
-	BaseDamage//
+	BaseDamage,
+	BaseAcornRegen//
 
 }
 

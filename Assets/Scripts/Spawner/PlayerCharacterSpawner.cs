@@ -57,7 +57,7 @@ public class PlayerCharacterSpawner : MonoBehaviour {
 			//GameScreen.instance.statsPanel.SetCharacter( character );
 		}
 
-		character.Status.AddEffect( startingStatusEffect );
+		startingStatusEffect.Add( character );
 
 		EventSystem.RaiseEvent( new Spawned { Character = character } );
 

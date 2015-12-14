@@ -7,10 +7,7 @@ public class BuffItemInfo : ItemInfo, ICsvConfigurable {
 
 	public ModifierType ModifierType;
 	public OffsetValue ModifierValue;
-
-	//[SerializeField]
-	//private CharacterStatusEffectInfo _statusEffectInfo;
-
+	
 	private class BuffItem : Item {
 
 		private readonly BuffItemInfo _info;
@@ -22,9 +19,6 @@ public class BuffItemInfo : ItemInfo, ICsvConfigurable {
 		}
 
 		public override void Apply() {
-
-			//_info._statusEffectInfo.Add( Character );
-			//Character.Status.AddEffect( _info._statusEffectInfo );
 
 			Character.Status.ModifierCalculator.Add( _info.ModifierType, _info.ModifierValue );
 
@@ -78,7 +72,10 @@ public class BuffItemInfo : ItemInfo, ICsvConfigurable {
 			case "BaseRegeneration":
 				return ModifierType.BaseAttackSpeed;
 
-			default:
+			case "BaseAcornRegen":
+				return ModifierType.BaseAcornRegen;
+
+            default:
 				return ModifierType.None;
 
 		}

@@ -31,6 +31,9 @@ public class RangedWeaponInfo : WeaponInfo {
 	[SerializeField]
 	private RangedWeaponBehaviourInfo _weaponBehaviourInfo;
 
+	[SerializeField]
+	private BuffItemInfo _abilityOnPickup;
+
 	public class RangedWeapon : Weapon<RangedWeaponInfo> {
 
 		public int AmmoInClip { get; private set; }
@@ -59,6 +62,13 @@ public class RangedWeaponInfo : WeaponInfo {
 			_behaviour = typedInfo._weaponBehaviourInfo.GetBehaviour();
 			_behaviour.Initialize( Inventory, this );
 
+			if ( typedInfo._abilityOnPickup != null ) {
+
+				var buffItem = typedInfo._abilityOnPickup.GetItem();
+
+				buffItem.SetCharacter( character );
+				buffItem.Apply();
+			}
 		}
 
 		public override void Attack( Character target, EnemyCharacterStatusInfo statusInfo ) {
@@ -181,6 +191,7 @@ public class RangedWeaponInfo : WeaponInfo {
 		_projectileLifetime = values.Get( "ProjectileLifetime", 1f );
 		_shotConeAngle = values.Get( "BurstAngle", 0 );
 		_splashDamageRadius = values.Get( "SplashRadius", float.NaN );
+		_abilityOnPickup = values.GetScriptableObject<BuffItemInfo>( "AbilityOnPickup" );
 
 		ClipSize = values.Get( "Clip Size", _projectilesPerShot );
 		_projectilePrefab = values.GetPrefabWithComponent<Projectile>( "Projectile", fixName: false );
