@@ -32,7 +32,7 @@ public class CharacterPawnBase : AObject {
 		this.character = character;
 	}
 
-	public void SetSpeed( float newSpeed ) {
+	public virtual void SetSpeed( float newSpeed ) {
 
 		speed = newSpeed;
 	}
