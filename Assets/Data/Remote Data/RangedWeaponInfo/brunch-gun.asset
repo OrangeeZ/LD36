@@ -26,7 +26,8 @@ MonoBehaviour:
   ReloadDuration: 1
   _projectilesPerShot: 1
   _shotConeAngle: 30
-  _sound: {fileID: 0}
+  _sounds:
+  - {fileID: 8300000, guid: f2cc934491038614ab21f5b6eaf579a1, type: 3}
   _projectileLifetime: 0.2
   _splashDamageRadius: 0
   _weaponBehaviourInfo: {fileID: 11400000, guid: 5f105bd2d1fd7c44da9bbb2f92392799,

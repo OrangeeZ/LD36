@@ -26,3 +26,5 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 3919ded62de057f4eb456d92caaeb77d, type: 2}
   PawnPrefab: {fileID: 11467564, guid: cfcf6a5c5f5f55e4f947a55eef90f962, type: 2}
   DropChance: 0.3
+  EnemySpottedSound:
+  - {fileID: 8300000, guid: 08c345835379443519ce9e466366b132, type: 3}
