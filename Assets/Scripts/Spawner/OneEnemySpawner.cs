@@ -36,4 +36,9 @@ public class OneEnemySpawner : SpawnerBase {
 		}
 	}
 
+	private void OnValidate() {
+
+		name = string.Format( "One Enemy Spawner [{0}]", characterStatusInfo == null ? "null" : characterStatusInfo.name );
+	}
+
 }
