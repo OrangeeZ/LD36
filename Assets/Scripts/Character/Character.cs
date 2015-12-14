@@ -20,10 +20,11 @@ public class Character {
 
 	}
 
-	public struct Speach : IEventBase {
+	public struct Speech : IEventBase {
 
 		public Character Character;
 		public string messageId;
+
 	}
 
 	public static List<Character> Instances = new List<Character>();
@@ -89,7 +90,8 @@ public class Character {
 			EventSystem.RaiseEvent( new Died {Character = this} );
 
 			if ( 1f.Random() <= speakProbability ) {
-				EventSystem.RaiseEvent( new Speach {Character = this} );
+
+				EventSystem.RaiseEvent( new Speech { Character = this } );
 			}
 
 			Instances.Remove( this );
@@ -112,8 +114,7 @@ public class Character {
 		EventSystem.RaiseEvent( new RecievedDamage {Character = this, Damage = amount} );
 	}
 
-	public bool IsEnemy()
-	{
+	public bool IsEnemy() {
 		return TeamId != 0;
 	}
 
@@ -137,4 +138,5 @@ public class Character {
 	private void OnModifiersChange() {
 
 	}
+
 }

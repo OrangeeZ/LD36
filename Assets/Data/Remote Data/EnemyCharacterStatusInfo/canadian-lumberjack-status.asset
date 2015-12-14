@@ -31,3 +31,4 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 01d69ce9876ac4ad89998813c069852d, type: 3}
   SpawnInterval: 20
   SpeakChance: 0.2
+  SpeakLineId: lumberjack_noticed

@@ -11,10 +11,9 @@ public class EnemyCharacterStatusInfo : CharacterStatusInfo {
 	public float DropChance;
 	public AudioClip[] EnemySpottedSound;
 	public float SpawnInterval;
+
 	public float SpeakChance;
-	//public float AttackRange;
-	//public float SplashRadius;
-	//public bool CanFriendlyFire;
+	public string SpeakLineId;
 
 	public override void Configure( csv.Values values ) {
 

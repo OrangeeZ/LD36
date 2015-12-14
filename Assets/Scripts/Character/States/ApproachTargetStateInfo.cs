@@ -2,6 +2,7 @@
 using UnityEngine;
 using UniRx;
 using System.Collections;
+using Packages.EventSystem;
 using Utility;
 
 [CreateAssetMenu( menuName = "Create/States/Approach target" )]
@@ -56,6 +57,11 @@ public class ApproachTargetStateInfo : CharacterStateInfo {
 				if ( sound != null ) {
 
 					AudioSource.PlayClipAtPoint( sound, character.Pawn.position );
+				}
+
+				if ( 1f.Random() <= character.speakProbability ) {
+
+					EventSystem.RaiseEvent( new Character.Speech {Character = character, messageId = enemyInfo.SpeakLineId} );
 				}
 
 				_isFirstTimeNotice = false;

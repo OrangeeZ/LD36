@@ -12,20 +12,20 @@ public class TextBubbleController : MonoBehaviour
 
 	void Start ()
 	{
-		EventSystem.Events.SubscribeOfType<Character.Speach>( OnCharacterSpeak );
+		EventSystem.Events.SubscribeOfType<Character.Speech>( OnCharacterSpeak );
 	}
 	
-	private void OnCharacterSpeak( Character.Speach speach) {
+	private void OnCharacterSpeak( Character.Speech speech) {
 
-		if ( Camera.main == null || speach.Character.Pawn == null ) {
+		if ( Camera.main == null || speech.Character.Pawn == null ) {
 
 			return;
 		}
 
 		string text;
 
-		if (!string.IsNullOrEmpty(speach.messageId)) {
-			text = _messages.GetText(speach.messageId);
+		if (!string.IsNullOrEmpty(speech.messageId)) {
+			text = _messages.GetText(speech.messageId);
 		} else {
 			text = _messages.GetRandom();
 		}
@@ -33,13 +33,7 @@ public class TextBubbleController : MonoBehaviour
 		var instance = Instantiate (_textBubble);
 		instance.transform.SetParent( transform );
 		instance.gameObject.SetActive(true);
-		instance.Initialize( speach.Character.Pawn.transform, text );
-	}
-
-	// Update is called once per frame
-	void Update ()
-	{
-	
+		instance.Initialize( speech.Character.Pawn.transform, text );
 	}
 }
 
