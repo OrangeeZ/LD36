@@ -24,6 +24,7 @@ public class ApproachTargetStateInfo : CharacterStateInfo {
 	public class State : CharacterState<ApproachTargetStateInfo> {
 
 		private TargetPosition destination;
+		private bool _isFirstTimeNotice = true;
 
 		public State( CharacterStateInfo info ) : base( info ) {
 		}
@@ -46,6 +47,19 @@ public class ApproachTargetStateInfo : CharacterStateInfo {
 
 		public override IEnumerable GetEvaluationBlock() {
 
+			if ( _isFirstTimeNotice ) {
+
+				var enemyInfo = character.Status.Info as EnemyCharacterStatusInfo;
+				var sound = enemyInfo.EnemySpottedSound.RandomElement();
+
+				if ( sound != null ) {
+
+					AudioSource.PlayClipAtPoint( sound, character.Pawn.position );
+				}
+
+				_isFirstTimeNotice = false;
+			}
+
 			var pawn = character.Pawn;
 
 			do {
@@ -59,6 +73,11 @@ public class ApproachTargetStateInfo : CharacterStateInfo {
 				//pawn.SetDestination( destination.Value );
 				
 			} while ( pawn.GetDistanceToDestination() > typedInfo._minRange && pawn.GetDistanceToDestination() < typedInfo._maxRange );
+
+			//if ( pawn.GetDistanceToDestination() > typedInfo._maxRange ) {
+
+			//	_didNoticeCharacter = false;
+			//}
 
 			if ( typedInfo._clearTargetOnReach ) {
 

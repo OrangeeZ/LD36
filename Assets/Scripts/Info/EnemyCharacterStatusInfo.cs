@@ -9,6 +9,7 @@ public class EnemyCharacterStatusInfo : CharacterStatusInfo {
 	public ItemInfo[] ItemsToDrop;
 	public EnemyCharacterPawn PawnPrefab;
 	public float DropChance;
+	public AudioClip[] EnemySpottedSound;
 	//public float AttackRange;
 	//public float SplashRadius;
 	//public bool CanFriendlyFire;

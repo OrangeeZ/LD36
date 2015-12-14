@@ -20,7 +20,7 @@ public class RangedWeaponInfo : WeaponInfo {
 	private float _shotConeAngle;
 
 	[SerializeField]
-	private AudioClip _sound;
+	private AudioClip[] _sounds;
 
 	[SerializeField]
 	private float _projectileLifetime;
@@ -101,11 +101,10 @@ public class RangedWeaponInfo : WeaponInfo {
 				}
 			}
 
-			Character.Pawn.SetTurretTarget( target.Pawn.transform );
+			var sound = typedInfo._sounds.RandomElement();
+			if ( sound != null ) {
 
-			if ( typedInfo._sound != null ) {
-
-				AudioSource.PlayClipAtPoint( typedInfo._sound, Character.Pawn.position, 0.5f );
+				AudioSource.PlayClipAtPoint( sound, Character.Pawn.position, 0.5f );
 			}
 		}
 
@@ -138,9 +137,10 @@ public class RangedWeaponInfo : WeaponInfo {
 				}
 			}
 
-			if ( typedInfo._sound != null ) {
+			var sound = typedInfo._sounds.RandomElement();
+            if ( sound != null ) {
 
-				AudioSource.PlayClipAtPoint( typedInfo._sound, Character.Pawn.position, 0.5f );
+				AudioSource.PlayClipAtPoint( sound, Character.Pawn.position, 0.5f );
 			}
 		}
 
