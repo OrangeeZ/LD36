@@ -13,6 +13,8 @@ public class Projectile : AObject {
 
 	public float weight = 1f;
 
+	public bool DelayedDestroy = false;
+
 	private AutoTimer _timer;
 
 	protected Vector3 Direction;
@@ -22,6 +24,9 @@ public class Projectile : AObject {
 	protected float Speed;
 	protected bool CanFriendlyFire;
 	private float _splashRange;
+
+	private bool _isDestroyed = false;
+	private int _frameCountStart;
 
 	private void Awake() {
 
@@ -36,6 +41,11 @@ public class Projectile : AObject {
 		}
 
 		position += Direction * Speed * Time.deltaTime;
+
+		if ( _isDestroyed && Time.frameCount - _frameCountStart >= 4 ) {
+			
+			Destroy( gameObject );
+		}
 	}
 
 	public void Launch( Character owner, Vector3 direction, float speed, float damage, bool canFriendlyFire, float splashRange ) {
@@ -45,7 +55,9 @@ public class Projectile : AObject {
 		this.Direction = direction;
 		this.Damage = damage;
 		this.CanFriendlyFire = canFriendlyFire;
+
 		_splashRange = splashRange;
+		_frameCountStart = Time.frameCount;
 
 		transform.position = this.Owner.Pawn.GetWeaponPosition();
 		transform.rotation = this.Owner.Pawn.rotation;
@@ -76,10 +88,20 @@ public class Projectile : AObject {
 			Helpers.DoSplashDamage( transform.position, _splashRange, Damage, teamToSkip: CanFriendlyFire ? -1 : Owner.TeamId );
 		}
 
-		Destroy( gameObject );
+		_isDestroyed = true;
+
+		if ( !DelayedDestroy ) {
+
+			Destroy( gameObject );
+		}
 	}
 
 	private void OnTriggerEnter( Collider other ) {
+
+		if ( _isDestroyed ) {
+
+			return;
+		}
 
 		var otherPawn = other.GetComponent<CharacterPawnBase>();
 

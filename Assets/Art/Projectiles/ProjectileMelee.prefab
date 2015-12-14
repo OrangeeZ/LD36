@@ -178,6 +178,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Lifetime: 0.5
   weight: 1
+  DelayedDestroy: 1
 --- !u!135 &13517266
 SphereCollider:
   m_ObjectHideFlags: 1
@@ -6316,6 +6317,10 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: Lifetime
       value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: DelayedDestroy
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
