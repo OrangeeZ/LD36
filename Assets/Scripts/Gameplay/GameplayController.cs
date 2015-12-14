@@ -12,7 +12,7 @@ public class GameplayController : MonoBehaviour {
 	private SpawnerBase[] _enemySpawners;
 
 	[SerializeField]
-	private ZoneSpawner[] _zoneSpawners;
+	private ZoneSpawnController _zoneSpawnController;
 
     public static GameplayController Instance { get; private set; }
 
@@ -22,21 +22,19 @@ public class GameplayController : MonoBehaviour {
 
 	public IEnumerator Start() {
 		yield return null;
+
 		_playerSpawner.Initialize();
+
 		foreach ( var each in _enemySpawners ) {
 			each.Initialize();
 		}
 
-		foreach ( var each in _zoneSpawners ) {
-			
-			each.Initialize();
-		}
+		_zoneSpawnController.Initialize();
 	}
 
 	[ContextMenu("Hook dependencies")]
 	private void HookDependencies() {
 		_playerSpawner = FindObjectOfType<PlayerCharacterSpawner>();
 		_enemySpawners = FindObjectsOfType<SpawnerBase>();
-		_zoneSpawners = FindObjectsOfType<ZoneSpawner>();
 	}
 }

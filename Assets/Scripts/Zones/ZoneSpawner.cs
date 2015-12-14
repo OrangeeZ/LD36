@@ -5,13 +5,19 @@ using System.Collections.Generic;
 
 public class ZoneSpawner : MonoBehaviour {
 
+	public bool IsDrained { get; private set; }
+
+	//[SerializeField]
+	private float _autoDrainSpeed = 10f;
+
 	[SerializeField]
 	private ZoneInfo _zoneInfo;
 
-	private List<Character> _characters = new List<Character>();
+	private readonly List<Character> _characters = new List<Character>();
 
 	private float _healingAmount;
 	private ZoneView _view;
+	private bool _isAutoDrainStarted;
 
 	public void Initialize() {
 
@@ -22,6 +28,11 @@ public class ZoneSpawner : MonoBehaviour {
 		_view.CharacterExited += OnCharacterExit;
 
 		_healingAmount = _zoneInfo.HealthPool;
+	}
+
+	public void StartAutoDrain() {
+
+		_isAutoDrainStarted = true;
 	}
 
 	private void Update() {
@@ -40,9 +51,27 @@ public class ZoneSpawner : MonoBehaviour {
 			_healingAmount -= healingPerDeltaTime;
 		}
 
+		if ( _isAutoDrainStarted ) {
+
+			_healingAmount -= _autoDrainSpeed * Time.deltaTime;
+		}
+
 		var rate = _healingAmount / _zoneInfo.HealthPool;
 		_view.UpdateIntensity( rate );
+
+		if ( rate <= 0f ) {
+
+			IsDrained = true;
+
+			Cleanup();
+		}
 	}
+
+	private void Cleanup() {
+
+		Destroy( _view );
+		_characters.Clear();
+    }
 
 	private void OnCharacterEnter( Character character ) {
 

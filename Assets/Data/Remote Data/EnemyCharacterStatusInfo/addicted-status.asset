@@ -29,3 +29,4 @@ MonoBehaviour:
   EnemySpottedSound:
   - {fileID: 8300000, guid: 7ad0210e7ee9442a3b8e85531b0d9cfb, type: 3}
   SpawnInterval: 10
+  SpeakChance: 0.2

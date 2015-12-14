@@ -13,5 +13,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   HealthPool: 10
   HealingSpeed: 1
-  Size: {x: 2, y: 1, z: 2}
+  Size: {x: 5, y: 1, z: 5}
   ZonePrefab: {fileID: 11473952, guid: e719cf10d0d6f3e4e88341f077292ffa, type: 2}
