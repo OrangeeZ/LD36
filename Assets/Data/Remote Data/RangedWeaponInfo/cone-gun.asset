@@ -16,16 +16,16 @@ MonoBehaviour:
   inventoryIcon: {fileID: 0}
   color: {r: 0, g: 0, b: 0, a: 0}
   BaseDamage: 10
-  BaseAttackSpeed: 2
+  BaseAttackSpeed: 1.5
   AttackRange: 20
   CanFriendlyFire: 0
   SlotType: 0
   _projectilePrefab: {fileID: 11433014, guid: 608acec83ae17a746919b5d8ad070295, type: 2}
   _projectileSpeed: 30
   ClipSize: 3
-  ReloadDuration: 2
+  ReloadDuration: 1.5
   _projectilesPerShot: 3
-  _shotConeAngle: 15
+  _shotConeAngle: 5
   _sound: {fileID: 0}
   _projectileLifetime: 1
   _splashDamageRadius: 0

@@ -281,9 +281,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   characterInfo: {fileID: 11400000, guid: 75fa4e0652b8a644fb92082b140e9b60, type: 2}
-  characterStatusInfo: {fileID: 0}
+  characterStatusInfo: {fileID: 11400000, guid: 4960b7f87f015544fa4460132e0f832e,
+    type: 2}
   startingItems: []
-  startingWeapon: {fileID: 11400000, guid: 8f8ff88c690fff944b186897ea57d095, type: 2}
+  startingWeapon: {fileID: 0}
   startingStatusEffect: {fileID: 11400000, guid: a38710a9f8072df42a9fcf25a81b7573,
     type: 2}
   cameraBehaviour: {fileID: 11456982, guid: b0d70a7b03f08794794ffb6b7959ba27, type: 2}
@@ -1150,7 +1151,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 19
+  m_RootOrder: 16
 --- !u!1001 &1682114689
 Prefab:
   m_ObjectHideFlags: 0

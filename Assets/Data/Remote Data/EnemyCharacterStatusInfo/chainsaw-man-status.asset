@@ -14,6 +14,7 @@ MonoBehaviour:
   MaxHealth: 70
   MoveSpeed: 2
   Damage: 0
+  MaxAcorns: 0
   status:
     Strength:
       value: 0

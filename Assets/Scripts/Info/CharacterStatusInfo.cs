@@ -6,19 +6,16 @@ using UniRx;
 [CreateAssetMenu( menuName = "Create/Status Info" )]
 public class CharacterStatusInfo : ScriptableObject, ICsvConfigurable {
 
-	//[SerializeField]
 	public float MaxHealth;
-
-	//[SerializeField]
 	public float MoveSpeed;
-
-	//[SerializeField]
 	public float Damage;
+
+	public float MaxAcorns;
 
 	[SerializeField]
 	private CharacterStatus status;
 
-	public CharacterStatus GetInstance() {
+	public virtual CharacterStatus GetInstance() {
 
 		return new CharacterStatus( this ) {
 
