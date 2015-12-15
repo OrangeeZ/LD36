@@ -1,7 +1,9 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using System.Collections;
 using Packages.EventSystem;
 using UniRx;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class GameUI : UIScreen {
@@ -17,9 +19,28 @@ public class GameUI : UIScreen {
 	[SerializeField]
 	private Text _acornValue;
 
+	[SerializeField]
+	private Image _whiteImage;
+
 	private void Awake() {
 
 		EventSystem.Events.SubscribeOfType<PlayerCharacterSpawner.Spawned>( SetCharacter );
+		EventSystem.Events.SubscribeOfType<BossDeadStateInfo.Dead>( OnBossDead );
+	}
+
+	private void OnBossDead( BossDeadStateInfo.Dead dead ) {
+
+		StartCoroutine( FadeAndWinScreen() );
+	}
+
+	private IEnumerator FadeAndWinScreen() {
+
+		var fadeDuration = 1f;
+		_whiteImage.CrossFadeAlpha( 1f, fadeDuration, ignoreTimeScale: true );
+
+		yield return new WaitForSeconds( fadeDuration );
+
+		SceneManager.LoadScene( 2 );
 	}
 
 	public void SetCharacter( PlayerCharacterSpawner.Spawned spawnedEvent ) {
@@ -36,7 +57,6 @@ public class GameUI : UIScreen {
 
 			var acornCount = _character.Inventory.GetItemCount<AcornAmmoItemInfo.AcornAmmo>();
 
-			//_acornValue.enabled = acornCount > 0;
 			_acornValue.text = acornCount.ToString();
 		}
 	}

@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Name: aspd-incr
   m_EditorClassIdentifier: 
   Name: HIT IT UP FASTER
-  groundView: {fileID: 11488804, guid: 8d03d4a4a777a0e499ba1e113db4a8dc, type: 2}
+  groundView: {fileID: 11488804, guid: 41fc997075aee32419b503270a9923ab, type: 2}
   inventoryIcon: {fileID: 0}
   color: {r: 0, g: 0, b: 0, a: 0}
   ModifierType: 7

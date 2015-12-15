@@ -44,11 +44,11 @@ public class ItemView : AObject {
 
 	public void SetColor( Color baseColor ) {
 
-		var renderers = GetComponentsInChildren<Renderer>();
-		foreach ( var each in renderers ) {
+		//var renderers = GetComponentsInChildren<Renderer>();
+		//foreach ( var each in renderers ) {
 
-			each.material.SetColor( "_Color", baseColor );
-		}
+		//	each.material.SetColor( "_Color", baseColor );
+		//}
 	}
 
 }
