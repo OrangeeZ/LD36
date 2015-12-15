@@ -3,10 +3,16 @@ using Packages.EventSystem;
 using UniRx;
 using UnityEngine;
 
-[CreateAssetMenu( menuName = "Create/States/Dead" )]
-public class DeadStateInfo : CharacterStateInfo {
+[CreateAssetMenu( menuName = "Create/States/Boss Dead" )]
+public class BossDeadStateInfo : CharacterStateInfo {
 
-	private class State : CharacterState<DeadStateInfo> {
+	public class Dead : IEventBase {
+
+		public Character Character;
+
+	}
+
+	private class State : CharacterState<BossDeadStateInfo> {
 
 		public State( CharacterStateInfo info ) : base( info ) {
 		}
@@ -43,6 +49,8 @@ public class DeadStateInfo : CharacterStateInfo {
 				}
 
 				character.Pawn.MakeDead();
+
+				EventSystem.RaiseEvent( new BossDeadStateInfo.Dead {Character = character} );
 			}
 
 			while ( CanBeSet() ) {
