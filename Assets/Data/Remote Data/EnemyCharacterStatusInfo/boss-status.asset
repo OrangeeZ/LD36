@@ -11,7 +11,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a505d78e5be8bc34eb07117209f0d1b6, type: 3}
   m_Name: boss-status
   m_EditorClassIdentifier: 
-  MaxHealth: 10000
+  MaxHealth: 1000
   MoveSpeed: 5
   Damage: 0
   MaxAcorns: 0
@@ -26,7 +26,7 @@ MonoBehaviour:
   PawnPrefab: {fileID: 11446222, guid: 86bbcd198a5004adfb472e35ae0d5543, type: 2}
   DropChance: 0
   EnemySpottedSound: []
-  SpawnInterval: 0
-  MaxLiveEnemiesPerSpawner: 0
+  SpawnInterval: 99999
+  MaxLiveEnemiesPerSpawner: 1
   SpeakChance: 0.2
   SpeakLineId: 
