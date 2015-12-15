@@ -4126,7 +4126,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 36591628}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.41, y: 0, z: 7.25}
+  m_LocalPosition: {x: 6.42, y: 0, z: -2.03}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1039091193}
@@ -7641,6 +7641,7 @@ Transform:
   - {fileID: 1416017583}
   - {fileID: 708927654}
   - {fileID: 1721396677}
+  - {fileID: 1563460678}
   m_Father: {fileID: 0}
   m_RootOrder: 7
 --- !u!4 &118408928 stripped
@@ -10447,7 +10448,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 173761603}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -10.18, y: 0, z: 11.66}
+  m_LocalPosition: {x: -2.7, y: 0, z: -0.97}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1039091193}
@@ -14168,6 +14169,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _playerSpawner: {fileID: 902750905}
   _enemySpawners:
+  - {fileID: 628629476}
+  - {fileID: 1187991820}
   - {fileID: 6803631}
   - {fileID: 36591629}
   - {fileID: 87528353}
@@ -30031,6 +30034,49 @@ Transform:
   m_Children: []
   m_Father: {fileID: 688914873}
   m_RootOrder: 8
+--- !u!1 &628629474
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 628629475}
+  - 114: {fileID: 628629476}
+  m_Layer: 0
+  m_Name: One Enemy Spawner [addicted-status]
+  m_TagString: Untagged
+  m_Icon: {fileID: -964228994112308473, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &628629475
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 628629474}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 6.11, y: 0, z: 4.7}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1039091193}
+  m_RootOrder: 21
+--- !u!114 &628629476
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 628629474}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: df65fe5f7732142729e2a9ad2126eba8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  characterInfo: {fileID: 11400000, guid: 97961ddbd0b964946be328e4a4e3e18e, type: 2}
+  characterStatusInfo: {fileID: 11400000, guid: db9a7c71697910c4b933a5c95b0153b1,
+    type: 2}
+  startingItems: []
 --- !u!1001 &629216777
 Prefab:
   m_ObjectHideFlags: 0
@@ -46642,6 +46688,7 @@ Transform:
   - {fileID: 614214710}
   - {fileID: 950709402}
   - {fileID: 667189125}
+  - {fileID: 628629475}
   m_Father: {fileID: 0}
   m_RootOrder: 11
 --- !u!1001 &1040673030
@@ -49502,7 +49549,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1114320451}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3.35, y: 0, z: 11.55}
+  m_LocalPosition: {x: -5.4, y: 0, z: 15.34}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1039091193}
@@ -52975,7 +53022,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1184453606}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4.18, y: 0, z: -4.4}
+  m_LocalPosition: {x: 5.9, y: 0, z: -8.98}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1039091193}
@@ -52993,6 +53040,49 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   characterInfo: {fileID: 11400000, guid: 97961ddbd0b964946be328e4a4e3e18e, type: 2}
   characterStatusInfo: {fileID: 11400000, guid: 296cfa92dfab50844b77b04119a29074,
+    type: 2}
+  startingItems: []
+--- !u!1 &1187991818
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 1187991819}
+  - 114: {fileID: 1187991820}
+  m_Layer: 0
+  m_Name: One Enemy Spawner [boss-status]
+  m_TagString: Untagged
+  m_Icon: {fileID: -964228994112308473, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1187991819
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1187991818}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -28, y: 0, z: 19.58}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1794720331}
+  m_RootOrder: 14
+--- !u!114 &1187991820
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1187991818}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: df65fe5f7732142729e2a9ad2126eba8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  characterInfo: {fileID: 11400000, guid: 97961ddbd0b964946be328e4a4e3e18e, type: 2}
+  characterStatusInfo: {fileID: 11400000, guid: 5d415f37ad9e38c43b3e1e1555a67b6a,
     type: 2}
   startingItems: []
 --- !u!1001 &1189690471
@@ -69557,6 +69647,69 @@ Prefab:
 Transform:
   m_PrefabParentObject: {fileID: 415700, guid: 7ac1b598839ea4a73a82bcc1cfd0d6b8, type: 2}
   m_PrefabInternal: {fileID: 1563109491}
+--- !u!1001 &1563460677
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 116218150}
+    m_Modifications:
+    - target: {fileID: 416448, guid: 30aa25e57a9704c6bb0a260d717f733d, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 7.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 416448, guid: 30aa25e57a9704c6bb0a260d717f733d, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 416448, guid: 30aa25e57a9704c6bb0a260d717f733d, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: -5.74
+      objectReference: {fileID: 0}
+    - target: {fileID: 416448, guid: 30aa25e57a9704c6bb0a260d717f733d, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 416448, guid: 30aa25e57a9704c6bb0a260d717f733d, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 416448, guid: 30aa25e57a9704c6bb0a260d717f733d, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 416448, guid: 30aa25e57a9704c6bb0a260d717f733d, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 416448, guid: 30aa25e57a9704c6bb0a260d717f733d, type: 2}
+      propertyPath: m_RootOrder
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 416448, guid: 30aa25e57a9704c6bb0a260d717f733d, type: 2}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 416448, guid: 30aa25e57a9704c6bb0a260d717f733d, type: 2}
+      propertyPath: m_LocalScale.z
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 122864, guid: 30aa25e57a9704c6bb0a260d717f733d, type: 2}
+      propertyPath: m_Name
+      value: NPC Spawner [null]
+      objectReference: {fileID: 0}
+    - target: {fileID: 11476718, guid: 30aa25e57a9704c6bb0a260d717f733d, type: 2}
+      propertyPath: OverriderNpcInfo
+      value: 
+      objectReference: {fileID: 11400000, guid: c4c8d0f0ceffc5b45b50fc06debb1d60,
+        type: 2}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 30aa25e57a9704c6bb0a260d717f733d, type: 2}
+  m_IsPrefabParent: 0
+--- !u!4 &1563460678 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 416448, guid: 30aa25e57a9704c6bb0a260d717f733d, type: 2}
+  m_PrefabInternal: {fileID: 1563460677}
 --- !u!1001 &1563965808
 Prefab:
   m_ObjectHideFlags: 0
@@ -80393,6 +80546,7 @@ Transform:
   - {fileID: 246445615}
   - {fileID: 742792581}
   - {fileID: 638009028}
+  - {fileID: 1187991819}
   m_Father: {fileID: 0}
   m_RootOrder: 12
 --- !u!1001 &1795598165
