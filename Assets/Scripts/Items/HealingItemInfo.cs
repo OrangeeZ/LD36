@@ -6,7 +6,7 @@ using csv;
 [CreateAssetMenu( menuName = "Create/Items/Healing item" )]
 public class HealingItemInfo : ItemInfo, ICsvConfigurable {
 
-	public float HealingAmount = 1;
+	public float MaxHealthBonus = 1;
 	public float HealingDuration;
 	public float HealingPerSecond;
 
@@ -22,7 +22,7 @@ public class HealingItemInfo : ItemInfo, ICsvConfigurable {
 
 			var info = this.info as HealingItemInfo;
 
-			Character.Heal(info.HealingAmount);
+			Character.Status.MaxHealth.Value += info.MaxHealthBonus;
 
 			if ( info.HealingDuration > 0 ) {
 
@@ -54,7 +54,7 @@ public class HealingItemInfo : ItemInfo, ICsvConfigurable {
 
 	public void Configure( Values values ) {
 
-		HealingAmount = values.Get( "HpMax", 0f );
+		MaxHealthBonus = values.Get( "HpMax", 0f );
 		HealingDuration = values.Get( "HealDuration", 0f );
 		HealingPerSecond = values.Get( "HpPerSec", 0f );
 
