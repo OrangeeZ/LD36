@@ -35,10 +35,28 @@ public class GameUI : UIScreen {
 
 	private IEnumerator FadeAndWinScreen() {
 
-		var fadeDuration = 1f;
-		_whiteImage.CrossFadeAlpha( 1f, fadeDuration, ignoreTimeScale: true );
+		var fadeDuration = 2f;
 
-		yield return new WaitForSeconds( fadeDuration );
+		var from = _whiteImage.color;
+		var to = from;
+		to.a = 1f;
+
+		var timer = new AutoTimer( fadeDuration );
+
+		while ( timer.ValueNormalized < 1f ) {
+
+			_whiteImage.color = Color.Lerp( from, to, timer.ValueNormalized );
+
+			yield return null;
+		}
+		//_whiteImage.CrossFadeAlpha( 0f, fadeDuration, ignoreTimeScale: true );
+
+		//yield return new WaitForSeconds( fadeDuration );
+
+		foreach ( var each in Character.Instances ) {
+
+			each.Dispose();
+		}
 
 		SceneManager.LoadScene( 2 );
 	}

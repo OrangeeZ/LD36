@@ -9,3 +9,5 @@ EditorBuildSettings:
     path: Assets/Scenes/StartMenu.unity
   - enabled: 1
     path: Assets/Scenes/LevelArena.unity
+  - enabled: 1
+    path: Assets/Scenes/StartMenuSolo1h.unity

@@ -14,4 +14,4 @@ MonoBehaviour:
   itemInfo: {fileID: 11400000, guid: 355d6285fcd565346a98309ecda9fb8c, type: 2}
   groundView: {fileID: 11425952, guid: 7ae0b60c0692cf8428a0dd4b94d25961, type: 2}
   RechargeTimer: 210
-  CharacterScaleBonus: 0.5
+  CharacterScaleBonus: 0.3

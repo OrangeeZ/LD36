@@ -49,9 +49,9 @@ public class BossDeadStateInfo : CharacterStateInfo {
 				}
 
 				character.Pawn.MakeDead();
-
-				EventSystem.RaiseEvent( new BossDeadStateInfo.Dead {Character = character} );
 			}
+
+			EventSystem.RaiseEvent( new BossDeadStateInfo.Dead { Character = character } );
 
 			while ( CanBeSet() ) {
 

@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Name: canadian-lumberjack-status
   m_EditorClassIdentifier: 
   MaxHealth: 25
-  MoveSpeed: 2
+  MoveSpeed: 3
   Damage: 0
   MaxAcorns: 0
   status:
@@ -30,6 +30,6 @@ MonoBehaviour:
   EnemySpottedSound:
   - {fileID: 8300000, guid: 01d69ce9876ac4ad89998813c069852d, type: 3}
   SpawnInterval: 40
-  MaxLiveEnemiesPerSpawner: 3
+  MaxLiveEnemiesPerSpawner: 4
   SpeakChance: 0.2
   SpeakLineId: lumberjack_noticed

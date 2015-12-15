@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Name: 'Enemy Character Info #2'
   m_EditorClassIdentifier: 
   statusInfo: {fileID: 0}
-  stateControllerInfo: {fileID: 11400000, guid: 69e5bc9ee740a3948ad33c64b4708cbd,
+  stateControllerInfo: {fileID: 11400000, guid: 0173e4cbd76c1a440ba7d377a6c6ed2a,
     type: 2}
   weaponStateControllerInfo: {fileID: 11400000, guid: ca39cc5e84c2b3f43bb2345be11797cb,
     type: 2}

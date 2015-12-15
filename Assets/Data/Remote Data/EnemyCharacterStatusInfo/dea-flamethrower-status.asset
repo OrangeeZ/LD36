@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Name: dea-flamethrower-status
   m_EditorClassIdentifier: 
   MaxHealth: 70
-  MoveSpeed: 2
+  MoveSpeed: 3
   Damage: 0
   MaxAcorns: 0
   status:
@@ -30,6 +30,6 @@ MonoBehaviour:
   EnemySpottedSound:
   - {fileID: 8300000, guid: 08c345835379443519ce9e466366b132, type: 3}
   SpawnInterval: 180
-  MaxLiveEnemiesPerSpawner: 1
+  MaxLiveEnemiesPerSpawner: 2
   SpeakChance: 0.2
   SpeakLineId: pyro_noticed

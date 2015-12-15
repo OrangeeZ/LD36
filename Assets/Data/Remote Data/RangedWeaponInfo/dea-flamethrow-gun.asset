@@ -17,7 +17,7 @@ MonoBehaviour:
   color: {r: 0, g: 0, b: 0, a: 0}
   BaseDamage: 1
   BaseAttackSpeed: 0.2
-  AttackRange: 4
+  AttackRange: 5
   CanFriendlyFire: 1
   SlotType: 0
   _projectilePrefab: {fileID: 11471386, guid: ab10b2850fda526478017591a42ea08a, type: 2}

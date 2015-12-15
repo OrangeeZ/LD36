@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Name: addicted-status
   m_EditorClassIdentifier: 
   MaxHealth: 10
-  MoveSpeed: 1
+  MoveSpeed: 2
   Damage: 0
   MaxAcorns: 0
   status:
@@ -29,6 +29,6 @@ MonoBehaviour:
   EnemySpottedSound:
   - {fileID: 8300000, guid: 7ad0210e7ee9442a3b8e85531b0d9cfb, type: 3}
   SpawnInterval: 25
-  MaxLiveEnemiesPerSpawner: 5
+  MaxLiveEnemiesPerSpawner: 6
   SpeakChance: 0.2
   SpeakLineId: addict_noticed

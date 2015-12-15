@@ -17,5 +17,5 @@ MonoBehaviour:
   color: {r: 0, g: 0, b: 0, a: 0}
   MaxHealthBonus: 0
   HealingDuration: 3
-  HealingPerSecond: 10
+  HealingPerSecond: 8
   ModifierType: 0
