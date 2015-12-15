@@ -143,14 +143,16 @@ namespace csv {
 			}
 
 #if UNITY_EDITOR
-			var guid = AssetDatabase.FindAssets( "t:" + typeof ( T ).Name + " " + name ).FirstOrDefault();
-			if ( guid != null ) {
+			var foundObjects = AssetDatabase.FindAssets( "t:" + typeof ( T ).Name + " " + name ).Select( _ => AssetDatabase.GUIDToAssetPath( _ ) ).Select( _ => AssetDatabase.LoadAssetAtPath<T>( _ ) );
+			//if ( guid != null ) {
 
-				var path = AssetDatabase.GUIDToAssetPath( guid );
-				return AssetDatabase.LoadAssetAtPath<T>( path );
-			}
+			//	var path = AssetDatabase.GUIDToAssetPath( guid );
+			//	return AssetDatabase.LoadAssetAtPath<T>( path );
+			//}
 
-			Debug.LogFormat( "Could not find {0}", "t:" + typeof ( T ).Name + " " + name );
+			return foundObjects.FirstOrDefault( where => where.name == name );
+
+			//Debug.LogFormat( "Could not find {0}", "t:" + typeof ( T ).Name + " " + name );
 #endif
 
 			return null;

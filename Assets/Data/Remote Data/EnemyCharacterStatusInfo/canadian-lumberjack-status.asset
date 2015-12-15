@@ -23,10 +23,10 @@ MonoBehaviour:
   AggroRadius: 10
   Weapon1: {fileID: 11400000, guid: 47b706ea9a43b1f45a5bb3287f901d06, type: 2}
   ItemsToDrop:
-  - {fileID: 11400000, guid: 3919ded62de057f4eb456d92caaeb77d, type: 2}
+  - {fileID: 11400000, guid: f970764d33e64b748bd71bf104c7084f, type: 2}
   - {fileID: 11400000, guid: c3fafe990f8c6fe4c88f57b2b1a30363, type: 2}
   PawnPrefab: {fileID: 11467564, guid: ab8b31bb858caee479328a2acd42e8f9, type: 2}
-  DropChance: 0.15
+  DropChance: 0.2
   EnemySpottedSound:
   - {fileID: 8300000, guid: 01d69ce9876ac4ad89998813c069852d, type: 3}
   SpawnInterval: 40

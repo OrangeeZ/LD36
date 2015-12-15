@@ -11,7 +11,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a505d78e5be8bc34eb07117209f0d1b6, type: 3}
   m_Name: chainsaw-man-status
   m_EditorClassIdentifier: 
-  MaxHealth: 70
+  MaxHealth: 50
   MoveSpeed: 3
   Damage: 0
   MaxAcorns: 0
@@ -25,7 +25,7 @@ MonoBehaviour:
   ItemsToDrop:
   - {fileID: 11400000, guid: c3fafe990f8c6fe4c88f57b2b1a30363, type: 2}
   PawnPrefab: {fileID: 11467564, guid: 684d1c13ce947584b90513243017413d, type: 2}
-  DropChance: 0.2
+  DropChance: 0.25
   EnemySpottedSound:
   - {fileID: 8300000, guid: 01d69ce9876ac4ad89998813c069852d, type: 3}
   SpawnInterval: 60
