@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System;
+using Packages.EventSystem;
 
 public class NPCView : AObject {
 
@@ -25,6 +26,8 @@ public class NPCView : AObject {
 
 			character.Status.ModifierCalculator.Add( ModifierType.BaseMoveSpeed, new OffsetValue( playerCharacterStatusInfo.SpeedBonusPerItem, OffsetValue.OffsetValueType.Constant ) );
 		}
+
+		EventSystem.RaiseEvent( new ItemView.PickedUp { ItemView = itemView } );
 
 		if ( destroyOnPickup ) {
 
