@@ -2,6 +2,7 @@
 using UnityEngine;
 using System.Collections;
 using Packages.EventSystem;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class RestartScreen : UIScreen {
@@ -25,7 +26,7 @@ public class RestartScreen : UIScreen {
 		
         Character.Instances.Clear();
 
-        Application.LoadLevel( Application.loadedLevel );
+		SceneManager.LoadScene( SceneManager.GetActiveScene().buildIndex );
     }
 
 }

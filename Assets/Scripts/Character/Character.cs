@@ -135,6 +135,11 @@ public class Character {
 
 	public void Dispose() {
 
+		if ( InputSource is IDisposable ) {
+
+			(InputSource as IDisposable).Dispose();
+		}
+
 		_compositeDisposable.Dispose();
 		Health.Dispose();
 	}

@@ -46,7 +46,7 @@ public class ScreenManager : AObject {
         _self._windowStack.Push( screen );
     }
 
-    public static T GetWindow<T>() where T : Screen {
+    public static T GetScreen<T>() where T : Screen {
 
         return _self.screens.OfType<T>().FirstOrDefault();
     }
