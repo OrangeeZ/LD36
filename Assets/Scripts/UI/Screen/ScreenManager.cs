@@ -28,7 +28,7 @@ public class ScreenManager : AObject {
 
             startScreen.Show();
         }
-    }
+    } 
     
     public static Screen GetActive() {
 

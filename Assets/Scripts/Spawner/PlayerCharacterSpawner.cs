@@ -23,7 +23,7 @@ public class PlayerCharacterSpawner : MonoBehaviour {
 
 	public CameraBehaviour cameraBehaviour;
 	
-	private Character character;
+	public Character character;
 
 	public void Initialize() {
 

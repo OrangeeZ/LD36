@@ -8,7 +8,12 @@ public class GameplayController : MonoBehaviour {
 	[SerializeField]
 	private PlayerCharacterSpawner _playerSpawner;
 
-	[SerializeField]
+    public PlayerCharacterSpawner PlayerSpawner
+    {
+        get { return _playerSpawner;}
+    }
+
+    [SerializeField]
 	private SpawnerBase[] _enemySpawners;
 
 	[SerializeField]

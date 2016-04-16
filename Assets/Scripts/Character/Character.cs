@@ -1,8 +1,8 @@
 ﻿using System;
-using UniRx;
-using UnityEngine;
 using System.Collections.Generic;
 using Packages.EventSystem;
+using UniRx;
+using UnityEngine;
 
 public class Character {
 
@@ -52,20 +52,20 @@ public class Character {
 
 	public Character( CharacterPawn pawn, IInputSource inputSource, CharacterStatus status, CharacterStateController stateController, CharacterStateController weaponStateController, int teamId, CharacterInfo info ) {
 
-		this.Status = status;
-		this.Health = new FloatReactiveProperty( this.Status.MaxHealth.Value );
-		this.Pawn = pawn;
-		this.InputSource = inputSource;
-		this.StateController = stateController;
-		this.WeaponStateController = weaponStateController;
-		this.TeamId = teamId;
-		this.Info = info;
-		this.Inventory = new BasicInventory( this );
+		Status = status;
+		Health = new FloatReactiveProperty( Status.MaxHealth.Value );
+		Pawn = pawn;
+		InputSource = inputSource;
+		StateController = stateController;
+		WeaponStateController = weaponStateController;
+		TeamId = teamId;
+		Info = info;
+		Inventory = new BasicInventory( this );
 
 		pawn.SetCharacter( this );
 
-		this.StateController.Initialize( this );
-		this.WeaponStateController.Initialize( this );
+		StateController.Initialize( this );
+		WeaponStateController.Initialize( this );
 
 		var inputSourceDisposable = inputSource as IDisposable;
 		if ( inputSourceDisposable != null ) {
