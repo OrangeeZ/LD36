@@ -85,13 +85,29 @@ NavMeshSettings:
     cellSize: 0.16666667
     manualCellSize: 0
   m_NavMeshData: {fileID: 0}
---- !u!1001 &658465152
+--- !u!1 &608533857 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 119826, guid: 69743523e59dad543937b57b2667cdb1, type: 2}
+  m_PrefabInternal: {fileID: 1589858005}
+--- !u!1 &991028804 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 177648, guid: 69743523e59dad543937b57b2667cdb1, type: 2}
+  m_PrefabInternal: {fileID: 1589858005}
+--- !u!1 &1414836157 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 176242, guid: 69743523e59dad543937b57b2667cdb1, type: 2}
+  m_PrefabInternal: {fileID: 1589858005}
+--- !u!1001 &1589858005
 Prefab:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 11428558, guid: 69743523e59dad543937b57b2667cdb1, type: 2}
+      propertyPath: _enemiesMarkers.Array.size
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 22488572, guid: 69743523e59dad543937b57b2667cdb1, type: 2}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -164,15 +180,30 @@ Prefab:
       propertyPath: m_Pivot.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 11422658, guid: 69743523e59dad543937b57b2667cdb1, type: 2}
-      propertyPath: _viewAnimator
+    - target: {fileID: 128014, guid: 69743523e59dad543937b57b2667cdb1, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 11428558, guid: 69743523e59dad543937b57b2667cdb1, type: 2}
+      propertyPath: _enemiesMarkers.Array.data[0]
       value: 
-      objectReference: {fileID: 1277434029}
+      objectReference: {fileID: 1414836157}
+    - target: {fileID: 11428558, guid: 69743523e59dad543937b57b2667cdb1, type: 2}
+      propertyPath: _enemiesMarkers.Array.data[1]
+      value: 
+      objectReference: {fileID: 1623410215}
+    - target: {fileID: 11428558, guid: 69743523e59dad543937b57b2667cdb1, type: 2}
+      propertyPath: _enemiesMarkers.Array.data[2]
+      value: 
+      objectReference: {fileID: 608533857}
+    - target: {fileID: 11428558, guid: 69743523e59dad543937b57b2667cdb1, type: 2}
+      propertyPath: _enemiesMarkers.Array.data[3]
+      value: 
+      objectReference: {fileID: 991028804}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 69743523e59dad543937b57b2667cdb1, type: 2}
   m_IsPrefabParent: 0
---- !u!95 &1277434029 stripped
-Animator:
-  m_PrefabParentObject: {fileID: 9590156, guid: 69743523e59dad543937b57b2667cdb1,
-    type: 2}
-  m_PrefabInternal: {fileID: 658465152}
+--- !u!1 &1623410215 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 101242, guid: 69743523e59dad543937b57b2667cdb1, type: 2}
+  m_PrefabInternal: {fileID: 1589858005}

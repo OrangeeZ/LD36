@@ -17,6 +17,8 @@ public class GameUI : UIScreen
     private HealthView _healthBar;
     [SerializeField]
     private WeaponView _weaponView;
+    [SerializeField]
+    private ScanerView _scanerController;
 
     [SerializeField]
     private Text _acornValue;
@@ -24,8 +26,6 @@ public class GameUI : UIScreen
     [SerializeField]
     private Image _whiteImage;
 
-    [SerializeField]
-    private ScanerController _scanerController;
 
     private void Awake()
     {
@@ -75,6 +75,7 @@ public class GameUI : UIScreen
         _character = spawnedEvent.Character;
         _healthBar.Initialize(_character);
         _weaponView.Initialize(_character);
+        _scanerController.Initialize(_character);
     }
 
     private void Update()

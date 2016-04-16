@@ -24,7 +24,7 @@ namespace Assets.UniRx.Scripts.Ui
                 return;
             _previousHealth = _currentHealth;
             _currentHealth = healthValue;
-            var heathProc = Math.Round(healthValue/ _character.Info.statusInfo.MaxHealth * 100);
+            var heathProc = Math.Round(healthValue/ _character.Info.statusInfo.MaxHealth * 10);
             _text.text = string.Format("{0}%", heathProc);
         }
 

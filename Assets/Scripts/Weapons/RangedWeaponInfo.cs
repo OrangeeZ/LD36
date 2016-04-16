@@ -24,6 +24,12 @@ public class RangedWeaponInfo : WeaponInfo
     private AudioClip[] _sounds;
 
     [SerializeField]
+    private int _ammoLimit = 100;
+
+    [SerializeField]
+    private int _ammoAmount = 100;
+
+    [SerializeField]
     private float _projectileLifetime;
 
     [SerializeField]
@@ -37,7 +43,7 @@ public class RangedWeaponInfo : WeaponInfo
 
     public class RangedWeapon : Weapon<RangedWeaponInfo>
     {
-
+        protected RangedWeaponInfo _rangedWeaponInfo;
         public int AmmoInClip { get; private set; }
 
         public float BaseAttackSpeed
@@ -48,19 +54,34 @@ public class RangedWeaponInfo : WeaponInfo
             }
         }
 
-        public int ClipSize { get; private set; }
+        public int ClipSize { get; protected set; }
         public float ReloadDuration { get; set; }
+
+        public bool IsUnlimited
+        {
+            get { return _rangedWeaponInfo._ammoLimit < 0; }
+        }
 
         public bool IsReloading
         {
             get { return _behaviour == null ? true : _behaviour.IsReloading; }
         }
 
+
+        private bool IsAttackAvailable
+        {
+            get
+            {
+                return !_behaviour.IsReloading && (IsUnlimited || AmmoInClip >= 0);
+            }
+        }
+
         private RangedWeaponBehaviour _behaviour;
 
         public RangedWeapon(RangedWeaponInfo info) : base(info)
         {
-
+            _rangedWeaponInfo = info;
+            AmmoInClip = _rangedWeaponInfo._ammoAmount;
             ClipSize = info.ClipSize;
             ReloadDuration = info.ReloadDuration;
         }
@@ -85,14 +106,13 @@ public class RangedWeaponInfo : WeaponInfo
         public override void Attack(Character target, EnemyCharacterStatusInfo statusInfo)
         {
 
-            if (target == null || _behaviour.IsReloading)
+            if (target == null || !IsAttackAvailable)
             {
                 return;
             }
 
             if (AttackAction != null)
             {
-
                 AttackAction();
             }
 
@@ -106,11 +126,13 @@ public class RangedWeaponInfo : WeaponInfo
                 var finalDamage = ModifierCalculator.CalculateFinalValue(ModifierType.BaseDamage, 
                     _typedInfo.BaseDamage);
                 projectile.Launch(Character, projectileDirection, _typedInfo._projectileSpeed, finalDamage, _typedInfo.CanFriendlyFire, _typedInfo._splashDamageRadius);
-                _behaviour.TryShoot();
+                if (_behaviour.TryShoot())
+                {
+                    AmmoInClip -= ClipSize;
+                }
 
                 if (_behaviour.IsReloading)
                 {
-
                     break;
                 }
             }
@@ -125,7 +147,7 @@ public class RangedWeaponInfo : WeaponInfo
 
         public override void Attack(Vector3 direction)
         {
-            if (_behaviour.IsReloading)
+            if (!IsAttackAvailable)
             {
                 return;
             }
@@ -147,7 +169,10 @@ public class RangedWeaponInfo : WeaponInfo
                     _typedInfo._projectileSpeed, finalDamage, _typedInfo.CanFriendlyFire, 
                     _typedInfo._splashDamageRadius);
 
-                _behaviour.TryShoot();
+                if(_behaviour.TryShoot())
+                {
+                    AmmoInClip -= ClipSize;
+                }
 
                 if (_behaviour.IsReloading)
                 {
@@ -208,6 +233,8 @@ public class RangedWeaponInfo : WeaponInfo
         base.Configure(values);
 
         ReloadDuration = BaseAttackSpeed;
+        _ammoLimit = values.Get("AmmoLimit", -1);
+        _ammoAmount = values.Get("AmmoAmount", -1);
         _projectileSpeed = values.Get("Projectile Speed", 0f);
         _projectilesPerShot = values.Get("BulletsPerBurst", 1);
         _projectileLifetime = values.Get("ProjectileLifetime", 1f);

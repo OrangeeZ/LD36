@@ -22,14 +22,16 @@ public class AcornRangedBehaviourInfo : RangedWeaponBehaviourInfo {
 			_ownerInventory = ownerInventory;
 		}
 
-		public override void TryShoot() {
+		public override bool TryShoot() {
 
 			if ( !IsReloading ) {
 				
 				_nextAttackTime = Time.timeSinceLevelLoad + _ownerWeapon.BaseAttackSpeed;
 
 				_ownerInventory.RemoveItem<AcornAmmoItemInfo.AcornAmmo>();
+			    return true;
 			}
+            return false;
 		}
 
 	}

@@ -34,7 +34,7 @@ public class DefaultRangedBehaviourInfo : RangedWeaponBehaviourInfo {
 			AmmoInClip = _ownerWeapon.ClipSize;
 		}
 
-		public override void TryShoot() {
+		public override bool TryShoot() {
 
 			AmmoInClip--;
 
@@ -45,10 +45,11 @@ public class DefaultRangedBehaviourInfo : RangedWeaponBehaviourInfo {
 				_nextAttackTime = Time.timeSinceLevelLoad + _ownerWeapon.ReloadDuration;
 
 				IsReloading = true;
-			} else {
 
-				_nextAttackTime = Time.timeSinceLevelLoad + _ownerWeapon.BaseAttackSpeed;
+			    return false;
 			}
+		    _nextAttackTime = Time.timeSinceLevelLoad + _ownerWeapon.BaseAttackSpeed;
+		    return true;
 		}
 
 	}
