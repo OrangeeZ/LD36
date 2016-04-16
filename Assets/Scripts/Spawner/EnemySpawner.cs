@@ -10,8 +10,6 @@ public class EnemySpawner : SpawnerBase {
 	public EnemyCharacterInfo characterInfo;
 	public EnemyCharacterStatusInfo characterStatusInfo;
 
-	public ItemInfo[] startingItems;
-
 	public float SpawnInterval;
 	public float SpawnMoveSpeed;
 	public int SpawnLimit;
@@ -23,10 +21,12 @@ public class EnemySpawner : SpawnerBase {
 
 	[Expressions.CalculatorExpression]
 	public StringReactiveProperty Activation;
+
 	private Expressions.ReactiveCalculator _reactCalc;
 
 	[Expressions.CalculatorExpression]
 	public StringReactiveProperty Deactivation;
+
 	private Expressions.ReactiveCalculator _reactCalcDeact;
 
 	public override void Initialize() {
@@ -48,15 +48,12 @@ public class EnemySpawner : SpawnerBase {
 			return;
 		}
 
-		if (SpawnLimit > 0 && _spawnCount >= SpawnLimit) {
+		if ( SpawnLimit > 0 && _spawnCount >= SpawnLimit ) {
 			return;
 		}
 		_spawnCount += 1;
-			
+
 		_character = characterInfo.GetCharacter( startingPosition: transform.position, replacementStatusInfo: characterStatusInfo );
-		foreach ( var each in startingItems.Select( _ => _.GetItem() ) ) {
-			_character.Inventory.AddItem( each );
-		}
 
 		if ( characterStatusInfo != null ) {
 			_character.ItemsToDrop = characterStatusInfo.ItemsToDrop;

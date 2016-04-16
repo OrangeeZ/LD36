@@ -47,27 +47,6 @@ public class CharacterPawn : CharacterPawnBase {
 			_ySpeed += _weight * Time.deltaTime;
 		}
 
-		if ( _destination.HasValue && canFollowDestination ) {
-
-			//var direction = planetTransform.GetDirectionTo( _destination.Value );
-
-			//planetTransform.Move( transform, Vector3.forward, speed * Time.deltaTime );
-
-			//rotation = Quaternion.RotateTowards( transform.rotation, transform.rotation * Quaternion.FromToRotation( Vector3.forward, direction.Set( y: 0 ) ), _rotationToDirectionSpeed * Time.deltaTime );
-
-			ApplyPunishingForce();
-		}
-
-		//if ( turret != null && _turretTarget != null ) {
-
-		//	if ( character.pawn.turret != null ) {
-
-		//		//var direction = GetDirectionTo( _turretTarget.position );
-
-		//		character.pawn.turret.transform.localRotation = Quaternion.FromToRotation( Vector3.forward, direction );
-		//	}
-		//}
-
 		if ( _characterController != null ) {
 
 			_characterController.Move( Vector3.down * Time.deltaTime * 2f );
@@ -139,10 +118,7 @@ public class CharacterPawn : CharacterPawnBase {
 	}
 
 	public void SetActive( bool isActive ) {
-
-		var collider = GetComponent<Collider>();
-
-		//collider.enabled = isActive;
+		
 		enabled = isActive;
 	}
 
@@ -150,9 +126,6 @@ public class CharacterPawn : CharacterPawnBase {
 
 		GetSphereSensor().enabled = false;
 		GetComponent<Collider>().enabled = false;
-
-		//GetComponentsInChildren<Rotator>().MapImmediate( Destroy );
-		//GetComponentsInChildren<Renderer>().MapImmediate( _ => _.material.color += Color.black * 0.8f );
 	}
 
 	public void AddLevel( float scaleBonus ) {
@@ -162,19 +135,4 @@ public class CharacterPawn : CharacterPawnBase {
 			_levelingController.AddLevel( scaleBonus );
 		}
 	}
-
-	private void ApplyPunishingForce() {
-
-		if ( _sphereCollider == null ) {
-
-			return;
-		}
-
-		var punishingForce = Building.instances.Select( _ => _.sphereCollider )
-			.Select( _ => _.CalculatePunishingForce( _sphereCollider ) )
-			.Aggregate( Vector3.zero, ( total, each ) => each + total );
-
-		transform.position += punishingForce;
-	}
-
 }

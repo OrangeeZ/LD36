@@ -6,8 +6,8 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/StartMenu.unity
+    path: Assets/Scenes/LD Old/StartMenu.unity
   - enabled: 1
-    path: Assets/Scenes/LevelArena.unity
+    path: Assets/Scenes/LD Old/LevelArena.unity
   - enabled: 1
-    path: Assets/Scenes/StartMenuSolo1h.unity
+    path: Assets/Scenes/LD Old/StartMenuSolo1h.unity

@@ -135,16 +135,14 @@ public class Projectile : AObject {
 
 		OnContact( other );
 
-		if ( other.tag == "Environment" ) {
+		var environmentObject = other.transform.root.GetComponent<EnvironmentObject>();
+		if ( environmentObject != null ) {
 
-			OnHit();
+			environmentObject.Destroy();
 		}
 
-		var otherBuilding = other.GetComponent<Building>();
+		if ( other.tag == "Environment" ) {
 
-		if ( otherBuilding != null ) {
-
-			otherBuilding.Hit( this );
 			OnHit();
 		}
 	}

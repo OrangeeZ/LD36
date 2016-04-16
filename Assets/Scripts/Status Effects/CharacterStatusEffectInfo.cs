@@ -162,7 +162,6 @@ public class CharacterStatusEffectInfo : ScriptableObject {
 
 		target.Status.MaxHealth.Value += HealthDelta;
 		target.Status.MoveSpeed.Value += MoveSpeedDelta;
-
 	}
 
 	public virtual void Remove( Character target ) {
@@ -171,8 +170,6 @@ public class CharacterStatusEffectInfo : ScriptableObject {
 
 		target.Status.MaxHealth.Value -= HealthDelta;
 		target.Status.MoveSpeed.Value -= MoveSpeedDelta;
-
-		//target.Status.ModifierCalculator.Remove( ModifierType, ModifierValue );
 	}
 
 }

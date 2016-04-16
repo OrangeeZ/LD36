@@ -39,18 +39,10 @@ public class CollisionSystem : MonoBehaviour {
 	}
 	
 	private void OnLevelGenerated() {
-				
-		var groups = new Utility.Collisions.RecursiveDimensionalClustering().GetGroups(Building.instances.Select( _ => _.sphereCollider ).ToList());
-		var collisionGroups = new List<CollisionGroup>();
-		
-		foreach (var each in groups) {
-			
-			if (each.Count > 0) {
-				
-				collisionGroups.Add( new CollisionGroup(each) );
-			}
-		}
-		
+
+		var groups = new Utility.Collisions.RecursiveDimensionalClustering().GetGroups( new List<SimpleSphereCollider>() );
+		var collisionGroups = ( groups.Where( each => each.Count > 0 ).Select( each => new CollisionGroup( each ) ) ).ToList();
+
 		Groups = collisionGroups;
 		
 		SphereLevelGenerator.Completed -= OnLevelGenerated;
