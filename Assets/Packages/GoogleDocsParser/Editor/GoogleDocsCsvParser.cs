@@ -10,17 +10,6 @@ using System.Reflection;
 using System.Text;
 using csv;
 
-[AttributeUsage( validOn: AttributeTargets.Parameter | AttributeTargets.Field, AllowMultiple = false )]
-public class RemotePropertyAttribute : Attribute {
-
-	public readonly string PropertyName;
-
-	public RemotePropertyAttribute( string propertyName ) {
-		PropertyName = propertyName;
-	}
-
-}
-
 public static class GoogleDocsCsvParser {
 
 	public static void Get( string url, string type, CsvParseRegime regime, string postfix ) {
