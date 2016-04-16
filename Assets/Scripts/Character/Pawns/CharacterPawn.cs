@@ -1,5 +1,4 @@
-﻿using UniRx.Triggers;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class CharacterPawn : CharacterPawnBase {
 
@@ -35,7 +34,7 @@ public class CharacterPawn : CharacterPawnBase {
 	private CharacterPawnLevelingController _levelingController;
 
 	private void Update() {
-		
+
 		if ( _characterController != null ) {
 
 			_characterController.Move( Vector3.down * Time.deltaTime * 2f );
@@ -99,6 +98,7 @@ public class CharacterPawn : CharacterPawnBase {
 	public void SetActive( bool isActive ) {
 
 		enabled = isActive;
+		gameObject.SetActive( isActive );
 	}
 
 	public override void MakeDead() {
@@ -114,11 +114,4 @@ public class CharacterPawn : CharacterPawnBase {
 			_levelingController.AddLevel( scaleBonus );
 		}
 	}
-
-	public void HideInObject( EnvironmentObject target ) {
-		
-		SetActive( false );
-		target.SetState( EnvironmentObject.State.Infected );
-	}
-
 }

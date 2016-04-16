@@ -22,7 +22,7 @@ public class XenoWaitInHidingSpotInfo : CharacterStateInfo {
 		}
 
 		public override bool CanSwitchTo( CharacterState nextState ) {
-
+			
 			return _isTriggered;
 		}
 
@@ -32,8 +32,12 @@ public class XenoWaitInHidingSpotInfo : CharacterStateInfo {
 		}
 
 		public override IEnumerable GetEvaluationBlock() {
+			
+			_isTriggered = false;
 
 			while ( !_isTriggered ) yield return null;
+
+			character.Pawn.SetActive( true );
 		}
 
 		private void OnXenoTriggerEvent( XenoTriggerEvent triggerEvent ) {

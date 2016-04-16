@@ -5,6 +5,9 @@ using MoreLinq;
 [CreateAssetMenu( menuName = "Create/States/Xeno/Find hiding spot" )]
 public class XenoFindHidingSpotInfo : CharacterStateInfo {
 
+	[SerializeField]
+	private XenoWaitInHidingSpotInfo _waitInHidingSpotInfo;
+
 	private class State : CharacterState<XenoFindHidingSpotInfo> {
 
 		public State( CharacterStateInfo info ) : base( info ) {
@@ -18,17 +21,23 @@ public class XenoFindHidingSpotInfo : CharacterStateInfo {
 		public override IEnumerable GetEvaluationBlock() {
 
 			var pawn = character.Pawn;
-			var farthestObject = GetFathestObject();
+			var hidingSpot = GetFathestObject();
 
 			do {
 
 				yield return null;
 
-				pawn.SetDestination( farthestObject.transform.position );
+				pawn.SetDestination( hidingSpot.transform.position );
 
 				yield return null;
 
 			} while ( pawn.GetDistanceToDestination() > 1f );
+
+			character.Pawn.SetActive( false );
+			hidingSpot.SetState( EnvironmentObject.State.Infected );
+
+			var waitState = stateController.GetStateByInfo( typedInfo._waitInHidingSpotInfo );
+			stateController.SetScheduledStates( new[] {waitState} );
 		}
 
 		private EnvironmentObject GetFathestObject() {

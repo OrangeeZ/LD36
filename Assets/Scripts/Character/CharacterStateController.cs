@@ -93,7 +93,7 @@ public class CharacterStateController {
 
 			Debug.Log( string.Format( "{0}->{1}", currentState == null ? null : currentState.ToString(), newState ) );
 		}
-
+		
 		currentState = newState;
 
 		UpdateEvaluationBlock();

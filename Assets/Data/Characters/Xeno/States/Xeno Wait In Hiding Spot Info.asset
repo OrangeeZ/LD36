@@ -8,8 +8,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ae5ec920f482f454a8d6de5e9ef4bbea, type: 3}
-  m_Name: Xeno Find Hiding Spot Info
+  m_Script: {fileID: 11500000, guid: 23afaef4fe442e24d86e0fd385281700, type: 3}
+  m_Name: Xeno Wait In Hiding Spot Info
   m_EditorClassIdentifier: 
   animatorStateName: 
   weaponAnimatorStateName: 
