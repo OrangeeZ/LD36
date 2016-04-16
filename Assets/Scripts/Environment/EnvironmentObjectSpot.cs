@@ -31,6 +31,14 @@ public class EnvironmentObjectSpot : AObject {
 		Instances.Add( this );
 	}
 
+	void Start() {
+
+		if ( _state == State.Default ) {
+
+			_viewInstance = gameObject;
+		}
+	}
+
 	private void OnDestroy() {
 
 		Instances.Remove( this );
@@ -43,6 +51,16 @@ public class EnvironmentObjectSpot : AObject {
 		Debug.Log( this, this );
 
 		EventSystem.RaiseEvent( new XenoTriggerEvent {Source = this} );
+	}
+
+	public void TryResetState() {
+
+		if ( _state != State.Destroyed ) {
+
+			Destroy(_viewInstance);
+
+			_state = State.Empty;
+		}
 	}
 
 	public void SetState( State state ) {

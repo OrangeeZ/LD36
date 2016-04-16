@@ -37,7 +37,8 @@ public class XenoFindHidingSpotInfo : CharacterStateInfo {
 			character.Pawn.SetActive( false );
 			hidingSpot.SetState( EnvironmentObjectSpot.State.Infected );
 
-			var waitState = stateController.GetStateByInfo( typedInfo._waitInHidingSpotInfo );
+			var waitState = stateController.GetState<XenoWaitInHidingSpotInfo.State>();
+			waitState.SetHidingSpot( hidingSpot );
 			stateController.SetScheduledStates( new[] {waitState} );
 		}
 
