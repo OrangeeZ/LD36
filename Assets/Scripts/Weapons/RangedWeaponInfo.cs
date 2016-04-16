@@ -51,6 +51,11 @@ public class RangedWeaponInfo : WeaponInfo
         public int ClipSize { get; private set; }
         public float ReloadDuration { get; set; }
 
+        public bool IsReloading
+        {
+            get { return _behaviour == null ? true : _behaviour.IsReloading; }
+        }
+
         private RangedWeaponBehaviour _behaviour;
 
         public RangedWeapon(RangedWeaponInfo info) : base(info)

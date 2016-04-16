@@ -1,7 +1,5 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using System.Monads;
-using UnityEngine;
 using System.Collections;
 
 public abstract class CharacterState {

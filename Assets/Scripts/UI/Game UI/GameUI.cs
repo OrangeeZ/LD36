@@ -15,6 +15,8 @@ public class GameUI : UIScreen
 
     [SerializeField]
     private HealthView _healthBar;
+    [SerializeField]
+    private WeaponView _weaponView;
 
     [SerializeField]
     private Text _acornValue;
@@ -72,6 +74,7 @@ public class GameUI : UIScreen
     {
         _character = spawnedEvent.Character;
         _healthBar.Initialize(_character);
+        _weaponView.Initialize(_character);
     }
 
     private void Update()
