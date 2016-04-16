@@ -22,9 +22,9 @@ namespace Assets.Scripts.UI.Game_UI
         private List<Character> _enemies = new List<Character>();
         private float _lastActivationSoundTime;
 
-        public void Initialize()
+        public void Initialize(Character character)
         {
-            _character = GameplayController.Instance.PlayerSpawner.character;
+            _character = character;
             StartCoroutine(ScanerDetectCoroutine());
         }
 
@@ -52,12 +52,6 @@ namespace Assets.Scripts.UI.Game_UI
         }
 
         //====private methods
-        private void Start()
-        {
-            Debug.Log("Start Scaner;");
-            Initialize();
-            
-        }
 
         private void PlaySound(float volume,float delay)
         {
@@ -68,20 +62,10 @@ namespace Assets.Scripts.UI.Game_UI
             _audioSource.Play();
         }
 
-        private void Update()
-        {
-            if (_character == null)
-            {
-                Initialize();
-                return;
-            }
-        }
-
         private IEnumerator ScanerDetectCoroutine()
         {
             while (true)
             {
-                Debug.Log("ScanerDetectCoroutine");
                 UpdateScanerData();
                 yield return _coolDownTime > 0 ? 
                     new WaitForSeconds(_coolDownTime) : null;

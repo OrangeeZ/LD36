@@ -1,7 +1,4 @@
-﻿using System;
-using AI.Gambits;
-using UnityEngine;
-using System.Collections;
+﻿using UnityEngine;
 
 [CreateAssetMenu( menuName = "Create/Character Info" )]
 public class CharacterInfo : ScriptableObject {
