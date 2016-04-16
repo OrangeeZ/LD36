@@ -1,43 +1,49 @@
 ﻿using System;
 using UnityEngine;
 
-public abstract class Weapon : Item {
+public abstract class Weapon : Item
+{
 
-	protected Action AttackCallback;
+    protected Action AttackAction;
+    protected Vector3 Direction;
 
-	protected Vector3 Direction;
+    protected Weapon(ItemInfo info)
+        : base(info)
+    {
+    }
 
-	protected Weapon( ItemInfo info )
-		: base( info ) {
-	}
+    public virtual WeaponInfo GetInfo()
+    {
+        return null;
+    }
 
-	public virtual WeaponInfo GetInfo() {
+    public virtual void Attack(Character target, EnemyCharacterStatusInfo statusInfo) { }
 
-		return null;
-	}
+    public virtual void Attack(Vector3 direction) { }
 
-	public virtual void Attack( Character target, EnemyCharacterStatusInfo statusInfo ) {}
-
-    public virtual void Attack( Vector3 direction ) {}
-
-    public virtual bool CanAttack( Character target ) {
-
+    public virtual bool CanAttack(Character target)
+    {
         return false;
     }
 
-	public override void Apply() {
-
-		Character.Inventory.SetArmSlotItem( ( info as WeaponInfo ).SlotType, this );
-	}
+    public override void Apply()
+    {
+        var weaponInfo = info as WeaponInfo;
+        if (weaponInfo != null)
+        {
+            Character.Inventory.SetArmSlotItem(weaponInfo.SlotType, this);
+        }
+    }
 }
 
-public abstract class Weapon<T> : Weapon where T : WeaponInfo {
+public abstract class Weapon<T> : Weapon where T : WeaponInfo
+{
 
-	protected readonly T typedInfo;
+    protected readonly T _typedInfo;
 
-	public Weapon( ItemInfo info )
-		: base( info ) {
-
-		this.typedInfo = info as T;
-	}
+    public Weapon(ItemInfo info)
+        : base(info)
+    {
+        _typedInfo = info as T;
+    }
 }

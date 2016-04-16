@@ -1,152 +1,163 @@
 ﻿using Packages.EventSystem;
 using UnityEngine;
-using UnityEngine.Serialization;
 
-public class Projectile : AObject {
+public class Projectile : AObject
+{
 
-	public float Lifetime;
+    public float Lifetime;
 
-	public float Damage { get; protected set; }
+    public float Damage { get; protected set; }
 
-	public float LifeFraction {
-		get { return _timer.ValueNormalized; }
-	}
+    public float LifeFraction
+    {
+        get { return _timer.ValueNormalized; }
+    }
 
-	public float weight = 1f;
+    public float weight = 1f;
 
-	public bool DelayedDestroy = false;
+    public bool DelayedDestroy = false;
 
-	public bool NeedsSplashEffect = false;
+    public bool NeedsSplashEffect = false;
 
-	private AutoTimer _timer;
+    private AutoTimer _timer;
 
-	protected Vector3 Direction;
+    protected Vector3 Direction;
 
-	protected Character Owner;
+    protected Character Owner;
 
-	protected float Speed;
-	protected bool CanFriendlyFire;
-	private float _splashRange;
+    protected float Speed;
+    protected bool CanFriendlyFire;
+    private float _splashRange;
 
-	private bool _isDestroyed = false;
-	private int _frameCountStart;
+    private bool _isDestroyed;
+    private int _frameCountStart;
 
-	private void Awake() {
+    private void Awake()
+    {
 
-		enabled = false;
-	}
+        enabled = false;
+    }
 
-	protected virtual void Update() {
+    protected virtual void Update()
+    {
 
-		if ( _timer.ValueNormalized >= 1f ) {
+        if (_timer.ValueNormalized >= 1f)
+        {
 
-			OnLifetimeExpire();
-		}
+            OnLifetimeExpire();
+        }
 
-		position += Direction * Speed * Time.deltaTime;
+        position += Direction * Speed * Time.deltaTime;
 
-		if ( _isDestroyed && Time.frameCount - _frameCountStart >= 4 ) {
+        if (_isDestroyed && Time.frameCount - _frameCountStart >= 4)
+        {
 
-			Destroy( gameObject );
-		}
-	}
+            Destroy(gameObject);
+        }
+    }
 
-	public void Launch( Character owner, Vector3 direction, float speed, float damage, bool canFriendlyFire, float splashRange ) {
+    public void Launch(Character owner, Vector3 direction, float speed,
+        float damage, bool canFriendlyFire, float splashRange)
+    {
 
-		this.Owner = owner;
-		this.Speed = speed;
-		this.Direction = direction;
-		this.Damage = damage;
-		this.CanFriendlyFire = canFriendlyFire;
+        Owner = owner;
+        Speed = speed;
+        Direction = direction;
+        Damage = damage;
+        CanFriendlyFire = canFriendlyFire;
 
-		_splashRange = splashRange;
-		_frameCountStart = Time.frameCount;
+        _splashRange = splashRange;
+        _frameCountStart = Time.frameCount;
 
-		transform.position = this.Owner.Pawn.GetWeaponPosition();
-		transform.rotation = this.Owner.Pawn.rotation;
+        transform.position = Owner.Pawn.GetWeaponPosition();
+        transform.rotation = Owner.Pawn.rotation;
 
-		_timer = new AutoTimer( Lifetime );
+        _timer = new AutoTimer(Lifetime);
 
-		var colorer = GetComponent<ProjectileColorer>();
-		if ( colorer != null ) {
-			colorer.Apply( Owner.IsEnemy() );
-		}
+        var colorer = GetComponent<ProjectileColorer>();
+        if (colorer != null)
+        {
+            colorer.Apply(Owner.IsEnemy());
+        }
 
-		enabled = true;
-	}
+        enabled = true;
+    }
 
-	public virtual void OnHit() {
+    public virtual void OnHit()
+    {
 
-		Release();
-	}
+        Release();
+    }
 
-	public virtual void OnContact( Collider other ) {
+    public virtual void OnContact(Collider other)
+    {
 
-	}
+    }
 
-	public virtual void OnLifetimeExpire() {
+    public virtual void OnLifetimeExpire()
+    {
+        Release();
+    }
 
-		Release();
-	}
+    protected virtual void Release()
+    {
 
-	protected virtual void Release() {
+        if (!_splashRange.IsNan() && _splashRange > 0f)
+        {
 
-		if ( !_splashRange.IsNan() && _splashRange > 0f ) {
+            Helpers.DoSplashDamage(transform.position, _splashRange, Damage, CanFriendlyFire ? -1 : Owner.TeamId);
 
-			Helpers.DoSplashDamage( transform.position, _splashRange, Damage, teamToSkip: CanFriendlyFire ? -1 : Owner.TeamId );
+            if (NeedsSplashEffect)
+            {
 
-			if ( NeedsSplashEffect ) {
+                EventSystem.RaiseEvent(new Helpers.SplashDamage { position = position, radius = _splashRange * 0.5f });
+            }
+        }
 
-				EventSystem.RaiseEvent( new Helpers.SplashDamage {position = position, radius = _splashRange * 0.5f} );
-			}
-		}
+        _isDestroyed = true;
 
-		_isDestroyed = true;
+        if (!DelayedDestroy)
+        {
 
-		if ( !DelayedDestroy ) {
+            Destroy(gameObject);
+        }
+    }
 
-			Destroy( gameObject );
-		}
-	}
+    private void OnTriggerEnter(Collider other)
+    {
 
-	private void OnTriggerEnter( Collider other ) {
+        if (_isDestroyed)
+        {
 
-		if ( _isDestroyed ) {
+            return;
+        }
 
-			return;
-		}
+        var otherPawn = other.GetComponent<CharacterPawnBase>();
 
-		var otherPawn = other.GetComponent<CharacterPawnBase>();
+        if (otherPawn != null && otherPawn != Owner.Pawn && otherPawn.character != null)
+        {
 
-		if ( otherPawn != null && otherPawn != Owner.Pawn && otherPawn.character != null ) {
+            var canAttackTarget = !CanFriendlyFire || otherPawn.character.TeamId != Owner.TeamId;
+            if (!canAttackTarget) return;
+            otherPawn.character.Damage(Damage);
+            OnContact(other);
+            OnHit();
+            return;
+        }
 
-			var canAttackTarget = !CanFriendlyFire || otherPawn.character.TeamId != Owner.TeamId;
+        OnContact(other);
 
-			if ( canAttackTarget ) {
+        if (other.tag == "Environment")
+        {
 
-				otherPawn.character.Damage( Damage );
+            OnHit();
+        }
 
-				OnContact( other );
-				OnHit();
-			}
+        var otherBuilding = other.GetComponent<Building>();
 
-			return;
-		}
-
-		OnContact( other );
-
-		if ( other.tag == "Environment" ) {
-
-			OnHit();
-		}
-
-		var otherBuilding = other.GetComponent<Building>();
-
-		if ( otherBuilding != null ) {
-
-			otherBuilding.Hit( this );
-			OnHit();
-		}
-	}
+        if (otherBuilding == null) return;
+        otherBuilding.Hit(this);
+        OnHit();
+    }
 
 }

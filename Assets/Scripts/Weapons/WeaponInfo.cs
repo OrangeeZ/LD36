@@ -1,7 +1,4 @@
-﻿using System;
-using UnityEngine;
-using System.Collections;
-using csv;
+﻿using csv;
 
 public class WeaponInfo : ItemInfo, ICsvConfigurable {
 
@@ -21,8 +18,8 @@ public class WeaponInfo : ItemInfo, ICsvConfigurable {
 		BaseAttackSpeed = values.Get( "Base attack speed", 1f );
 
 		var attackRangeValue = values.Get( "AtkRange", "0f" );
-		if ( attackRangeValue == "max" ) {
-
+		if ( attackRangeValue == "max" )
+        {
 			AttackRange = int.MaxValue;
 		} else {
 

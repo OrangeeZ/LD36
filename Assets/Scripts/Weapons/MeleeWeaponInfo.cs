@@ -34,7 +34,7 @@ public class MeleeWeaponInfo : WeaponInfo {
 				return;
 			}
 
-			nextAttackTime = Time.timeSinceLevelLoad + typedInfo.BaseAttackSpeed;
+			nextAttackTime = Time.timeSinceLevelLoad + _typedInfo.BaseAttackSpeed;
 
 			//if ( character.Status.GetHitChance() < 100.Random() ) {
 
@@ -43,7 +43,7 @@ public class MeleeWeaponInfo : WeaponInfo {
 			//	return;
 			//}
 
-			target.Damage( typedInfo.BaseDamage );
+			target.Damage( _typedInfo.BaseDamage );
 
 			//if ( character.Status.GetCriticalHitChance( target.Status ) > 100.Random() ) {
 
@@ -60,19 +60,19 @@ public class MeleeWeaponInfo : WeaponInfo {
 
 		public override void Attack( Vector3 direction ) {
 
-			var charactersToAttack = Helpers.GetCharactersInCone( Character.Pawn.position, direction, typedInfo._attackRange, typedInfo._attackAngle );
+			var charactersToAttack = Helpers.GetCharactersInCone( Character.Pawn.position, direction, _typedInfo._attackRange, _typedInfo._attackAngle );
 			foreach ( var each in charactersToAttack.ToArray() ) {
 
 				if ( Character != each ) {
 
-					each.Damage( typedInfo.BaseDamage );
+					each.Damage( _typedInfo.BaseDamage );
 				}
 			}
 		}
 
 		public override bool CanAttack( Character target ) {
 
-			return ( target.Pawn.position - Character.Pawn.position ).sqrMagnitude <= typedInfo.AttackRange.Pow( 2 );
+			return ( target.Pawn.position - Character.Pawn.position ).sqrMagnitude <= _typedInfo.AttackRange.Pow( 2 );
 		}
 
 	}

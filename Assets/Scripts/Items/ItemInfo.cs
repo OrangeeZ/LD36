@@ -9,6 +9,8 @@ public abstract class Item {
 
     protected Character Character;
 
+    protected ModifierCalculator ModifierCalculator;
+
     protected Item( ItemInfo info ) {
 
         this.info = info;
@@ -18,6 +20,7 @@ public abstract class Item {
 
         Character = character;
 	    Inventory = character.Inventory;
+        ModifierCalculator = character.Status.ModifierCalculator;
     }
 
     public virtual void Apply() {
