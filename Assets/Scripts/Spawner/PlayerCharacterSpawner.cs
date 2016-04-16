@@ -1,11 +1,10 @@
 ﻿using System;
 using System.Linq;
 using Packages.EventSystem;
+using UniRx;
 using UnityEngine;
 
 public class PlayerCharacterSpawner : MonoBehaviour {
-
-	//public Action<Character> Spawned;
 
 	public class Spawned : IEventBase {
 
@@ -23,9 +22,7 @@ public class PlayerCharacterSpawner : MonoBehaviour {
 	public CharacterStatusEffectInfo startingStatusEffect;
 
 	public CameraBehaviour cameraBehaviour;
-
-	public bool isPlayerCharacter = false;
-
+	
 	private Character character;
 
 	public void Initialize() {
@@ -58,19 +55,11 @@ public class PlayerCharacterSpawner : MonoBehaviour {
 			cameraBehaviourInstance.SetTarget( character.Pawn );
 		}
 
-		if ( isPlayerCharacter ) {
+		if ( startingStatusEffect != null ) {
 
-			//GameScreen.instance.statsPanel.SetCharacter( character );
+			startingStatusEffect.Add( character );
 		}
 
-		startingStatusEffect.Add( character );
-
 		EventSystem.RaiseEvent( new Spawned { Character = character } );
-
-		//if ( Spawned != null ) {
-
-		//    Spawned( character );
-		//}
 	}
-
 }
