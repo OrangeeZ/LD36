@@ -753,7 +753,6 @@ MonoBehaviour:
   _animationController: {fileID: 11490668}
   _weaponAnimationController: {fileID: 11492848}
   canFollowDestination: 0
-  turret: {fileID: 0}
   _gunYOffset: 0.5
   _weight: 1
   _startingHeight: 5

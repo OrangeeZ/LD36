@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Linq;
 using MoreLinq;
 
 [CreateAssetMenu( menuName = "Create/States/Xeno/Find hiding spot" )]
@@ -34,15 +35,21 @@ public class XenoFindHidingSpotInfo : CharacterStateInfo {
 			} while ( pawn.GetDistanceToDestination() > 1f );
 
 			character.Pawn.SetActive( false );
-			hidingSpot.SetState( EnvironmentObject.State.Infected );
+			hidingSpot.SetState( EnvironmentObjectSpot.State.Infected );
 
 			var waitState = stateController.GetStateByInfo( typedInfo._waitInHidingSpotInfo );
 			stateController.SetScheduledStates( new[] {waitState} );
 		}
 
-		private EnvironmentObject GetFathestObject() {
+		private EnvironmentObjectSpot GetFathestObject() {
 
-			return EnvironmentObject.Instances.MaxBy( each => Vector3.SqrMagnitude( each.transform.position - character.Pawn.position ) );
+			if ( EnvironmentObjectSpot.Instances.All( _ => _.GetState() != EnvironmentObjectSpot.State.Empty ) ) {
+
+				return null;
+			}
+
+			return EnvironmentObjectSpot.Instances.Where( _ => _.GetState() == EnvironmentObjectSpot.State.Empty )
+											      .MaxBy( each => Vector3.SqrMagnitude( each.transform.position - character.Pawn.position ) );
 		}
 
 	}

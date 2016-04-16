@@ -15,5 +15,5 @@ MonoBehaviour:
   weaponAnimatorStateName: 
   _minRange: 0.6
   _maxRange: 20
-  _autoActivate: 1
+  _autoActivate: 0
   _clearTargetOnReach: 1

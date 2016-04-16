@@ -12,15 +12,17 @@ MonoBehaviour:
   m_Name: 'Xeno State Controller #1'
   m_EditorClassIdentifier: 
   updateAnimation: 1
-  isDebug: 0
+  isDebug: 1
   entries:
   - stateInfo: {fileID: 11400000, guid: c39e294ad68cb3540abc6f169ff42fa3, type: 2}
-    transitionMask: 0001010101
+    transitionMask: 000101010101
   - stateInfo: {fileID: 11400000, guid: 7ccc242b2116bdd4b9662fd0eebeb75d, type: 2}
-    transitionMask: 0100010101
+    transitionMask: 010001010101
   - stateInfo: {fileID: 11400000, guid: cd93bb4261b97394ca1568b7b77bd8a2, type: 2}
-    transitionMask: 0101000101
+    transitionMask: 010100010101
+  - stateInfo: {fileID: 11400000, guid: 8f38bfd69e2053c4aafa7c6b67bdd8bc, type: 2}
+    transitionMask: 010101000101
   - stateInfo: {fileID: 11400000, guid: 889b87a2f8712a94db419c2d2b4b7aa0, type: 2}
-    transitionMask: 0101010001
+    transitionMask: 010101010001
   - stateInfo: {fileID: 11400000, guid: 43f67a45584681b4f99a1a6ba1cbb8a6, type: 2}
-    transitionMask: 0000000000
+    transitionMask: 000000000000
