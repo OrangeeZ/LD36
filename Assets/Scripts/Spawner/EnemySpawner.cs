@@ -11,7 +11,6 @@ public class EnemySpawner : SpawnerBase {
 	public EnemyCharacterStatusInfo characterStatusInfo;
 
 	public float SpawnInterval;
-	public float SpawnMoveSpeed;
 	public int SpawnLimit;
 
 	private float _startTime;

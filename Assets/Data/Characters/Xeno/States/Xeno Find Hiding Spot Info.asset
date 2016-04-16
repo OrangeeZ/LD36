@@ -8,12 +8,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e7df4c66444451046b63cfa691033f02, type: 3}
-  m_Name: Approach Target
+  m_Script: {fileID: 11500000, guid: ae5ec920f482f454a8d6de5e9ef4bbea, type: 3}
+  m_Name: Xeno Find Hiding Spot Info
   m_EditorClassIdentifier: 
-  animatorStateName: Move
+  animatorStateName: 
   weaponAnimatorStateName: 
-  _minRange: 0.6
-  _maxRange: 20
-  _autoActivate: 0
-  _clearTargetOnReach: 1
+  _waitInHidingSpotInfo: {fileID: 11400000, guid: cd93bb4261b97394ca1568b7b77bd8a2,
+    type: 2}

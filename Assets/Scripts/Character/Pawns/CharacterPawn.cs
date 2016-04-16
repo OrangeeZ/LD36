@@ -1,14 +1,8 @@
-﻿using System;
-using System.CodeDom;
-using UnityEngine;
-using System.Collections;
-using System.Linq;
+﻿using UnityEngine;
 
 public class CharacterPawn : CharacterPawnBase {
 
 	public bool canFollowDestination;
-
-	public GameObject turret;
 
 	[SerializeField]
 	private float _gunYOffset = 0.5f;
@@ -30,7 +24,6 @@ public class CharacterPawn : CharacterPawnBase {
 
 	private Vector3? _destination;
 	private bool _isGravityEnabled;
-	private float _ySpeed;
 
 	private Transform _turretTarget;
 
@@ -41,11 +34,6 @@ public class CharacterPawn : CharacterPawnBase {
 	private CharacterPawnLevelingController _levelingController;
 
 	private void Update() {
-
-		if ( _isGravityEnabled ) {
-
-			_ySpeed += _weight * Time.deltaTime;
-		}
 
 		if ( _characterController != null ) {
 
@@ -93,11 +81,6 @@ public class CharacterPawn : CharacterPawnBase {
 		_destination = null;
 	}
 
-	public void SetTurretTarget( Transform turretTarget ) {
-
-		_turretTarget = turretTarget;
-	}
-
 	public void SetColor( Color baseColor ) {
 
 		var renderers = GetComponentsInChildren<Renderer>();
@@ -110,16 +93,12 @@ public class CharacterPawn : CharacterPawnBase {
 	public void SetGravityEnabled( bool value ) {
 
 		_isGravityEnabled = value;
-
-		if ( !value ) {
-
-			_ySpeed = 0;
-		}
 	}
 
 	public void SetActive( bool isActive ) {
-		
+
 		enabled = isActive;
+		gameObject.SetActive( isActive );
 	}
 
 	public override void MakeDead() {
