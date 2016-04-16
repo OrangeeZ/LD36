@@ -7,8 +7,6 @@ public abstract class CharacterStateInfo : ScriptableObject {
 	public string animatorStateName;
 	public string weaponAnimatorStateName;
 
-	public virtual CharacterState GetState() {
+	public abstract CharacterState GetState();
 
-		throw new NotImplementedException();
-	}
 }

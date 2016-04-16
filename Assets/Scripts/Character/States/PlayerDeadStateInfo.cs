@@ -29,8 +29,6 @@ public class PlayerDeadStateInfo : CharacterStateInfo {
 
 			character.Pawn.SetGravityEnabled( true );
 
-			character.Pawn.SetTurretTarget( null );
-
 			character.Pawn.ClearDestination();
 
 			if ( stateController == character.StateController ) {
