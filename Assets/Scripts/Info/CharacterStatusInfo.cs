@@ -6,6 +6,7 @@ using UniRx;
 [CreateAssetMenu( menuName = "Create/Status Info" )]
 public class CharacterStatusInfo : ScriptableObject, ICsvConfigurable {
 
+	[RemoteProperty("MaxHP")]
 	public float MaxHealth;
 	public float MoveSpeed;
 	public float Damage;
@@ -26,7 +27,6 @@ public class CharacterStatusInfo : ScriptableObject, ICsvConfigurable {
 
 	public virtual void Configure( csv.Values values ) {
 
-		MaxHealth = values.Get( "MaxHP", MaxHealth );
 		MoveSpeed = values.Get( "Speed", MoveSpeed );
 		Damage = values.Get( "DMG", Damage );
 	}

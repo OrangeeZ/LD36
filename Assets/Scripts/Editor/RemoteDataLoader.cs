@@ -53,7 +53,7 @@ public partial class RemoteDataLoader {
 			url = url + "&gid=" + _pageId;
 		}
 
-		GetCsvFromGoogleDocs.Get( url, type, _regime, postfix );
+		GoogleDocsCsvParser.Get( url, type, _regime, postfix );
 	}
 }
 
