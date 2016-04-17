@@ -30,10 +30,10 @@ public class CharacterPawn : CharacterPawnBase {
 	private Transform _subTransform;
 
 	[SerializeField]
-	private CharacterPawnLevelingController _levelingController;
+	private WarFogTracer _warFogTracer;
 
 	[SerializeField]
-	private WarFogTracer _warFogTracer;
+	private CharacterSpriteAnimationController _spriteAnimationController;
 
 	private void Update() {
 
@@ -60,7 +60,14 @@ public class CharacterPawn : CharacterPawnBase {
 			_characterController.Move( directionDelta );
 		}
 
-		rotation = Quaternion.RotateTowards( rotation, Quaternion.LookRotation( direction, Vector3.up ), _rotationToDirectionSpeed * Time.deltaTime );
+		Debug.Log( direction );
+
+		var directionX = (int) Mathf.Clamp( -direction.x * 100, -1, 1 );
+		var directionY = (int) Mathf.Clamp( -direction.z * 100, -1, 1 );
+
+		_spriteAnimationController.UpdateDirection( directionX, directionY );
+
+		//rotation = Quaternion.RotateTowards( rotation, Quaternion.LookRotation( direction, Vector3.up ), _rotationToDirectionSpeed * Time.deltaTime );
 	}
 
 	public override void SetDestination( Vector3 destination ) {
@@ -104,11 +111,4 @@ public class CharacterPawn : CharacterPawnBase {
 		GetComponent<Collider>().enabled = false;
 	}
 
-	public void AddLevel( float scaleBonus ) {
-
-		if ( _levelingController != null ) {
-
-			_levelingController.AddLevel( scaleBonus );
-		}
-	}
 }

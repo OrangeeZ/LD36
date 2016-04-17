@@ -19,8 +19,6 @@ public class NPCView : AObject {
 
 	public void OnPickedUp( Character character ) {
 
-		character.Pawn.AddLevel( npc.CharacterScaleBonus );
-
 		var playerCharacterStatusInfo = character.Status.Info as PlayerCharacterStatusInfo;
 		if ( playerCharacterStatusInfo != null ) {
 
