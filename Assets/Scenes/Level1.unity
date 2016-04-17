@@ -332,6 +332,54 @@ Transform:
   - {fileID: 2133231843}
   m_Father: {fileID: 2110269188}
   m_RootOrder: 0
+--- !u!1 &203452611
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 203452612}
+  - 114: {fileID: 203452613}
+  m_Layer: 0
+  m_Name: Npc Spawner (5)
+  m_TagString: Untagged
+  m_Icon: {fileID: -1412012063857583412, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &203452612
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 203452611}
+  m_LocalRotation: {x: -0.048247866, y: 0.8911148, z: -0.0077061234, w: 0.4511399}
+  m_LocalPosition: {x: -2.0300002, y: -0.59, z: 0.5100055}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 2133231843}
+  m_RootOrder: 13
+--- !u!114 &203452613
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 203452611}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1af7877ec42364b078dbcf64e3dd4eb6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  characterInfo: {fileID: 11400000, guid: bc987e1e865e37944a3ac84e8d94fe83, type: 2}
+  characterStatusInfo: {fileID: 11400000, guid: 28f2edbaf75b134499e4357213685bab,
+    type: 2}
+  SpawnInterval: 1
+  SpawnLimit: 1
+  Activation:
+    value: 1
+  Deactivation:
+    value: -1
 --- !u!1001 &216333418
 Prefab:
   m_ObjectHideFlags: 0
@@ -719,6 +767,54 @@ MonoBehaviour:
     type: 2}
   m_PrefabInternal: {fileID: 419237561}
   m_Script: {fileID: 11500000, guid: c177b1fba3b30ad4ca23f312f7e53524, type: 3}
+--- !u!1 &446822115
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 446822116}
+  - 114: {fileID: 446822117}
+  m_Layer: 0
+  m_Name: Npc Spawner (3)
+  m_TagString: Untagged
+  m_Icon: {fileID: -1412012063857583412, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &446822116
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 446822115}
+  m_LocalRotation: {x: -0.048247866, y: 0.8911148, z: -0.0077061234, w: 0.4511399}
+  m_LocalPosition: {x: -1.91, y: -0.59, z: -3.6399994}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 2133231843}
+  m_RootOrder: 11
+--- !u!114 &446822117
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 446822115}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1af7877ec42364b078dbcf64e3dd4eb6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  characterInfo: {fileID: 11400000, guid: bc987e1e865e37944a3ac84e8d94fe83, type: 2}
+  characterStatusInfo: {fileID: 11400000, guid: 28f2edbaf75b134499e4357213685bab,
+    type: 2}
+  SpawnInterval: 1
+  SpawnLimit: 1
+  Activation:
+    value: 1
+  Deactivation:
+    value: -1
 --- !u!1 &494346481
 GameObject:
   m_ObjectHideFlags: 0
@@ -1199,6 +1295,54 @@ Prefab:
 Transform:
   m_PrefabParentObject: {fileID: 457698, guid: 2c4cbe971bcceef48896c7df1b8702fc, type: 2}
   m_PrefabInternal: {fileID: 937325975}
+--- !u!1 &964887185
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 964887186}
+  - 114: {fileID: 964887187}
+  m_Layer: 0
+  m_Name: Npc Spawner (4)
+  m_TagString: Untagged
+  m_Icon: {fileID: -1412012063857583412, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &964887186
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 964887185}
+  m_LocalRotation: {x: -0.048247866, y: 0.8911148, z: -0.0077061234, w: 0.4511399}
+  m_LocalPosition: {x: -1.9100002, y: -0.59, z: -3.6399984}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 2133231843}
+  m_RootOrder: 12
+--- !u!114 &964887187
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 964887185}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1af7877ec42364b078dbcf64e3dd4eb6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  characterInfo: {fileID: 11400000, guid: bc987e1e865e37944a3ac84e8d94fe83, type: 2}
+  characterStatusInfo: {fileID: 11400000, guid: 28f2edbaf75b134499e4357213685bab,
+    type: 2}
+  SpawnInterval: 1
+  SpawnLimit: 1
+  Activation:
+    value: 1
+  Deactivation:
+    value: -1
 --- !u!1 &1001113022
 GameObject:
   m_ObjectHideFlags: 0
@@ -1628,6 +1772,54 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1691151723}
   m_RootOrder: 0
+--- !u!1 &1239304343
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 1239304344}
+  - 114: {fileID: 1239304345}
+  m_Layer: 0
+  m_Name: Npc Spawner (2)
+  m_TagString: Untagged
+  m_Icon: {fileID: -1412012063857583412, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1239304344
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1239304343}
+  m_LocalRotation: {x: -0.048247866, y: 0.8911148, z: -0.0077061234, w: 0.4511399}
+  m_LocalPosition: {x: -2.0300002, y: -0.5899999, z: 0.51000273}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 2133231843}
+  m_RootOrder: 10
+--- !u!114 &1239304345
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1239304343}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1af7877ec42364b078dbcf64e3dd4eb6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  characterInfo: {fileID: 11400000, guid: bc987e1e865e37944a3ac84e8d94fe83, type: 2}
+  characterStatusInfo: {fileID: 11400000, guid: 28f2edbaf75b134499e4357213685bab,
+    type: 2}
+  SpawnInterval: 1
+  SpawnLimit: 1
+  Activation:
+    value: 1
+  Deactivation:
+    value: -1
 --- !u!1 &1339710746
 GameObject:
   m_ObjectHideFlags: 0
@@ -2619,6 +2811,10 @@ Transform:
   - {fileID: 2079276765}
   - {fileID: 1001113023}
   - {fileID: 1339710747}
+  - {fileID: 1239304344}
+  - {fileID: 446822116}
+  - {fileID: 964887186}
+  - {fileID: 203452612}
   m_Father: {fileID: 192233033}
   m_RootOrder: 1
 --- !u!114 &2133231844
@@ -2637,10 +2833,12 @@ MonoBehaviour:
     m_Center: {x: 0, y: 0, z: 0}
     m_Extent: {x: 7, y: 5.86, z: 7}
   _npcSpawners:
-  - {fileID: 745465079}
-  - {fileID: 1932987467}
   - {fileID: 1001113024}
   - {fileID: 1339710748}
+  - {fileID: 1239304345}
+  - {fileID: 446822117}
+  - {fileID: 964887187}
+  - {fileID: 203452613}
   _ventilationHatches:
   - {fileID: 1921875345}
   - {fileID: 878696508}
