@@ -59,15 +59,11 @@ public class CharacterPawn : CharacterPawnBase {
 
 			_characterController.Move( directionDelta );
 		}
-
-		Debug.Log( direction );
-
+		
 		var directionX = (int) Mathf.Clamp( -direction.x * 100, -1, 1 );
 		var directionY = (int) Mathf.Clamp( -direction.z * 100, -1, 1 );
 
 		_spriteAnimationController.UpdateDirection( directionX, directionY );
-
-		//rotation = Quaternion.RotateTowards( rotation, Quaternion.LookRotation( direction, Vector3.up ), _rotationToDirectionSpeed * Time.deltaTime );
 	}
 
 	public override void SetDestination( Vector3 destination ) {
