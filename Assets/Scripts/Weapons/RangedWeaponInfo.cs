@@ -1,248 +1,225 @@
 ﻿using csv;
+using Packages.EventSystem;
 using UnityEngine;
 
-[CreateAssetMenu(menuName = "Create/Weapons/Ranged")]
-public class RangedWeaponInfo : WeaponInfo
-{
+[CreateAssetMenu( menuName = "Create/Weapons/Ranged" )]
+public class RangedWeaponInfo : WeaponInfo {
 
-    [SerializeField]
-    private Projectile _projectilePrefab;
+	[SerializeField]
+	private Projectile _projectilePrefab;
 
-    [SerializeField]
-    private float _projectileSpeed;
+	[SerializeField]
+	private float _projectileSpeed;
 
-    public int ClipSize;
-    public float ReloadDuration;
+	public int ClipSize;
+	public float ReloadDuration;
 
-    [SerializeField]
-    private int _projectilesPerShot;
+	[SerializeField]
+	private int _projectilesPerShot;
 
-    [SerializeField]
-    private float _shotConeAngle;
+	[SerializeField]
+	private float _shotConeAngle;
 
-    [SerializeField]
-    private AudioClip[] _sounds;
+	[SerializeField]
+	private AudioClip[] _sounds;
 
-    [SerializeField]
-    private int _ammoLimit = 100;
+	[SerializeField]
+	private int _ammoLimit = 100;
 
-    [SerializeField]
-    private int _ammoAmount = 100;
+	[SerializeField]
+	private int _ammoAmount = 100;
 
-    [SerializeField]
-    private float _projectileLifetime;
+	[SerializeField]
+	private float _projectileLifetime;
 
-    [SerializeField]
-    private float _splashDamageRadius;
+	[SerializeField]
+	private float _splashDamageRadius;
 
-    [SerializeField]
-    private RangedWeaponBehaviourInfo _weaponBehaviourInfo;
+	[SerializeField]
+	private RangedWeaponBehaviourInfo _weaponBehaviourInfo;
 
-    [SerializeField]
-    private BuffItemInfo _abilityOnPickup;
+	[SerializeField]
+	private BuffItemInfo _abilityOnPickup;
 
-    public class RangedWeapon : Weapon<RangedWeaponInfo>
-    {
-        protected RangedWeaponInfo _rangedWeaponInfo;
-        public int AmmoInClip { get; private set; }
+	public class RangedWeapon : Weapon<RangedWeaponInfo> {
 
-        public float BaseAttackSpeed
-        {
-            get
-            {
-                return Character.Status.ModifierCalculator.CalculateFinalValue(ModifierType.BaseAttackSpeed, _typedInfo.BaseAttackSpeed);
-            }
-        }
+		public struct Fire : IEventBase {
 
-        public int ClipSize { get; protected set; }
-        public float ReloadDuration { get; set; }
+			public Character Character;
+			public RangedWeapon Weapon;
 
-        public bool IsUnlimited
-        {
-            get { return _rangedWeaponInfo._ammoLimit < 0; }
-        }
+		}
 
-        public bool IsReloading
-        {
-            get { return _behaviour == null ? true : _behaviour.IsReloading; }
-        }
+		protected RangedWeaponInfo _rangedWeaponInfo;
+		public int AmmoInClip { get; private set; }
 
+		public float BaseAttackSpeed {
+			get { return Character.Status.ModifierCalculator.CalculateFinalValue( ModifierType.BaseAttackSpeed, _typedInfo.BaseAttackSpeed ); }
+		}
 
-        private bool IsAttackAvailable
-        {
-            get
-            {
-                return !_behaviour.IsReloading && (IsUnlimited || AmmoInClip >= 0);
-            }
-        }
+		public int ClipSize { get; protected set; }
+		public float ReloadDuration { get; set; }
 
-        private RangedWeaponBehaviour _behaviour;
+		public bool IsUnlimited {
+			get { return _rangedWeaponInfo._ammoLimit < 0; }
+		}
 
-        public RangedWeapon(RangedWeaponInfo info) : base(info)
-        {
-            _rangedWeaponInfo = info;
-            AmmoInClip = _rangedWeaponInfo._ammoAmount;
-            ClipSize = info.ClipSize;
-            ReloadDuration = info.ReloadDuration;
-        }
+		public bool IsReloading {
+			get { return _behaviour == null ? true : _behaviour.IsReloading; }
+		}
 
-        public override void SetCharacter(Character character)
-        {
+		private bool IsAttackAvailable {
+			get { return !_behaviour.IsReloading && ( IsUnlimited || AmmoInClip >= 0 ); }
+		}
 
-            base.SetCharacter(character);
+		private RangedWeaponBehaviour _behaviour;
 
-            _behaviour = _typedInfo._weaponBehaviourInfo.GetBehaviour();
-            _behaviour.Initialize(Inventory, this);
+		public RangedWeapon( RangedWeaponInfo info ) : base( info ) {
+			_rangedWeaponInfo = info;
+			AmmoInClip = _rangedWeaponInfo._ammoAmount;
+			ClipSize = info.ClipSize;
+			ReloadDuration = info.ReloadDuration;
+		}
 
-            if (_typedInfo._abilityOnPickup != null)
-            {
+		public override void SetCharacter( Character character ) {
 
-                var buffItem = _typedInfo._abilityOnPickup.GetItem();
-                buffItem.SetCharacter(character);
-                buffItem.Apply();
-            }
-        }
+			base.SetCharacter( character );
 
-        public override void Attack(Character target, EnemyCharacterStatusInfo statusInfo)
-        {
+			_behaviour = _typedInfo._weaponBehaviourInfo.GetBehaviour();
+			_behaviour.Initialize( Inventory, this );
 
-            if (target == null || !IsAttackAvailable)
-            {
-                return;
-            }
+			if ( _typedInfo._abilityOnPickup != null ) {
 
-            if (AttackAction != null)
-            {
-                AttackAction();
-            }
+				var buffItem = _typedInfo._abilityOnPickup.GetItem();
+				buffItem.SetCharacter( character );
+				buffItem.Apply();
+			}
+		}
 
-            for (var i = 0; i < _typedInfo._projectilesPerShot; ++i)
-            {
+		public override void Attack( Character target, EnemyCharacterStatusInfo statusInfo ) {
 
-                var projectile = GetProjectileInstance();
-                var targetDirection = (target.Pawn.position - Character.Pawn.position).Set(y: 0).normalized;
-                var projectileDirection = GetOffsetDirection(targetDirection, i);
+			if ( target == null || !IsAttackAvailable ) {
+				return;
+			}
 
-                var finalDamage = ModifierCalculator.CalculateFinalValue(ModifierType.BaseDamage, 
-                    _typedInfo.BaseDamage);
-                projectile.Launch(Character, projectileDirection, _typedInfo._projectileSpeed, finalDamage, _typedInfo.CanFriendlyFire, _typedInfo._splashDamageRadius);
-                if (_behaviour.TryShoot())
-                {
-                    AmmoInClip -= ClipSize;
-                }
+			if ( AttackAction != null ) {
+				AttackAction();
+			}
 
-                if (_behaviour.IsReloading)
-                {
-                    break;
-                }
-            }
+			for ( var i = 0; i < _typedInfo._projectilesPerShot; ++i ) {
 
-            var sound = _typedInfo._sounds.RandomElement();
-            if (sound != null)
-            {
+				var projectile = GetProjectileInstance();
+				var targetDirection = ( target.Pawn.position - Character.Pawn.position ).Set( y: 0 ).normalized;
+				var projectileDirection = GetOffsetDirection( targetDirection, i );
 
-                AudioSource.PlayClipAtPoint(sound, Character.Pawn.position, 0.5f);
-            }
-        }
+				var finalDamage = ModifierCalculator.CalculateFinalValue( ModifierType.BaseDamage,
+					_typedInfo.BaseDamage );
+				projectile.Launch( Character, projectileDirection, _typedInfo._projectileSpeed, finalDamage, _typedInfo.CanFriendlyFire, _typedInfo._splashDamageRadius );
+				if ( _behaviour.TryShoot() ) {
+					AmmoInClip -= ClipSize;
+				}
 
-        public override void Attack(Vector3 direction)
-        {
-            if (!IsAttackAvailable)
-            {
-                return;
-            }
+				if ( _behaviour.IsReloading ) {
+					break;
+				}
+			}
 
-            if (AttackAction != null)
-            {
-                AttackAction();
-            }
+			var sound = _typedInfo._sounds.RandomElement();
+			if ( sound != null ) {
 
-            for (var i = 0; i < _typedInfo._projectilesPerShot; ++i)
-            {
+				AudioSource.PlayClipAtPoint( sound, Character.Pawn.position, 0.5f );
+			}
+		}
 
-                var projectile = GetProjectileInstance();
-                var projectileDirection = GetOffsetDirection(direction, i);
-                var finalDamage = ModifierCalculator.
-                    CalculateFinalValue(ModifierType.BaseDamage, _typedInfo.BaseDamage);
+		public override void Attack( Vector3 direction ) {
+			if ( !IsAttackAvailable ) {
+				return;
+			}
 
-                projectile.Launch(Character, projectileDirection,
-                    _typedInfo._projectileSpeed, finalDamage, _typedInfo.CanFriendlyFire, 
-                    _typedInfo._splashDamageRadius);
+			if ( AttackAction != null ) {
+				AttackAction();
+			}
 
-                if(_behaviour.TryShoot())
-                {
-                    AmmoInClip -= ClipSize;
-                }
+			var shotsFired = 0;
 
-                if (_behaviour.IsReloading)
-                {
+			for ( var i = 0; i < _typedInfo._projectilesPerShot; ++i ) {
 
-                    break;
-                }
-            }
+				var projectile = GetProjectileInstance();
+				var projectileDirection = GetOffsetDirection( direction, i );
+				var finalDamage = ModifierCalculator.CalculateFinalValue( ModifierType.BaseDamage, _typedInfo.BaseDamage );
 
-            var sound = _typedInfo._sounds.RandomElement();
-            if (sound != null)
-            {
-                AudioSource.PlayClipAtPoint(sound, Character.Pawn.position, 0.5f);
-            }
-        }
+				projectile.Launch( Character, projectileDirection,
+					_typedInfo._projectileSpeed, finalDamage, _typedInfo.CanFriendlyFire,
+					_typedInfo._splashDamageRadius );
 
-        public override bool CanAttack(Character target)
-        {
-            return Vector3.Distance(target.Pawn.position, Character.Pawn.position) 
-                <= _typedInfo.AttackRange;
-        }
+				EventSystem.RaiseEvent( new Fire { Character = Character, Weapon = this } );
 
-        private Vector3 GetOffsetDirection(Vector3 direction, int index)
-        {
+				if ( _behaviour.TryShoot() ) {
 
-            var totalOffsetCount = _typedInfo._projectilesPerShot;
-            var coneAngle = _typedInfo._shotConeAngle;
+					AmmoInClip -= ClipSize;
+				}
 
-            if (totalOffsetCount == 1)
-            {
+				if ( _behaviour.IsReloading ) {
 
-                return direction;
-            }
+					break;
+				}
+			}
 
-            var normalizedOffsetIndex = (float)index / totalOffsetCount;
-            var rotator = Quaternion.AngleAxis(Mathf.Lerp(-coneAngle, coneAngle, normalizedOffsetIndex), Vector3.up);
+			var sound = _typedInfo._sounds.RandomElement();
+			if ( sound != null ) {
+				AudioSource.PlayClipAtPoint( sound, Character.Pawn.position, 0.5f );
+			}
+		}
 
-            return rotator * direction;
-        }
+		public override bool CanAttack( Character target ) {
+			return Vector3.Distance( target.Pawn.position, Character.Pawn.position )
+			       <= _typedInfo.AttackRange;
+		}
 
-        private Projectile GetProjectileInstance()
-        {
-            var result = Instantiate(_typedInfo._projectilePrefab);
-            result.Lifetime = _typedInfo._projectileLifetime;
-            return result;
-        }
+		private Vector3 GetOffsetDirection( Vector3 direction, int index ) {
 
-    }
+			var totalOffsetCount = _typedInfo._projectilesPerShot;
+			var coneAngle = _typedInfo._shotConeAngle;
 
-    public override Item GetItem()
-    {
+			if ( totalOffsetCount == 1 ) {
 
-        return new RangedWeapon(this);
-    }
+				return direction;
+			}
 
-    public override void Configure(Values values)
-    {
+			var normalizedOffsetIndex = (float) index / totalOffsetCount;
+			var rotator = Quaternion.AngleAxis( Mathf.Lerp( -coneAngle, coneAngle, normalizedOffsetIndex ), Vector3.up );
 
-        base.Configure(values);
+			return rotator * direction;
+		}
 
-        ReloadDuration = BaseAttackSpeed;
-        _ammoLimit = values.Get("AmmoLimit", -1);
-        _ammoAmount = values.Get("AmmoAmount", -1);
-        _projectileSpeed = values.Get("Projectile Speed", 0f);
-        _projectilesPerShot = values.Get("BulletsPerBurst", 1);
-        _projectileLifetime = values.Get("ProjectileLifetime", 1f);
-        _shotConeAngle = values.Get("BurstAngle", 0);
-        _splashDamageRadius = values.Get("SplashRadius", float.NaN);
-        _abilityOnPickup = values.GetScriptableObject<BuffItemInfo>("AbilityOnPickup");
-        ClipSize = values.Get("Clip Size", _projectilesPerShot);
-        _projectilePrefab = values.GetPrefabWithComponent<Projectile>("Projectile", fixName: false);
-    }
+		private Projectile GetProjectileInstance() {
+			var result = Instantiate( _typedInfo._projectilePrefab );
+			result.Lifetime = _typedInfo._projectileLifetime;
+			return result;
+		}
+
+	}
+
+	public override Item GetItem() {
+
+		return new RangedWeapon( this );
+	}
+
+	public override void Configure( Values values ) {
+
+		base.Configure( values );
+
+		ReloadDuration = BaseAttackSpeed;
+		_ammoLimit = values.Get( "AmmoLimit", -1 );
+		_ammoAmount = values.Get( "AmmoAmount", -1 );
+		_projectileSpeed = values.Get( "Projectile Speed", 0f );
+		_projectilesPerShot = values.Get( "BulletsPerBurst", 1 );
+		_projectileLifetime = values.Get( "ProjectileLifetime", 1f );
+		_shotConeAngle = values.Get( "BurstAngle", 0 );
+		_splashDamageRadius = values.Get( "SplashRadius", float.NaN );
+		_abilityOnPickup = values.GetScriptableObject<BuffItemInfo>( "AbilityOnPickup" );
+		ClipSize = values.Get( "Clip Size", _projectilesPerShot );
+		_projectilePrefab = values.GetPrefabWithComponent<Projectile>( "Projectile", fixName: false );
+	}
 
 }

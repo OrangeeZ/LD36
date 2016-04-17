@@ -17,6 +17,13 @@ public class EnemyCharacterStatusInfo : CharacterStatusInfo {
 	public float SpeakChance;
 	public string SpeakLineId;
 
+	[Header("Xeno")]
+	public float FrightenRadius = 5f;
+	public float FrightenChance = .5f;
+	public float AutoAggroCheckInterval = 2f;
+	public float AutoAggroChance = .1f;
+	public bool IsAgressive = false;
+
 	public override void Configure( csv.Values values ) {
 
 		base.Configure( values );
@@ -30,10 +37,6 @@ public class EnemyCharacterStatusInfo : CharacterStatusInfo {
 
 		MaxLiveEnemiesPerSpawner = values.Get( "MaxRespCount", 1f );
 		PawnPrefab = values.GetPrefabWithComponent<EnemyCharacterPawn>( "Visual", fixName: false );
-
-		//AttackRange = values.Get( "AttackRange", 0 );
-		//SplashRadius = values.Get( "SplashRadius", 0 );
-		//CanFriendlyFire = values.Get( "FriendlyFire", "no" ) == "yes";
 	}
 
 }

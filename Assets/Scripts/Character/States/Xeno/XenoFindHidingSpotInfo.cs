@@ -16,13 +16,13 @@ public class XenoFindHidingSpotInfo : CharacterStateInfo {
 
 		public override bool CanBeSet() {
 
-			return GetFathestObject() != null;
+			return GetFarthestObject() != null;
 		}
 
 		public override IEnumerable GetEvaluationBlock() {
 
 			var pawn = character.Pawn;
-			var hidingSpot = GetFathestObject();
+			var hidingSpot = GetFarthestObject();
 
 			do {
 
@@ -42,15 +42,12 @@ public class XenoFindHidingSpotInfo : CharacterStateInfo {
 			stateController.SetScheduledStates( new[] {waitState} );
 		}
 
-		private EnvironmentObjectSpot GetFathestObject() {
+		private EnvironmentObjectSpot GetFarthestObject() {
 
-			if ( EnvironmentObjectSpot.Instances.All( _ => _.GetState() != EnvironmentObjectSpot.State.Empty ) ) {
+			var position = character.Pawn.position;
+			var room = Room.FindRoomForPosition( position );
 
-				return null;
-			}
-
-			return EnvironmentObjectSpot.Instances.Where( _ => _.GetState() == EnvironmentObjectSpot.State.Empty )
-											      .MaxBy( each => Vector3.SqrMagnitude( each.transform.position - character.Pawn.position ) );
+			return room != null ? room.FindFarthestObjectSpot( position ) : null;
 		}
 
 	}

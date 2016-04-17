@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using Packages.EventSystem;
 
 [CreateAssetMenu( menuName = "Create/States/Attack direction" )]
 public class AttackDirectionStateInfo : CharacterStateInfo {
@@ -12,8 +13,8 @@ public class AttackDirectionStateInfo : CharacterStateInfo {
 		public override bool CanBeSet() {
 
 			var isButtonDown = Input.GetMouseButton	( 0 );
+
 			return isButtonDown && ( Input.mousePosition - Camera.main.WorldToScreenPoint( character.Pawn.position ) ).magnitude > 0.1f;
-			//return GameScreen.instance.attackJoystick.GetValue().magnitude > 0.1f && character.Inventory.GetArmSlotItem( ArmSlotType.Primary ) is Weapon;
 		}
 
 		public override IEnumerable GetEvaluationBlock() {

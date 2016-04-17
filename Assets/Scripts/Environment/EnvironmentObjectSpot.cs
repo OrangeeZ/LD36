@@ -6,9 +6,7 @@ using UniRx;
 using UnityEngine.UI;
 
 public class EnvironmentObjectSpot : AObject {
-
-	public static List<EnvironmentObjectSpot> Instances = new List<EnvironmentObjectSpot>();
-
+	
 	[SerializeField]
 	private GameObject[] _viewPrefabs;
 
@@ -26,22 +24,12 @@ public class EnvironmentObjectSpot : AObject {
 
 	}
 
-	private void Awake() {
-
-		Instances.Add( this );
-	}
-
 	void Start() {
 
 		if ( _state == State.Default ) {
 
 			_viewInstance = gameObject;
 		}
-	}
-
-	private void OnDestroy() {
-
-		Instances.Remove( this );
 	}
 
 	public void Destroy() {
