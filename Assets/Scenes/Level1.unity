@@ -96,8 +96,7 @@ GameObject:
   - 4: {fileID: 79486595}
   - 114: {fileID: 79486597}
   - 65: {fileID: 79486596}
-  - 23: {fileID: 79486599}
-  - 33: {fileID: 79486598}
+  - 208: {fileID: 79486598}
   m_Layer: 0
   m_Name: 'Wall #0'
   m_TagString: Untagged
@@ -144,39 +143,21 @@ MonoBehaviour:
   _bounds:
     m_Center: {x: 0, y: 0, z: 0}
     m_Extent: {x: 1, y: 1, z: 1}
---- !u!33 &79486598
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 79486594}
-  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!23 &79486599
-MeshRenderer:
+--- !u!208 &79486598
+NavMeshObstacle:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 79486594}
   m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_Materials:
-  - {fileID: 0}
-  m_SubsetIndices: 
-  m_StaticBatchRoot: {fileID: 0}
-  m_UseLightProbes: 1
-  m_ReflectionProbeUsage: 1
-  m_ProbeAnchor: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingOrder: 0
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.5, y: 0.5, z: 0.5}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0, z: 0}
+  m_TimeToStationary: 0.5
 --- !u!1 &116892784
 GameObject:
   m_ObjectHideFlags: 0
@@ -450,8 +431,7 @@ GameObject:
   - 4: {fileID: 363501513}
   - 114: {fileID: 363501515}
   - 65: {fileID: 363501514}
-  - 23: {fileID: 363501517}
-  - 33: {fileID: 363501516}
+  - 208: {fileID: 363501516}
   m_Layer: 0
   m_Name: 'Wall #0 (2)'
   m_TagString: Untagged
@@ -498,39 +478,21 @@ MonoBehaviour:
   _bounds:
     m_Center: {x: -7.8207607, y: -0.20100719, z: -10.1187725}
     m_Extent: {x: 4.679575, y: 0.5109348, z: 4.768217}
---- !u!33 &363501516
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 363501512}
-  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!23 &363501517
-MeshRenderer:
+--- !u!208 &363501516
+NavMeshObstacle:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 363501512}
   m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_Materials:
-  - {fileID: 0}
-  m_SubsetIndices: 
-  m_StaticBatchRoot: {fileID: 0}
-  m_UseLightProbes: 1
-  m_ReflectionProbeUsage: 1
-  m_ProbeAnchor: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingOrder: 0
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.5, y: 0.5, z: 0.5}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0, z: 0}
+  m_TimeToStationary: 0.5
 --- !u!1001 &377351100
 Prefab:
   m_ObjectHideFlags: 0
@@ -882,8 +844,7 @@ GameObject:
   - 4: {fileID: 835265911}
   - 114: {fileID: 835265913}
   - 65: {fileID: 835265912}
-  - 23: {fileID: 835265915}
-  - 33: {fileID: 835265914}
+  - 208: {fileID: 835265914}
   m_Layer: 0
   m_Name: 'Wall #0 (4)'
   m_TagString: Untagged
@@ -930,39 +891,21 @@ MonoBehaviour:
   _bounds:
     m_Center: {x: -3.1475468, y: -0.0050243735, z: 1.9102473}
     m_Extent: {x: 2.9615192, y: 0.5097759, z: 3.0118594}
---- !u!33 &835265914
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 835265910}
-  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!23 &835265915
-MeshRenderer:
+--- !u!208 &835265914
+NavMeshObstacle:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 835265910}
   m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_Materials:
-  - {fileID: 0}
-  m_SubsetIndices: 
-  m_StaticBatchRoot: {fileID: 0}
-  m_UseLightProbes: 1
-  m_ReflectionProbeUsage: 1
-  m_ProbeAnchor: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingOrder: 0
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.5, y: 0.5, z: 0.5}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0, z: 0}
+  m_TimeToStationary: 0.5
 --- !u!1 &855214512
 GameObject:
   m_ObjectHideFlags: 0
@@ -973,8 +916,7 @@ GameObject:
   - 4: {fileID: 855214513}
   - 114: {fileID: 855214515}
   - 65: {fileID: 855214514}
-  - 23: {fileID: 855214517}
-  - 33: {fileID: 855214516}
+  - 208: {fileID: 855214516}
   m_Layer: 0
   m_Name: 'Wall #0 (4)'
   m_TagString: Untagged
@@ -1021,39 +963,21 @@ MonoBehaviour:
   _bounds:
     m_Center: {x: -3.1475468, y: -0.0050243735, z: 1.9102473}
     m_Extent: {x: 2.9615192, y: 0.5097759, z: 3.0118594}
---- !u!33 &855214516
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 855214512}
-  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!23 &855214517
-MeshRenderer:
+--- !u!208 &855214516
+NavMeshObstacle:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 855214512}
   m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_Materials:
-  - {fileID: 0}
-  m_SubsetIndices: 
-  m_StaticBatchRoot: {fileID: 0}
-  m_UseLightProbes: 1
-  m_ReflectionProbeUsage: 1
-  m_ProbeAnchor: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingOrder: 0
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.5, y: 0.5, z: 0.5}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0, z: 0}
+  m_TimeToStationary: 0.5
 --- !u!1 &878696507
 GameObject:
   m_ObjectHideFlags: 0
@@ -1181,8 +1105,7 @@ GameObject:
   - 4: {fileID: 1028626700}
   - 114: {fileID: 1028626702}
   - 65: {fileID: 1028626701}
-  - 23: {fileID: 1028626704}
-  - 33: {fileID: 1028626703}
+  - 208: {fileID: 1028626703}
   m_Layer: 0
   m_Name: 'Wall #0 (2)'
   m_TagString: Untagged
@@ -1229,39 +1152,21 @@ MonoBehaviour:
   _bounds:
     m_Center: {x: -7.8207607, y: -0.20100719, z: -10.1187725}
     m_Extent: {x: 4.679575, y: 0.5109348, z: 4.768217}
---- !u!33 &1028626703
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1028626699}
-  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!23 &1028626704
-MeshRenderer:
+--- !u!208 &1028626703
+NavMeshObstacle:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1028626699}
   m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_Materials:
-  - {fileID: 0}
-  m_SubsetIndices: 
-  m_StaticBatchRoot: {fileID: 0}
-  m_UseLightProbes: 1
-  m_ReflectionProbeUsage: 1
-  m_ProbeAnchor: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingOrder: 0
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.5, y: 0.5, z: 0.5}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0, z: 0}
+  m_TimeToStationary: 0.5
 --- !u!1 &1054256247
 GameObject:
   m_ObjectHideFlags: 0
@@ -1272,8 +1177,7 @@ GameObject:
   - 4: {fileID: 1054256248}
   - 114: {fileID: 1054256250}
   - 65: {fileID: 1054256249}
-  - 23: {fileID: 1054256252}
-  - 33: {fileID: 1054256251}
+  - 208: {fileID: 1054256251}
   m_Layer: 0
   m_Name: 'Wall #0'
   m_TagString: Untagged
@@ -1320,39 +1224,21 @@ MonoBehaviour:
   _bounds:
     m_Center: {x: 0, y: 0, z: 0}
     m_Extent: {x: 1, y: 1, z: 1}
---- !u!33 &1054256251
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1054256247}
-  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!23 &1054256252
-MeshRenderer:
+--- !u!208 &1054256251
+NavMeshObstacle:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1054256247}
   m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_Materials:
-  - {fileID: 0}
-  m_SubsetIndices: 
-  m_StaticBatchRoot: {fileID: 0}
-  m_UseLightProbes: 1
-  m_ReflectionProbeUsage: 1
-  m_ProbeAnchor: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingOrder: 0
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.5, y: 0.5, z: 0.5}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0, z: 0}
+  m_TimeToStationary: 0.5
 --- !u!1001 &1105781790
 Prefab:
   m_ObjectHideFlags: 0
@@ -1421,8 +1307,7 @@ GameObject:
   - 4: {fileID: 1187828558}
   - 114: {fileID: 1187828560}
   - 65: {fileID: 1187828559}
-  - 23: {fileID: 1187828562}
-  - 33: {fileID: 1187828561}
+  - 208: {fileID: 1187828561}
   m_Layer: 0
   m_Name: 'Wall #0 (1)'
   m_TagString: Untagged
@@ -1469,39 +1354,21 @@ MonoBehaviour:
   _bounds:
     m_Center: {x: 0.19202185, y: -0.11378533, z: -10.287967}
     m_Extent: {x: 4.6815896, y: 0.51093596, z: 4.766238}
---- !u!33 &1187828561
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1187828557}
-  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!23 &1187828562
-MeshRenderer:
+--- !u!208 &1187828561
+NavMeshObstacle:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1187828557}
   m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_Materials:
-  - {fileID: 0}
-  m_SubsetIndices: 
-  m_StaticBatchRoot: {fileID: 0}
-  m_UseLightProbes: 1
-  m_ReflectionProbeUsage: 1
-  m_ProbeAnchor: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingOrder: 0
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.5, y: 0.5, z: 0.5}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0, z: 0}
+  m_TimeToStationary: 0.5
 --- !u!1 &1209035738
 GameObject:
   m_ObjectHideFlags: 0
@@ -1512,8 +1379,7 @@ GameObject:
   - 4: {fileID: 1209035739}
   - 114: {fileID: 1209035741}
   - 65: {fileID: 1209035740}
-  - 23: {fileID: 1209035743}
-  - 33: {fileID: 1209035742}
+  - 208: {fileID: 1209035742}
   m_Layer: 0
   m_Name: 'Wall #0 (3)'
   m_TagString: Untagged
@@ -1560,39 +1426,21 @@ MonoBehaviour:
   _bounds:
     m_Center: {x: 5.709606, y: -0.0041080713, z: -6.6332235}
     m_Extent: {x: 4.679578, y: 0.5109348, z: 4.76822}
---- !u!33 &1209035742
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1209035738}
-  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!23 &1209035743
-MeshRenderer:
+--- !u!208 &1209035742
+NavMeshObstacle:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1209035738}
   m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_Materials:
-  - {fileID: 0}
-  m_SubsetIndices: 
-  m_StaticBatchRoot: {fileID: 0}
-  m_UseLightProbes: 1
-  m_ReflectionProbeUsage: 1
-  m_ProbeAnchor: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingOrder: 0
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.5, y: 0.5, z: 0.5}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0, z: 0}
+  m_TimeToStationary: 0.5
 --- !u!1 &1217780374
 GameObject:
   m_ObjectHideFlags: 0
@@ -2061,8 +1909,7 @@ GameObject:
   - 4: {fileID: 1866486303}
   - 114: {fileID: 1866486305}
   - 65: {fileID: 1866486304}
-  - 23: {fileID: 1866486307}
-  - 33: {fileID: 1866486306}
+  - 208: {fileID: 1866486306}
   m_Layer: 0
   m_Name: 'Wall #0 (3)'
   m_TagString: Untagged
@@ -2109,39 +1956,21 @@ MonoBehaviour:
   _bounds:
     m_Center: {x: 5.709606, y: -0.0041080713, z: -6.6332235}
     m_Extent: {x: 4.679578, y: 0.5109348, z: 4.76822}
---- !u!33 &1866486306
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1866486302}
-  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!23 &1866486307
-MeshRenderer:
+--- !u!208 &1866486306
+NavMeshObstacle:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1866486302}
   m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_Materials:
-  - {fileID: 0}
-  m_SubsetIndices: 
-  m_StaticBatchRoot: {fileID: 0}
-  m_UseLightProbes: 1
-  m_ReflectionProbeUsage: 1
-  m_ProbeAnchor: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingOrder: 0
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.5, y: 0.5, z: 0.5}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0, z: 0}
+  m_TimeToStationary: 0.5
 --- !u!1001 &1894855150
 Prefab:
   m_ObjectHideFlags: 0
@@ -2305,8 +2134,7 @@ GameObject:
   - 4: {fileID: 2062969958}
   - 114: {fileID: 2062969960}
   - 65: {fileID: 2062969959}
-  - 23: {fileID: 2062969962}
-  - 33: {fileID: 2062969961}
+  - 208: {fileID: 2062969961}
   m_Layer: 0
   m_Name: 'Wall #0 (1)'
   m_TagString: Untagged
@@ -2353,39 +2181,21 @@ MonoBehaviour:
   _bounds:
     m_Center: {x: 0.19202185, y: -0.11378533, z: -10.287967}
     m_Extent: {x: 4.6815896, y: 0.51093596, z: 4.766238}
---- !u!33 &2062969961
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 2062969957}
-  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!23 &2062969962
-MeshRenderer:
+--- !u!208 &2062969961
+NavMeshObstacle:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2062969957}
   m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_Materials:
-  - {fileID: 0}
-  m_SubsetIndices: 
-  m_StaticBatchRoot: {fileID: 0}
-  m_UseLightProbes: 1
-  m_ReflectionProbeUsage: 1
-  m_ProbeAnchor: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingOrder: 0
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.5, y: 0.5, z: 0.5}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0, z: 0}
+  m_TimeToStationary: 0.5
 --- !u!1 &2110269187
 GameObject:
   m_ObjectHideFlags: 0
