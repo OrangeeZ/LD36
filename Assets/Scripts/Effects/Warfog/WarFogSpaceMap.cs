@@ -5,7 +5,6 @@ using UnityEngine;
 public class WarFogSpaceMap : MonoBehaviour {
 
 	private byte[] _spaceMap;
-	private byte[] _visitMap;
 	private byte[] _visibilityMap;
 
 	[SerializeField]
@@ -28,6 +27,13 @@ public class WarFogSpaceMap : MonoBehaviour {
 
 	private Color32[] _warFogColors;
 
+	private int[] _mooreNeighbourhoodLengthCache;
+
+	void Start() {
+		
+		Generate();
+	}
+
 	public Bounds GetBounds() {
 
 		return _bounds;
@@ -36,9 +42,8 @@ public class WarFogSpaceMap : MonoBehaviour {
 	public void Trace( Vector3 position, int radius ) {
 
 		ClearVisible();
-		ClearVisited();
 
-		var scaledRadius = radius / _cellSize;
+		var scaledRadius = Mathf.RoundToInt( radius / _cellSize );
 
 		var startingPoint = _bounds.center - _bounds.extents;
 		var relativePosition = position - startingPoint;
@@ -55,7 +60,7 @@ public class WarFogSpaceMap : MonoBehaviour {
 
 		for ( var i = 0; i < _warFogColors.Length; i++ ) {
 
-			_warFogColors[i] = Color.white * _visibilityMap[i];
+			_warFogColors[i].a = (byte) ( _visibilityMap[i] * 255 );
 		}
 
 		_warFogTexture.SetPixels32( _warFogColors );
@@ -77,7 +82,7 @@ public class WarFogSpaceMap : MonoBehaviour {
 		_cellsZ = Mathf.RoundToInt( _bounds.size.z / _cellSize );
 
 		if ( _warFogTexture != null ) {
-			
+
 			DestroyImmediate( _warFogTexture );
 		}
 
@@ -85,7 +90,6 @@ public class WarFogSpaceMap : MonoBehaviour {
 		_warFogColors = _warFogTexture.GetPixels32();
 
 		_spaceMap = new byte[_cellsX * _cellsZ];
-		_visitMap = new byte[_cellsX * _cellsZ];
 		_visibilityMap = new byte[_cellsX * _cellsZ];
 
 		for ( var x = 0; x < _cellsX; ++x ) {
@@ -98,19 +102,23 @@ public class WarFogSpaceMap : MonoBehaviour {
 		}
 	}
 
+	private void UpdateMooreNeighbourhoodCache( int requiredRadius ) {
+
+		if ( _mooreNeighbourhoodLengthCache != null && requiredRadius < _mooreNeighbourhoodLengthCache.Length ) {
+
+			return;
+		}
+
+		_mooreNeighbourhoodLengthCache = new int[requiredRadius + 1];
+		for ( var i = 0; i < requiredRadius; ++i ) {
+
+			_mooreNeighbourhoodLengthCache[i] = CalculateMooreNeighbourhoodLength( i );
+		}
+	}
+
 	private void TraceMooreNeighbourhood( int centerX, int centerY, int radius, Action<int, int> callback ) {
 
-		//var fromX = -radius + centerX;
-		//var toX = radius + centerX;
-
-		//var fromY = -radius + centerY;
-		//var toY = radius + centerY;
-
-		//var x = fromX;
-		//var y = fromY;
-
-		var frameRate = Time.frameCount % 40;
-
+		UpdateMooreNeighbourhoodCache( radius + 1 );
 		var segmentCount = GetMooreNeighbourhoodLength( radius + 1 );
 		for ( var i = 0; i < segmentCount; ++i ) {
 
@@ -123,7 +131,6 @@ public class WarFogSpaceMap : MonoBehaviour {
 			var previousPointY = GetMooreOffsetY( radius - 1, rate ) + centerY;
 
 			var isPreviousPointVisible = GetPointVisible( previousPointY * _cellsX + previousPointX );
-			//var isPreviousPointVisited = GetPointVisited( previousPointY * _cellSize + previousPointX );
 			if ( !isPreviousPointVisible ) {
 
 				SetPointVisible( pointY * _cellsX + pointX, false );
@@ -133,26 +140,6 @@ public class WarFogSpaceMap : MonoBehaviour {
 
 			callback( pointX, pointY );
 		}
-
-		//for ( ; x <= toX; ++x ) {
-
-		//	callback( x, y );
-		//}
-
-		//for ( ; y <= toY; ++y ) {
-
-		//	callback( x, y );
-		//}
-
-		//for ( ; x >= fromX; --x ) {
-
-		//	callback( x, y );
-		//}
-
-		//for ( ; y >= fromY; --y ) {
-
-		//	callback( x, y );
-		//}
 	}
 
 	private int GetMooreOffsetX( int radius, float rate ) {
@@ -173,9 +160,19 @@ public class WarFogSpaceMap : MonoBehaviour {
 		return Mathf.RoundToInt( result - sideLength / 2f );
 	}
 
-	private int GetMooreNeighbourhoodLength( int radius ) {
+	private int CalculateMooreNeighbourhoodLength( int radius ) {
 
 		return GetMooreNeighbourhoodCount( radius ) - GetMooreNeighbourhoodCount( radius - 1 );
+	}
+
+	private int GetMooreNeighbourhoodLength( int radius ) {
+
+		if ( radius < 0 ) {
+
+			return 0;
+		}
+
+		return _mooreNeighbourhoodLengthCache[radius];
 	}
 
 	private int GetMooreNeighbourhoodCount( int radius ) {
@@ -204,7 +201,6 @@ public class WarFogSpaceMap : MonoBehaviour {
 		//}
 
 		SetPointVisible( y * _cellsX + x, !isOccluded );
-		SetPointVisited( y * _cellsX + x, true );
 	}
 
 	private bool IsPointOccluded( Vector3 point ) {
@@ -217,14 +213,6 @@ public class WarFogSpaceMap : MonoBehaviour {
 		for ( var i = 0; i < _spaceMap.Length; ++i ) {
 
 			SetPointVisible( i, false );
-		}
-	}
-
-	private void ClearVisited() {
-
-		for ( var i = 0; i < _spaceMap.Length; ++i ) {
-
-			SetPointVisited( i, false );
 		}
 	}
 
@@ -245,16 +233,6 @@ public class WarFogSpaceMap : MonoBehaviour {
 		}
 
 		return _spaceMap[index] == 1;
-	}
-
-	private void SetPointVisited( int index, bool isVisited ) {
-
-		_visitMap[index] = (byte) ( isVisited ? 1 : 0 );
-	}
-
-	private bool GetPointVisited( int index ) {
-
-		return _visitMap[index] == 1;
 	}
 
 	private void OnDrawGizmos() {

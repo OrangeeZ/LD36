@@ -514,7 +514,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: afd2ef9bb57d3ea42ab0791e95cd78dc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _cellSize: 0.43
+  _cellSize: 0.5
   _bounds:
     m_Center: {x: 0, y: 0, z: 0}
     m_Extent: {x: 50, y: 0, z: 50}
