@@ -44,3 +44,12 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Floor
+    uniqueID: 3366950101
+    locked: 0
+  - name: Characters
+    uniqueID: 2924278793
+    locked: 0
+  - name: Walls
+    uniqueID: 3103161709
+    locked: 0
