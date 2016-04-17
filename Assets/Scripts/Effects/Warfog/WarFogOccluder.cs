@@ -22,11 +22,25 @@ public class WarFogOccluder : MonoBehaviour {
 		}
 	}
 
-	public bool IsAffectingPoint( Vector3 point )
-	{
-	    var localPoint = transform.worldToLocalMatrix.MultiplyPoint3x4(point);
-        localPoint.Scale(transform.localScale);
-        return _bounds.Contains(localPoint);
+	public bool IsAffectingPoint( Vector3 point ) {
+
+		var localPoint = transform.worldToLocalMatrix.MultiplyPoint3x4(point);
+		//localPoint = Quaternion.Inverse( transform.rotation ) * localPoint;
+
+		var inverseScale = transform.localScale;
+		inverseScale.x = 1f / inverseScale.x;
+		inverseScale.y = 1f / inverseScale.y;
+		inverseScale.z = 1f / inverseScale.z;
+
+		//localPoint.Scale( transform.localScale );
+
+		return new Bounds(Vector3.zero, Vector3.one).Contains( localPoint );//_bounds.Contains( localPoint );
 	}
+
+	//void OnDrawGizmos() {
+
+	//	Gizmos.matrix = transform.localToWorldMatrix;
+	//	Gizmos.DrawWireCube( _bounds.center, _bounds.size );
+	//}
 
 }
