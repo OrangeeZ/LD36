@@ -135,12 +135,13 @@ public class Projectile : AObject {
 
 		OnContact( other );
 
-		if ( other.transform.parent != null ) {
+		//if ( other.transform.parent != null ) 
+			{
 
-			var environmentObject = other.transform.parent.GetComponent<EnvironmentObjectSpot>();
+			var environmentObject = other.GetComponent<EnvironmentObjectSpot>();
 			if ( environmentObject != null ) {
 
-				environmentObject.Destroy();
+				environmentObject.Destroy( Owner );
 			}
 		}
 

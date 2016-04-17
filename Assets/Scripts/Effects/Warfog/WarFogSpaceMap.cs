@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
@@ -29,8 +30,14 @@ public class WarFogSpaceMap : MonoBehaviour {
 
 	private int[] _mooreNeighbourhoodLengthCache;
 
-	void Start() {
-		
+	private List<byte> _mooreNeighbourhoodVisibilityBuffer1;
+	private List<byte> _mooreNeighbourhoodVisibilityBuffer2;
+
+	private List<byte> _visibilityReadBuffer;
+	private List<byte> _visibilityWriteBuffer;
+
+	private void Start() {
+
 		Generate();
 	}
 
@@ -41,7 +48,9 @@ public class WarFogSpaceMap : MonoBehaviour {
 
 	public void Trace( Vector3 position, int radius ) {
 
-		ClearVisible();
+		Profiler.BeginSample( "WarFogSpaceMap::Clear" );
+		//ClearVisible();
+		Profiler.EndSample();
 
 		var scaledRadius = Mathf.RoundToInt( radius / _cellSize );
 
@@ -53,18 +62,49 @@ public class WarFogSpaceMap : MonoBehaviour {
 
 		SetPointVisible( centerY * _cellsX + centerX, true );
 
+		UpdateMooreNeighbourhoodCache( scaledRadius + 2 );
+
+		//_mooreNeighbourhoodVisibilityBuffer1 = _mooreNeighbourhoodVisibilityBuffer1 ?? new List<byte>();
+		//_mooreNeighbourhoodVisibilityBuffer1.Capacity = GetMooreNeighbourhoodLength( scaledRadius + 1 );
+
+		//_mooreNeighbourhoodVisibilityBuffer2 = _mooreNeighbourhoodVisibilityBuffer2 ?? new List<byte>();
+		//_mooreNeighbourhoodVisibilityBuffer2.Capacity = GetMooreNeighbourhoodLength( scaledRadius + 1 );
+
+		Profiler.BeginSample( "WarFogSpaceMap::Trace" );
 		for ( var i = 1; i <= scaledRadius; ++i ) {
+
+			//if ( i % 2 == 0 ) {
+
+			//	_visibilityReadBuffer = _mooreNeighbourhoodVisibilityBuffer1;
+			//	_visibilityWriteBuffer = _mooreNeighbourhoodVisibilityBuffer2;
+			//} else {
+
+			//	_visibilityReadBuffer = _mooreNeighbourhoodVisibilityBuffer2;
+			//	_visibilityWriteBuffer = _mooreNeighbourhoodVisibilityBuffer1;
+			//}
+
+			//_visibilityWriteBuffer.Clear();
 
 			TraceMooreNeighbourhood( centerX, centerY, i, OnTracePoint );
 		}
+		Profiler.EndSample();
+
+		Profiler.BeginSample( "WarFogSpaceMap::PrepareTexture" );
+	}
+
+	public void SubmitTexture() {
 
 		for ( var i = 0; i < _warFogColors.Length; i++ ) {
 
-			_warFogColors[i].a = (byte) ( _visibilityMap[i] * 255 );
+			_warFogColors[i].a = (byte)( _visibilityMap[i] * 255 );
 		}
+
+		//Blur( _warFogColors, _cellsX, _cellsZ );
 
 		_warFogTexture.SetPixels32( _warFogColors );
 		_warFogTexture.Apply();
+
+		Profiler.EndSample();
 
 		if ( WarFogPostEffectRenderer.Instance != null ) {
 
@@ -110,7 +150,7 @@ public class WarFogSpaceMap : MonoBehaviour {
 		}
 
 		_mooreNeighbourhoodLengthCache = new int[requiredRadius + 1];
-		for ( var i = 0; i < requiredRadius; ++i ) {
+		for ( var i = 0; i < _mooreNeighbourhoodLengthCache.Length; ++i ) {
 
 			_mooreNeighbourhoodLengthCache[i] = CalculateMooreNeighbourhoodLength( i );
 		}
@@ -118,47 +158,77 @@ public class WarFogSpaceMap : MonoBehaviour {
 
 	private void TraceMooreNeighbourhood( int centerX, int centerY, int radius, Action<int, int> callback ) {
 
-		UpdateMooreNeighbourhoodCache( radius + 1 );
 		var segmentCount = GetMooreNeighbourhoodLength( radius + 1 );
 		for ( var i = 0; i < segmentCount; ++i ) {
 
 			var rate = (float) i / segmentCount + float.Epsilon;
 
-			var pointX = GetMooreOffsetX( radius, rate ) + centerX;
-			var pointY = GetMooreOffsetY( radius, rate ) + centerY;
+			var pointX = 0;//GetMooreOffsetX( radius, rate ) + centerX;
+			var pointY = 0;//GetMooreOffsetY( radius, rate ) + centerY;
 
-			var previousPointX = GetMooreOffsetX( radius - 1, rate ) + centerX;
-			var previousPointY = GetMooreOffsetY( radius - 1, rate ) + centerY;
+			GetMooreOffsets( radius, rate, out pointX, out pointY );
+			pointX += centerX;
+			pointY += centerY;
 
-			var isPreviousPointVisible = GetPointVisible( previousPointY * _cellsX + previousPointX );
-			if ( !isPreviousPointVisible ) {
+			if ( radius > 1 ) {
 
-				SetPointVisible( pointY * _cellsX + pointX, false );
+				var previousPointX = 0;// GetMooreOffsetX( radius - 1, rate ) + centerX;
+				var previousPointY = 0;//GetMooreOffsetY( radius - 1, rate ) + centerY;
 
-				continue;
+				GetMooreOffsets( radius - 1, rate, out previousPointX, out previousPointY );
+				previousPointX += centerX;
+				previousPointY += centerY;
+
+				//var visibilityCacheIndex = Mathf.RoundToInt( (rate + 1f / segmentCount) * ( _visibilityReadBuffer.Count - 1 ) );
+				var isPreviousPointVisible = GetPointVisible( previousPointY * _cellsX + previousPointX );
+				if ( !isPreviousPointVisible ) {
+
+					SetPointVisible( pointY * _cellsX + pointX, false );
+
+					//_visibilityWriteBuffer.Add( 0 );
+					continue;
+				}
 			}
 
 			callback( pointX, pointY );
+			//_visibilityWriteBuffer.Add( _visibilityMap[pointY * _cellsX + pointX] );
 		}
 	}
 
-	private int GetMooreOffsetX( int radius, float rate ) {
+	private void GetMooreOffsets( int radius, float rate, out int x, out int y ) {
 
 		var sideLength = GetMooreNeighbourhoodLength( radius ) / 4f;
+		var halfSideLength = sideLength / 2f;
 
-		var result = rate < 0.5f ? Mathf.Lerp( 0, sideLength, rate * 4f ) : Mathf.Lerp( 0, sideLength, 1 - ( rate - 0.5f ) * 4f );
+		var interpolatedSide = rate < 0.5f ? Mathf.Lerp( 0, sideLength, rate * 4f ) : Mathf.Lerp( 0, sideLength, 1 - ( rate - 0.5f ) * 4f );
+		x = Mathf.RoundToInt( interpolatedSide - halfSideLength );
 
-		return Mathf.RoundToInt( result - sideLength / 2f );
+		interpolatedSide = rate < 0.75f ? Mathf.Lerp( 0, sideLength, ( rate - 0.25f ) * 4f ) : Mathf.Lerp( 0, sideLength, 1 - ( rate - 0.75f ) * 4f );
+
+		y = Mathf.RoundToInt( interpolatedSide - halfSideLength );
 	}
 
-	private int GetMooreOffsetY( int radius, float rate ) {
+	//private int GetMooreOffsetX( int radius, float rate ) {
 
-		var sideLength = GetMooreNeighbourhoodLength( radius ) / 4f;
+	//	var sideLength = GetMooreNeighbourhoodLength( radius ) / 4f;
 
-		var result = rate < 0.75f ? Mathf.Lerp( 0, sideLength, ( rate - 0.25f ) * 4f ) : Mathf.Lerp( 0, sideLength, 1 - ( rate - 0.75f ) * 4f );
+	//	var interpolatedSide = rate < 0.5f ? Mathf.Lerp( 0, sideLength, rate * 4f ) : Mathf.Lerp( 0, sideLength, 1 - ( rate - 0.5f ) * 4f );
 
-		return Mathf.RoundToInt( result - sideLength / 2f );
-	}
+	//	var result = Mathf.RoundToInt( interpolatedSide - sideLength / 2f );
+
+	//	return result;
+	//}
+
+	//private int GetMooreOffsetY( int radius, float rate ) {
+
+	//	var sideLength = GetMooreNeighbourhoodLength( radius ) / 4f;
+
+	//	var interpolatedSide = rate < 0.75f ? Mathf.Lerp( 0, sideLength, ( rate - 0.25f ) * 4f ) : Mathf.Lerp( 0, sideLength, 1 - ( rate - 0.75f ) * 4f );
+
+	//	var result = Mathf.RoundToInt( interpolatedSide - sideLength / 2f );
+
+	//	return result;
+	//}
 
 	private int CalculateMooreNeighbourhoodLength( int radius ) {
 
@@ -269,6 +339,35 @@ public class WarFogSpaceMap : MonoBehaviour {
 				Gizmos.DrawCube( currentPoint, Vector3.one * _cellSize );
 			}
 		}
+	}
+
+	private static readonly float[] GaussKernel = new[] {1f / 4f, 1f / 8f, 1f / 16f};
+
+	private static void Blur( Color[] alphamap, int width, int height ) {
+		for ( var x = 1; x < width - 1; ++x ) {
+			for ( var y = 1; y < height - 1; y++ ) {
+				//for (var i = 0; i < numTexLayers; i++)
+				{
+					var blurredValue = GetBlurredValue( alphamap, x, y, 0, 0, width );
+
+					blurredValue += GetBlurredValue( alphamap, x, y, -1, 0, width );
+					blurredValue += GetBlurredValue( alphamap, x, y, 1, 0, width );
+					blurredValue += GetBlurredValue( alphamap, x, y, 0, -1, width );
+					blurredValue += GetBlurredValue( alphamap, x, y, 0, 1, width );
+
+					blurredValue += GetBlurredValue( alphamap, x, y, -1, -1, width );
+					blurredValue += GetBlurredValue( alphamap, x, y, 1, -1, width );
+					blurredValue += GetBlurredValue( alphamap, x, y, -1, 1, width );
+					blurredValue += GetBlurredValue( alphamap, x, y, 1, 1, width );
+
+					alphamap[y * width + x] = blurredValue;
+				}
+			}
+		}
+	}
+
+	private static Color GetBlurredValue( Color[] alphamap, int baseX, int baseY, int xOffset, int yOffset, int width ) {
+		return GaussKernel[Mathf.Abs( xOffset ) + Mathf.Abs( yOffset )] * alphamap[( baseY + yOffset ) * width + baseX + xOffset];
 	}
 
 }

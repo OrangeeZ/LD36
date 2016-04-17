@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 using Packages.EventSystem;
@@ -6,12 +7,15 @@ using UniRx;
 using UnityEngine.UI;
 
 public class EnvironmentObjectSpot : AObject {
-	
+
 	[SerializeField]
 	private GameObject[] _viewPrefabs;
 
 	[SerializeField]
 	private State _state;
+
+	[SerializeField]
+	private bool _isInvincible = false;
 
 	private GameObject _viewInstance;
 
@@ -24,7 +28,7 @@ public class EnvironmentObjectSpot : AObject {
 
 	}
 
-	void Start() {
+	private void Start() {
 
 		if ( _state == State.Default ) {
 
@@ -32,9 +36,12 @@ public class EnvironmentObjectSpot : AObject {
 		}
 	}
 
-	public void Destroy() {
+	public virtual void Destroy( Character hittingCharacter ) {
 
-		SetState( State.Destroyed );
+		if ( !_isInvincible ) {
+
+			SetState( State.Destroyed );
+		}
 
 		Debug.Log( this, this );
 
@@ -45,7 +52,7 @@ public class EnvironmentObjectSpot : AObject {
 
 		if ( _state != State.Destroyed ) {
 
-			Destroy(_viewInstance);
+			Destroy( _viewInstance );
 
 			_state = State.Empty;
 		}
@@ -61,6 +68,7 @@ public class EnvironmentObjectSpot : AObject {
 			case State.Infected:
 				_viewInstance = Instantiate( _viewPrefabs.RandomElement() );
 				_viewInstance.transform.SetParent( transform, worldPositionStays: false );
+				Destroy( _viewInstance.GetComponent<Collider>() );
 				break;
 
 			case State.Destroyed:

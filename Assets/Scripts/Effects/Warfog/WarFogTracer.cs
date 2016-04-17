@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using System;
 
 public class WarFogTracer : MonoBehaviour {
 
@@ -9,19 +10,27 @@ public class WarFogTracer : MonoBehaviour {
 
 	private WarFogSpaceMap _warFogSpaceMap;
 
-	void OnDrawGizmos() {
+	private void OnDrawGizmos() {
 
 		if ( !Application.isPlaying ) {
 
-			Update();
+			Trace( _warFogSpaceMap = _warFogSpaceMap ?? FindObjectOfType<WarFogSpaceMap>() );
 		}
 	}
 
-	void Update() {
+	void Start() {
+		
+		WarFogController.Tracers.Add( this );
+	}
 
-		_warFogSpaceMap = _warFogSpaceMap ?? FindObjectOfType<WarFogSpaceMap>();
+	void OnDestroy() {
 
-		_warFogSpaceMap.Trace( transform.position, Mathf.RoundToInt( _radius ) );
+		WarFogController.Tracers.Remove( this );
+	}
+
+	public void Trace( WarFogSpaceMap warFogSpaceMap ) {
+
+		warFogSpaceMap.Trace( transform.position, Mathf.RoundToInt( _radius ) );
 	}
 
 }
