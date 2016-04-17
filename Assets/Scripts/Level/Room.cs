@@ -6,6 +6,20 @@ using MoreLinq;
 
 public class Room : MonoBehaviour {
 
+	public enum Type {
+
+		Default,
+		MedicalBay,
+		Reactor,
+		Workshop,
+		ControlRoom,
+		SecurityRoom,
+		AlienMotherRoom
+	}
+
+	[SerializeField]
+	private Type _roomType;
+
 	[SerializeField]
 	private Bounds _bounds;
 

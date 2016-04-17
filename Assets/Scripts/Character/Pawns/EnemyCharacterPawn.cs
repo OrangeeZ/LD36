@@ -38,4 +38,14 @@ public class EnemyCharacterPawn : CharacterPawn {
 
 		_navMeshAgent.Warp( position );
 	}
+
+	protected override void Update() {
+
+		base.Update();
+
+		var direction = _navMeshAgent.velocity;
+		direction.x *= -1;
+		UpdateSpriteAnimationDirection( direction );
+	}
+
 }

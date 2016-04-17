@@ -9,10 +9,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a505d78e5be8bc34eb07117209f0d1b6, type: 3}
-  m_Name: xeno-status
+  m_Name: npc-status
   m_EditorClassIdentifier: 
-  MaxHealth: 1000
-  MoveSpeed: 15
+  MaxHealth: 5
+  MoveSpeed: 5
   Damage: 0
   MaxAcorns: 0
   status:
@@ -24,7 +24,7 @@ MonoBehaviour:
   Weapon1: {fileID: 11400000, guid: ff23e3af3e51a0248b57810068c81ed4, type: 2}
   ItemsToDrop:
   - {fileID: 11400000, guid: f970764d33e64b748bd71bf104c7084f, type: 2}
-  PawnPrefab: {fileID: 11453438, guid: 1b3bbde27ff7a6e419ab03103f7b92ba, type: 2}
+  PawnPrefab: {fileID: 11453438, guid: 748b946bae893d448a01817dc2363405, type: 2}
   DropChance: 0.3
   EnemySpottedSound:
   - {fileID: 8300000, guid: 7ad0210e7ee9442a3b8e85531b0d9cfb, type: 3}

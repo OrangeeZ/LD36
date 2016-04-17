@@ -35,7 +35,7 @@ public class CharacterPawn : CharacterPawnBase {
 	[SerializeField]
 	private CharacterSpriteAnimationController _spriteAnimationController;
 
-	private void Update() {
+	protected virtual void Update() {
 
 		if ( _characterController != null ) {
 
@@ -59,11 +59,8 @@ public class CharacterPawn : CharacterPawnBase {
 
 			_characterController.Move( directionDelta );
 		}
-		
-		var directionX = (int) Mathf.Clamp( -direction.x * 100, -1, 1 );
-		var directionY = (int) Mathf.Clamp( -direction.z * 100, -1, 1 );
 
-		_spriteAnimationController.UpdateDirection( directionX, directionY );
+		UpdateSpriteAnimationDirection( direction );
 	}
 
 	public override void SetDestination( Vector3 destination ) {
@@ -105,6 +102,14 @@ public class CharacterPawn : CharacterPawnBase {
 
 		GetSphereSensor().enabled = false;
 		GetComponent<Collider>().enabled = false;
+	}
+
+	protected void UpdateSpriteAnimationDirection( Vector3 direction ) {
+		
+		var directionX = (int) Mathf.Clamp( -direction.x * 100, -1, 1 );
+		var directionY = (int) Mathf.Clamp( -direction.z * 100, -1, 1 );
+
+		_spriteAnimationController.UpdateDirection( directionX, directionY );
 	}
 
 }
