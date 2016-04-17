@@ -11,5 +11,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 45f0b9b0f05178f44b9dba3b24a21fa4, type: 3}
   m_Name: 'Xeno Gambit Controller #1'
   m_EditorClassIdentifier: 
-  gambitInfos:
-  - {fileID: 11400000, guid: 609d5d80649f72a479ac91b89552cd04, type: 2}
+  gambitInfos: []
