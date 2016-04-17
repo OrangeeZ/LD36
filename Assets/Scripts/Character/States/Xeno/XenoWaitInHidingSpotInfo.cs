@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 using Packages.EventSystem;
 using UniRx;
 using UnityEngine.UI;
@@ -14,12 +15,14 @@ public class XenoWaitInHidingSpotInfo : CharacterStateInfo {
 
 		private bool _isTriggered;
 		private EnvironmentObjectSpot _hidingSpot;
+		private Character _attackTarget;
 
 		public override void Initialize( CharacterStateController stateController ) {
 
 			base.Initialize( stateController );
 
 			EventSystem.Events.SubscribeOfType<XenoTriggerEvent>( OnXenoTriggerEvent );
+			EventSystem.Events.SubscribeOfType<RangedWeaponInfo.RangedWeapon.Fire>( OnWeaponFire );
 		}
 
 		public override bool CanSwitchTo( CharacterState nextState ) {
@@ -37,6 +40,7 @@ public class XenoWaitInHidingSpotInfo : CharacterStateInfo {
 			_isTriggered = false;
 
 			while ( !_isTriggered ) {
+
 				yield return null;
 			}
 
@@ -47,9 +51,27 @@ public class XenoWaitInHidingSpotInfo : CharacterStateInfo {
 				_hidingSpot.TryResetState();
 			}
 
-			var escapeState = stateController.GetState<XenoEscapeToVentilationHatchInfo.State>();
-			escapeState.SetShouldSwitchRooms( true );
-			stateController.SetScheduledStates( new[] {escapeState} );
+			var statusInfo = character.Status.Info as EnemyCharacterStatusInfo;
+			var scheduledStates = new List<CharacterState>();
+
+			if ( statusInfo.IsAgressive ) {
+
+				var approachState = character.StateController.GetState<ApproachTargetStateInfo.State>();
+				approachState.SetDestination( _attackTarget );
+
+				character.WeaponStateController.GetState<AttackStateInfo.State>().SetTarget( _attackTarget );
+
+				scheduledStates.Add( approachState );
+			}
+			;// else 
+			{
+
+				var escapeState = stateController.GetState<XenoEscapeToVentilationHatchInfo.State>();
+				escapeState.SetShouldSwitchRooms( true );
+				scheduledStates.Add(escapeState );
+			}
+
+			stateController.SetScheduledStates( scheduledStates );
 		}
 
 		public void SetHidingSpot( EnvironmentObjectSpot hidingSpot ) {
@@ -60,6 +82,25 @@ public class XenoWaitInHidingSpotInfo : CharacterStateInfo {
 		private void OnXenoTriggerEvent( XenoTriggerEvent triggerEvent ) {
 
 			_isTriggered = true;
+		}
+
+		private void OnWeaponFire( RangedWeaponInfo.RangedWeapon.Fire fireEvent ) {
+
+			var thisPosition = character.Pawn.position;
+			var otherPosition = fireEvent.Character.Pawn.position;
+			var isInSameRoom = Room.FindRoomForPosition( otherPosition ) == Room.FindRoomForPosition( thisPosition );
+
+			var statusInfo = character.Status.Info as EnemyCharacterStatusInfo;
+			var isCloseEnough = Vector3.SqrMagnitude( thisPosition - otherPosition ) <= statusInfo.FrightenRadius.Pow( 2 );
+
+			var isChanceEnough = 1f.Random() <= statusInfo.FrightenChance;
+
+			_attackTarget = fireEvent.Character;
+
+			if ( isChanceEnough && isCloseEnough && isInSameRoom ) {
+
+				OnXenoTriggerEvent( null );
+			}
 		}
 
 	}

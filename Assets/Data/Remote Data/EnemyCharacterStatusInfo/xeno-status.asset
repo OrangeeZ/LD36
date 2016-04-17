@@ -32,3 +32,6 @@ MonoBehaviour:
   MaxLiveEnemiesPerSpawner: 6
   SpeakChance: 0.2
   SpeakLineId: addict_noticed
+  FrightenRadius: 5
+  FrightenChance: 0.5
+  IsAgressive: 1

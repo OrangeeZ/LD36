@@ -6,6 +6,9 @@ using System.Collections;
 [CreateAssetMenu( menuName = "Create/States/Attack target" )]
 public class AttackStateInfo : CharacterStateInfo {
 
+	[SerializeField]
+	private bool _attackOnce = false;
+
     [Serializable]
     public class State : CharacterState<AttackStateInfo> {
 
@@ -38,6 +41,11 @@ public class AttackStateInfo : CharacterStateInfo {
 				weapon.Attack( target, character.Status.Info as EnemyCharacterStatusInfo );
 
 				yield return null;
+
+	            if ( typedInfo._attackOnce ) {
+		            
+					break;
+	            }
             }
         }
 
