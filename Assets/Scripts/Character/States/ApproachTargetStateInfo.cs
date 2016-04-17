@@ -5,148 +5,118 @@ using System.Collections;
 using Packages.EventSystem;
 using Utility;
 
-[CreateAssetMenu(menuName = "Create/States/Approach target")]
-public class ApproachTargetStateInfo : CharacterStateInfo
-{
+[CreateAssetMenu( menuName = "Create/States/Approach target" )]
+public class ApproachTargetStateInfo : CharacterStateInfo {
 
-    [Header("Settings")]
-    [SerializeField]
-    private float _minRange = 1.5f;
+	[Header( "Settings" )]
+	[SerializeField]
+	private float _minRange = 1.5f;
 
-    [SerializeField]
-    private float _maxRange = 4f;
+	[SerializeField]
+	private float _maxRange = 4f;
 
-    [SerializeField]
-    private bool _autoActivate = true;
+	[SerializeField]
+	private bool _autoActivate = true;
 
-    [SerializeField]
-    private bool _clearTargetOnReach = false;
+	[SerializeField]
+	private bool _clearTargetOnReach = false;
 
-    [Serializable]
-    public class State : CharacterState<ApproachTargetStateInfo>
-    {
+	[Serializable]
+	public class State : CharacterState<ApproachTargetStateInfo> {
 
-        private TargetPosition destination;
-        private bool _isFirstTimeNotice = true;
-        private bool _targetIsCharacter = false;
+		private TargetPosition destination;
+		private bool _isFirstTimeNotice = true;
+		private bool _targetIsCharacter = false;
 
-        public State(CharacterStateInfo info) : base(info)
-        {
-        }
+		public State( CharacterStateInfo info ) : base( info ) {
+		}
 
-        public override void Initialize(CharacterStateController stateController)
-        {
+		public override void Initialize( CharacterStateController stateController ) {
 
-            base.Initialize(stateController);
+			base.Initialize( stateController );
 
-            stateController.character.InputSource.targets.Subscribe(SetDestination);
-        }
+			stateController.character.InputSource.targets.Subscribe( SetDestination );
+		}
 
-        public override bool CanBeSet()
-        {
+		public override bool CanBeSet() {
 
-            var distanceToDestination = destination.HasValue ? Vector3.Distance(character.Pawn.position, destination.Value) : -1f;
+			var distanceToDestination = destination.HasValue ? Vector3.Distance( character.Pawn.position, destination.Value ) : -1f;
 
-            return destination.HasValue
-                   && distanceToDestination > typedInfo._minRange
-                   && distanceToDestination < typedInfo._maxRange;
-        }
+			return destination.HasValue
+			       && distanceToDestination > typedInfo._minRange
+			       && distanceToDestination < typedInfo._maxRange;
+		}
 
-        public override IEnumerable GetEvaluationBlock()
-        {
+		public override IEnumerable GetEvaluationBlock() {
 
-            if (_isFirstTimeNotice && _targetIsCharacter)
-            {
+			if ( _isFirstTimeNotice && _targetIsCharacter ) {
 
-                var enemyInfo = character.Status.Info as EnemyCharacterStatusInfo;
-                var sound = enemyInfo.EnemySpottedSound.RandomElement();
+				var enemyInfo = character.Status.Info as EnemyCharacterStatusInfo;
+				var sound = enemyInfo.EnemySpottedSound.RandomElement();
 
-                if (sound != null)
-                {
+				if ( sound != null ) {
 
-                    AudioSource.PlayClipAtPoint(sound, character.Pawn.position);
-                }
+					AudioSource.PlayClipAtPoint( sound, character.Pawn.position );
+				}
 
-                if (1f.Random() <= character.speakProbability)
-                {
+				if ( 1f.Random() <= character.speakProbability ) {
 
-                    EventSystem.RaiseEvent(new Character.Speech { Character = character, messageId = enemyInfo.SpeakLineId });
-                }
+					EventSystem.RaiseEvent( new Character.Speech {Character = character, messageId = enemyInfo.SpeakLineId} );
+				}
 
-                _isFirstTimeNotice = false;
-            }
+				_isFirstTimeNotice = false;
+			}
 
-            var pawn = character.Pawn;
+			var pawn = character.Pawn;
 
-            do
-            {
+			do {
 
-                yield return null;
+				yield return null;
 
-                pawn.SetDestination(destination.Value);
+				pawn.SetDestination( destination.Value );
 
-                yield return null;
+				yield return null;
 
-                //pawn.SetDestination( destination.Value );
+				//pawn.SetDestination( destination.Value );
 
-            } while (pawn.GetDistanceToDestination() > typedInfo._minRange && pawn.GetDistanceToDestination() < typedInfo._maxRange);
+			} while ( pawn.GetDistanceToDestination() > typedInfo._minRange && pawn.GetDistanceToDestination() < typedInfo._maxRange );
 
-            //if ( pawn.GetDistanceToDestination() > typedInfo._maxRange ) {
+			//if ( pawn.GetDistanceToDestination() > typedInfo._maxRange ) {
 
-            //	_didNoticeCharacter = false;
-            //}
+			//	_didNoticeCharacter = false;
+			//}
 
-            if (typedInfo._clearTargetOnReach)
-            {
+			if ( typedInfo._clearTargetOnReach ) {
 
-                pawn.ClearDestination();
-                destination = null;
-            }
-        }
+				pawn.ClearDestination();
+				destination = null;
+			}
+		}
 
-        public void SetDestination(object target)
-        {
+		public void SetDestination( object target ) {
 
-            if (target is Vector3)
-            {
+			if ( target is Vector3 ) {
 
-                destination = (Vector3)target;
-            }
-            else if (target is Character)
-            {
+				destination = (Vector3) target;
+			} else if ( target is Character ) {
+				_targetIsCharacter = true;
+				var destinationTarget = ( target as Character );
+				destination = destinationTarget.Pawn.transform;
 
-                _targetIsCharacter = true;
-                var destinationTarget = (target as Character);
-                destination = destinationTarget.Pawn.transform;
+			} else if ( target is ItemView ) {
+				destination = ( target as ItemView ).transform;
+			}
 
-            }
-            else if (target is ItemView)
-            {
+			if ( typedInfo._autoActivate ) {
+				stateController.TrySetState( this );
+			}
+		}
 
-                destination = (target as ItemView).transform;
-            }
+	}
 
-            if (typedInfo._autoActivate)
-            {
+	public override CharacterState GetState() {
 
-                stateController.TrySetState(this);
-            }
-        }
-
-        private void OnDestinationUpdate(Vector3 destination)
-        {
-            Debug.Log(destination);
-            this.destination = destination;
-
-            stateController.TrySetState(this, allowEnterSameState: true);
-        }
-
-    }
-
-    public override CharacterState GetState()
-    {
-
-        return new State(this);
-    }
+		return new State( this );
+	}
 
 }
