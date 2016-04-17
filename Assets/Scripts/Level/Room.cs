@@ -118,7 +118,7 @@ public class Room : MonoBehaviour {
 		var randomX = 1f.Random() * 2f - 1;
 		var randomZ = 1f.Random() * 2f - 1;
 
-		var randomExtents = Vector3.Scale( _bounds.extents, new Vector3( randomX, 0, randomZ ) );
+		var randomExtents = Vector3.Scale( _bounds.extents, new Vector3( randomX.Clamped( -0.8f, 0.8f ), 0, randomZ.Clamped( -0.8f, 0.8f ) ) );
 		return transform.localToWorldMatrix.MultiplyPoint3x4( randomExtents + _bounds.center );
 	}
 
