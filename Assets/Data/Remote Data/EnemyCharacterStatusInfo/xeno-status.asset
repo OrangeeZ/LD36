@@ -34,4 +34,6 @@ MonoBehaviour:
   SpeakLineId: addict_noticed
   FrightenRadius: 5
   FrightenChance: 0.5
+  AutoAggroCheckInterval: 2
+  AutoAggroChance: 0.1
   IsAgressive: 1

@@ -17,8 +17,11 @@ public class EnemyCharacterStatusInfo : CharacterStatusInfo {
 	public float SpeakChance;
 	public string SpeakLineId;
 
+	[Header("Xeno")]
 	public float FrightenRadius = 5f;
 	public float FrightenChance = .5f;
+	public float AutoAggroCheckInterval = 2f;
+	public float AutoAggroChance = .1f;
 	public bool IsAgressive = false;
 
 	public override void Configure( csv.Values values ) {

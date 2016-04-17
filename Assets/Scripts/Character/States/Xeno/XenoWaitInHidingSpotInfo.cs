@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Packages.EventSystem;
 using UniRx;
+using UnityEditor;
 using UnityEngine.UI;
 
 [CreateAssetMenu( menuName = "Create/States/Xeno/Wait in hiding spot" )]
@@ -39,7 +40,20 @@ public class XenoWaitInHidingSpotInfo : CharacterStateInfo {
 
 			_isTriggered = false;
 
+			var statusInfo = character.Status.Info as EnemyCharacterStatusInfo;
+			var aggroCheckTimer = new AutoTimer( statusInfo.AutoAggroCheckInterval );
+
 			while ( !_isTriggered ) {
+
+				if ( aggroCheckTimer.ValueNormalized >= 1 ) {
+
+					if ( CheckAutoAggro() ) {
+
+						break;
+					}
+
+					aggroCheckTimer.Reset();
+				}
 
 				yield return null;
 			}
@@ -51,7 +65,6 @@ public class XenoWaitInHidingSpotInfo : CharacterStateInfo {
 				_hidingSpot.TryResetState();
 			}
 
-			var statusInfo = character.Status.Info as EnemyCharacterStatusInfo;
 			var scheduledStates = new List<CharacterState>();
 
 			if ( statusInfo.IsAgressive ) {
@@ -63,12 +76,12 @@ public class XenoWaitInHidingSpotInfo : CharacterStateInfo {
 
 				scheduledStates.Add( approachState );
 			}
-			;// else 
+			; // else 
 			{
 
 				var escapeState = stateController.GetState<XenoEscapeToVentilationHatchInfo.State>();
 				escapeState.SetShouldSwitchRooms( true );
-				scheduledStates.Add(escapeState );
+				scheduledStates.Add( escapeState );
 			}
 
 			stateController.SetScheduledStates( scheduledStates );
@@ -101,6 +114,15 @@ public class XenoWaitInHidingSpotInfo : CharacterStateInfo {
 
 				OnXenoTriggerEvent( null );
 			}
+		}
+
+		private bool CheckAutoAggro() {
+
+			var statusInfo = character.Status.Info as EnemyCharacterStatusInfo;
+			var randomChance = 1f.Random();
+			Debug.Log( randomChance );
+
+			return statusInfo.IsAgressive && statusInfo.AutoAggroChance >= randomChance;
 		}
 
 	}
