@@ -68,6 +68,7 @@ public class EnvironmentObjectSpot : AObject {
 			case State.Infected:
 				_viewInstance = Instantiate( _viewPrefabs.RandomElement() );
 				_viewInstance.transform.SetParent( transform, worldPositionStays: false );
+				_viewInstance.transform.rotation = Quaternion.identity;
 				Destroy( _viewInstance.GetComponent<Collider>() );
 				break;
 

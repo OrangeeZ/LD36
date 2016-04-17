@@ -98,20 +98,28 @@ public class Room : MonoBehaviour {
 		return _ventilationHatches.MinBy( _ => Vector3.SqrMagnitude( position - _.position ) ).position;
 	}
 
-	public EnvironmentObjectSpot FindFarthestObjectSpot( Vector3 position ) {
+	public EnvironmentObjectSpot FindRandomObjectSpot( Vector3 position ) {
 
 		if ( _objectSpots.All( _ => _.GetState() != EnvironmentObjectSpot.State.Empty ) ) {
 
 			return null;
 		}
 
-		return _objectSpots.Where( _ => _.GetState() == EnvironmentObjectSpot.State.Empty )
-			.MaxBy( each => Vector3.SqrMagnitude( each.transform.position - position ) );
+		return _objectSpots.Where( _ => _.GetState() == EnvironmentObjectSpot.State.Empty ).RandomElement();
 	}
 
 	public Type GetRoomType() {
 
 		return _roomType;
+	}
+
+	public Vector3 GetRandomPoint() {
+
+		var randomX = 1f.Random() * 2f - 1;
+		var randomZ = 1f.Random() * 2f - 1;
+
+		var randomExtents = Vector3.Scale( _bounds.extents, new Vector3( randomX, 0, randomZ ) );
+		return transform.localToWorldMatrix.MultiplyPoint3x4( randomExtents + _bounds.center );
 	}
 
 	private void OnCharacterDie( Character.Died diedEvent ) {

@@ -47,7 +47,7 @@ public class XenoFindHidingSpotInfo : CharacterStateInfo {
 			var position = character.Pawn.position;
 			var room = Room.FindRoomForPosition( position );
 
-			return room != null ? room.FindFarthestObjectSpot( position ) : null;
+			return room != null ? room.FindRandomObjectSpot( position ) : null;
 		}
 
 	}

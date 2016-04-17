@@ -60,6 +60,8 @@ public class PlayerCharacterSpawner : MonoBehaviour {
 			startingStatusEffect.Add( character );
 		}
 
+		character.IsPlayerCharacter = true;
+
 		EventSystem.RaiseEvent( new Spawned { Character = character } );
 	}
 }

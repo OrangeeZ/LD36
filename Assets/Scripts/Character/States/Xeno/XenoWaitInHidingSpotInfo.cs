@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using Packages.EventSystem;
 using UniRx;
 using UnityEditor;
@@ -120,9 +121,13 @@ public class XenoWaitInHidingSpotInfo : CharacterStateInfo {
 
 			var statusInfo = character.Status.Info as EnemyCharacterStatusInfo;
 			var randomChance = 1f.Random();
-			Debug.Log( randomChance );
 
-			return statusInfo.IsAgressive && statusInfo.AutoAggroChance >= randomChance;
+			var playerCharacter = Character.Instances.First( _ => _.IsPlayerCharacter );
+			var playerCharacterRoom = Room.FindRoomForPosition( playerCharacter.Pawn.position );
+
+			var currentRoom = Room.FindRoomForPosition( character.Pawn.position );
+
+			return statusInfo.IsAgressive && statusInfo.AutoAggroChance >= randomChance && currentRoom == playerCharacterRoom;
 		}
 
 	}

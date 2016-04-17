@@ -24,7 +24,9 @@ namespace AI.Gambits {
                     return false;
                 }
 
-                var point = character.Pawn.position + character.Pawn.rotation * Random.insideUnitCircle.normalized.ToXZ() * info.radius;
+	            var currentRoom = Room.FindRoomForPosition( character.Pawn.position );
+
+	            var point = currentRoom.GetRandomPoint();//character.Pawn.position + character.Pawn.rotation * Random.insideUnitCircle.normalized.ToXZ() * info.radius;
                 
                 character.StateController.GetState<ApproachTargetStateInfo.State>().SetDestination( point );
 

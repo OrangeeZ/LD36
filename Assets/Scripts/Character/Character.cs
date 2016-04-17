@@ -42,6 +42,8 @@ public class Character {
 	public readonly int TeamId;
 	public readonly CharacterInfo Info;
 
+	public bool IsPlayerCharacter = false;
+
 	public readonly CharacterStatus Status;
 
 	public ItemInfo[] ItemsToDrop;
