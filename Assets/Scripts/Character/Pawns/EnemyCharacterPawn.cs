@@ -34,4 +34,8 @@ public class EnemyCharacterPawn : CharacterPawn {
 		_navMeshAgent.Stop();
 	}
 
+	public void SetPosition( Vector3 position ) {
+
+		_navMeshAgent.Warp( position );
+	}
 }

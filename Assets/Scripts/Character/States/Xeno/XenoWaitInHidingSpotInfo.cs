@@ -46,6 +46,10 @@ public class XenoWaitInHidingSpotInfo : CharacterStateInfo {
 
 				_hidingSpot.TryResetState();
 			}
+
+			var escapeState = stateController.GetState<XenoEscapeToVentilationHatchInfo.State>();
+			escapeState.SetShouldSwitchRooms( true );
+			stateController.SetScheduledStates( new[] {escapeState} );
 		}
 
 		public void SetHidingSpot( EnvironmentObjectSpot hidingSpot ) {
