@@ -3,90 +3,93 @@ using System.Linq;
 using System.Collections;
 
 public abstract class CharacterState {
-    
-    public readonly CharacterStateInfo info;
 
-    protected Character character {
-        get { return stateController.character; }
-    }
+	public readonly CharacterStateInfo info;
 
-    protected HashSet<CharacterState> possibleStates = new HashSet<CharacterState>();
+	protected Character character {
+		get { return stateController.character; }
+	}
 
-    protected CharacterStateController stateController;
+	protected HashSet<CharacterState> possibleStates = new HashSet<CharacterState>();
 
-    protected float deltaTime;
+	protected CharacterStateController stateController;
 
-    protected CharacterState( CharacterStateInfo info ) {
+	protected float deltaTime;
 
-        this.info = info;
-    }
+	protected CharacterState( CharacterStateInfo info ) {
 
-    public void SetDeltaTime( float deltaTime ) {
+		this.info = info;
+	}
 
-        this.deltaTime = deltaTime;
-    }
+	public void SetDeltaTime( float deltaTime ) {
 
-    public void SetTransitionStates( IEnumerable<CharacterState> states ) {
+		this.deltaTime = deltaTime;
+	}
 
-        foreach ( var each in states ) {
+	public void SetTransitionStates( IEnumerable<CharacterState> states ) {
 
-            possibleStates.Add( each );
-        }
-    }
+		foreach ( var each in states ) {
 
-    public CharacterState GetNextState() {
+			possibleStates.Add( each );
+		}
+	}
 
-        return possibleStates.FirstOrDefault( which => which.CanBeSet() );
-    }
+	public CharacterState GetNextState() {
 
-    public virtual void Initialize( CharacterStateController stateController ) {
+		return possibleStates.FirstOrDefault( which => which.CanBeSet() );
+	}
 
-        this.stateController = stateController;
-    }
+	public virtual void Initialize( CharacterStateController stateController ) {
 
-    public virtual bool CanSwitchTo( CharacterState nextState ) {
+		this.stateController = stateController;
+	}
 
-        return possibleStates.Contains( nextState );
-    }
+	public virtual bool CanSwitchTo( CharacterState nextState ) {
 
-    public virtual bool CanBeSet() {
+		return possibleStates.Contains( nextState );
+	}
 
-        return true;
-    }
+	public virtual bool CanBeSet() {
 
-    public virtual IEnumerable GetEvaluationBlock() {
+		return true;
+	}
 
-        yield return null;
-    }
+	public virtual IEnumerable GetEvaluationBlock() {
 
-    public void UpdateAnimator() {
+		yield return null;
+	}
 
-	    if ( character.Pawn != null ) {
-		    
+	public void UpdateAnimator() {
+
+		if ( character.Pawn != null ) {
+
 			OnAnimationUpdate( character.Pawn );
-	    }
-        //stateController.character.Pawn.animatedView.Do( OnAnimationUpdate );
-    }
+		}
+		//stateController.character.Pawn.animatedView.Do( OnAnimationUpdate );
+	}
 
-    protected virtual void OnAnimationUpdate( CharacterPawn pawn ) {
+	protected virtual void OnAnimationUpdate( CharacterPawn pawn ) {
 
-		pawn._animationController.SetBool( info.animatorStateName, true );
+		if ( pawn._animationController != null ) {
 
-	    if ( pawn._weaponAnimationController ) {
+			pawn._animationController.SetBool( info.animatorStateName, true );
+		}
+
+		if ( pawn._weaponAnimationController != null ) {
 
 			pawn._weaponAnimationController.SetBool( info.weaponAnimatorStateName, true );
-	    }
-    }
+		}
+	}
 
 }
 
 public class CharacterState<T> : CharacterState where T : CharacterStateInfo {
 
-    protected readonly T typedInfo;
+	protected readonly T typedInfo;
 
-    public CharacterState( CharacterStateInfo info ) : base( info ) {
+	public CharacterState( CharacterStateInfo info ) : base( info ) {
 
-        typedInfo = info as T;
-    }
+		typedInfo = info as T;
+	}
 
 }
