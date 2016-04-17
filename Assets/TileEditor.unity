@@ -889,8 +889,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   TileWidth: 1.2
   TileHeight: 1.2
-  _width: 14
-  _height: 14
+  _width: 15
+  _height: 18
   tiles: []
   selectedSprite: 0
 --- !u!1 &939541818
