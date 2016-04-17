@@ -22,11 +22,11 @@ public class WarFogOccluder : MonoBehaviour {
 		}
 	}
 
-	public bool IsAffectingPoint( Vector3 point ) {
-
-		_bounds.center = transform.position;
-
-		return _bounds.Contains( point );
+	public bool IsAffectingPoint( Vector3 point )
+	{
+	    var localPoint = transform.worldToLocalMatrix.MultiplyPoint3x4(point);
+        localPoint.Scale(transform.localScale);
+        return _bounds.Contains(localPoint);
 	}
 
 }

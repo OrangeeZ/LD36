@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: 8388f6221d416844a8771231e5aefb12
-timeCreated: 1460902886
+timeCreated: 1460914269
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -33,6 +33,7 @@ TextureImporter:
     21300052: TilesetRastr_26
     21300054: TilesetRastr_27
     21300056: TilesetRastr_28
+    21300058: FloorEmpty
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -73,7 +74,7 @@ TextureImporter:
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 50
   alphaIsTransparency: 1
   textureType: 8
   buildTargetSettings: []
@@ -640,6 +641,17 @@ TextureImporter:
         - {x: 32, y: -28}
         - {x: 32, y: 65}
         - {x: 21, y: 96}
+    - name: FloorEmpty
+      rect:
+        serializedVersion: 2
+        x: 3
+        y: 35
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
     outline: []
   spritePackingTag: UI
   userData: 
