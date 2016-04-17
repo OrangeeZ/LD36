@@ -26,10 +26,12 @@ public class WarFogPostEffectRenderer : MonoBehaviour {
 		Graphics.Blit( src, dest, _material );
 	}
 
-	public void SetTexture( Texture2D warFogTexture ) {
+	public void SetTexture( WarFogSpaceMap spaceMap, Texture2D warFogTexture ) {
 
 		_material.SetTexture( "_WarFogTexture", warFogTexture );
-		_material.SetMatrix( "_World2Texture", Matrix4x4.TRS( Vector3.zero, Quaternion.identity, new Vector3( 1f / warFogTexture.width, 0, 1f / warFogTexture.height ) ) );
+
+		var spaceMapBounds = spaceMap.GetBounds();
+		_material.SetMatrix( "_World2Texture", Matrix4x4.TRS( Vector3.zero, Quaternion.identity, new Vector3( 1f / spaceMapBounds.size.x, 0, 1f / spaceMapBounds.size.z ) ) );
 
 		var inverseViewProjectionMatrix = ( Camera.main.projectionMatrix * Camera.main.worldToCameraMatrix ).inverse;
 		_material.SetMatrix( "_ViewProjectInverse", inverseViewProjectionMatrix );

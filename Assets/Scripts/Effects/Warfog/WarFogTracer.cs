@@ -9,54 +9,15 @@ public class WarFogTracer : MonoBehaviour {
 
 	private WarFogSpaceMap _warFogSpaceMap;
 
-	private struct Point {
+	void OnDrawGizmos() {
 
-		public readonly int X;
-		public readonly int Y;
+		if ( !Application.isPlaying ) {
 
-		public Point( int x, int y ) {
-
-			X = x;
-			Y = y;
-		}
-
-	}
-
-	private IEnumerable<Point> GetMooreNeighbourhood( int radius ) {
-
-		var y = -radius;
-		var x = -radius;
-
-		for ( ; x <= radius; ++x ) {
-
-			yield return new Point( x, y );
-		}
-
-		for ( ; y <= radius; ++y ) {
-
-			yield return new Point( x, y );
-		}
-
-		for ( ; x >= -radius; --x ) {
-
-			yield return new Point( x, y );
-		}
-
-		for ( ; y >= -radius; --y ) {
-
-			yield return new Point( x, y );
+			Update();
 		}
 	}
 
-	private void OnDrawGizmos() {
-
-		//for ( var r = 0; r < Mathf.RoundToInt( _radius ); r++ ) {
-
-		//	foreach ( var each in GetMooreNeighbourhood( r ) ) {
-
-		//		Gizmos.DrawSphere( new Vector3( transform.position.x + each.X, 0, transform.position.z + each.Y ), 0.1f );
-		//	}
-		//}
+	void Update() {
 
 		_warFogSpaceMap = _warFogSpaceMap ?? FindObjectOfType<WarFogSpaceMap>();
 

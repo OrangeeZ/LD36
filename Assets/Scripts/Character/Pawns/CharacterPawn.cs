@@ -23,7 +23,6 @@ public class CharacterPawn : CharacterPawnBase {
 	private CharacterController _characterController;
 
 	private Vector3? _destination;
-	private bool _isGravityEnabled;
 
 	private Transform _turretTarget;
 
@@ -32,6 +31,9 @@ public class CharacterPawn : CharacterPawnBase {
 
 	[SerializeField]
 	private CharacterPawnLevelingController _levelingController;
+
+	[SerializeField]
+	private WarFogTracer _warFogTracer;
 
 	private void Update() {
 
@@ -88,11 +90,6 @@ public class CharacterPawn : CharacterPawnBase {
 
 			each.material.SetColor( "_Color", baseColor );
 		}
-	}
-
-	public void SetGravityEnabled( bool value ) {
-
-		_isGravityEnabled = value;
 	}
 
 	public void SetActive( bool isActive ) {

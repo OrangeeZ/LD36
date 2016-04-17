@@ -9,8 +9,8 @@ public class WarFogSpaceMap : MonoBehaviour {
 	private byte[] _visibilityMap;
 
 	[SerializeField]
-	[Range( 1, 10 )]
-	private int _cellSize;
+	[Range( 0.2f, 10 )]
+	private float _cellSize;
 
 	[SerializeField]
 	private Bounds _bounds;
@@ -25,12 +25,20 @@ public class WarFogSpaceMap : MonoBehaviour {
 
 	[SerializeField]
 	private Texture2D _warFogTexture;
+
 	private Color32[] _warFogColors;
+
+	public Bounds GetBounds() {
+
+		return _bounds;
+	}
 
 	public void Trace( Vector3 position, int radius ) {
 
 		ClearVisible();
 		ClearVisited();
+
+		var scaledRadius = radius / _cellSize;
 
 		var startingPoint = _bounds.center - _bounds.extents;
 		var relativePosition = position - startingPoint;
@@ -40,12 +48,12 @@ public class WarFogSpaceMap : MonoBehaviour {
 
 		SetPointVisible( centerY * _cellsX + centerX, true );
 
-		for ( var i = 1; i <= radius; ++i ) {
+		for ( var i = 1; i <= scaledRadius; ++i ) {
 
 			TraceMooreNeighbourhood( centerX, centerY, i, OnTracePoint );
 		}
 
-		for ( int i = 0; i < _warFogColors.Length; i++ ) {
+		for ( var i = 0; i < _warFogColors.Length; i++ ) {
 
 			_warFogColors[i] = Color.white * _visibilityMap[i];
 		}
@@ -55,7 +63,7 @@ public class WarFogSpaceMap : MonoBehaviour {
 
 		if ( WarFogPostEffectRenderer.Instance != null ) {
 
-			WarFogPostEffectRenderer.Instance.SetTexture( _warFogTexture );
+			WarFogPostEffectRenderer.Instance.SetTexture( this, _warFogTexture );
 		}
 	}
 
@@ -63,13 +71,18 @@ public class WarFogSpaceMap : MonoBehaviour {
 	private void Generate() {
 
 		_occluders = FindObjectsOfType<WarFogOccluder>();
-		
+
 		var startingPoint = _bounds.center - _bounds.extents;
 		_cellsX = Mathf.RoundToInt( _bounds.size.x / _cellSize );
 		_cellsZ = Mathf.RoundToInt( _bounds.size.z / _cellSize );
 
-		_warFogTexture = _warFogTexture != null ? _warFogTexture : new Texture2D( _cellsX, _cellsZ, TextureFormat.Alpha8, mipmap: false );
-		_warFogColors = _warFogColors != null ? _warFogColors : _warFogTexture.GetPixels32();
+		if ( _warFogTexture != null ) {
+			
+			DestroyImmediate( _warFogTexture );
+		}
+
+		_warFogTexture = new Texture2D( _cellsX, _cellsZ, TextureFormat.Alpha8, mipmap: false );
+		_warFogColors = _warFogTexture.GetPixels32();
 
 		_spaceMap = new byte[_cellsX * _cellsZ];
 		_visitMap = new byte[_cellsX * _cellsZ];
@@ -79,7 +92,7 @@ public class WarFogSpaceMap : MonoBehaviour {
 
 			for ( var z = 0; z < _cellsZ; ++z ) {
 
-				var currentPoint = startingPoint + Vector3.forward * z + Vector3.right * x;
+				var currentPoint = startingPoint + Vector3.forward * z * _cellSize + Vector3.right * x * _cellSize;
 				_spaceMap[z * _cellsX + x] = IsPointOccluded( currentPoint ) ? (byte) 1 : (byte) 0;
 			}
 		}
@@ -273,7 +286,7 @@ public class WarFogSpaceMap : MonoBehaviour {
 
 				Gizmos.color = color;
 
-				var currentPoint = startingPoint + Vector3.forward * z + Vector3.right * x;
+				var currentPoint = startingPoint + Vector3.forward * z * _cellSize + Vector3.right * x * _cellSize;
 
 				Gizmos.DrawCube( currentPoint, Vector3.one * _cellSize );
 			}
