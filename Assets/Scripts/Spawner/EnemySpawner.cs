@@ -32,8 +32,13 @@ public class EnemySpawner : SpawnerBase {
 
 		_reactCalc = new Expressions.ReactiveCalculator( Activation );
 		_reactCalcDeact = new Expressions.ReactiveCalculator( Deactivation );
-		Spawn();
 
+		Spawn();
+	}
+
+	public Character GetLastSpawnedCharacter() {
+
+		return _character;
 	}
 
 	private void Spawn() {

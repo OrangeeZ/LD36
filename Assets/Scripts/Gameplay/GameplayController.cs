@@ -30,6 +30,8 @@ public class GameplayController : MonoBehaviour {
 
 		yield return null;
 
+		Room.InitializeAll();
+
 		_playerSpawner.Initialize();
 
 		foreach ( var each in _enemySpawners ) {
@@ -44,6 +46,7 @@ public class GameplayController : MonoBehaviour {
 
 	[ContextMenu("Hook dependencies")]
 	private void HookDependencies() {
+
 		_playerSpawner = FindObjectOfType<PlayerCharacterSpawner>();
 		_enemySpawners = FindObjectsOfType<SpawnerBase>();
 	}
