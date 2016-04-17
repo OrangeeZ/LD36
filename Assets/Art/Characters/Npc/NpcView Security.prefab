@@ -28,7 +28,7 @@ GameObject:
   - 195: {fileID: 19573878}
   - 65: {fileID: 6572612}
   m_Layer: 0
-  m_Name: XenoView
+  m_Name: NpcView Security
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -172,15 +172,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _spriteRenderer: {fileID: 21230608}
   _sprites:
-  - {fileID: 21300090, guid: b2a7d75bb968d5a4b9493c3d100074b3, type: 3}
-  - {fileID: 21300092, guid: b2a7d75bb968d5a4b9493c3d100074b3, type: 3}
-  - {fileID: 21300094, guid: b2a7d75bb968d5a4b9493c3d100074b3, type: 3}
-  - {fileID: 21300096, guid: b2a7d75bb968d5a4b9493c3d100074b3, type: 3}
-  - {fileID: 21300102, guid: b2a7d75bb968d5a4b9493c3d100074b3, type: 3}
-  - {fileID: 21300098, guid: b2a7d75bb968d5a4b9493c3d100074b3, type: 3}
-  - {fileID: 21300100, guid: b2a7d75bb968d5a4b9493c3d100074b3, type: 3}
-  - {fileID: 21300102, guid: b2a7d75bb968d5a4b9493c3d100074b3, type: 3}
-  - {fileID: 21300104, guid: b2a7d75bb968d5a4b9493c3d100074b3, type: 3}
+  - {fileID: 21300012, guid: b2a7d75bb968d5a4b9493c3d100074b3, type: 3}
+  - {fileID: 21300014, guid: b2a7d75bb968d5a4b9493c3d100074b3, type: 3}
+  - {fileID: 21300016, guid: b2a7d75bb968d5a4b9493c3d100074b3, type: 3}
+  - {fileID: 21300044, guid: b2a7d75bb968d5a4b9493c3d100074b3, type: 3}
+  - {fileID: 21300072, guid: b2a7d75bb968d5a4b9493c3d100074b3, type: 3}
+  - {fileID: 21300046, guid: b2a7d75bb968d5a4b9493c3d100074b3, type: 3}
+  - {fileID: 21300110, guid: b2a7d75bb968d5a4b9493c3d100074b3, type: 3}
+  - {fileID: 21300072, guid: b2a7d75bb968d5a4b9493c3d100074b3, type: 3}
+  - {fileID: 21300074, guid: b2a7d75bb968d5a4b9493c3d100074b3, type: 3}
 --- !u!114 &11453438
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -276,7 +276,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1370688503
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300102, guid: b2a7d75bb968d5a4b9493c3d100074b3, type: 3}
+  m_Sprite: {fileID: 21300072, guid: b2a7d75bb968d5a4b9493c3d100074b3, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
