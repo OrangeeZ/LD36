@@ -770,6 +770,21 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f3b79b45ab09e774ab9441b00122dbf6, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &684931936 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 192344, guid: 8306d53d363131545886865d35e7fec2, type: 2}
+  m_PrefabInternal: {fileID: 714622592}
+--- !u!114 &684931937
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 684931936}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4270aaa96b3d4424594a85c86001d06a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &714622592
 Prefab:
   m_ObjectHideFlags: 0
@@ -863,9 +878,32 @@ Prefab:
       propertyPath: m_Name
       value: Control Room
       objectReference: {fileID: 0}
+    - target: {fileID: 435714, guid: e1299b4b880a49346a281447e506fbe9, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: -4.22
+      objectReference: {fileID: 0}
+    - target: {fileID: 435714, guid: e1299b4b880a49346a281447e506fbe9, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 13.78
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e1299b4b880a49346a281447e506fbe9, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &921744673 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 174012, guid: e1299b4b880a49346a281447e506fbe9, type: 2}
+  m_PrefabInternal: {fileID: 904536451}
+--- !u!114 &921744674
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 921744673}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4270aaa96b3d4424594a85c86001d06a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &937221312
 Prefab:
   m_ObjectHideFlags: 0
@@ -916,6 +954,66 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 03211d7015be4424cb31f26a8e9745bf, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &1129311215 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 199190, guid: 03211d7015be4424cb31f26a8e9745bf, type: 2}
+  m_PrefabInternal: {fileID: 937221312}
+--- !u!114 &1129311216
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1129311215}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4270aaa96b3d4424594a85c86001d06a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!1 &1185885158 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 118202, guid: 51147aefa23f289449ac8b149aac1d45, type: 2}
+  m_PrefabInternal: {fileID: 1571741176}
+--- !u!114 &1185885159
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1185885158}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4270aaa96b3d4424594a85c86001d06a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!1 &1218648448 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 141912, guid: 724d189654b272248a6a9d93c2468560, type: 2}
+  m_PrefabInternal: {fileID: 1355139845}
+--- !u!114 &1218648449
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1218648448}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4270aaa96b3d4424594a85c86001d06a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!1 &1236956426 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 154498, guid: f3b79b45ab09e774ab9441b00122dbf6, type: 2}
+  m_PrefabInternal: {fileID: 73139194}
+--- !u!114 &1236956427
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1236956426}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4270aaa96b3d4424594a85c86001d06a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1306480572
 GameObject:
   m_ObjectHideFlags: 0
@@ -1070,7 +1168,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 118202, guid: 51147aefa23f289449ac8b149aac1d45, type: 2}
       propertyPath: m_Name
-      value: Medbay Root (1)
+      value: 'Medbay Root (1) '
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 51147aefa23f289449ac8b149aac1d45, type: 2}
