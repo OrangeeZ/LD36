@@ -94,9 +94,6 @@ GameObject:
   m_Component:
   - 4: {fileID: 187599486}
   - 20: {fileID: 187599485}
-  - 92: {fileID: 187599484}
-  - 124: {fileID: 187599483}
-  - 81: {fileID: 187599482}
   - 114: {fileID: 187599487}
   m_Layer: 0
   m_Name: Main Camera
@@ -105,27 +102,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!81 &187599482
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 187599481}
-  m_Enabled: 1
---- !u!124 &187599483
-Behaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 187599481}
-  m_Enabled: 1
---- !u!92 &187599484
-Behaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 187599481}
-  m_Enabled: 1
 --- !u!20 &187599485
 Camera:
   m_ObjectHideFlags: 0
@@ -184,6 +160,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _scenesToLoad:
-  - {fileID: 102900000, guid: 42aad5a6c70e32f428d6deff38716f2e, type: 3}
-  - {fileID: 102900000, guid: 44fefeb1edc22f643a2b5562ce2e2cd6, type: 3}
-  - {fileID: 102900000, guid: c741f5c6357ad654281cc2f501e3d18f, type: 3}
+  - final-level-layout
+  - test-level-spawner-layout
+  - UISystem

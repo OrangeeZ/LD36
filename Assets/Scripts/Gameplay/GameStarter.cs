@@ -5,14 +5,16 @@ using UnityEngine.SceneManagement;
 public class GameStarter : MonoBehaviour {
 
 	[SerializeField]
-	private Object[] _scenesToLoad;
+	private string[] _scenesToLoad;
 
 	// Use this for initialization
 	void Start () {
 
 		foreach ( var each in _scenesToLoad ) {
 			
-			SceneManager.LoadScene( each.name, LoadSceneMode.Additive );
+			SceneManager.LoadScene( each, LoadSceneMode.Additive );
+
+			Debug.Log( each );
 		}
 
 		SceneManager.UnloadScene( "Loader" );

@@ -1,11 +1,9 @@
-﻿using UnityEngine;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using Packages.EventSystem;
 using UniRx;
-using UnityEditor;
-using UnityEngine.UI;
+using UnityEngine;
 
 [CreateAssetMenu( menuName = "Create/States/Xeno/Wait in hiding spot" )]
 public class XenoWaitInHidingSpotInfo : CharacterStateInfo {
