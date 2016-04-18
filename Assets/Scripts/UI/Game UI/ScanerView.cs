@@ -143,7 +143,7 @@ namespace Assets.Scripts.UI.Game_UI
 
         private void SetState(ScanerState state)
         {
-            if (_scanerState == state) return;
+            if (_scanerState == state || _scanerState == ScanerState.NoSignal) return;
             _scanerState = state;
             switch (_scanerState)
             {
