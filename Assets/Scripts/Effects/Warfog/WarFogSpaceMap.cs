@@ -9,6 +9,9 @@ public class WarFogSpaceMap : MonoBehaviour {
 	[HideInInspector]
 	private byte[] _spaceMap;
 	private byte[] _visibilityMap;
+	private byte[] _currentVisibilityMap;
+	private byte[] _visibilityMapBackBuffer;
+
 
 	[SerializeField]
 	[Range( 0.2f, 10 )]
@@ -62,6 +65,8 @@ public class WarFogSpaceMap : MonoBehaviour {
 		var centerX = Mathf.RoundToInt( relativePosition.x / _cellSize );
 		var centerY = Mathf.RoundToInt( relativePosition.z / _cellSize );
 
+		_currentVisibilityMap = Time.frameCount % 2 == 0 ? _visibilityMap : _visibilityMapBackBuffer;
+
 		SetPointVisible( centerY * _cellsX + centerX, true );
 
 		UpdateMooreNeighbourhoodCache( scaledRadius + 2 );
@@ -102,7 +107,7 @@ public class WarFogSpaceMap : MonoBehaviour {
 
 		for ( var i = 0; i < _warFogColors.Length; i++ ) {
 
-			_warFogColors[i].r = _visibilityMap[i];
+			_warFogColors[i].r = (byte)((_visibilityMap[i] - 1) / 2 + (_visibilityMapBackBuffer[i] - 1) / 2);
 		}
 
 		_warFogTexture.SetPixels32( _warFogColors );
@@ -152,6 +157,7 @@ public class WarFogSpaceMap : MonoBehaviour {
 		_warFogColors = _warFogTexture.GetPixels32();
 
 		_visibilityMap = new byte[_cellsX * _cellsZ];
+		_visibilityMapBackBuffer = new byte[_visibilityMap.Length];
 	}
 
 	private void UpdateMooreNeighbourhoodCache( int requiredRadius ) {
@@ -312,7 +318,7 @@ public class WarFogSpaceMap : MonoBehaviour {
 
 		if ( index < 0 || index >= _visibilityMap.Length ) return;
 
-		_visibilityMap[index] = value;
+		_currentVisibilityMap[index] = value;
 	}
 
 
@@ -320,14 +326,14 @@ public class WarFogSpaceMap : MonoBehaviour {
 
 		if ( index < 0 || index >= _visibilityMap.Length ) return;
 
-		_visibilityMap[index] = (byte) ( isVisible ? 255 : 0 );
+		_currentVisibilityMap[index] = (byte) ( isVisible ? 255 : 0 );
 	}
 
 	private bool GetPointVisible( int index ) {
 
 		if ( index < 0 || index >= _visibilityMap.Length ) return false;
 
-		return _visibilityMap[index] > 0;
+		return _currentVisibilityMap[index] > 0;
 	}
 
 	private bool GetSpaceMapPointOccluded( int index ) {
