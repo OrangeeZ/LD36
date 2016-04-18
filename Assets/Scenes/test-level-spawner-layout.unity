@@ -154,7 +154,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1af7877ec42364b078dbcf64e3dd4eb6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  characterInfo: {fileID: 11400000, guid: d5ef3a10752e1564aa2486cf0a0fc4d0, type: 2}
+  characterInfo: {fileID: 11400000, guid: 661e911523c01c54e9030fa4d62f5055, type: 2}
   characterStatusInfo: {fileID: 11400000, guid: 0f0265bd33db16b458eed2db0c41acd2,
     type: 2}
   SpawnInterval: 1
@@ -170,7 +170,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 857275393}
   m_LocalRotation: {x: -0.047581557, y: 0.9955263, z: 0.011101202, w: 0.08087075}
-  m_LocalPosition: {x: -2.898768, y: -0.73, z: 15.54541}
+  m_LocalPosition: {x: -4.9, y: -0.73, z: -0.74}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
