@@ -10223,6 +10223,24 @@ Prefab:
       propertyPath: m_Name
       value: ObjectSpot [RightSide]
       objectReference: {fileID: 0}
+    - target: {fileID: 117814, guid: fad491ec9bb4c6f4cb79308aa82ee8ac, type: 2}
+      propertyPath: m_Name
+      value: Spawner [xeno-passive-status]
+      objectReference: {fileID: 0}
+    - target: {fileID: 11462198, guid: fad491ec9bb4c6f4cb79308aa82ee8ac, type: 2}
+      propertyPath: characterStatusInfo
+      value: 
+      objectReference: {fileID: 11400000, guid: ae597c67397b8b1479e0965e5ce71279,
+        type: 2}
+    - target: {fileID: 154046, guid: fad491ec9bb4c6f4cb79308aa82ee8ac, type: 2}
+      propertyPath: m_Name
+      value: Spawner [xeno-passive-status]
+      objectReference: {fileID: 0}
+    - target: {fileID: 11447810, guid: fad491ec9bb4c6f4cb79308aa82ee8ac, type: 2}
+      propertyPath: characterStatusInfo
+      value: 
+      objectReference: {fileID: 11400000, guid: ae597c67397b8b1479e0965e5ce71279,
+        type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fad491ec9bb4c6f4cb79308aa82ee8ac, type: 2}
   m_IsPrefabParent: 0
@@ -12200,7 +12218,7 @@ GameObject:
   - 4: {fileID: 455316508}
   - 114: {fileID: 455316509}
   m_Layer: 0
-  m_Name: Spawner [xeno-status]
+  m_Name: Spawner [xeno-passive-status]
   m_TagString: Untagged
   m_Icon: {fileID: -1412012063857583412, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -12231,7 +12249,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   characterInfo: {fileID: 11400000, guid: d5ef3a10752e1564aa2486cf0a0fc4d0, type: 2}
-  characterStatusInfo: {fileID: 11400000, guid: c9f9199b7a98613488d15f6e5dfb0a32,
+  characterStatusInfo: {fileID: 11400000, guid: ae597c67397b8b1479e0965e5ce71279,
     type: 2}
   SpawnInterval: 1
   SpawnLimit: 1
@@ -18729,6 +18747,24 @@ Prefab:
       propertyPath: m_Name
       value: ObjectSpot [LeftSide]
       objectReference: {fileID: 0}
+    - target: {fileID: 149702, guid: 8306d53d363131545886865d35e7fec2, type: 2}
+      propertyPath: m_Name
+      value: Spawner [xeno-passive-status]
+      objectReference: {fileID: 0}
+    - target: {fileID: 11476696, guid: 8306d53d363131545886865d35e7fec2, type: 2}
+      propertyPath: characterStatusInfo
+      value: 
+      objectReference: {fileID: 11400000, guid: ae597c67397b8b1479e0965e5ce71279,
+        type: 2}
+    - target: {fileID: 128534, guid: 8306d53d363131545886865d35e7fec2, type: 2}
+      propertyPath: m_Name
+      value: Spawner [xeno-passive-status]
+      objectReference: {fileID: 0}
+    - target: {fileID: 11410612, guid: 8306d53d363131545886865d35e7fec2, type: 2}
+      propertyPath: characterStatusInfo
+      value: 
+      objectReference: {fileID: 11400000, guid: ae597c67397b8b1479e0965e5ce71279,
+        type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 8306d53d363131545886865d35e7fec2, type: 2}
   m_IsPrefabParent: 0
@@ -19372,7 +19408,7 @@ GameObject:
   - 4: {fileID: 743729264}
   - 114: {fileID: 743729265}
   m_Layer: 0
-  m_Name: Spawner [xeno-status]
+  m_Name: Spawner [xeno-passive-status]
   m_TagString: Untagged
   m_Icon: {fileID: -1412012063857583412, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -19403,7 +19439,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   characterInfo: {fileID: 11400000, guid: d5ef3a10752e1564aa2486cf0a0fc4d0, type: 2}
-  characterStatusInfo: {fileID: 11400000, guid: c9f9199b7a98613488d15f6e5dfb0a32,
+  characterStatusInfo: {fileID: 11400000, guid: ae597c67397b8b1479e0965e5ce71279,
     type: 2}
   SpawnInterval: 1
   SpawnLimit: 1
@@ -34513,7 +34549,7 @@ GameObject:
   - 4: {fileID: 1290767137}
   - 114: {fileID: 1290767138}
   m_Layer: 0
-  m_Name: Spawner [xeno-status]
+  m_Name: Spawner [xeno-passive-status]
   m_TagString: Untagged
   m_Icon: {fileID: -1412012063857583412, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -34544,7 +34580,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   characterInfo: {fileID: 11400000, guid: d5ef3a10752e1564aa2486cf0a0fc4d0, type: 2}
-  characterStatusInfo: {fileID: 11400000, guid: c9f9199b7a98613488d15f6e5dfb0a32,
+  characterStatusInfo: {fileID: 11400000, guid: ae597c67397b8b1479e0965e5ce71279,
     type: 2}
   SpawnInterval: 1
   SpawnLimit: 1
@@ -41411,7 +41447,7 @@ GameObject:
   - 4: {fileID: 1500631819}
   - 114: {fileID: 1500631820}
   m_Layer: 0
-  m_Name: Spawner [xeno-status]
+  m_Name: Spawner [xeno-passive-status]
   m_TagString: Untagged
   m_Icon: {fileID: -1412012063857583412, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -41442,7 +41478,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   characterInfo: {fileID: 11400000, guid: d5ef3a10752e1564aa2486cf0a0fc4d0, type: 2}
-  characterStatusInfo: {fileID: 11400000, guid: c9f9199b7a98613488d15f6e5dfb0a32,
+  characterStatusInfo: {fileID: 11400000, guid: ae597c67397b8b1479e0965e5ce71279,
     type: 2}
   SpawnInterval: 1
   SpawnLimit: 1
@@ -44225,6 +44261,15 @@ Prefab:
       propertyPath: _info
       value: 
       objectReference: {fileID: 11400000, guid: 3080ed1662f108047861a78a3140a3cf,
+        type: 2}
+    - target: {fileID: 153832, guid: db2d029fe901096439a6fc8fbc0bdba0, type: 2}
+      propertyPath: m_Name
+      value: Spawner [xeno-passive-status]
+      objectReference: {fileID: 0}
+    - target: {fileID: 11406928, guid: db2d029fe901096439a6fc8fbc0bdba0, type: 2}
+      propertyPath: characterStatusInfo
+      value: 
+      objectReference: {fileID: 11400000, guid: ae597c67397b8b1479e0965e5ce71279,
         type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: db2d029fe901096439a6fc8fbc0bdba0, type: 2}

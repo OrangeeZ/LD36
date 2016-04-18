@@ -2276,7 +2276,7 @@ GameObject:
   - 4: {fileID: 471898}
   - 114: {fileID: 11425572}
   m_Layer: 0
-  m_Name: Spawner [xeno-status]
+  m_Name: Spawner [xeno-agressive-status]
   m_TagString: Untagged
   m_Icon: {fileID: -1412012063857583412, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -2968,7 +2968,7 @@ GameObject:
   - 4: {fileID: 496204}
   - 114: {fileID: 11473662}
   m_Layer: 0
-  m_Name: Spawner [xeno-status]
+  m_Name: Spawner [xeno-agressive-status]
   m_TagString: Untagged
   m_Icon: {fileID: -1412012063857583412, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0

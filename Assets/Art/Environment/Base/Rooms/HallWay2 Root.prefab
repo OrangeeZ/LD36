@@ -522,7 +522,7 @@ GameObject:
   - 4: {fileID: 436384}
   - 114: {fileID: 11462198}
   m_Layer: 0
-  m_Name: Spawner [xeno-status]
+  m_Name: Spawner [xeno-agressive-status]
   m_TagString: Untagged
   m_Icon: {fileID: -1412012063857583412, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -1559,7 +1559,7 @@ GameObject:
   - 4: {fileID: 452582}
   - 114: {fileID: 11447810}
   m_Layer: 0
-  m_Name: Spawner [xeno-status]
+  m_Name: Spawner [xeno-agressive-status]
   m_TagString: Untagged
   m_Icon: {fileID: -1412012063857583412, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -1750,7 +1750,7 @@ GameObject:
   - 4: {fileID: 451594}
   - 114: {fileID: 11483502}
   m_Layer: 0
-  m_Name: Spawner [xeno-status]
+  m_Name: Spawner [xeno-agressive-status]
   m_TagString: Untagged
   m_Icon: {fileID: -1412012063857583412, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -2979,7 +2979,7 @@ GameObject:
   - 4: {fileID: 472266}
   - 114: {fileID: 11497814}
   m_Layer: 0
-  m_Name: Spawner [xeno-status]
+  m_Name: Spawner [xeno-agressive-status]
   m_TagString: Untagged
   m_Icon: {fileID: -1412012063857583412, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
