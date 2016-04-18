@@ -95,7 +95,9 @@ public class XenoWaitInHidingSpotInfo : CharacterStateInfo {
 
 		private void OnXenoTriggerEvent( XenoTriggerEvent triggerEvent ) {
 
-			_isTriggered = true;
+			var isInSameRoom = Room.FindRoomForPosition( triggerEvent.Source.position ) == Room.FindRoomForPosition( character.Pawn.position );
+
+			_isTriggered = isInSameRoom;
 		}
 
 		private void OnWeaponFire( RangedWeaponInfo.RangedWeapon.Fire fireEvent ) {
@@ -113,7 +115,7 @@ public class XenoWaitInHidingSpotInfo : CharacterStateInfo {
 
 			if ( isChanceEnough && isCloseEnough && isInSameRoom ) {
 
-				OnXenoTriggerEvent( null );
+				_isTriggered = true;
 			}
 		}
 

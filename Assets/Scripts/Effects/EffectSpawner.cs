@@ -7,46 +7,16 @@ using UnityStandardAssets.Effects;
 
 public class EffectSpawner : AObject {
 
-    //public GameObject explosion;
-    public GameObject splashExplosion;
-    //public GameObject buildingExplosion;
+	public GameObject CharacterDeathEffect;
 
-	public GameObject ItemPickupEffect;
+	private void Start() {
 
-    private void Start() {
-
-        //EventSystem.Events.SubscribeOfType<Character.Died>( OnCharacterDie );
-        EventSystem.Events.SubscribeOfType<Helpers.SplashDamage>( OnSplashDamage );
-
-        //EventSystem.Events.SubscribeOfType<BuildingDestructionEffect.Destroyed>( OnBuildingDestruction );
-
-	    EventSystem.Events.SubscribeOfType<ItemView.PickedUp>( Listener );
-    }
-
-	private void Listener( ItemView.PickedUp pickedUp ) {
-
-		Instantiate( ItemPickupEffect, pickedUp.ItemView.transform.position );
+		EventSystem.Events.SubscribeOfType<Character.Died>( OnCharacterDie );
 	}
 
-	//private void OnBuildingDestruction( BuildingDestructionEffect.Destroyed buildingDestroyedEvent ) {
+	private void OnCharacterDie( Character.Died diedEvent ) {
 
- //       Instantiate( buildingExplosion, buildingDestroyedEvent.target.position, buildingDestroyedEvent.target.rotation );
- //   }
-
-    private void OnSplashDamage( Helpers.SplashDamage splashDamageEvent ) {
-
-        var instance = Instantiate( splashExplosion, splashDamageEvent.position, Quaternion.identity ) as GameObject;
-        var scaler = instance.GetComponent<ParticleSystemMultiplier>();
-
-        if ( scaler != null ) {
-
-            scaler.multiplier = splashDamageEvent.radius;
-        }
-    }
-
-    //private void OnCharacterDie( Character.Died diedEvent ) {
-
-    //    Instantiate( explosion, diedEvent.Character.Pawn.position, diedEvent.Character.Pawn.rotation );
-    //}
+		Instantiate( CharacterDeathEffect, diedEvent.Character.Pawn.position, diedEvent.Character.Pawn.rotation );
+	}
 
 }

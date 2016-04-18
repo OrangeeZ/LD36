@@ -38,14 +38,14 @@ public class EnvironmentObjectSpot : AObject {
 
 	public virtual void Destroy( Character hittingCharacter ) {
 
+		EventSystem.RaiseEvent( new XenoTriggerEvent { Source = this } );
+
 		if ( !_isInvincible ) {
 
 			SetState( State.Destroyed );
 		}
 
 		Debug.Log( this, this );
-
-		EventSystem.RaiseEvent( new XenoTriggerEvent {Source = this} );
 	}
 
 	public void TryResetState() {
