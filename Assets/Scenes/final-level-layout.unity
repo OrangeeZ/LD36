@@ -331,6 +331,10 @@ Prefab:
       propertyPath: m_RootOrder
       value: 11
       objectReference: {fileID: 0}
+    - target: {fileID: 173986, guid: 9701f0c36d4701f47a53bed37d958547, type: 2}
+      propertyPath: m_Name
+      value: ObjectSpot [Universal]
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9701f0c36d4701f47a53bed37d958547, type: 2}
   m_IsPrefabParent: 0
@@ -7593,7 +7597,7 @@ GameObject:
   - 4: {fileID: 318960916}
   - 114: {fileID: 318960917}
   m_Layer: 0
-  m_Name: Empty Spot (4)
+  m_Name: ObjectSpot [RightSide]
   m_TagString: Untagged
   m_Icon: {fileID: 419385456094870383, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -7623,12 +7627,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c177b1fba3b30ad4ca23f312f7e53524, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _viewPrefabs:
-  - {fileID: 173986, guid: 702d5b30f93b3e441b0bf8ea02435005, type: 2}
-  - {fileID: 173986, guid: 704bcf237bd2e354b96bb5f3b9c09d28, type: 2}
-  - {fileID: 173986, guid: 8142c4f71c37586409cd4957d8553e35, type: 2}
-  - {fileID: 173986, guid: 1ddd6a80a9cd30140a265799786c029d, type: 2}
+  _info: {fileID: 11400000, guid: 3080ed1662f108047861a78a3140a3cf, type: 2}
   _state: 1
+  _orientationType: 1
   _isInvincible: 0
 --- !u!1 &321055270
 GameObject:
@@ -7994,7 +7995,7 @@ GameObject:
   - 4: {fileID: 331190793}
   - 114: {fileID: 331190794}
   m_Layer: 0
-  m_Name: Empty Spot (1)
+  m_Name: ObjectSpot [LeftSide]
   m_TagString: Untagged
   m_Icon: {fileID: 419385456094870383, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -8024,11 +8025,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c177b1fba3b30ad4ca23f312f7e53524, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _viewPrefabs:
-  - {fileID: 173986, guid: 3ee53862178506f44bf1ee0d47f2ac22, type: 2}
-  - {fileID: 173986, guid: 3cbd7622f252a454babdbc8f169c9344, type: 2}
-  - {fileID: 173986, guid: 1ddd6a80a9cd30140a265799786c029d, type: 2}
+  _info: {fileID: 11400000, guid: 3080ed1662f108047861a78a3140a3cf, type: 2}
   _state: 1
+  _orientationType: 2
   _isInvincible: 0
 --- !u!1 &332592522
 GameObject:
@@ -10074,6 +10073,58 @@ Prefab:
       propertyPath: m_LocalPosition.x
       value: -15.61
       objectReference: {fileID: 0}
+    - target: {fileID: 11477586, guid: fad491ec9bb4c6f4cb79308aa82ee8ac, type: 2}
+      propertyPath: _info
+      value: 
+      objectReference: {fileID: 11400000, guid: 3080ed1662f108047861a78a3140a3cf,
+        type: 2}
+    - target: {fileID: 11470600, guid: fad491ec9bb4c6f4cb79308aa82ee8ac, type: 2}
+      propertyPath: _info
+      value: 
+      objectReference: {fileID: 11400000, guid: 3080ed1662f108047861a78a3140a3cf,
+        type: 2}
+    - target: {fileID: 11464078, guid: fad491ec9bb4c6f4cb79308aa82ee8ac, type: 2}
+      propertyPath: _info
+      value: 
+      objectReference: {fileID: 11400000, guid: 3080ed1662f108047861a78a3140a3cf,
+        type: 2}
+    - target: {fileID: 11415282, guid: fad491ec9bb4c6f4cb79308aa82ee8ac, type: 2}
+      propertyPath: _info
+      value: 
+      objectReference: {fileID: 11400000, guid: 3080ed1662f108047861a78a3140a3cf,
+        type: 2}
+    - target: {fileID: 488688, guid: fad491ec9bb4c6f4cb79308aa82ee8ac, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: -0.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 488688, guid: fad491ec9bb4c6f4cb79308aa82ee8ac, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0.059
+      objectReference: {fileID: 0}
+    - target: {fileID: 11415282, guid: fad491ec9bb4c6f4cb79308aa82ee8ac, type: 2}
+      propertyPath: _orientationType
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 181300, guid: fad491ec9bb4c6f4cb79308aa82ee8ac, type: 2}
+      propertyPath: m_Name
+      value: ObjectSpot [RightSide]
+      objectReference: {fileID: 0}
+    - target: {fileID: 483218, guid: fad491ec9bb4c6f4cb79308aa82ee8ac, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 5.04
+      objectReference: {fileID: 0}
+    - target: {fileID: 483218, guid: fad491ec9bb4c6f4cb79308aa82ee8ac, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0.455
+      objectReference: {fileID: 0}
+    - target: {fileID: 11464078, guid: fad491ec9bb4c6f4cb79308aa82ee8ac, type: 2}
+      propertyPath: _orientationType
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 163542, guid: fad491ec9bb4c6f4cb79308aa82ee8ac, type: 2}
+      propertyPath: m_Name
+      value: ObjectSpot [RightSide]
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fad491ec9bb4c6f4cb79308aa82ee8ac, type: 2}
   m_IsPrefabParent: 0
@@ -10235,7 +10286,7 @@ GameObject:
   - 4: {fileID: 387143573}
   - 114: {fileID: 387143574}
   m_Layer: 0
-  m_Name: Empty Spot (3)
+  m_Name: ObjectSpot [LeftSide]
   m_TagString: Untagged
   m_Icon: {fileID: 419385456094870383, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -10265,11 +10316,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c177b1fba3b30ad4ca23f312f7e53524, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _viewPrefabs:
-  - {fileID: 173986, guid: 3ee53862178506f44bf1ee0d47f2ac22, type: 2}
-  - {fileID: 173986, guid: 3cbd7622f252a454babdbc8f169c9344, type: 2}
-  - {fileID: 173986, guid: 1ddd6a80a9cd30140a265799786c029d, type: 2}
+  _info: {fileID: 11400000, guid: 3080ed1662f108047861a78a3140a3cf, type: 2}
   _state: 1
+  _orientationType: 2
   _isInvincible: 0
 --- !u!1 &388256617
 GameObject:
@@ -12817,6 +12866,10 @@ Prefab:
     - target: {fileID: 452858, guid: 3cbd7622f252a454babdbc8f169c9344, type: 2}
       propertyPath: m_LocalRotation.w
       value: 0.7071067
+      objectReference: {fileID: 0}
+    - target: {fileID: 173986, guid: 3cbd7622f252a454babdbc8f169c9344, type: 2}
+      propertyPath: m_Name
+      value: ObjectSpot [Universal]
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 3cbd7622f252a454babdbc8f169c9344, type: 2}
@@ -16056,7 +16109,7 @@ GameObject:
   - 4: {fileID: 644427278}
   - 114: {fileID: 644427279}
   m_Layer: 0
-  m_Name: Empty Spot (3)
+  m_Name: ObjectSpot [RightSide]
   m_TagString: Untagged
   m_Icon: {fileID: 419385456094870383, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -16086,12 +16139,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c177b1fba3b30ad4ca23f312f7e53524, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _viewPrefabs:
-  - {fileID: 173986, guid: 702d5b30f93b3e441b0bf8ea02435005, type: 2}
-  - {fileID: 173986, guid: 704bcf237bd2e354b96bb5f3b9c09d28, type: 2}
-  - {fileID: 173986, guid: 8142c4f71c37586409cd4957d8553e35, type: 2}
-  - {fileID: 173986, guid: 1ddd6a80a9cd30140a265799786c029d, type: 2}
+  _info: {fileID: 11400000, guid: 3080ed1662f108047861a78a3140a3cf, type: 2}
   _state: 1
+  _orientationType: 1
   _isInvincible: 0
 --- !u!1 &645585070
 GameObject:
@@ -17287,7 +17337,7 @@ GameObject:
   - 4: {fileID: 708404545}
   - 114: {fileID: 708404546}
   m_Layer: 0
-  m_Name: Empty Spot (5)
+  m_Name: ObjectSpot [RightSide]
   m_TagString: Untagged
   m_Icon: {fileID: 419385456094870383, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -17317,12 +17367,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c177b1fba3b30ad4ca23f312f7e53524, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _viewPrefabs:
-  - {fileID: 173986, guid: 702d5b30f93b3e441b0bf8ea02435005, type: 2}
-  - {fileID: 173986, guid: 704bcf237bd2e354b96bb5f3b9c09d28, type: 2}
-  - {fileID: 173986, guid: 8142c4f71c37586409cd4957d8553e35, type: 2}
-  - {fileID: 173986, guid: 1ddd6a80a9cd30140a265799786c029d, type: 2}
+  _info: {fileID: 11400000, guid: 3080ed1662f108047861a78a3140a3cf, type: 2}
   _state: 1
+  _orientationType: 1
   _isInvincible: 0
 --- !u!1 &710273090
 GameObject:
@@ -18418,6 +18465,32 @@ Prefab:
     - target: {fileID: 498742, guid: 8306d53d363131545886865d35e7fec2, type: 2}
       propertyPath: m_LocalPosition.z
       value: 5.23
+      objectReference: {fileID: 0}
+    - target: {fileID: 11457676, guid: 8306d53d363131545886865d35e7fec2, type: 2}
+      propertyPath: _info
+      value: 
+      objectReference: {fileID: 11400000, guid: 3080ed1662f108047861a78a3140a3cf,
+        type: 2}
+    - target: {fileID: 11453514, guid: 8306d53d363131545886865d35e7fec2, type: 2}
+      propertyPath: _info
+      value: 
+      objectReference: {fileID: 11400000, guid: 3080ed1662f108047861a78a3140a3cf,
+        type: 2}
+    - target: {fileID: 11453514, guid: 8306d53d363131545886865d35e7fec2, type: 2}
+      propertyPath: _orientationType
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 151730, guid: 8306d53d363131545886865d35e7fec2, type: 2}
+      propertyPath: m_Name
+      value: ObjectSpot [LeftSide]
+      objectReference: {fileID: 0}
+    - target: {fileID: 11457676, guid: 8306d53d363131545886865d35e7fec2, type: 2}
+      propertyPath: _orientationType
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 194672, guid: 8306d53d363131545886865d35e7fec2, type: 2}
+      propertyPath: m_Name
+      value: ObjectSpot [LeftSide]
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 8306d53d363131545886865d35e7fec2, type: 2}
@@ -20050,6 +20123,10 @@ Prefab:
       propertyPath: m_SortingOrder
       value: -59
       objectReference: {fileID: 0}
+    - target: {fileID: 173986, guid: 3cbd7622f252a454babdbc8f169c9344, type: 2}
+      propertyPath: m_Name
+      value: ObjectSpot [Universal]
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 3cbd7622f252a454babdbc8f169c9344, type: 2}
   m_IsPrefabParent: 0
@@ -21590,6 +21667,10 @@ Prefab:
       propertyPath: m_RootOrder
       value: 9
       objectReference: {fileID: 0}
+    - target: {fileID: 173986, guid: 702d5b30f93b3e441b0bf8ea02435005, type: 2}
+      propertyPath: m_Name
+      value: ObjectSpot [Universal]
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 702d5b30f93b3e441b0bf8ea02435005, type: 2}
   m_IsPrefabParent: 0
@@ -22706,7 +22787,7 @@ GameObject:
   - 4: {fileID: 880916164}
   - 114: {fileID: 880916165}
   m_Layer: 0
-  m_Name: Empty Spot (2)
+  m_Name: ObjectSpot [LeftSide]
   m_TagString: Untagged
   m_Icon: {fileID: 419385456094870383, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -22736,14 +22817,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c177b1fba3b30ad4ca23f312f7e53524, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _viewPrefabs:
-  - {fileID: 173986, guid: 3ee53862178506f44bf1ee0d47f2ac22, type: 2}
-  - {fileID: 173986, guid: 702d5b30f93b3e441b0bf8ea02435005, type: 2}
-  - {fileID: 173986, guid: 3cbd7622f252a454babdbc8f169c9344, type: 2}
-  - {fileID: 173986, guid: 704bcf237bd2e354b96bb5f3b9c09d28, type: 2}
-  - {fileID: 173986, guid: 8142c4f71c37586409cd4957d8553e35, type: 2}
-  - {fileID: 173986, guid: 1ddd6a80a9cd30140a265799786c029d, type: 2}
+  _info: {fileID: 11400000, guid: 3080ed1662f108047861a78a3140a3cf, type: 2}
   _state: 1
+  _orientationType: 2
   _isInvincible: 0
 --- !u!1 &882997832
 GameObject:
@@ -23691,7 +23767,7 @@ GameObject:
   - 4: {fileID: 919674578}
   - 114: {fileID: 919674579}
   m_Layer: 0
-  m_Name: Empty Spot
+  m_Name: ObjectSpot [LeftSide]
   m_TagString: Untagged
   m_Icon: {fileID: 419385456094870383, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -23721,11 +23797,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c177b1fba3b30ad4ca23f312f7e53524, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _viewPrefabs:
-  - {fileID: 173986, guid: 702d5b30f93b3e441b0bf8ea02435005, type: 2}
-  - {fileID: 173986, guid: 704bcf237bd2e354b96bb5f3b9c09d28, type: 2}
-  - {fileID: 173986, guid: 1ddd6a80a9cd30140a265799786c029d, type: 2}
+  _info: {fileID: 11400000, guid: 3080ed1662f108047861a78a3140a3cf, type: 2}
   _state: 1
+  _orientationType: 2
   _isInvincible: 0
 --- !u!1 &921744673
 GameObject:
@@ -30321,7 +30395,7 @@ GameObject:
   - 4: {fileID: 1135898089}
   - 114: {fileID: 1135898090}
   m_Layer: 0
-  m_Name: Empty Spot
+  m_Name: ObjectSpot [LeftSide]
   m_TagString: Untagged
   m_Icon: {fileID: 419385456094870383, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -30351,11 +30425,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c177b1fba3b30ad4ca23f312f7e53524, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _viewPrefabs:
-  - {fileID: 173986, guid: 3ee53862178506f44bf1ee0d47f2ac22, type: 2}
-  - {fileID: 173986, guid: 3cbd7622f252a454babdbc8f169c9344, type: 2}
-  - {fileID: 173986, guid: 1ddd6a80a9cd30140a265799786c029d, type: 2}
+  _info: {fileID: 11400000, guid: 3080ed1662f108047861a78a3140a3cf, type: 2}
   _state: 1
+  _orientationType: 2
   _isInvincible: 0
 --- !u!1 &1136456438
 GameObject:
@@ -32234,7 +32306,7 @@ GameObject:
   - 4: {fileID: 1215806446}
   - 114: {fileID: 1215806447}
   m_Layer: 0
-  m_Name: Empty Spot (5)
+  m_Name: ObjectSpot [RightSide]
   m_TagString: Untagged
   m_Icon: {fileID: 419385456094870383, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -32264,12 +32336,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c177b1fba3b30ad4ca23f312f7e53524, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _viewPrefabs:
-  - {fileID: 173986, guid: 702d5b30f93b3e441b0bf8ea02435005, type: 2}
-  - {fileID: 173986, guid: 704bcf237bd2e354b96bb5f3b9c09d28, type: 2}
-  - {fileID: 173986, guid: 8142c4f71c37586409cd4957d8553e35, type: 2}
-  - {fileID: 173986, guid: 1ddd6a80a9cd30140a265799786c029d, type: 2}
+  _info: {fileID: 11400000, guid: 3080ed1662f108047861a78a3140a3cf, type: 2}
   _state: 1
+  _orientationType: 1
   _isInvincible: 0
 --- !u!1 &1218648448 stripped
 GameObject:
@@ -36920,6 +36989,32 @@ Prefab:
       propertyPath: m_LocalPosition.z
       value: -1.24
       objectReference: {fileID: 0}
+    - target: {fileID: 11497518, guid: 724d189654b272248a6a9d93c2468560, type: 2}
+      propertyPath: _info
+      value: 
+      objectReference: {fileID: 11400000, guid: 3080ed1662f108047861a78a3140a3cf,
+        type: 2}
+    - target: {fileID: 11444010, guid: 724d189654b272248a6a9d93c2468560, type: 2}
+      propertyPath: _info
+      value: 
+      objectReference: {fileID: 11400000, guid: 3080ed1662f108047861a78a3140a3cf,
+        type: 2}
+    - target: {fileID: 11444010, guid: 724d189654b272248a6a9d93c2468560, type: 2}
+      propertyPath: _orientationType
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 112262, guid: 724d189654b272248a6a9d93c2468560, type: 2}
+      propertyPath: m_Name
+      value: ObjectSpot [RightSide]
+      objectReference: {fileID: 0}
+    - target: {fileID: 11497518, guid: 724d189654b272248a6a9d93c2468560, type: 2}
+      propertyPath: _orientationType
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 147934, guid: 724d189654b272248a6a9d93c2468560, type: 2}
+      propertyPath: m_Name
+      value: ObjectSpot [RightSide]
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 724d189654b272248a6a9d93c2468560, type: 2}
   m_IsPrefabParent: 0
@@ -39028,8 +39123,13 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 173986, guid: 702d5b30f93b3e441b0bf8ea02435005, type: 2}
       propertyPath: m_Name
-      value: 'Case #1 Right (1)'
+      value: ObjectSpot [Universal]
       objectReference: {fileID: 0}
+    - target: {fileID: 11425166, guid: 702d5b30f93b3e441b0bf8ea02435005, type: 2}
+      propertyPath: _info
+      value: 
+      objectReference: {fileID: 11400000, guid: 3080ed1662f108047861a78a3140a3cf,
+        type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 702d5b30f93b3e441b0bf8ea02435005, type: 2}
   m_IsPrefabParent: 0
@@ -41010,7 +41110,7 @@ GameObject:
   - 4: {fileID: 1502373895}
   - 114: {fileID: 1502373896}
   m_Layer: 0
-  m_Name: Empty Spot (4)
+  m_Name: ObjectSpot [RightSide]
   m_TagString: Untagged
   m_Icon: {fileID: 419385456094870383, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -41040,12 +41140,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c177b1fba3b30ad4ca23f312f7e53524, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _viewPrefabs:
-  - {fileID: 173986, guid: 702d5b30f93b3e441b0bf8ea02435005, type: 2}
-  - {fileID: 173986, guid: 704bcf237bd2e354b96bb5f3b9c09d28, type: 2}
-  - {fileID: 173986, guid: 8142c4f71c37586409cd4957d8553e35, type: 2}
-  - {fileID: 173986, guid: 1ddd6a80a9cd30140a265799786c029d, type: 2}
+  _info: {fileID: 11400000, guid: 3080ed1662f108047861a78a3140a3cf, type: 2}
   _state: 1
+  _orientationType: 1
   _isInvincible: 0
 --- !u!1 &1502786874
 GameObject:
@@ -42448,6 +42545,10 @@ Prefab:
       propertyPath: m_SortingLayerID
       value: 1488498939
       objectReference: {fileID: 0}
+    - target: {fileID: 173986, guid: 8142c4f71c37586409cd4957d8553e35, type: 2}
+      propertyPath: m_Name
+      value: ObjectSpot [Universal]
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 8142c4f71c37586409cd4957d8553e35, type: 2}
   m_IsPrefabParent: 0
@@ -43715,6 +43816,16 @@ Prefab:
       propertyPath: m_SortingOrder
       value: 143
       objectReference: {fileID: 0}
+    - target: {fileID: 11489358, guid: db2d029fe901096439a6fc8fbc0bdba0, type: 2}
+      propertyPath: _info
+      value: 
+      objectReference: {fileID: 11400000, guid: 3080ed1662f108047861a78a3140a3cf,
+        type: 2}
+    - target: {fileID: 11447284, guid: db2d029fe901096439a6fc8fbc0bdba0, type: 2}
+      propertyPath: _info
+      value: 
+      objectReference: {fileID: 11400000, guid: 3080ed1662f108047861a78a3140a3cf,
+        type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: db2d029fe901096439a6fc8fbc0bdba0, type: 2}
   m_IsPrefabParent: 0
@@ -48554,7 +48665,7 @@ GameObject:
   - 4: {fileID: 1759794171}
   - 114: {fileID: 1759794172}
   m_Layer: 0
-  m_Name: Empty Spot (3)
+  m_Name: ObjectSpot [LeftSide]
   m_TagString: Untagged
   m_Icon: {fileID: 419385456094870383, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -48584,14 +48695,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c177b1fba3b30ad4ca23f312f7e53524, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _viewPrefabs:
-  - {fileID: 173986, guid: 3ee53862178506f44bf1ee0d47f2ac22, type: 2}
-  - {fileID: 173986, guid: 702d5b30f93b3e441b0bf8ea02435005, type: 2}
-  - {fileID: 173986, guid: 3cbd7622f252a454babdbc8f169c9344, type: 2}
-  - {fileID: 173986, guid: 704bcf237bd2e354b96bb5f3b9c09d28, type: 2}
-  - {fileID: 173986, guid: 8142c4f71c37586409cd4957d8553e35, type: 2}
-  - {fileID: 173986, guid: 1ddd6a80a9cd30140a265799786c029d, type: 2}
+  _info: {fileID: 11400000, guid: 3080ed1662f108047861a78a3140a3cf, type: 2}
   _state: 1
+  _orientationType: 2
   _isInvincible: 0
 --- !u!1 &1759995956
 GameObject:
@@ -49087,6 +49193,10 @@ Prefab:
     - target: {fileID: 473742, guid: 3ee53862178506f44bf1ee0d47f2ac22, type: 2}
       propertyPath: m_RootOrder
       value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 173986, guid: 3ee53862178506f44bf1ee0d47f2ac22, type: 2}
+      propertyPath: m_Name
+      value: ObjectSpot [Universal]
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 3ee53862178506f44bf1ee0d47f2ac22, type: 2}
@@ -50634,7 +50744,7 @@ GameObject:
   - 4: {fileID: 1819663522}
   - 114: {fileID: 1819663523}
   m_Layer: 0
-  m_Name: Empty Spot (2)
+  m_Name: ObjectSpot [Universal]
   m_TagString: Untagged
   m_Icon: {fileID: 419385456094870383, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -50664,14 +50774,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c177b1fba3b30ad4ca23f312f7e53524, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _viewPrefabs:
-  - {fileID: 173986, guid: 3ee53862178506f44bf1ee0d47f2ac22, type: 2}
-  - {fileID: 173986, guid: 702d5b30f93b3e441b0bf8ea02435005, type: 2}
-  - {fileID: 173986, guid: 3cbd7622f252a454babdbc8f169c9344, type: 2}
-  - {fileID: 173986, guid: 704bcf237bd2e354b96bb5f3b9c09d28, type: 2}
-  - {fileID: 173986, guid: 8142c4f71c37586409cd4957d8553e35, type: 2}
-  - {fileID: 173986, guid: 1ddd6a80a9cd30140a265799786c029d, type: 2}
+  _info: {fileID: 11400000, guid: 3080ed1662f108047861a78a3140a3cf, type: 2}
   _state: 1
+  _orientationType: 0
   _isInvincible: 0
 --- !u!1 &1820055770
 GameObject:
@@ -51220,7 +51325,7 @@ GameObject:
   - 4: {fileID: 1846699809}
   - 114: {fileID: 1846699810}
   m_Layer: 0
-  m_Name: Empty Spot (2)
+  m_Name: ObjectSpot [RightSide]
   m_TagString: Untagged
   m_Icon: {fileID: 419385456094870383, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -51250,14 +51355,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c177b1fba3b30ad4ca23f312f7e53524, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _viewPrefabs:
-  - {fileID: 173986, guid: 3ee53862178506f44bf1ee0d47f2ac22, type: 2}
-  - {fileID: 173986, guid: 702d5b30f93b3e441b0bf8ea02435005, type: 2}
-  - {fileID: 173986, guid: 3cbd7622f252a454babdbc8f169c9344, type: 2}
-  - {fileID: 173986, guid: 704bcf237bd2e354b96bb5f3b9c09d28, type: 2}
-  - {fileID: 173986, guid: 8142c4f71c37586409cd4957d8553e35, type: 2}
-  - {fileID: 173986, guid: 1ddd6a80a9cd30140a265799786c029d, type: 2}
+  _info: {fileID: 11400000, guid: 3080ed1662f108047861a78a3140a3cf, type: 2}
   _state: 1
+  _orientationType: 1
   _isInvincible: 0
 --- !u!1 &1855136524
 GameObject:
@@ -51559,8 +51659,13 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 173986, guid: 3cbd7622f252a454babdbc8f169c9344, type: 2}
       propertyPath: m_Name
-      value: 'Case #2 Left (1)'
+      value: ObjectSpot [Universal]
       objectReference: {fileID: 0}
+    - target: {fileID: 11425166, guid: 3cbd7622f252a454babdbc8f169c9344, type: 2}
+      propertyPath: _info
+      value: 
+      objectReference: {fileID: 11400000, guid: 3080ed1662f108047861a78a3140a3cf,
+        type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 3cbd7622f252a454babdbc8f169c9344, type: 2}
   m_IsPrefabParent: 0
@@ -55049,7 +55154,7 @@ GameObject:
   - 4: {fileID: 1994473326}
   - 114: {fileID: 1994473327}
   m_Layer: 0
-  m_Name: Empty Spot (4)
+  m_Name: ObjectSpot [Universal]
   m_TagString: Untagged
   m_Icon: {fileID: 419385456094870383, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -55079,14 +55184,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c177b1fba3b30ad4ca23f312f7e53524, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _viewPrefabs:
-  - {fileID: 173986, guid: 3ee53862178506f44bf1ee0d47f2ac22, type: 2}
-  - {fileID: 173986, guid: 702d5b30f93b3e441b0bf8ea02435005, type: 2}
-  - {fileID: 173986, guid: 3cbd7622f252a454babdbc8f169c9344, type: 2}
-  - {fileID: 173986, guid: 704bcf237bd2e354b96bb5f3b9c09d28, type: 2}
-  - {fileID: 173986, guid: 8142c4f71c37586409cd4957d8553e35, type: 2}
-  - {fileID: 173986, guid: 1ddd6a80a9cd30140a265799786c029d, type: 2}
+  _info: {fileID: 11400000, guid: 3080ed1662f108047861a78a3140a3cf, type: 2}
   _state: 1
+  _orientationType: 0
   _isInvincible: 0
 --- !u!1 &1999306472
 GameObject:
