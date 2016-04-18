@@ -31,7 +31,7 @@ MonoBehaviour:
   PawnPrefab: {fileID: 11453438, guid: 1b3bbde27ff7a6e419ab03103f7b92ba, type: 2}
   DropChance: 0.3
   EnemySpottedSound:
-  - {fileID: 8300000, guid: 71e04d910d8738b42940f2664337d2b1, type: 3}
+  - {fileID: 8300000, guid: 7ea95447620c2a346b799c6e7d97edf3, type: 3}
   SpawnInterval: 25
   MaxLiveEnemiesPerSpawner: 6
   SpeakChance: 0.2
