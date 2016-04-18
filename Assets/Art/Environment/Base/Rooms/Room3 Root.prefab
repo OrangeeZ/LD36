@@ -5651,6 +5651,7 @@ MonoBehaviour:
   _npcSpawners:
   - {fileID: 11473662}
   - {fileID: 11425572}
+  _enemySpawners: []
   _ventilationHatches:
   - {fileID: 444900}
   - {fileID: 418858}

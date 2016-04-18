@@ -6663,6 +6663,7 @@ MonoBehaviour:
   _npcSpawners:
   - {fileID: 11462198}
   - {fileID: 11447810}
+  _enemySpawners: []
   _ventilationHatches:
   - {fileID: 412274}
   - {fileID: 467480}
@@ -6687,6 +6688,7 @@ MonoBehaviour:
   _npcSpawners:
   - {fileID: 11497814}
   - {fileID: 11483502}
+  _enemySpawners: []
   _ventilationHatches:
   - {fileID: 458592}
   - {fileID: 437474}

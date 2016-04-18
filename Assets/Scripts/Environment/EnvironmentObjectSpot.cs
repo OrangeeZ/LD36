@@ -7,7 +7,7 @@ public class EnvironmentObjectSpot : AObject {
 	private EnvironmentObjectSpotInfo _info;
 
 	[SerializeField]
-	private State _state;
+	protected State _state;
 
 	[SerializeField]
 	private OrientationType _orientationType;
@@ -64,7 +64,7 @@ public class EnvironmentObjectSpot : AObject {
 		}
 	}
 
-	public void TryResetState() {
+	public virtual void TryResetState() {
 
 		if ( _state != State.Destroyed ) {
 

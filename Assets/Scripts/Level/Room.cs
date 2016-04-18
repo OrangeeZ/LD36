@@ -36,6 +36,9 @@ public class Room : MonoBehaviour {
 	private EnemySpawner[] _npcSpawners;
 
 	[SerializeField]
+	private EnemySpawner[] _enemySpawners;
+
+	[SerializeField]
 	private Transform[] _ventilationHatches;
 
 	[SerializeField]
@@ -67,6 +70,11 @@ public class Room : MonoBehaviour {
 			each.Initialize();
 
 			_charactersInRoom.Add( each.GetLastSpawnedCharacter() );
+		}
+
+		foreach ( var each in _enemySpawners ) {
+
+			each.Initialize();
 		}
 	}
 
@@ -122,6 +130,13 @@ public class Room : MonoBehaviour {
 		return transform.localToWorldMatrix.MultiplyPoint3x4( randomExtents + _bounds.center );
 	}
 
+	public static Character GetRandomNpc() {
+
+		var allNpcs = _instances.SelectMany( _ => _._charactersInRoom );
+
+		return allNpcs.RandomElement();
+	}
+
 	private void OnCharacterDie( Character.Died diedEvent ) {
 
 		if ( _charactersInRoom.Remove( diedEvent.Character ) ) {
@@ -144,7 +159,8 @@ public class Room : MonoBehaviour {
 
 		_ventilationHatches = transform.OfType<Transform>().Where( _ => _.name.ToLower().Contains( "hatch" ) ).ToArray();
 		_objectSpots = GetComponentsInChildren<EnvironmentObjectSpot>( includeInactive: true );
-		_npcSpawners = GetComponentsInChildren<EnemySpawner>( includeInactive: true );
+		_npcSpawners = GetComponentsInChildren<EnemySpawner>( includeInactive: true ).Where( _ => _.name.ToLower().Contains( "npc" ) ).ToArray();
+		_enemySpawners = GetComponentsInChildren<EnemySpawner>( includeInactive: true ).Where( _ => !_.name.ToLower().Contains( "npc" ) ).ToArray();
 	}
 
 }

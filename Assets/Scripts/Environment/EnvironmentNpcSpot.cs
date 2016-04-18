@@ -23,6 +23,15 @@ public class EnvironmentNpcSpot : EnvironmentObjectSpot {
 		}
 	}
 
+	public override void TryResetState() {
+
+		if ( _state != State.Destroyed ) {
+
+			_controlledCharacter.Damage( 999 );
+			
+			_state = State.Empty;
+		}
+	}
 	protected override void SetInfectedState() {
 
 		_spawner.Initialize();

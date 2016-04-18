@@ -329,7 +329,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 473742, guid: 9701f0c36d4701f47a53bed37d958547, type: 2}
       propertyPath: m_RootOrder
-      value: 11
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 173986, guid: 9701f0c36d4701f47a53bed37d958547, type: 2}
       propertyPath: m_Name
@@ -949,7 +949,8 @@ MonoBehaviour:
   _bounds:
     m_Center: {x: 0, y: 0, z: 0}
     m_Extent: {x: 10.35, y: 7.82, z: 5.66}
-  _npcSpawners:
+  _npcSpawners: []
+  _enemySpawners:
   - {fileID: 1500631820}
   - {fileID: 455316509}
   _ventilationHatches:
@@ -1866,7 +1867,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1866486244}
-  m_RootOrder: 2
+  m_RootOrder: 3
 --- !u!1 &96567002
 GameObject:
   m_ObjectHideFlags: 0
@@ -4305,6 +4306,12 @@ SpriteRenderer:
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
+--- !u!114 &191321484 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 11469308, guid: db2d029fe901096439a6fc8fbc0bdba0,
+    type: 2}
+  m_PrefabInternal: {fileID: 1568349740}
+  m_Script: {fileID: 11500000, guid: 1af7877ec42364b078dbcf64e3dd4eb6, type: 3}
 --- !u!1 &193069539
 GameObject:
   m_ObjectHideFlags: 0
@@ -7923,6 +7930,12 @@ SpriteRenderer:
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
+--- !u!114 &330204930 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 11406928, guid: db2d029fe901096439a6fc8fbc0bdba0,
+    type: 2}
+  m_PrefabInternal: {fileID: 1568349740}
+  m_Script: {fileID: 11500000, guid: 1af7877ec42364b078dbcf64e3dd4eb6, type: 3}
 --- !u!1 &330356501
 GameObject:
   m_ObjectHideFlags: 0
@@ -9279,6 +9292,22 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 11478284, guid: fad491ec9bb4c6f4cb79308aa82ee8ac, type: 2}
+      propertyPath: _npcSpawners.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 11477588, guid: fad491ec9bb4c6f4cb79308aa82ee8ac, type: 2}
+      propertyPath: _npcSpawners.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 11478284, guid: fad491ec9bb4c6f4cb79308aa82ee8ac, type: 2}
+      propertyPath: _enemySpawners.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 11477588, guid: fad491ec9bb4c6f4cb79308aa82ee8ac, type: 2}
+      propertyPath: _enemySpawners.Array.size
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 448764, guid: fad491ec9bb4c6f4cb79308aa82ee8ac, type: 2}
       propertyPath: m_LocalPosition.x
       value: 20.38
@@ -10289,6 +10318,22 @@ Prefab:
       propertyPath: _bounds.m_Extent.z
       value: 1.43
       objectReference: {fileID: 0}
+    - target: {fileID: 11478284, guid: fad491ec9bb4c6f4cb79308aa82ee8ac, type: 2}
+      propertyPath: _enemySpawners.Array.data[0]
+      value: 
+      objectReference: {fileID: 1586400238}
+    - target: {fileID: 11478284, guid: fad491ec9bb4c6f4cb79308aa82ee8ac, type: 2}
+      propertyPath: _enemySpawners.Array.data[1]
+      value: 
+      objectReference: {fileID: 385640663}
+    - target: {fileID: 11477588, guid: fad491ec9bb4c6f4cb79308aa82ee8ac, type: 2}
+      propertyPath: _enemySpawners.Array.data[0]
+      value: 
+      objectReference: {fileID: 1730437224}
+    - target: {fileID: 11477588, guid: fad491ec9bb4c6f4cb79308aa82ee8ac, type: 2}
+      propertyPath: _enemySpawners.Array.data[1]
+      value: 
+      objectReference: {fileID: 1742594073}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fad491ec9bb4c6f4cb79308aa82ee8ac, type: 2}
   m_IsPrefabParent: 0
@@ -10440,6 +10485,12 @@ SpriteRenderer:
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
+--- !u!114 &385640663 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 11483502, guid: fad491ec9bb4c6f4cb79308aa82ee8ac,
+    type: 2}
+  m_PrefabInternal: {fileID: 370539699}
+  m_Script: {fileID: 11500000, guid: 1af7877ec42364b078dbcf64e3dd4eb6, type: 3}
 --- !u!1 &387143572
 GameObject:
   m_ObjectHideFlags: 0
@@ -13021,7 +13072,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 473742, guid: 3cbd7622f252a454babdbc8f169c9344, type: 2}
       propertyPath: m_RootOrder
-      value: 7
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 452858, guid: 3cbd7622f252a454babdbc8f169c9344, type: 2}
       propertyPath: m_LocalRotation.x
@@ -14402,6 +14453,12 @@ SpriteRenderer:
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
+--- !u!114 &545531886 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 11410612, guid: 8306d53d363131545886865d35e7fec2,
+    type: 2}
+  m_PrefabInternal: {fileID: 714622592}
+  m_Script: {fileID: 11500000, guid: 1af7877ec42364b078dbcf64e3dd4eb6, type: 3}
 --- !u!1 &550814063
 GameObject:
   m_ObjectHideFlags: 0
@@ -15922,7 +15979,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1866486244}
-  m_RootOrder: 12
+  m_RootOrder: 13
 --- !u!114 &626259249
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16429,7 +16486,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1866486244}
-  m_RootOrder: 5
+  m_RootOrder: 6
 --- !u!114 &644427279
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17881,6 +17938,14 @@ Prefab:
       propertyPath: _viewPrefabs.Array.size
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 11482656, guid: 8306d53d363131545886865d35e7fec2, type: 2}
+      propertyPath: _npcSpawners.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 11482656, guid: 8306d53d363131545886865d35e7fec2, type: 2}
+      propertyPath: _enemySpawners.Array.size
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 497388, guid: 8306d53d363131545886865d35e7fec2, type: 2}
       propertyPath: m_LocalPosition.x
       value: 2.45
@@ -18813,6 +18878,14 @@ Prefab:
       value: 
       objectReference: {fileID: 11400000, guid: ae597c67397b8b1479e0965e5ce71279,
         type: 2}
+    - target: {fileID: 11482656, guid: 8306d53d363131545886865d35e7fec2, type: 2}
+      propertyPath: _enemySpawners.Array.data[0]
+      value: 
+      objectReference: {fileID: 1008535300}
+    - target: {fileID: 11482656, guid: 8306d53d363131545886865d35e7fec2, type: 2}
+      propertyPath: _enemySpawners.Array.data[1]
+      value: 
+      objectReference: {fileID: 545531886}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 8306d53d363131545886865d35e7fec2, type: 2}
   m_IsPrefabParent: 0
@@ -21817,14 +21890,17 @@ MonoBehaviour:
     m_Center: {x: 0, y: 0, z: 0}
     m_Extent: {x: 5.24, y: 7.82, z: 5.11}
   _npcSpawners:
+  - {fileID: 2102140178}
   - {fileID: 1594990197}
   - {fileID: 1636315911}
   - {fileID: 626259249}
   - {fileID: 879964218}
+  _enemySpawners: []
   _ventilationHatches:
   - {fileID: 88370416}
   - {fileID: 892039979}
   _objectSpots:
+  - {fileID: 2102140179}
   - {fileID: 919674579}
   - {fileID: 644427279}
   - {fileID: 1502373896}
@@ -21988,7 +22064,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 473742, guid: 702d5b30f93b3e441b0bf8ea02435005, type: 2}
       propertyPath: m_RootOrder
-      value: 9
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 173986, guid: 702d5b30f93b3e441b0bf8ea02435005, type: 2}
       propertyPath: m_Name
@@ -23127,7 +23203,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1866486244}
-  m_RootOrder: 13
+  m_RootOrder: 14
 --- !u!114 &879964218
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -23352,7 +23428,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1866486244}
-  m_RootOrder: 3
+  m_RootOrder: 4
 --- !u!1 &893542661
 GameObject:
   m_ObjectHideFlags: 0
@@ -24156,7 +24232,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1866486244}
-  m_RootOrder: 4
+  m_RootOrder: 5
 --- !u!114 &919674579
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -27225,6 +27301,12 @@ SpriteRenderer:
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
+--- !u!114 &1008535300 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 11476696, guid: 8306d53d363131545886865d35e7fec2,
+    type: 2}
+  m_PrefabInternal: {fileID: 714622592}
+  m_Script: {fileID: 11500000, guid: 1af7877ec42364b078dbcf64e3dd4eb6, type: 3}
 --- !u!1 &1009356098
 GameObject:
   m_ObjectHideFlags: 0
@@ -34679,8 +34761,8 @@ MonoBehaviour:
   characterInfo: {fileID: 11400000, guid: bc987e1e865e37944a3ac84e8d94fe83, type: 2}
   characterStatusInfo: {fileID: 11400000, guid: b1bc42f3e1e16f74398ac5537d9bb127,
     type: 2}
-  SpawnInterval: 0
-  SpawnLimit: 0
+  SpawnInterval: -1
+  SpawnLimit: 1
   Activation:
     value: 1
   Deactivation:
@@ -34697,7 +34779,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _info: {fileID: 0}
-  _state: 0
+  _state: 1
   _orientationType: 0
   _isInvincible: 0
   _spawner: {fileID: 1292193307}
@@ -36616,6 +36698,18 @@ Prefab:
       propertyPath: _viewPrefabs.Array.size
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 11404356, guid: 724d189654b272248a6a9d93c2468560, type: 2}
+      propertyPath: _npcSpawners.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 11404356, guid: 724d189654b272248a6a9d93c2468560, type: 2}
+      propertyPath: _objectSpots.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 11404356, guid: 724d189654b272248a6a9d93c2468560, type: 2}
+      propertyPath: _enemySpawners.Array.size
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 477842, guid: 724d189654b272248a6a9d93c2468560, type: 2}
       propertyPath: m_LocalPosition.x
       value: 12.95
@@ -37513,6 +37607,26 @@ Prefab:
     - target: {fileID: 11404356, guid: 724d189654b272248a6a9d93c2468560, type: 2}
       propertyPath: _roomType
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 11404356, guid: 724d189654b272248a6a9d93c2468560, type: 2}
+      propertyPath: _npcSpawners.Array.data[2]
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 11404356, guid: 724d189654b272248a6a9d93c2468560, type: 2}
+      propertyPath: _objectSpots.Array.data[2]
+      value: 
+      objectReference: {fileID: 1292193308}
+    - target: {fileID: 11404356, guid: 724d189654b272248a6a9d93c2468560, type: 2}
+      propertyPath: _objectSpots.Array.data[0]
+      value: 
+      objectReference: {fileID: 1562609771}
+    - target: {fileID: 11404356, guid: 724d189654b272248a6a9d93c2468560, type: 2}
+      propertyPath: _objectSpots.Array.data[1]
+      value: 
+      objectReference: {fileID: 1929471718}
+    - target: {fileID: 11404356, guid: 724d189654b272248a6a9d93c2468560, type: 2}
+      propertyPath: _enemySpawners.Array.data[0]
+      value: 
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 724d189654b272248a6a9d93c2468560, type: 2}
@@ -39610,7 +39724,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 473742, guid: 702d5b30f93b3e441b0bf8ea02435005, type: 2}
       propertyPath: m_RootOrder
-      value: 10
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 473742, guid: 702d5b30f93b3e441b0bf8ea02435005, type: 2}
       propertyPath: m_LocalScale.x
@@ -41626,7 +41740,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1866486244}
-  m_RootOrder: 6
+  m_RootOrder: 7
 --- !u!114 &1502373896
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -43164,6 +43278,12 @@ SpriteRenderer:
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
+--- !u!114 &1562609771 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 11497518, guid: 724d189654b272248a6a9d93c2468560,
+    type: 2}
+  m_PrefabInternal: {fileID: 1355139845}
+  m_Script: {fileID: 11500000, guid: c177b1fba3b30ad4ca23f312f7e53524, type: 3}
 --- !u!1 &1567413044
 GameObject:
   m_ObjectHideFlags: 0
@@ -43245,6 +43365,14 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 11479252, guid: db2d029fe901096439a6fc8fbc0bdba0, type: 2}
+      propertyPath: _npcSpawners.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 11479252, guid: db2d029fe901096439a6fc8fbc0bdba0, type: 2}
+      propertyPath: _enemySpawners.Array.size
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 400294, guid: db2d029fe901096439a6fc8fbc0bdba0, type: 2}
       propertyPath: m_LocalPosition.x
       value: -20.45
@@ -44384,6 +44512,14 @@ Prefab:
       value: 
       objectReference: {fileID: 11400000, guid: ae597c67397b8b1479e0965e5ce71279,
         type: 2}
+    - target: {fileID: 11479252, guid: db2d029fe901096439a6fc8fbc0bdba0, type: 2}
+      propertyPath: _enemySpawners.Array.data[0]
+      value: 
+      objectReference: {fileID: 330204930}
+    - target: {fileID: 11479252, guid: db2d029fe901096439a6fc8fbc0bdba0, type: 2}
+      propertyPath: _enemySpawners.Array.data[1]
+      value: 
+      objectReference: {fileID: 191321484}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: db2d029fe901096439a6fc8fbc0bdba0, type: 2}
   m_IsPrefabParent: 0
@@ -44997,6 +45133,12 @@ SpriteRenderer:
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
+--- !u!114 &1586400238 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 11497814, guid: fad491ec9bb4c6f4cb79308aa82ee8ac,
+    type: 2}
+  m_PrefabInternal: {fileID: 370539699}
+  m_Script: {fileID: 11500000, guid: 1af7877ec42364b078dbcf64e3dd4eb6, type: 3}
 --- !u!1 &1592855803
 GameObject:
   m_ObjectHideFlags: 0
@@ -45083,7 +45225,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1866486244}
-  m_RootOrder: 0
+  m_RootOrder: 1
 --- !u!114 &1594990197
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -45870,7 +46012,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1866486244}
-  m_RootOrder: 1
+  m_RootOrder: 2
 --- !u!114 &1636315911
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -48606,6 +48748,12 @@ SpriteRenderer:
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
+--- !u!114 &1730437224 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 11462198, guid: fad491ec9bb4c6f4cb79308aa82ee8ac,
+    type: 2}
+  m_PrefabInternal: {fileID: 370539699}
+  m_Script: {fileID: 11500000, guid: 1af7877ec42364b078dbcf64e3dd4eb6, type: 3}
 --- !u!1 &1733980118
 GameObject:
   m_ObjectHideFlags: 0
@@ -48716,7 +48864,8 @@ MonoBehaviour:
   _bounds:
     m_Center: {x: 0, y: 0, z: 0}
     m_Extent: {x: 4.3, y: 7.82, z: 5.78}
-  _npcSpawners:
+  _npcSpawners: []
+  _enemySpawners:
   - {fileID: 1290767138}
   - {fileID: 743729265}
   _ventilationHatches:
@@ -48918,6 +49067,12 @@ SpriteRenderer:
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
+--- !u!114 &1742594073 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 11447810, guid: fad491ec9bb4c6f4cb79308aa82ee8ac,
+    type: 2}
+  m_PrefabInternal: {fileID: 370539699}
+  m_Script: {fileID: 11500000, guid: 1af7877ec42364b078dbcf64e3dd4eb6, type: 3}
 --- !u!1 &1747090619
 GameObject:
   m_ObjectHideFlags: 0
@@ -49466,7 +49621,8 @@ MonoBehaviour:
   _bounds:
     m_Center: {x: 0, y: 0, z: 0}
     m_Extent: {x: 5.24, y: 7.82, z: 5.98}
-  _npcSpawners:
+  _npcSpawners: []
+  _enemySpawners:
   - {fileID: 2102743615}
   - {fileID: 298735664}
   _ventilationHatches:
@@ -52211,7 +52367,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 473742, guid: 3cbd7622f252a454babdbc8f169c9344, type: 2}
       propertyPath: m_RootOrder
-      value: 8
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 452858, guid: 3cbd7622f252a454babdbc8f169c9344, type: 2}
       propertyPath: m_LocalRotation.x
@@ -52701,6 +52857,7 @@ Transform:
   m_LocalPosition: {x: 3.71, y: -0.07, z: 0.87}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
+  - {fileID: 2102140177}
   - {fileID: 1594990196}
   - {fileID: 1636315910}
   - {fileID: 88370416}
@@ -54012,6 +54169,12 @@ SpriteRenderer:
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
+--- !u!114 &1929471718 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 11444010, guid: 724d189654b272248a6a9d93c2468560,
+    type: 2}
+  m_PrefabInternal: {fileID: 1355139845}
+  m_Script: {fileID: 11500000, guid: c177b1fba3b30ad4ca23f312f7e53524, type: 3}
 --- !u!1 &1931695204
 GameObject:
   m_ObjectHideFlags: 0
@@ -58024,6 +58187,71 @@ SpriteRenderer:
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
+--- !u!1 &2102140176
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 112262, guid: 724d189654b272248a6a9d93c2468560, type: 2}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 2102140177}
+  - 114: {fileID: 2102140179}
+  - 114: {fileID: 2102140178}
+  m_Layer: 0
+  m_Name: Spawner [npc-engineer-status]
+  m_TagString: Untagged
+  m_Icon: {fileID: 419385456094870383, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2102140177
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 497862, guid: 724d189654b272248a6a9d93c2468560, type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2102140176}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.67, y: 0, z: 0.69}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1866486244}
+  m_RootOrder: 0
+--- !u!114 &2102140178
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2102140176}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1af7877ec42364b078dbcf64e3dd4eb6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  characterInfo: {fileID: 11400000, guid: bc987e1e865e37944a3ac84e8d94fe83, type: 2}
+  characterStatusInfo: {fileID: 11400000, guid: b1bc42f3e1e16f74398ac5537d9bb127,
+    type: 2}
+  SpawnInterval: -1
+  SpawnLimit: 1
+  Activation:
+    value: 1
+  Deactivation:
+    value: -1
+--- !u!114 &2102140179
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2102140176}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a84d545059b3c214bbd43c51e6c99a39, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _info: {fileID: 0}
+  _state: 1
+  _orientationType: 0
+  _isInvincible: 0
+  _spawner: {fileID: 2102140178}
 --- !u!1 &2102743613
 GameObject:
   m_ObjectHideFlags: 0
