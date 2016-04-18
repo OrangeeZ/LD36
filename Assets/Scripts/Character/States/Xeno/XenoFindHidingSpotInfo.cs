@@ -24,6 +24,11 @@ public class XenoFindHidingSpotInfo : CharacterStateInfo {
 			var pawn = character.Pawn as EnemyCharacterPawn;
 			var hidingSpot = GetFarthestObject();
 
+			if ( hidingSpot == null ) {
+				
+				yield break;
+			}
+
 			hidingSpot.SetReserved( true );
 
 			do {

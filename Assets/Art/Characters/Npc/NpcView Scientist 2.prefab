@@ -62,6 +62,7 @@ GameObject:
   - 4: {fileID: 467736}
   - 114: {fileID: 11443988}
   - 212: {fileID: 21230608}
+  - 114: {fileID: 11456588}
   m_Layer: 0
   m_Name: Sprite View
   m_TagString: Untagged
@@ -206,6 +207,8 @@ MonoBehaviour:
   _warFogTracer: {fileID: 0}
   _spriteAnimationController: {fileID: 11443988}
   _navMeshAgent: {fileID: 19573878}
+  _spriteRenderer: {fileID: 0}
+  _fadeSpeed: 0.25
 --- !u!114 &11454982
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -218,6 +221,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _collider: {fileID: 13574632}
+--- !u!114 &11456588
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 179186}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cfdd86aa0b453e948a81bcafc319d1cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _spriteRenderer: {fileID: 21230608}
 --- !u!135 &13574632
 SphereCollider:
   m_ObjectHideFlags: 1
@@ -274,7 +289,7 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -1370688503
+  m_SortingLayerID: -1191805587
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300078, guid: b2a7d75bb968d5a4b9493c3d100074b3, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}

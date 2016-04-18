@@ -1,11 +1,16 @@
 ﻿using System;
 using System.Linq;
+using Packages.EventSystem;
 using UnityEngine;
 using UniRx;
 
 public class EnemySpawner : SpawnerBase {
 
-	public Action<Character> Spawned;
+	public class Spawned : IEventBase {
+
+		public Character Character;
+
+	}
 
 	public EnemyCharacterInfo characterInfo;
 	public EnemyCharacterStatusInfo characterStatusInfo;
@@ -24,13 +29,13 @@ public class EnemySpawner : SpawnerBase {
 	[Expressions.CalculatorExpression]
 	public StringReactiveProperty Deactivation;
 
-	void OnValidate() {
-		
+	private void OnValidate() {
+
 		name = string.Format( "Spawner [{0}]", characterStatusInfo.name );
 	}
 
 	public override void Initialize() {
-		
+
 		Spawn();
 	}
 
@@ -42,7 +47,7 @@ public class EnemySpawner : SpawnerBase {
 	private void Spawn() {
 
 		_startTime = 0.0f;
-		
+
 		if ( SpawnLimit > 0 && _spawnCount >= SpawnLimit ) {
 
 			return;
@@ -61,5 +66,8 @@ public class EnemySpawner : SpawnerBase {
 			weapon.Apply();
 		}
 
+		EventSystem.RaiseEvent( new Spawned {Character = _character} );
+
 	}
+
 }
