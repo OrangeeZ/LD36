@@ -96,12 +96,14 @@ public class WarFogSpaceMap : MonoBehaviour {
 
 	public void SubmitTexture() {
 
+		//Blur( _visibilityMap, _cellsX, _cellsZ );
+		//Blur( _visibilityMap, _cellsX, _cellsZ );
+		//Blur( _visibilityMap, _cellsX, _cellsZ );
+
 		for ( var i = 0; i < _warFogColors.Length; i++ ) {
 
-			_warFogColors[i].a = (byte)( _visibilityMap[i] );
+			_warFogColors[i].a = _visibilityMap[i];
 		}
-
-		//Blur( _warFogColors, _cellsX, _cellsZ );
 
 		_warFogTexture.SetPixels32( _warFogColors );
 		_warFogTexture.Apply();
@@ -285,7 +287,17 @@ public class WarFogSpaceMap : MonoBehaviour {
 
 	private bool IsPointOccluded( Vector3 point ) {
 
-		return _occluders.Any( _ => _.IsAffectingPoint( point ) );
+		for ( int i = 0; i < _occluders.Length; i++ ) {
+
+			var each = _occluders[i];
+
+			if ( each.IsAffectingPoint( point ) ) {
+
+				return true;
+			}
+		}
+
+		return false;
 	}
 
 	private void ClearVisible() {
@@ -321,6 +333,7 @@ public class WarFogSpaceMap : MonoBehaviour {
 	private bool GetSpaceMapPointOccluded( int index ) {
 
 		if ( index < 0 || index > _spaceMap.Length ) {
+
 			return false;
 		}
 
@@ -365,8 +378,10 @@ public class WarFogSpaceMap : MonoBehaviour {
 
 	private static readonly float[] GaussKernel = new[] {1f / 4f, 1f / 8f, 1f / 16f};
 
-	private static void Blur( Color[] alphamap, int width, int height ) {
+	private static void Blur( byte[] alphamap, int width, int height ) {
+
 		for ( var x = 1; x < width - 1; ++x ) {
+
 			for ( var y = 1; y < height - 1; y++ ) {
 				//for (var i = 0; i < numTexLayers; i++)
 				{
@@ -382,14 +397,15 @@ public class WarFogSpaceMap : MonoBehaviour {
 					blurredValue += GetBlurredValue( alphamap, x, y, -1, 1, width );
 					blurredValue += GetBlurredValue( alphamap, x, y, 1, 1, width );
 
-					alphamap[y * width + x] = blurredValue;
+					alphamap[y * width + x] = (byte)(255 * blurredValue);
 				}
 			}
 		}
 	}
 
-	private static Color GetBlurredValue( Color[] alphamap, int baseX, int baseY, int xOffset, int yOffset, int width ) {
-		return GaussKernel[Mathf.Abs( xOffset ) + Mathf.Abs( yOffset )] * alphamap[( baseY + yOffset ) * width + baseX + xOffset];
+	private static float GetBlurredValue( byte[] alphamap, int baseX, int baseY, int xOffset, int yOffset, int width ) {
+
+		return GaussKernel[Mathf.Abs( xOffset ) + Mathf.Abs( yOffset )] * alphamap[( baseY + yOffset ) * width + baseX + xOffset] / 255f;
 	}
 
 }
