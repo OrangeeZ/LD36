@@ -22,8 +22,7 @@ MonoBehaviour:
       value: 0
   AggroRadius: 10
   Weapon1: {fileID: 11400000, guid: ff23e3af3e51a0248b57810068c81ed4, type: 2}
-  ItemsToDrop:
-  - {fileID: 11400000, guid: f970764d33e64b748bd71bf104c7084f, type: 2}
+  ItemsToDrop: []
   PawnPrefab: {fileID: 11453438, guid: 490b8f833be990d44a4d29ba7743a80f, type: 2}
   DropChance: 0.3
   EnemySpottedSound:
