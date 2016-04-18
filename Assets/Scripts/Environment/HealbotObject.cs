@@ -5,6 +5,13 @@ using UniRx;
 
 public class HealbotObject : EnvironmentObjectSpot {
 
+	public class TriedHeal :IEventBase {
+
+		public HealbotObject Healbot;
+		public bool DidSucceed;
+
+	}
+
 	[SerializeField]
 	private float _cooldown = 5f;
 
@@ -38,10 +45,14 @@ public class HealbotObject : EnvironmentObjectSpot {
 
 		if ( Time.time < _cooldownTime || !enabled ) {
 
+			EventSystem.RaiseEvent( new TriedHeal {Healbot = this, DidSucceed = false} );
+
 			return;
 		}
 
 		hittingCharacter.Heal( 999 );
+
+		EventSystem.RaiseEvent( new TriedHeal { Healbot = this, DidSucceed = true } );
 
 		_cooldownTime = Time.time + _cooldown;
 	}

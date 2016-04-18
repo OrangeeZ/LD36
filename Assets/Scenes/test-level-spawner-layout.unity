@@ -142,6 +142,8 @@ MonoBehaviour:
   _doorOpen: {fileID: 8300000, guid: 8aa29bf323076234db986ee7f5688f38, type: 3}
   _doorClose: {fileID: 8300000, guid: d7b19609ec69b814186735b756d18ef7, type: 3}
   _roomPowerDown: {fileID: 8300000, guid: 69f38a28c744b9247b04ea09760e5623, type: 3}
+  _healbotHealSuccess: {fileID: 8300000, guid: 40155f5ed3b28a84d9e7a21b9625f947, type: 3}
+  _healbotHealFailed: {fileID: 8300000, guid: 25bac3a608b4e6349929771d8bacf7cd, type: 3}
 --- !u!1 &857275393
 GameObject:
   m_ObjectHideFlags: 0
