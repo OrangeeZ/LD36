@@ -295,6 +295,8 @@ public class WarFogSpaceMap : MonoBehaviour {
 
 	private bool GetPointVisible( int index ) {
 
+		if ( index < 0 || index >= _visibilityMap.Length ) return false;
+
 		return _visibilityMap[index] == 1;
 	}
 

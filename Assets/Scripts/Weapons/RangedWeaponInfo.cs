@@ -58,7 +58,7 @@ public class RangedWeaponInfo : WeaponInfo {
 		}
 
 		public int ClipSize { get; protected set; }
-		public float ReloadDuration { get; set; }
+		public float ReloadDuration { get { return _rangedWeaponInfo.ReloadDuration * ReloadDurationScale; } }
 
 		public bool IsUnlimited {
 			get { return _rangedWeaponInfo._ammoLimit < 0; }
@@ -72,13 +72,14 @@ public class RangedWeaponInfo : WeaponInfo {
 			get { return !_behaviour.IsReloading && ( IsUnlimited || AmmoInClip >= 0 ); }
 		}
 
+		public float ReloadDurationScale = 1;
+
 		private RangedWeaponBehaviour _behaviour;
 
 		public RangedWeapon( RangedWeaponInfo info ) : base( info ) {
 			_rangedWeaponInfo = info;
 			AmmoInClip = _rangedWeaponInfo._ammoAmount;
 			ClipSize = info.ClipSize;
-			ReloadDuration = info.ReloadDuration;
 		}
 
 		public override void SetCharacter( Character character ) {

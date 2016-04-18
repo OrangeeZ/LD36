@@ -42,6 +42,7 @@ public class DefaultRangedBehaviourInfo : RangedWeaponBehaviourInfo {
 
 				AmmoInClip = _ownerWeapon.ClipSize;
 
+				
 				_nextAttackTime = Time.timeSinceLevelLoad + _ownerWeapon.ReloadDuration;
 
 				IsReloading = true;
