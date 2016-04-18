@@ -9,7 +9,8 @@ GameObject:
   m_Component:
   - 4: {fileID: 495148}
   - 212: {fileID: 21255396}
-  - 95: {fileID: 9564474}
+  - 114: {fileID: 11432130}
+  - 95: {fileID: 9565220}
   m_Layer: 0
   m_Name: Hatch Right
   m_TagString: Untagged
@@ -38,8 +39,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 181364}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.922, y: 0, z: 0.26}
+  m_LocalRotation: {x: 0, y: -0.38268346, z: 0, w: 0.9238795}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 495148}
@@ -57,7 +58,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 482260}
   m_RootOrder: 0
---- !u!95 &9564474
+--- !u!95 &9565220
 Animator:
   serializedVersion: 3
   m_ObjectHideFlags: 1
@@ -66,14 +67,26 @@ Animator:
   m_GameObject: {fileID: 117248}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: a046f6aadebcf214aac1e4c89419f4b1, type: 2}
-  m_CullingMode: 0
+  m_Controller: {fileID: 9100000, guid: e4443c2bd1bb71b449d9618be4d844cb, type: 2}
+  m_CullingMode: 2
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &11432130
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 117248}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cfdd86aa0b453e948a81bcafc319d1cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _spriteRenderer: {fileID: 21255396}
 --- !u!212 &21255396
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -99,7 +112,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1191805587
-  m_SortingOrder: 0
+  m_SortingOrder: 10000
   m_Sprite: {fileID: 21300000, guid: 851900e824a21f448b928a70950cb9ef, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
