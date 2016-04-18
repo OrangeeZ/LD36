@@ -288,6 +288,8 @@ public class WarFogSpaceMap : MonoBehaviour {
 
 	private void SetPointVisible( int index, bool isVisible ) {
 
+		if ( index < 0 || index >= _visibilityMap.Length ) return;
+
 		_visibilityMap[index] = (byte) ( isVisible ? 1 : 0 );
 	}
 

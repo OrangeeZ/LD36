@@ -154,7 +154,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   characterInfo: {fileID: 11400000, guid: 75fa4e0652b8a644fb92082b140e9b60, type: 2}
-  characterStatusInfo: {fileID: 11400000, guid: 4960b7f87f015544fa4460132e0f832e,
+  characterStatusInfo: {fileID: 11400000, guid: 69542e7609c76a6428682860db087a75,
     type: 2}
   startingItems: []
   startingWeapon: {fileID: 0}
