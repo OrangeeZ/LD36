@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class WarFogSpaceMap : MonoBehaviour {
 
+	[SerializeField]
+	[HideInInspector]
 	private byte[] _spaceMap;
 	private byte[] _visibilityMap;
 
@@ -38,7 +40,7 @@ public class WarFogSpaceMap : MonoBehaviour {
 
 	private void Start() {
 
-		Generate();
+		GenerateTracingData();
 	}
 
 	public Bounds GetBounds() {
@@ -112,14 +114,32 @@ public class WarFogSpaceMap : MonoBehaviour {
 		}
 	}
 
-	[ContextMenu( "Generate" )]
-	private void Generate() {
+	[ContextMenu( "Generate space map" )]
+	private void GenerateSpaceMap() {
 
 		_occluders = FindObjectsOfType<WarFogOccluder>();
 
 		var startingPoint = _bounds.center - _bounds.extents;
 		_cellsX = Mathf.RoundToInt( _bounds.size.x / _cellSize );
 		_cellsZ = Mathf.RoundToInt( _bounds.size.z / _cellSize );
+
+		_spaceMap = new byte[_cellsX * _cellsZ];
+
+		for ( var x = 0; x < _cellsX; ++x ) {
+
+			for ( var z = 0; z < _cellsZ; ++z ) {
+
+				var currentPoint = startingPoint + Vector3.forward * z * _cellSize + Vector3.right * x * _cellSize;
+				_spaceMap[z * _cellsX + x] = IsPointOccluded( currentPoint ) ? (byte)1 : (byte)0;
+			}
+		}
+
+		GenerateTracingData();
+	}
+
+	private void GenerateTracingData() {
+
+		_occluders = FindObjectsOfType<WarFogOccluder>();
 
 		if ( _warFogTexture != null ) {
 
@@ -129,17 +149,7 @@ public class WarFogSpaceMap : MonoBehaviour {
 		_warFogTexture = new Texture2D( _cellsX, _cellsZ, TextureFormat.Alpha8, mipmap: false );
 		_warFogColors = _warFogTexture.GetPixels32();
 
-		_spaceMap = new byte[_cellsX * _cellsZ];
 		_visibilityMap = new byte[_cellsX * _cellsZ];
-
-		for ( var x = 0; x < _cellsX; ++x ) {
-
-			for ( var z = 0; z < _cellsZ; ++z ) {
-
-				var currentPoint = startingPoint + Vector3.forward * z * _cellSize + Vector3.right * x * _cellSize;
-				_spaceMap[z * _cellsX + x] = IsPointOccluded( currentPoint ) ? (byte) 1 : (byte) 0;
-			}
-		}
 	}
 
 	private void UpdateMooreNeighbourhoodCache( int requiredRadius ) {

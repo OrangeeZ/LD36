@@ -6,6 +6,12 @@ public class WarFogOccluder : MonoBehaviour {
 	[SerializeField]
 	private Bounds _bounds;
 
+	[SerializeField]
+	private float _additionalAngle;
+
+	[SerializeField]
+	private Matrix4x4 _finalTransform;
+
 	private void Reset() {
 
 		var renderer = GetComponentInChildren<Renderer>( includeInactive: true );
@@ -24,23 +30,26 @@ public class WarFogOccluder : MonoBehaviour {
 
 	public bool IsAffectingPoint( Vector3 point ) {
 
-		var localPoint = transform.worldToLocalMatrix.MultiplyPoint3x4(point);
-		//localPoint = Quaternion.Inverse( transform.rotation ) * localPoint;
+		var localPoint = _finalTransform.MultiplyPoint3x4( point );
 
-		var inverseScale = transform.localScale;
-		inverseScale.x = 1f / inverseScale.x;
-		inverseScale.y = 1f / inverseScale.y;
-		inverseScale.z = 1f / inverseScale.z;
-
-		//localPoint.Scale( transform.localScale );
-
-		return new Bounds(Vector3.zero, Vector3.one).Contains( localPoint );//_bounds.Contains( localPoint );
+		return _bounds.Contains( localPoint );
 	}
 
-	//void OnDrawGizmos() {
+	public void SetLocalBounds( Bounds warFogOccluderBounds ) {
 
-	//	Gizmos.matrix = transform.localToWorldMatrix;
-	//	Gizmos.DrawWireCube( _bounds.center, _bounds.size );
-	//}
+		_bounds = warFogOccluderBounds;
+	}
 
+	public void SetAdditionalAngle( float additionalAngle ) {
+
+		_additionalAngle = additionalAngle;
+
+		_finalTransform = Matrix4x4.TRS( Vector3.zero, Quaternion.AngleAxis( _additionalAngle, Vector3.forward ), Vector3.one ) * transform.worldToLocalMatrix;
+	}
+
+	void OnDrawGizmos() {
+
+		Gizmos.matrix = _finalTransform.inverse;
+		Gizmos.DrawWireCube( _bounds.center, _bounds.size );
+	}
 }
