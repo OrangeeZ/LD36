@@ -365,6 +365,7 @@ GameObject:
   - 114: {fileID: 1247619346}
   - 114: {fileID: 1247619348}
   - 114: {fileID: 1247619349}
+  - 114: {fileID: 1247619350}
   m_Layer: 0
   m_Name: Gameplay Controller
   m_TagString: Untagged
@@ -409,7 +410,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 16cffed6869c8204d91df11a4aadbd9b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _interval: 15
+  _interval: 10
   _playerCharacterSpawner: {fileID: 1180975180}
 --- !u!114 &1247619349
 MonoBehaviour:
@@ -423,3 +424,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _motherSpawner: {fileID: 857275394}
+--- !u!114 &1247619350
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1247619345}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f71b92b5b161be34e86dfccf538fc1a2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _xenoMotherSpawner: {fileID: 857275394}
+  _blackAlienSpawnerPrefab: {fileID: 11429670, guid: 8a40381780e1bf748ad754117b889e59,
+    type: 2}
+  _playerCharacterSpawner: {fileID: 1180975180}

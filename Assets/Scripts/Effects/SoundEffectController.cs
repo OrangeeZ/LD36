@@ -39,7 +39,7 @@ public class SoundEffectController : MonoBehaviour {
 
 		if ( eventObject.Room.GetRoomType() != Room.RoomType.Default ) {
 
-			AudioSource.PlayClipAtPoint( _roomPowerDown, Vector3.zero );
+			AudioSource.PlayClipAtPoint( _roomPowerDown, Camera.main.transform.position );
 		}
 	}
 
