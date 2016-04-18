@@ -113,7 +113,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d26c2ca591eae40409643a2e879c960b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CharacterDeathEffect: {fileID: 0}
+  CharacterDeathEffect: {fileID: 138464, guid: 13328071932dfc54fb588ca5643edf49, type: 2}
 --- !u!4 &456023988
 Transform:
   m_ObjectHideFlags: 0
