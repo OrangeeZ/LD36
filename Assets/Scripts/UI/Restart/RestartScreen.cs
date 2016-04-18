@@ -25,8 +25,8 @@ public class RestartScreen : UIScreen {
         EventSystem.Reset();
 		
         Character.Instances.Clear();
-
-		SceneManager.LoadScene( SceneManager.GetActiveScene().buildIndex );
+		
+		SceneManager.LoadScene( "Loader" );
     }
 
 }

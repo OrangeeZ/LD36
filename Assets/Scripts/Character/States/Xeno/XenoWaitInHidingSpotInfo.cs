@@ -41,6 +41,14 @@ public class XenoWaitInHidingSpotInfo : CharacterStateInfo {
 
 			_isTriggered = false;
 
+			var pawn = character.Pawn as EnemyCharacterPawn;
+
+			var fadeIn = pawn.Fade( isOut: false ).GetEnumerator();
+			while ( fadeIn.MoveNext() ) {
+
+				yield return null;
+			}
+
 			var statusInfo = character.Status.Info as EnemyCharacterStatusInfo;
 			var aggroCheckTimer = new AutoTimer( statusInfo.AutoAggroCheckInterval );
 
@@ -64,6 +72,12 @@ public class XenoWaitInHidingSpotInfo : CharacterStateInfo {
 			if ( _hidingSpot != null ) {
 
 				_hidingSpot.TryResetState();
+			}
+
+			var fadeOut = pawn.Fade( isOut: true ).GetEnumerator();
+			while ( fadeOut.MoveNext() ) {
+
+				yield return null;
 			}
 
 			var scheduledStates = new List<CharacterState>();
