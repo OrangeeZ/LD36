@@ -115,6 +115,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CharacterDeathEffect: {fileID: 138464, guid: 13328071932dfc54fb588ca5643edf49, type: 2}
+  PropsDeathEffect: {fileID: 119846, guid: 74ce3987bbb25ba448778c192cc35cb1, type: 2}
   ShockGunEffect: {fileID: 170848, guid: d8f9ff65ff688264082422878003e606, type: 2}
 --- !u!4 &456023988
 Transform:
