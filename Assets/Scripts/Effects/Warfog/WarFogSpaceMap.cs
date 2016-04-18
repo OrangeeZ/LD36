@@ -98,7 +98,7 @@ public class WarFogSpaceMap : MonoBehaviour {
 
 		for ( var i = 0; i < _warFogColors.Length; i++ ) {
 
-			_warFogColors[i].a = (byte)( _visibilityMap[i] * 255 );
+			_warFogColors[i].a = (byte)( _visibilityMap[i] );
 		}
 
 		//Blur( _warFogColors, _cellsX, _cellsZ );
@@ -193,7 +193,7 @@ public class WarFogSpaceMap : MonoBehaviour {
 				var isPreviousPointVisible = GetPointVisible( previousPointY * _cellsX + previousPointX );
 				if ( !isPreviousPointVisible ) {
 
-					SetPointVisible( pointY * _cellsX + pointX, false );
+					SetPointVisibility( pointY * _cellsX + pointX, 0 );
 
 					//_visibilityWriteBuffer.Add( 0 );
 					continue;
@@ -296,18 +296,26 @@ public class WarFogSpaceMap : MonoBehaviour {
 		}
 	}
 
+	private void SetPointVisibility( int index, byte value ) {
+
+		if ( index < 0 || index >= _visibilityMap.Length ) return;
+
+		_visibilityMap[index] = value;
+	}
+
+
 	private void SetPointVisible( int index, bool isVisible ) {
 
 		if ( index < 0 || index >= _visibilityMap.Length ) return;
 
-		_visibilityMap[index] = (byte) ( isVisible ? 1 : 0 );
+		_visibilityMap[index] = (byte) ( isVisible ? 255 : 0 );
 	}
 
 	private bool GetPointVisible( int index ) {
 
 		if ( index < 0 || index >= _visibilityMap.Length ) return false;
 
-		return _visibilityMap[index] == 1;
+		return _visibilityMap[index] > 0;
 	}
 
 	private bool GetSpaceMapPointOccluded( int index ) {
