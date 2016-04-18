@@ -1,5 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
+using Packages.EventSystem;
+using UniRx;
 
 public class HealbotObject : EnvironmentObjectSpot {
 
@@ -14,9 +16,30 @@ public class HealbotObject : EnvironmentObjectSpot {
 
 	private float _cooldownTime;
 
+	private void Start() {
+
+		EventSystem.Events.SubscribeOfType<Room.EveryoneDied>( OnEveryoneDieInRoom );
+	}
+
+	private void OnEveryoneDieInRoom( Room.EveryoneDied everyoneDiedEvent ) {
+
+		if ( everyoneDiedEvent.Room.GetRoomType() != Room.Type.MedicalBay ) {
+
+			return;
+		}
+
+		enabled = false;
+
+		_activeState.SetActive( false );
+		_inactiveState.SetActive( true );
+	}
+
 	public override void Destroy( Character hittingCharacter ) {
 
-		if ( Time.time < _cooldownTime ) return;
+		if ( Time.time < _cooldownTime || !enabled ) {
+
+			return;
+		}
 
 		hittingCharacter.Heal( 999 );
 

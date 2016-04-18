@@ -28,6 +28,11 @@ public class EnemySpawner : SpawnerBase {
 
 	private Expressions.ReactiveCalculator _reactCalcDeact;
 
+	void OnValidate() {
+		
+		name = string.Format( "Spawner [{0}]", characterStatusInfo.name );
+	}
+
 	public override void Initialize() {
 
 		_reactCalc = new Expressions.ReactiveCalculator( Activation );

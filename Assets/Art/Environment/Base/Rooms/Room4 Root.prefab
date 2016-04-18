@@ -1405,7 +1405,7 @@ GameObject:
   - 4: {fileID: 445602}
   - 114: {fileID: 11492026}
   m_Layer: 0
-  m_Name: Enemy Spawner (1)
+  m_Name: Spawner [xeno-status]
   m_TagString: Untagged
   m_Icon: {fileID: -1412012063857583412, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -2655,7 +2655,7 @@ GameObject:
   - 4: {fileID: 470796}
   - 114: {fileID: 11479576}
   m_Layer: 0
-  m_Name: Enemy Spawner
+  m_Name: Spawner [xeno-status]
   m_TagString: Untagged
   m_Icon: {fileID: -1412012063857583412, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0

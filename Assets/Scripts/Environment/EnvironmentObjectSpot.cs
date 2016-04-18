@@ -62,8 +62,6 @@ public class EnvironmentObjectSpot : AObject {
 
 			SetState( State.Destroyed );
 		}
-
-		Debug.Log( this, this );
 	}
 
 	public void TryResetState() {
@@ -79,7 +77,6 @@ public class EnvironmentObjectSpot : AObject {
 	public void SetState( State state ) {
 
 		_state = state;
-		Debug.Log( state, this );
 
 		switch ( state ) {
 

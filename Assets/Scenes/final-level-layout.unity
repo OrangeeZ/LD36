@@ -7305,7 +7305,7 @@ GameObject:
   - 4: {fileID: 298735663}
   - 114: {fileID: 298735664}
   m_Layer: 0
-  m_Name: Enemy Spawner (1)
+  m_Name: Spawner [xeno-status]
   m_TagString: Untagged
   m_Icon: {fileID: -1412012063857583412, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -12200,7 +12200,7 @@ GameObject:
   - 4: {fileID: 455316508}
   - 114: {fileID: 455316509}
   m_Layer: 0
-  m_Name: Enemy Spawner (1)
+  m_Name: Spawner [xeno-status]
   m_TagString: Untagged
   m_Icon: {fileID: -1412012063857583412, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -15839,7 +15839,7 @@ GameObject:
   - 4: {fileID: 626259248}
   - 114: {fileID: 626259249}
   m_Layer: 0
-  m_Name: Npc Spawner (1)
+  m_Name: Spawner [npc-scientist-status]
   m_TagString: Untagged
   m_Icon: {fileID: -1412012063857583412, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -19372,7 +19372,7 @@ GameObject:
   - 4: {fileID: 743729264}
   - 114: {fileID: 743729265}
   m_Layer: 0
-  m_Name: Enemy Spawner (1)
+  m_Name: Spawner [xeno-status]
   m_TagString: Untagged
   m_Icon: {fileID: -1412012063857583412, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -21728,7 +21728,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 390d04e2f1e248646801a4a311e6b575, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _roomType: 0
+  _roomType: 1
   _bounds:
     m_Center: {x: 0, y: 0, z: 0}
     m_Extent: {x: 5.24, y: 7.82, z: 5.11}
@@ -23026,7 +23026,7 @@ GameObject:
   - 4: {fileID: 879964217}
   - 114: {fileID: 879964218}
   m_Layer: 0
-  m_Name: Npc Spawner (2)
+  m_Name: Spawner [npc-scientist-status]
   m_TagString: Untagged
   m_Icon: {fileID: -1412012063857583412, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -34513,7 +34513,7 @@ GameObject:
   - 4: {fileID: 1290767137}
   - 114: {fileID: 1290767138}
   m_Layer: 0
-  m_Name: Enemy Spawner
+  m_Name: Spawner [xeno-status]
   m_TagString: Untagged
   m_Icon: {fileID: -1412012063857583412, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -37335,11 +37335,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 193012, guid: 724d189654b272248a6a9d93c2468560, type: 2}
       propertyPath: m_Name
-      value: Npc Spawner
+      value: Spawner [npc-engineer-status]
       objectReference: {fileID: 0}
     - target: {fileID: 163762, guid: 724d189654b272248a6a9d93c2468560, type: 2}
       propertyPath: m_Name
-      value: Npc Spawner
+      value: Spawner [npc-engineer-status]
       objectReference: {fileID: 0}
     - target: {fileID: 11472830, guid: 724d189654b272248a6a9d93c2468560, type: 2}
       propertyPath: characterInfo
@@ -37354,12 +37354,12 @@ Prefab:
     - target: {fileID: 11472830, guid: 724d189654b272248a6a9d93c2468560, type: 2}
       propertyPath: characterStatusInfo
       value: 
-      objectReference: {fileID: 11400000, guid: 28f2edbaf75b134499e4357213685bab,
+      objectReference: {fileID: 11400000, guid: b1bc42f3e1e16f74398ac5537d9bb127,
         type: 2}
     - target: {fileID: 11407344, guid: 724d189654b272248a6a9d93c2468560, type: 2}
       propertyPath: characterStatusInfo
       value: 
-      objectReference: {fileID: 11400000, guid: 28f2edbaf75b134499e4357213685bab,
+      objectReference: {fileID: 11400000, guid: b1bc42f3e1e16f74398ac5537d9bb127,
         type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 724d189654b272248a6a9d93c2468560, type: 2}
@@ -41407,7 +41407,7 @@ GameObject:
   - 4: {fileID: 1500631819}
   - 114: {fileID: 1500631820}
   m_Layer: 0
-  m_Name: Enemy Spawner
+  m_Name: Spawner [xeno-status]
   m_TagString: Untagged
   m_Icon: {fileID: -1412012063857583412, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -44904,7 +44904,7 @@ GameObject:
   - 4: {fileID: 1594990196}
   - 114: {fileID: 1594990197}
   m_Layer: 0
-  m_Name: Npc Spawner
+  m_Name: Spawner [npc-scientist-status]
   m_TagString: Untagged
   m_Icon: {fileID: -1412012063857583412, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -44935,7 +44935,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   characterInfo: {fileID: 11400000, guid: bc987e1e865e37944a3ac84e8d94fe83, type: 2}
-  characterStatusInfo: {fileID: 11400000, guid: b1bc42f3e1e16f74398ac5537d9bb127,
+  characterStatusInfo: {fileID: 11400000, guid: 28f2edbaf75b134499e4357213685bab,
     type: 2}
   SpawnInterval: 1
   SpawnLimit: 1
@@ -45691,7 +45691,7 @@ GameObject:
   - 4: {fileID: 1636315910}
   - 114: {fileID: 1636315911}
   m_Layer: 0
-  m_Name: Npc Spawner
+  m_Name: Spawner [npc-scientist-status]
   m_TagString: Untagged
   m_Icon: {fileID: -1412012063857583412, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -45722,7 +45722,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   characterInfo: {fileID: 11400000, guid: bc987e1e865e37944a3ac84e8d94fe83, type: 2}
-  characterStatusInfo: {fileID: 11400000, guid: b1bc42f3e1e16f74398ac5537d9bb127,
+  characterStatusInfo: {fileID: 11400000, guid: 28f2edbaf75b134499e4357213685bab,
     type: 2}
   SpawnInterval: 1
   SpawnLimit: 1
@@ -57872,7 +57872,7 @@ GameObject:
   - 4: {fileID: 2102743614}
   - 114: {fileID: 2102743615}
   m_Layer: 0
-  m_Name: Enemy Spawner
+  m_Name: Spawner [xeno-status]
   m_TagString: Untagged
   m_Icon: {fileID: -1412012063857583412, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
