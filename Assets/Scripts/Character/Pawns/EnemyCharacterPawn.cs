@@ -29,15 +29,20 @@ public class EnemyCharacterPawn : CharacterPawn {
 
 	public override void ClearDestination() {
 		
-		//_navMeshAgent.Stop();
-		_navMeshAgent.destination = transform.position;
+		if ( _navMeshAgent.isActiveAndEnabled ) {
+
+			_navMeshAgent.destination = transform.position;
+		}
 	}
 
 	public override void MakeDead() {
 
 		base.MakeDead();
 
-		_navMeshAgent.Stop();
+		if ( _navMeshAgent.isActiveAndEnabled ) {
+
+			_navMeshAgent.Stop();
+		}
 	}
 
 	public IEnumerable Fade( bool isOut ) {
@@ -57,7 +62,12 @@ public class EnemyCharacterPawn : CharacterPawn {
 
 	public void SetPosition( Vector3 position ) {
 
-		_navMeshAgent.Warp( position );
+		if ( _navMeshAgent.isActiveAndEnabled ) {
+
+			_navMeshAgent.Warp( position );
+		}
+
+		transform.position = position;
 	}
 
 	protected override void Update() {

@@ -9,6 +9,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 452858}
   - 212: {fileID: 21208236}
+  - 114: {fileID: 11420928}
   m_Layer: 0
   m_Name: ObjLeftBloodCase.png
   m_TagString: Untagged
@@ -84,8 +85,20 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.512148, y: 1.8036165, z: 0.96}
+  m_Size: {x: 0.512148, y: 1.8036165, z: 0.81}
   m_Center: {x: -0.014506817, y: 0.40180826, z: 0.25}
+--- !u!114 &11420928
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 131728}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cfdd86aa0b453e948a81bcafc319d1cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _spriteRenderer: {fileID: 21208236}
 --- !u!114 &11425166
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -125,7 +138,7 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 1488498939
+  m_SortingLayerID: -1191805587
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 7ccf05c7ccb219544aa84b2099882e83, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}

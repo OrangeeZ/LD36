@@ -39,43 +39,54 @@ public class XenoWaitInHidingSpotInfo : CharacterStateInfo {
 
 			_isTriggered = false;
 
-			var pawn = character.Pawn as EnemyCharacterPawn;
-
-			var fadeIn = pawn.Fade( isOut: false ).GetEnumerator();
-			while ( fadeIn.MoveNext() ) {
-
-				yield return null;
-			}
-
 			var statusInfo = character.Status.Info as EnemyCharacterStatusInfo;
-			var aggroCheckTimer = new AutoTimer( statusInfo.AutoAggroCheckInterval );
-
-			while ( !_isTriggered ) {
-
-				if ( aggroCheckTimer.ValueNormalized >= 1 ) {
-
-					if ( CheckAutoAggro() ) {
-
-						break;
-					}
-
-					aggroCheckTimer.Reset();
-				}
-
-				yield return null;
-			}
-
-			character.Pawn.SetActive( true );
 
 			if ( _hidingSpot != null ) {
 
-				_hidingSpot.TryResetState();
-			}
+				var pawn = character.Pawn as EnemyCharacterPawn;
 
-			var fadeOut = pawn.Fade( isOut: true ).GetEnumerator();
-			while ( fadeOut.MoveNext() ) {
+				var fadeIn = pawn.Fade( isOut: false ).GetEnumerator();
+				while ( fadeIn.MoveNext() ) {
 
-				yield return null;
+					yield return null;
+				}
+
+				var aggroCheckTimer = new AutoTimer( statusInfo.AutoAggroCheckInterval );
+
+				while ( !_isTriggered ) {
+
+					pawn.SetPosition( _hidingSpot.position );
+
+					if ( aggroCheckTimer.ValueNormalized >= 1 ) {
+
+						if ( CheckAutoAggro() ) {
+
+							break;
+						}
+
+						aggroCheckTimer.Reset();
+					}
+
+					yield return null;
+				}
+
+				character.Pawn.SetActive( true );
+
+				if ( _hidingSpot.GetState() == EnvironmentObjectSpot.State.Destroyed ) {
+
+					character.Damage( 9999 );
+				}
+
+				if ( _hidingSpot != null ) {
+
+					_hidingSpot.TryResetState();
+				}
+
+				var fadeOut = pawn.Fade( isOut: true ).GetEnumerator();
+				while ( fadeOut.MoveNext() ) {
+
+					yield return null;
+				}
 			}
 
 			var scheduledStates = new List<CharacterState>();
@@ -89,13 +100,10 @@ public class XenoWaitInHidingSpotInfo : CharacterStateInfo {
 
 				scheduledStates.Add( approachState );
 			}
-			; // else 
-			{
 
-				var escapeState = stateController.GetState<XenoEscapeToVentilationHatchInfo.State>();
-				escapeState.SetShouldSwitchRooms( true );
-				scheduledStates.Add( escapeState );
-			}
+			var escapeState = stateController.GetState<XenoEscapeToVentilationHatchInfo.State>();
+			escapeState.SetShouldSwitchRooms( true );
+			scheduledStates.Add( escapeState );
 
 			stateController.SetScheduledStates( scheduledStates );
 		}
