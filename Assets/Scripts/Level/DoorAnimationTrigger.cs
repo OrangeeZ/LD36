@@ -9,19 +9,19 @@ namespace Assets.Scripts.Level
 
         public bool IsOpen { get; protected set; }
 
-        private void OnCollisionEnter(Collision collision)
+        private void OnTriggerEnter(Collider collision)
         {
-            SetDoorState(collision.collider, true);
+            SetDoorState(collision, true);
         }
 
-        private void OnCollisionStay(Collision collisionInfo)
+        private void OnTriggerStay(Collider collision)
         {
-            SetDoorState(collisionInfo.collider, true);
+            SetDoorState(collision, true);
         }
 
-        private void OnCollisionExit(Collision collision)
+        private void OnTriggerExit(Collider collision)
         {
-            SetDoorState(collision.collider, false);
+            SetDoorState(collision, false);
         }
 
         //private methods
@@ -31,7 +31,7 @@ namespace Assets.Scripts.Level
             if (IsOpen == state || collider == null) return;
             var component = collider.GetComponent<CharacterPawn>();
             if (component == null) return;
-            IsOpen = true;
+            IsOpen = state;
             _animators.ForEach(x => x.SetBool("Open", IsOpen));
         }
 

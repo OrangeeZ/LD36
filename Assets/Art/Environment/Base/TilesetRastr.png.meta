@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: c61f9943d62753c498e72001dd474dae
-timeCreated: 1460967575
+timeCreated: 1461013229
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -29,6 +29,28 @@ TextureImporter:
     21300044: TilesetRastr_22
     21300046: TilesetRastr_23
     21300048: TilesetRastr_24
+    21300050: TilesetRastr_25
+    21300052: TilesetRastr_26
+    21300054: TilesetRastr_27
+    21300056: TilesetRastr_28
+    21300058: TilesetRastr_29
+    21300060: TilesetRastr_30
+    21300062: TilesetRastr_31
+    21300064: TilesetRastr_32
+    21300066: TilesetRastr_33
+    21300068: TilesetRastr_34
+    21300070: TilesetRastr_35
+    21300072: TilesetRastr_36
+    21300074: TilesetRastr_37
+    21300076: TilesetRastr_38
+    21300078: TilesetRastr_39
+    21300080: TilesetRastr_40
+    21300082: TilesetRastr_41
+    21300084: TilesetRastr_42
+    21300086: TilesetRastr_43
+    21300088: TilesetRastr_44
+    21300090: TilesetRastr_45
+    21300092: TilesetRastr_46
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -551,6 +573,428 @@ TextureImporter:
         - {x: 32, y: -14}
         - {x: 32, y: 7}
         - {x: 6, y: 32}
+    - name: TilesetRastr_25
+      rect:
+        serializedVersion: 2
+        x: 14
+        y: 636
+        width: 64
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 11, y: 34}
+        - {x: 4, y: 34}
+        - {x: -13, y: 16}
+        - {x: -13, y: -54}
+        - {x: -5, y: -54}
+        - {x: 11, y: -45}
+        - {x: 14, y: -35}
+        - {x: 14, y: 33}
+    - name: TilesetRastr_26
+      rect:
+        serializedVersion: 2
+        x: 82
+        y: 636
+        width: 64
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 4, y: 34}
+        - {x: -15, y: 18}
+        - {x: -15, y: -54}
+        - {x: -3, y: -54}
+        - {x: 11, y: -47}
+        - {x: 12, y: -36}
+        - {x: 12, y: 34}
+    - name: TilesetRastr_27
+      rect:
+        serializedVersion: 2
+        x: 147
+        y: 636
+        width: 64
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 3, y: 36}
+        - {x: -15, y: 26}
+        - {x: -15, y: -54}
+        - {x: -4, y: -54}
+        - {x: 12, y: -47}
+        - {x: 13, y: -36}
+        - {x: 13, y: 36}
+    - name: TilesetRastr_28
+      rect:
+        serializedVersion: 2
+        x: 218
+        y: 635
+        width: 64
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 2, y: 38}
+        - {x: -6, y: 38}
+        - {x: -22, y: 20}
+        - {x: -22, y: -51}
+        - {x: -18, y: -53}
+        - {x: -8, y: -53}
+        - {x: 8, y: -34}
+        - {x: 8, y: 35}
+    - name: TilesetRastr_29
+      rect:
+        serializedVersion: 2
+        x: 275
+        y: 635
+        width: 64
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 5, y: 41}
+        - {x: -16, y: 26}
+        - {x: -16, y: -46}
+        - {x: -8, y: -53}
+        - {x: -3, y: -53}
+        - {x: 17, y: -49}
+        - {x: 17, y: 41}
+    - name: TilesetRastr_30
+      rect:
+        serializedVersion: 2
+        x: 338
+        y: 637
+        width: 64
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 4, y: 42}
+        - {x: -2, y: 40}
+        - {x: -16, y: 24}
+        - {x: -16, y: -45}
+        - {x: -5, y: -55}
+        - {x: 0, y: -55}
+        - {x: 20, y: -51}
+        - {x: 20, y: 39}
+        - {x: 14, y: 42}
+    - name: TilesetRastr_31
+      rect:
+        serializedVersion: 2
+        x: 399
+        y: 637
+        width: 64
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 5, y: 46}
+        - {x: -15, y: 31}
+        - {x: -15, y: -41}
+        - {x: -4, y: -55}
+        - {x: 8, y: -55}
+        - {x: 24, y: -48}
+        - {x: 25, y: -37}
+        - {x: 25, y: 37}
+        - {x: 14, y: 46}
+    - name: TilesetRastr_32
+      rect:
+        serializedVersion: 2
+        x: 464
+        y: 636
+        width: 64
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -17, y: 50}
+        - {x: -19, y: 32}
+        - {x: -19, y: -46}
+        - {x: -7, y: -54}
+        - {x: 7, y: -54}
+        - {x: 26, y: -40}
+        - {x: 26, y: 32}
+        - {x: 9, y: 50}
+    - name: TilesetRastr_33
+      rect:
+        serializedVersion: 2
+        x: 527
+        y: 637
+        width: 64
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -5, y: 54}
+        - {x: -21, y: 42}
+        - {x: -21, y: -32}
+        - {x: 0, y: -55}
+        - {x: 13, y: -55}
+        - {x: 28, y: -48}
+        - {x: 29, y: -36}
+        - {x: 29, y: 36}
+        - {x: 12, y: 54}
+    - name: TilesetRastr_34
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 529
+        width: 64
+        height: 100
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -10, y: 50}
+        - {x: -27, y: 41}
+        - {x: -28, y: 33}
+        - {x: -28, y: -40}
+        - {x: -17, y: -40}
+        - {x: 1, y: -27}
+        - {x: 1, y: 47}
+        - {x: -3, y: 50}
+    - name: TilesetRastr_35
+      rect:
+        serializedVersion: 2
+        x: 65
+        y: 530
+        width: 64
+        height: 100
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 3, y: 45}
+        - {x: -3, y: 50}
+        - {x: -7, y: 50}
+        - {x: -22, y: 36}
+        - {x: -27, y: 31}
+        - {x: -27, y: -37}
+        - {x: -21, y: -42}
+        - {x: -17, y: -42}
+        - {x: -1, y: -27}
+        - {x: 3, y: -23}
+    - name: TilesetRastr_36
+      rect:
+        serializedVersion: 2
+        x: 129
+        y: 530
+        width: 64
+        height: 100
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -7, y: 50}
+        - {x: -25, y: 40}
+        - {x: -25, y: -40}
+        - {x: -20, y: -43}
+        - {x: -14, y: -43}
+        - {x: 6, y: -35}
+        - {x: 6, y: 49}
+        - {x: 5, y: 50}
+    - name: TilesetRastr_37
+      rect:
+        serializedVersion: 2
+        x: 194
+        y: 530
+        width: 64
+        height: 100
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -6, y: 50}
+        - {x: -24, y: 40}
+        - {x: -24, y: -40}
+        - {x: -18, y: -44}
+        - {x: -11, y: -44}
+        - {x: 9, y: -39}
+        - {x: 9, y: 49}
+        - {x: 7, y: 50}
+    - name: TilesetRastr_38
+      rect:
+        serializedVersion: 2
+        x: 258
+        y: 530
+        width: 59
+        height: 100
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 15.5, y: 44}
+        - {x: 5.5, y: 50}
+        - {x: -5.5, y: 50}
+        - {x: -19.5, y: 31}
+        - {x: -19.5, y: -37}
+        - {x: -9.5, y: -46}
+        - {x: -4.5, y: -46}
+        - {x: 8.5, y: -34}
+        - {x: 15.5, y: -27}
+    - name: TilesetRastr_39
+      rect:
+        serializedVersion: 2
+        x: 319
+        y: 529
+        width: 64
+        height: 100
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 2, y: 50}
+        - {x: -12, y: 37}
+        - {x: -17, y: 32}
+        - {x: -17, y: -36}
+        - {x: -10, y: -48}
+        - {x: 2, y: -48}
+        - {x: 21, y: -35}
+        - {x: 21, y: 38}
+        - {x: 8, y: 50}
+    - name: TilesetRastr_40
+      rect:
+        serializedVersion: 2
+        x: 388
+        y: 530
+        width: 62
+        height: 98
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -3, y: 49}
+        - {x: -19, y: 43}
+        - {x: -19, y: -42}
+        - {x: -11, y: -49}
+        - {x: 5, y: -49}
+        - {x: 23, y: -37}
+        - {x: 23, y: 35}
+        - {x: 11, y: 49}
+    - name: TilesetRastr_41
+      rect:
+        serializedVersion: 2
+        x: 456
+        y: 528
+        width: 64
+        height: 100
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -4, y: 50}
+        - {x: -17, y: 38}
+        - {x: -22, y: 33}
+        - {x: -22, y: -35}
+        - {x: -13, y: -50}
+        - {x: 11, y: -50}
+        - {x: 24, y: -43}
+        - {x: 24, y: 32}
+        - {x: 5, y: 50}
+    - name: TilesetRastr_42
+      rect:
+        serializedVersion: 2
+        x: 526
+        y: 520
+        width: 64
+        height: 110
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -26, y: -32}
+        - {x: -6, y: -55}
+        - {x: 10, y: -55}
+        - {x: 24, y: -50}
+        - {x: 24, y: 38}
+        - {x: 18, y: 55}
+        - {x: -10, y: 55}
+        - {x: -26, y: 36}
+    - name: TilesetRastr_43
+      rect:
+        serializedVersion: 2
+        x: 597
+        y: 515
+        width: 60
+        height: 116
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -13, y: 57}
+        - {x: -29, y: 39}
+        - {x: -29, y: -36}
+        - {x: 2, y: -58}
+        - {x: 27, y: -58}
+        - {x: 27, y: 32}
+        - {x: 18, y: 57}
+    - name: TilesetRastr_44
+      rect:
+        serializedVersion: 2
+        x: 659
+        y: 504
+        width: 69
+        height: 72
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -4.5, y: 32}
+        - {x: -34.5, y: 9}
+        - {x: -34.5, y: -9}
+        - {x: -4.5, y: -36}
+        - {x: 1.5, y: -36}
+        - {x: 32.5, y: -7}
+        - {x: 32.5, y: 3}
+        - {x: 7.5, y: 32}
+    - name: TilesetRastr_45
+      rect:
+        serializedVersion: 2
+        x: 593
+        y: 643
+        width: 64
+        height: 122
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -8, y: 57}
+        - {x: -27, y: 44}
+        - {x: -27, y: -30}
+        - {x: -6, y: -58}
+        - {x: 15, y: -58}
+        - {x: 29, y: -46}
+        - {x: 29, y: 29}
+        - {x: 4, y: 57}
+    - name: TilesetRastr_46
+      rect:
+        serializedVersion: 2
+        x: 658
+        y: 633
+        width: 66
+        height: 130
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -33, y: -50}
+        - {x: -11, y: -64}
+        - {x: 7, y: -64}
+        - {x: 33, y: -51}
+        - {x: 33, y: -5}
+        - {x: 4, y: 65}
+        - {x: -6, y: 65}
+        - {x: -33, y: 58}
     outline: []
   spritePackingTag: 
   userData: 

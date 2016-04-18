@@ -28,7 +28,7 @@ namespace Assets.Scripts.UI.Game_UI
             foreach (var room in rooms)
             {
                 var type = room.GetRoomType();
-                if (type != Room.RoomType.AlienMotherRoom && type != Room.RoomType.Default)
+                if (type != Room.RoomType.AlienMotherRoom)
                 {
                     _charactersCount += room.GetCharacters().Count;
                 }
@@ -40,7 +40,7 @@ namespace Assets.Scripts.UI.Game_UI
         private void OnCharacterDieInRoom(Room.CharacterDied characterDied)
         {
             var type = characterDied.Room.GetRoomType();
-            if (type == Room.RoomType.AlienMotherRoom || type == Room.RoomType.Default)
+            if (type == Room.RoomType.AlienMotherRoom)
             {
                 return;
             }
