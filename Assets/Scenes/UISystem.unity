@@ -84,7 +84,7 @@ NavMeshSettings:
     minRegionArea: 2
     cellSize: 0.16666667
     manualCellSize: 0
-  m_NavMeshData: {fileID: 23800000, guid: 068f25abde7d37c43ab67db1d48557d7, type: 2}
+  m_NavMeshData: {fileID: 23800000, guid: cdfd240e292f9884c9e45d07878f2d69, type: 2}
 --- !u!1 &608533857 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 119826, guid: 69743523e59dad543937b57b2667cdb1, type: 2}

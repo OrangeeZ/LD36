@@ -2054,7 +2054,7 @@ GameObject:
   - 4: {fileID: 483218}
   - 114: {fileID: 11464078}
   m_Layer: 0
-  m_Name: Empty Spot (2)
+  m_Name: ObjectSpot [Universal]
   m_TagString: Untagged
   m_Icon: {fileID: 419385456094870383, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -2820,7 +2820,7 @@ GameObject:
   - 4: {fileID: 488688}
   - 114: {fileID: 11415282}
   m_Layer: 0
-  m_Name: Empty Spot
+  m_Name: ObjectSpot [Universal]
   m_TagString: Untagged
   m_Icon: {fileID: 419385456094870383, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -3346,7 +3346,7 @@ GameObject:
   - 4: {fileID: 476094}
   - 114: {fileID: 11477586}
   m_Layer: 0
-  m_Name: Empty Spot (2)
+  m_Name: ObjectSpot [Universal]
   m_TagString: Untagged
   m_Icon: {fileID: 419385456094870383, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -3426,7 +3426,7 @@ GameObject:
   - 4: {fileID: 498042}
   - 114: {fileID: 11470600}
   m_Layer: 0
-  m_Name: Empty Spot
+  m_Name: ObjectSpot [Universal]
   m_TagString: Untagged
   m_Icon: {fileID: 419385456094870383, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -6556,9 +6556,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c177b1fba3b30ad4ca23f312f7e53524, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _viewPrefabs:
-  - {fileID: 173986, guid: a4bd14396b9f0bb4d87b90e39bba5af5, type: 2}
+  _info: {fileID: 0}
   _state: 1
+  _orientationType: 0
   _isInvincible: 0
 --- !u!114 &11447810
 MonoBehaviour:
@@ -6611,9 +6611,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c177b1fba3b30ad4ca23f312f7e53524, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _viewPrefabs:
-  - {fileID: 173986, guid: a4bd14396b9f0bb4d87b90e39bba5af5, type: 2}
+  _info: {fileID: 0}
   _state: 1
+  _orientationType: 0
   _isInvincible: 0
 --- !u!114 &11470600
 MonoBehaviour:
@@ -6626,9 +6626,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c177b1fba3b30ad4ca23f312f7e53524, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _viewPrefabs:
-  - {fileID: 173986, guid: a4bd14396b9f0bb4d87b90e39bba5af5, type: 2}
+  _info: {fileID: 0}
   _state: 1
+  _orientationType: 0
   _isInvincible: 0
 --- !u!114 &11477586
 MonoBehaviour:
@@ -6641,9 +6641,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c177b1fba3b30ad4ca23f312f7e53524, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _viewPrefabs:
-  - {fileID: 173986, guid: a4bd14396b9f0bb4d87b90e39bba5af5, type: 2}
+  _info: {fileID: 0}
   _state: 1
+  _orientationType: 0
   _isInvincible: 0
 --- !u!114 &11477588
 MonoBehaviour:

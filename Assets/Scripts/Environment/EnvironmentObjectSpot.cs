@@ -1,23 +1,29 @@
-﻿using System;
+﻿using Packages.EventSystem;
 using UnityEngine;
-using System.Collections;
-using System.Collections.Generic;
-using Packages.EventSystem;
-using UniRx;
-using UnityEngine.UI;
 
 public class EnvironmentObjectSpot : AObject {
 
 	[SerializeField]
-	private GameObject[] _viewPrefabs;
+	private EnvironmentObjectSpotInfo _info;
 
 	[SerializeField]
 	private State _state;
 
 	[SerializeField]
+	private OrientationType _orientationType;
+
+	[SerializeField]
 	private bool _isInvincible = false;
 
 	private GameObject _viewInstance;
+
+	public enum OrientationType {
+
+		Universal,
+		RightSide,
+		LeftSide
+
+	}
 
 	public enum State {
 
@@ -36,9 +42,21 @@ public class EnvironmentObjectSpot : AObject {
 		}
 	}
 
+	private void OnValidate() {
+
+#if UNITY_EDITOR
+		if ( UnityEditor.PrefabUtility.GetPrefabType( this ) == UnityEditor.PrefabType.Prefab ) {
+
+			return;
+		}
+#endif
+
+		name = string.Format( "ObjectSpot [{0}]", _orientationType );
+	}
+
 	public virtual void Destroy( Character hittingCharacter ) {
 
-		EventSystem.RaiseEvent( new XenoTriggerEvent { Source = this } );
+		EventSystem.RaiseEvent( new XenoTriggerEvent {Source = this} );
 
 		if ( !_isInvincible ) {
 
@@ -66,7 +84,7 @@ public class EnvironmentObjectSpot : AObject {
 		switch ( state ) {
 
 			case State.Infected:
-				_viewInstance = Instantiate( _viewPrefabs.RandomElement() );
+				_viewInstance = Instantiate( GetRandomView() );
 				_viewInstance.transform.SetParent( transform, worldPositionStays: false );
 				_viewInstance.transform.rotation = Quaternion.identity;
 				//Destroy( _viewInstance.GetComponent<Collider>() );
@@ -81,6 +99,21 @@ public class EnvironmentObjectSpot : AObject {
 	public State GetState() {
 
 		return _state;
+	}
+
+	private GameObject GetRandomView() {
+
+		switch ( _orientationType ) {
+
+			case OrientationType.RightSide:
+				return _info.GetRandomRightSidePrefab();
+
+			case OrientationType.LeftSide:
+				return _info.GetRandomLeftSidePrefab();
+
+			default:
+				return _info.GetRandomPrefab();
+		}
 	}
 
 }

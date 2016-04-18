@@ -126,8 +126,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 424ceafba3c356d48a0c4ec03754eec5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _viewPrefabs: []
+  _info: {fileID: 0}
   _state: 0
+  _orientationType: 0
   _isInvincible: 1
   _cooldown: 5
   _activeState: {fileID: 130134}

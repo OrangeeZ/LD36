@@ -97,8 +97,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c177b1fba3b30ad4ca23f312f7e53524, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _viewPrefabs: []
+  _info: {fileID: 0}
   _state: 0
+  _orientationType: 0
   _isInvincible: 0
 --- !u!212 &21208236
 SpriteRenderer:
