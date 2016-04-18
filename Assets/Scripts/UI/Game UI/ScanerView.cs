@@ -1,7 +1,8 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
+using Packages.EventSystem;
 using UI.uGui.Animations;
+using UniRx;
 using UnityEngine;
 
 namespace Assets.Scripts.UI.Game_UI
@@ -10,8 +11,8 @@ namespace Assets.Scripts.UI.Game_UI
     {
         Warning,
         Clear,
-        Ready,
         NoSignal,
+        Ready,
         Disable,
         Active
     }
@@ -56,13 +57,14 @@ namespace Assets.Scripts.UI.Game_UI
             _character = character;
             _lasActivateTime = -_reloadDuration;
             _animation.AnimaitonFinished.AddListener(OnCooldownPassed);
+            EventSystem.Events.SubscribeOfType<Room.EveryoneDied>(OnEveryoneDieInRoom);
             SetState(ScanerState.Ready);
         }
 
         public void Activate()
         {
             Debug.Log("Try Activate Scaner");
-            if (_scanerState == ScanerState.Active) return;
+            if (_scanerState == ScanerState.Active || _scanerState == ScanerState.NoSignal) return;
             var time = Time.timeSinceLevelLoad - _lasActivateTime;
             if (_reloadDuration > time) return;
             Debug.Log("Launch Scaner");
@@ -124,7 +126,9 @@ namespace Assets.Scripts.UI.Game_UI
 
         private void Update()
         {
-            if (_scanerState != ScanerState.Disable && _scanerState != ScanerState.Ready)
+            if (_scanerState != ScanerState.NoSignal 
+                && _scanerState != ScanerState.Disable 
+                && _scanerState != ScanerState.Ready)
             {
                 var time = Time.timeSinceLevelLoad - _lasActivateTime;
                 var state = _duration > time;
@@ -154,6 +158,7 @@ namespace Assets.Scripts.UI.Game_UI
                     _animator.SetTrigger(_clearState);
                     break;
                 case ScanerState.NoSignal:
+                    _animator.SetTrigger(_noSignalState);
                     break;
                 case ScanerState.Warning: 
                     _animator.SetTrigger(_warningState);
@@ -175,6 +180,13 @@ namespace Assets.Scripts.UI.Game_UI
 		        
 				SetState( ScanerState.Ready );
 	        }
+        }
+
+        private void OnEveryoneDieInRoom(Room.EveryoneDied everyoneDiedEvent)
+        {
+            var room = everyoneDiedEvent.Room;
+            if (room.GetRoomType() != Room.RoomType.SecurityRoom) return;
+            SetState(ScanerState.NoSignal);
         }
     }
 }
