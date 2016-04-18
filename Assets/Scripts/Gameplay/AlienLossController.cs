@@ -1,5 +1,5 @@
 ﻿using UnityEngine;
-using System.Collections;
+using System.Collections.Generic;
 using Packages.EventSystem;
 using UniRx;
 
@@ -8,7 +8,9 @@ public class AlienLossController : MonoBehaviour {
 	[SerializeField]
 	private EnemySpawner _motherSpawner;
 
-	private int _alienCount = 0;
+    private List<Character> _enemies = new List<Character>();
+
+    public static int AlienCount = 0;
 
 	// Use this for initialization
 	private void Awake() {
@@ -19,11 +21,11 @@ public class AlienLossController : MonoBehaviour {
 
 	private void OnXenoDie( XenoDeadStateInfo.Dead eventObject ) {
 
-		_alienCount--;
+		AlienCount--;
 
-		Debug.LogFormat( "Alien count: {0}", _alienCount );
+		Debug.LogFormat( "Alien count: {0}", AlienCount );
 
-		if ( _alienCount == 0 ) {
+		if ( AlienCount == 0 ) {
 
 			SpawnMother();
 
@@ -34,8 +36,8 @@ public class AlienLossController : MonoBehaviour {
 	private void OnEnemySpawn( EnemySpawner.Spawned eventObject ) {
 
 		if ( eventObject.Character.Status.Info.name.Contains( "xen" ) ) {
-
-			_alienCount++;
+            _enemies.Add(eventObject.Character);
+            AlienCount++;
 		}
 	}
 
@@ -44,12 +46,27 @@ public class AlienLossController : MonoBehaviour {
 		_motherSpawner.Initialize();
 	}
 
-	void OnGUI() {
+    private void KillAll()
+    {
+        foreach (var character in _enemies)
+        {
+            if (character != null)
+            {
+                character.Damage(1000);
+            }
+        }
+    }
+    void OnGUI() {
 
 		if ( GUILayout.Button( "Spawn mother" ) ) {
 
 			SpawnMother();
 		}
-	}
+
+        if (GUILayout.Button("Kill All"))
+        {
+            KillAll();
+        }
+    }
 
 }

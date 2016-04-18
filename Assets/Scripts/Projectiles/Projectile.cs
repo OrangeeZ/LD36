@@ -22,7 +22,7 @@ public class Projectile : AObject {
 
 	protected Vector3 Direction;
 
-	protected Character Owner;
+	public Character Owner { get; protected set; }
 
 	protected float Speed;
 	protected bool CanFriendlyFire;

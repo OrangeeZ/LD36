@@ -1,4 +1,6 @@
 ﻿using System.Collections.Generic;
+using Packages.EventSystem;
+using UniRx;
 using UnityEngine;
 
 namespace Assets.Scripts.Level
@@ -6,6 +8,14 @@ namespace Assets.Scripts.Level
     public class DoorAnimationTrigger : MonoBehaviour
     {
         private List<Animator> _animators = new List<Animator>();
+        [SerializeField]
+        private BoxCollider _boxCollider;
+
+        [SerializeField]
+        private bool _isLocked;
+
+        private bool _fireTrigger;
+        private bool _forceOpen;
 
         public bool IsOpen { get; protected set; }
 
@@ -28,9 +38,26 @@ namespace Assets.Scripts.Level
 
         private void SetDoorState(Collider collider, bool state)
         {
-            if (IsOpen == state || collider == null) return;
-            var component = collider.GetComponent<CharacterPawn>();
-            if (component == null) return;
+            if (_isLocked && AlienLossController.AlienCount != 0) return;
+            if (collider == null) return;
+            if (_fireTrigger && collider.GetComponent<Projectile>() != null)
+            {
+                _forceOpen = true;
+                SetDoorState(state);
+                return;
+            }
+            if (!_fireTrigger && collider.GetComponent<CharacterPawn>() != null)
+            {
+                SetDoorState(state);
+            }
+        }
+
+        public void SetDoorState(bool state)
+        {
+            if (_forceOpen)
+                state = true;
+            if (IsOpen == state) return;
+            _boxCollider.enabled = !state;
             IsOpen = state;
             _animators.ForEach(x => x.SetBool("Open", IsOpen));
         }
@@ -38,7 +65,15 @@ namespace Assets.Scripts.Level
         private void Awake()
         {
             gameObject.GetComponentsInChildren<Animator>(true, _animators);
+            EventSystem.Events.SubscribeOfType<Room.EveryoneDied>(OnEveryoneDieInRoom);
         }
 
+        private void OnEveryoneDieInRoom(Room.EveryoneDied everyoneDiedEvent)
+        {
+            var room = everyoneDiedEvent.Room;
+            if (room.GetRoomType() != Room.RoomType.ControlRoom) return;
+            SetDoorState(false);
+            _fireTrigger = true;
+        }
     }
 }

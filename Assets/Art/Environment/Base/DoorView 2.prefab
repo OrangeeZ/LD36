@@ -18,6 +18,23 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &150790
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 476454}
+  - 65: {fileID: 6593686}
+  - 114: {fileID: 11497570}
+  m_Layer: 0
+  m_Name: CollisionTrigger
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 4294967295
+  m_IsActive: 1
 --- !u!1 &172236
 GameObject:
   m_ObjectHideFlags: 0
@@ -60,11 +77,12 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 172236}
   m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071067}
-  m_LocalPosition: {x: 9.6, y: -0.6, z: -10.74}
+  m_LocalPosition: {x: 10.446962, y: 0.0546875, z: 33.44491}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 456936}
   - {fileID: 498556}
+  - {fileID: 476454}
   m_Father: {fileID: 0}
   m_RootOrder: 0
 --- !u!4 &456936
@@ -79,6 +97,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 417668}
   m_RootOrder: 0
+--- !u!4 &476454
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 150790}
+  m_LocalRotation: {x: 0, y: 0, z: -0.38268346, w: 0.9238795}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 417668}
+  m_RootOrder: 2
 --- !u!4 &498556
 Transform:
   m_ObjectHideFlags: 1
@@ -91,6 +121,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 417668}
   m_RootOrder: 1
+--- !u!65 &6593686
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 150790}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 2, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!95 &9515702
 Animator:
   serializedVersion: 3
@@ -137,7 +179,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _spriteRenderer: {fileID: 21270702}
-  _bias: 0
+  _bias: -20
 --- !u!114 &11440762
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -149,6 +191,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b8a2b374d4e294469e72511f61cae43, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _boxCollider: {fileID: 6593686}
+  _isLocked: 0
 --- !u!114 &11494006
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -162,6 +206,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _spriteRenderer: {fileID: 21222848}
   _bias: 0
+--- !u!114 &11497570
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 150790}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d7b95519e3316ed4bbfc4e6a53409f4a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _doorAnimationTrigger: {fileID: 11440762}
 --- !u!135 &13561026
 SphereCollider:
   m_ObjectHideFlags: 1
