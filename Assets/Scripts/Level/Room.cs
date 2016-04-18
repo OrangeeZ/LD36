@@ -8,7 +8,7 @@ using UniRx;
 
 public class Room : MonoBehaviour {
 
-	public enum Type {
+	public enum RoomType {
 
 		Default,
 		MedicalBay,
@@ -21,13 +21,16 @@ public class Room : MonoBehaviour {
 	}
 
 	public struct EveryoneDied : IEventBase {
-
 		public Room Room;
-
 	}
 
-	[SerializeField]
-	private Type _roomType;
+    public struct CharacterDied : IEventBase
+    {
+        public Room Room;
+    }
+
+    [SerializeField]
+	private RoomType _roomType;
 
 	[SerializeField]
 	private Bounds _bounds;
@@ -78,6 +81,17 @@ public class Room : MonoBehaviour {
 		}
 	}
 
+    public List<Character> GetRoomCharacters(RoomType roomType)
+    {
+        var room = _instances.FirstOrDefault(x => x.GetRoomType() == roomType);
+        return room == null ? null : room._charactersInRoom;
+    } 
+
+    public static List<Room> GetRooms()
+    {
+        return _instances;
+    }
+
 	public static void InitializeAll() {
 
 		foreach ( var each in _instances ) {
@@ -116,7 +130,12 @@ public class Room : MonoBehaviour {
 		return _objectSpots.Where( _ => _.GetState() == EnvironmentObjectSpot.State.Empty&& !_.IsReserved ).RandomElement();
 	}
 
-	public Type GetRoomType() {
+    public List<Character> GetCharacters()
+    {
+        return _charactersInRoom;
+    }
+
+	public RoomType GetRoomType() {
 
 		return _roomType;
 	}
@@ -140,8 +159,8 @@ public class Room : MonoBehaviour {
 	private void OnCharacterDie( Character.Died diedEvent ) {
 
 		if ( _charactersInRoom.Remove( diedEvent.Character ) ) {
-
-			if ( _charactersInRoom.IsEmpty() ) {
+            EventSystem.RaiseEvent(new CharacterDied() { Room = this });
+            if ( _charactersInRoom.IsEmpty() ) {
 
 				EventSystem.RaiseEvent( new EveryoneDied {Room = this} );
 			}

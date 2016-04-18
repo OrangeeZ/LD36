@@ -23,7 +23,7 @@ public class HealbotObject : EnvironmentObjectSpot {
 
 	private void OnEveryoneDieInRoom( Room.EveryoneDied everyoneDiedEvent ) {
 
-		if ( everyoneDiedEvent.Room.GetRoomType() != Room.Type.MedicalBay ) {
+		if ( everyoneDiedEvent.Room.GetRoomType() != Room.RoomType.MedicalBay ) {
 
 			return;
 		}

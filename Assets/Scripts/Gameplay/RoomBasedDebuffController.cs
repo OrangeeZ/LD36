@@ -20,7 +20,7 @@ public class RoomBasedDebuffController : MonoBehaviour {
 
 		switch ( everyoneDiedEvent.Room.GetRoomType() ) {
 
-			case Room.Type.Workshop:
+			case Room.RoomType.Workshop:
 				var weapon = playerCharacter.Inventory.GetArmSlotItem( ArmSlotType.Primary ) as RangedWeaponInfo.RangedWeapon;
 				weapon.ReloadDurationScale = 2f;
 				break;
