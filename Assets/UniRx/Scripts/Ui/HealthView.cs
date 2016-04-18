@@ -22,9 +22,10 @@ namespace Assets.UniRx.Scripts.Ui
         {
             if (Mathf.Approximately(healthValue,_currentHealth))
                 return;
+
             _previousHealth = _currentHealth;
             _currentHealth = healthValue;
-            var heathProc = Math.Round(healthValue/ _character.Info.statusInfo.MaxHealth * 10);
+	        var heathProc = Math.Round( healthValue / _character.Info.statusInfo.MaxHealth * 100f );
             _text.text = string.Format("{0}%", heathProc);
         }
 

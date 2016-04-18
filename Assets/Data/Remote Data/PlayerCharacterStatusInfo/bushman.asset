@@ -11,8 +11,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f3e2eaa14a8550d419e10beb2e37187d, type: 3}
   m_Name: bushman
   m_EditorClassIdentifier: 
-  MaxHealth: 100
-  MoveSpeed: 10
+  MaxHealth: 10
+  MoveSpeed: 4
   Damage: 0
   MaxAcorns: 0
   status:

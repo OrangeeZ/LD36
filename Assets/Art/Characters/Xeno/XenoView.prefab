@@ -206,6 +206,7 @@ MonoBehaviour:
   _warFogTracer: {fileID: 0}
   _spriteAnimationController: {fileID: 11443988}
   _navMeshAgent: {fileID: 19573878}
+  _spriteRenderer: {fileID: 21230608}
 --- !u!114 &11454982
 MonoBehaviour:
   m_ObjectHideFlags: 1

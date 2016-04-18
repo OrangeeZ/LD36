@@ -36,6 +36,12 @@ public class XenoEscapeToVentilationHatchInfo : CharacterStateInfo {
 
 			} while ( pawn.GetDistanceToDestination() > 1f );
 
+			var fade = pawn.Fade( isOut: false ).GetEnumerator();
+			while ( fade.MoveNext() ) {
+
+				yield return null;
+			}
+
 			var randomRoom = Room.RandomRoomExcept( currentRoom );
 			pawn.SetPosition( randomRoom.transform.position );
 		}

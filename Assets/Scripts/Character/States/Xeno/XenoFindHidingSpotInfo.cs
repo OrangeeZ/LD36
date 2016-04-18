@@ -21,7 +21,7 @@ public class XenoFindHidingSpotInfo : CharacterStateInfo {
 
 		public override IEnumerable GetEvaluationBlock() {
 
-			var pawn = character.Pawn;
+			var pawn = character.Pawn as EnemyCharacterPawn;
 			var hidingSpot = GetFarthestObject();
 
 			do {
@@ -34,7 +34,9 @@ public class XenoFindHidingSpotInfo : CharacterStateInfo {
 
 			} while ( pawn.GetDistanceToDestination() > 1f );
 
-			character.Pawn.SetActive( false );
+			pawn.SetPosition( hidingSpot.position );
+			pawn.SetActive( false );
+			
 			hidingSpot.SetState( EnvironmentObjectSpot.State.Infected );
 
 			var waitState = stateController.GetState<XenoWaitInHidingSpotInfo.State>();
