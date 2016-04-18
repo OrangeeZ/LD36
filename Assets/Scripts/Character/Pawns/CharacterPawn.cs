@@ -104,7 +104,7 @@ public class CharacterPawn : CharacterPawnBase {
 		GetComponent<Collider>().enabled = false;
 	}
 
-	protected void UpdateSpriteAnimationDirection( Vector3 direction ) {
+	public void UpdateSpriteAnimationDirection( Vector3 direction ) {
 		
 		var directionX = (int) Mathf.Clamp( -direction.x * 100, -1, 1 );
 		var directionY = (int) Mathf.Clamp( -direction.z * 100, -1, 1 );

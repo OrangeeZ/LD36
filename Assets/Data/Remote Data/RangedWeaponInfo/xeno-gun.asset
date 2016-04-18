@@ -20,7 +20,7 @@ MonoBehaviour:
   AttackRange: 1.2
   CanFriendlyFire: 0
   SlotType: 0
-  _projectilePrefab: {fileID: 11433014, guid: 48862396712465c409d8375150370077, type: 2}
+  _projectilePrefab: {fileID: 11433014, guid: 4712a3f6709159e40862a5c73585ca96, type: 2}
   _projectileSpeed: 1.5
   ClipSize: 1
   ReloadDuration: 2
