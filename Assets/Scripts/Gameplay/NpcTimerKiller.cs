@@ -8,25 +8,29 @@ public class NpcTimerKiller : MonoBehaviour {
 	[SerializeField]
 	private float _interval = 10f;
 
+	[SerializeField]
+	private PlayerCharacterSpawner _playerCharacterSpawner;
+
 	private AutoTimer _timer;
 
-	void Start() {
-		
+	private void Start() {
+
 		_timer = new AutoTimer( _interval );
 
 		EventSystem.Events.SubscribeOfType<XenoDeadStateInfo.Dead>( OnXenoDie );
 	}
 
-	void Update() {
+	private void Update() {
 
 		if ( _timer.ValueNormalized >= 1f ) {
-			
+
 			_timer.Reset();
 
-			var randomNpc = Room.GetRandomNpc();
+			var characterRoom = Room.FindRoomForPosition( _playerCharacterSpawner.character.Pawn.position );
+			var randomNpc = Room.GetRandomNpc( roomToSkip: characterRoom );
 			if ( randomNpc != null ) {
 
-				Room.GetRandomNpc().Damage( 9999 );
+				randomNpc.Damage( 9999 );
 
 				Debug.Log( "Kill NPC" );
 			}
@@ -34,7 +38,7 @@ public class NpcTimerKiller : MonoBehaviour {
 	}
 
 	private void OnXenoDie( XenoDeadStateInfo.Dead eventObject ) {
-		
+
 		Debug.Log( "Reset timer" );
 
 		_timer.Reset();

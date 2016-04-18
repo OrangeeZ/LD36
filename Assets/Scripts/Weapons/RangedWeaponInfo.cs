@@ -68,6 +68,8 @@ public class RangedWeaponInfo : WeaponInfo {
 			get { return _behaviour == null ? true : _behaviour.IsReloading; }
 		}
 
+		public Vector3 AttackDirection { get; private set; }
+
 		private bool IsAttackAvailable {
 			get { return !_behaviour.IsReloading && ( IsUnlimited || AmmoInClip >= 0 ); }
 		}
@@ -153,7 +155,8 @@ public class RangedWeaponInfo : WeaponInfo {
 					_typedInfo._projectileSpeed, finalDamage, _typedInfo.CanFriendlyFire,
 					_typedInfo._splashDamageRadius );
 
-				EventSystem.RaiseEvent( new Fire { Character = Character, Weapon = this } );
+				AttackDirection = direction;
+                EventSystem.RaiseEvent( new Fire { Character = Character, Weapon = this } );
 
 				if ( _behaviour.TryShoot() ) {
 
