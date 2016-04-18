@@ -18,6 +18,7 @@ GameObject:
   - 45: {fileID: 4551308}
   - 114: {fileID: 11442040}
   - 114: {fileID: 11482470}
+  - 114: {fileID: 11452192}
   m_Layer: 0
   m_Name: Camera
   m_TagString: MainCamera
@@ -290,6 +291,23 @@ MonoBehaviour:
   jitter: 0.05
   showVelocity: 0
   showVelocityScale: 1
+--- !u!114 &11452192
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 102982}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7fc6bde01469c7b4badee5362f191d96, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  downsample: 1
+  blurSize: 3
+  blurIterations: 2
+  IsActive: 0
+  blurType: 0
+  blurShader: {fileID: 4800000, guid: f9d5fa183cd6b45eeb1491f74863cd91, type: 3}
 --- !u!114 &11456236
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -339,6 +357,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _shader: {fileID: 4800000, guid: 76809427fce3f284c8dfba8a9b77772b, type: 3}
+  _blurOptimized: {fileID: 11452192}
 --- !u!114 &11484066
 MonoBehaviour:
   m_ObjectHideFlags: 1
