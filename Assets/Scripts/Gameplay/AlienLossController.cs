@@ -5,6 +5,9 @@ using UniRx;
 
 public class AlienLossController : MonoBehaviour {
 
+	[SerializeField]
+	private EnemySpawner _motherSpawner;
+
 	private int _alienCount = 0;
 
 	// Use this for initialization
@@ -22,6 +25,8 @@ public class AlienLossController : MonoBehaviour {
 
 		if ( _alienCount == 0 ) {
 
+			SpawnMother();
+
 			Debug.Log( "All aliens dead" );
 		}
 	}
@@ -31,6 +36,19 @@ public class AlienLossController : MonoBehaviour {
 		if ( eventObject.Character.Status.Info.name.Contains( "xen" ) ) {
 
 			_alienCount++;
+		}
+	}
+
+	private void SpawnMother() {
+
+		_motherSpawner.Initialize();
+	}
+
+	void OnGUI() {
+
+		if ( GUILayout.Button( "Spawn mother" ) ) {
+
+			SpawnMother();
 		}
 	}
 

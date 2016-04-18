@@ -28,6 +28,16 @@ public class AutoSpriteSorter : MonoBehaviour {
 
 			UnityEditor.EditorUtility.SetDirty( each );
 		}
+
+		foreach ( var each in GetComponentsInChildren<TileMovement>() ) {
+			
+			DestroyImmediate( each );
+		}
+
+		foreach ( var each in GetComponentsInChildren<IsometricMapGenerator>() ) {
+
+			DestroyImmediate( each );
+		}
 #endif
 	}
 
