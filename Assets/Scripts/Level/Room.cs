@@ -149,9 +149,9 @@ public class Room : MonoBehaviour {
 		return transform.localToWorldMatrix.MultiplyPoint3x4( randomExtents + _bounds.center );
 	}
 
-	public static Character GetRandomNpc() {
+	public static Character GetRandomNpc(Room roomToSkip) {
 
-		var allNpcs = _instances.SelectMany( _ => _._charactersInRoom );
+		var allNpcs = _instances.Where( _ => _ != roomToSkip ).SelectMany( _ => _._charactersInRoom );
 
 		return allNpcs.RandomElement();
 	}

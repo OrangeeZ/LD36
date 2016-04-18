@@ -290,6 +290,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _interval: 15
+  _playerCharacterSpawner: {fileID: 1180975180}
 --- !u!114 &1247619349
 MonoBehaviour:
   m_ObjectHideFlags: 0
