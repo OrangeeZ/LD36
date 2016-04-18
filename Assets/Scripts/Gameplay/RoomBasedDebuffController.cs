@@ -24,6 +24,10 @@ public class RoomBasedDebuffController : MonoBehaviour {
 				var weapon = playerCharacter.Inventory.GetArmSlotItem( ArmSlotType.Primary ) as RangedWeaponInfo.RangedWeapon;
 				weapon.ReloadDurationScale = 2f;
 				break;
+
+			case Room.RoomType.Reactor:
+				playerCharacter.Pawn.GetComponent<WarFogTracer>().SetRadiusScale( 0.3f );
+				break;
 		}
 	}
 

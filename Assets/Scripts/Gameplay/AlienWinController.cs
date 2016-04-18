@@ -16,6 +16,11 @@ public class AlienWinController : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
+		if ( _playerCharacterSpawner.character == null ) {
+
+			return;
+		}
+
 		var randomNpc = Room.GetRandomNpc( null );
 		if ( randomNpc == null ) {
 			

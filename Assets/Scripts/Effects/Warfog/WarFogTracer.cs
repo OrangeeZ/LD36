@@ -5,6 +5,8 @@ using System;
 
 public class WarFogTracer : MonoBehaviour {
 
+	public float RadiusScale { get; set; }
+
 	[SerializeField]
 	private float _radius = 5f;
 
@@ -19,7 +21,9 @@ public class WarFogTracer : MonoBehaviour {
 	}
 
 	void Start() {
-		
+
+		RadiusScale = 1f;
+
 		WarFogController.Tracers.Add( this );
 	}
 
@@ -28,9 +32,17 @@ public class WarFogTracer : MonoBehaviour {
 		WarFogController.Tracers.Remove( this );
 	}
 
+	public void SetRadiusScale( float scale ) {
+
+		RadiusScale = scale;
+
+		_warFogSpaceMap.ClearVisible();
+	}
+
 	public void Trace( WarFogSpaceMap warFogSpaceMap ) {
 
-		warFogSpaceMap.Trace( transform.position, Mathf.RoundToInt( _radius ) );
+		_warFogSpaceMap = warFogSpaceMap;
+		warFogSpaceMap.Trace( transform.position, Mathf.RoundToInt( _radius * RadiusScale ) );
 	}
 
 }
