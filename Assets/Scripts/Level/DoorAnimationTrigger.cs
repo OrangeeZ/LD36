@@ -1,10 +1,18 @@
 ﻿using System.Collections.Generic;
+using Packages.EventSystem;
+using UnityEditor;
 using UnityEngine;
 
 namespace Assets.Scripts.Level
 {
     public class DoorAnimationTrigger : MonoBehaviour
     {
+		public class StateChange : IEventBase {
+
+			public DoorAnimationTrigger Trigger;
+
+		}
+
         private List<Animator> _animators = new List<Animator>();
 
         public bool IsOpen { get; protected set; }
@@ -33,6 +41,8 @@ namespace Assets.Scripts.Level
             if (component == null) return;
             IsOpen = state;
             _animators.ForEach(x => x.SetBool("Open", IsOpen));
+
+			EventSystem.RaiseEvent( new StateChange { Trigger =  this} );
         }
 
         private void Awake()
