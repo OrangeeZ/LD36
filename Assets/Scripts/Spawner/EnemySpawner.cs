@@ -21,12 +21,8 @@ public class EnemySpawner : SpawnerBase {
 	[Expressions.CalculatorExpression]
 	public StringReactiveProperty Activation;
 
-	private Expressions.ReactiveCalculator _reactCalc;
-
 	[Expressions.CalculatorExpression]
 	public StringReactiveProperty Deactivation;
-
-	private Expressions.ReactiveCalculator _reactCalcDeact;
 
 	void OnValidate() {
 		
@@ -34,10 +30,7 @@ public class EnemySpawner : SpawnerBase {
 	}
 
 	public override void Initialize() {
-
-		_reactCalc = new Expressions.ReactiveCalculator( Activation );
-		_reactCalcDeact = new Expressions.ReactiveCalculator( Deactivation );
-
+		
 		Spawn();
 	}
 
@@ -47,17 +40,11 @@ public class EnemySpawner : SpawnerBase {
 	}
 
 	private void Spawn() {
+
 		_startTime = 0.0f;
-
-		if ( _reactCalc.Result.Value < 0 ) {
-			return;
-		}
-
-		if ( _reactCalcDeact.Result.Value >= 0 ) {
-			return;
-		}
-
+		
 		if ( SpawnLimit > 0 && _spawnCount >= SpawnLimit ) {
+
 			return;
 		}
 		_spawnCount += 1;
@@ -75,13 +62,4 @@ public class EnemySpawner : SpawnerBase {
 		}
 
 	}
-
-	private void Update() {
-		_startTime += Time.deltaTime;
-
-		if ( _startTime >= SpawnInterval ) {
-			Spawn();
-		}
-	}
-
 }

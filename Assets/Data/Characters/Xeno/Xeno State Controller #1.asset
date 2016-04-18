@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Name: 'Xeno State Controller #1'
   m_EditorClassIdentifier: 
   updateAnimation: 1
-  isDebug: 1
+  isDebug: 0
   entries:
   - stateInfo: {fileID: 11400000, guid: c39e294ad68cb3540abc6f169ff42fa3, type: 2}
     transitionMask: 00010101010101

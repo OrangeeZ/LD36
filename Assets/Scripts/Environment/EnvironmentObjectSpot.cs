@@ -81,10 +81,7 @@ public class EnvironmentObjectSpot : AObject {
 		switch ( state ) {
 
 			case State.Infected:
-				_viewInstance = Instantiate( GetRandomView() );
-				_viewInstance.transform.SetParent( transform, worldPositionStays: false );
-				_viewInstance.transform.rotation = Quaternion.identity;
-				//Destroy( _viewInstance.GetComponent<Collider>() );
+				SetInfectedState();
 				break;
 
 			case State.Destroyed:
@@ -96,6 +93,13 @@ public class EnvironmentObjectSpot : AObject {
 	public State GetState() {
 
 		return _state;
+	}
+
+	protected virtual void SetInfectedState() {
+
+		_viewInstance = Instantiate( GetRandomView() );
+		_viewInstance.transform.SetParent( transform, worldPositionStays: false );
+		_viewInstance.transform.rotation = Quaternion.identity;;
 	}
 
 	private GameObject GetRandomView() {
