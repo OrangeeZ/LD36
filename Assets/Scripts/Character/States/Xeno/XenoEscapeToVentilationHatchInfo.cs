@@ -36,6 +36,12 @@ public class XenoEscapeToVentilationHatchInfo : CharacterStateInfo {
 
 			} while ( pawn.GetDistanceToDestination() > 1f );
 
+			var randomSound = character.Status.Info.IdleSounds.RandomElement();
+			if ( randomSound != null ) {
+				
+				AudioSource.PlayClipAtPoint( randomSound, character.Pawn.position );
+			}
+
 			var fade = pawn.Fade( isOut: false ).GetEnumerator();
 			while ( fade.MoveNext() ) {
 

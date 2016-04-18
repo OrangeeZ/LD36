@@ -77,6 +77,12 @@ public class XenoWaitInHidingSpotInfo : CharacterStateInfo {
 					character.Damage( 9999 );
 				}
 
+				var randomSound = character.Status.Info.IdleSounds.RandomElement();
+				if ( randomSound != null ) {
+
+					AudioSource.PlayClipAtPoint( randomSound, character.Pawn.position );
+				}
+
 				if ( _hidingSpot != null ) {
 
 					_hidingSpot.TryResetState();

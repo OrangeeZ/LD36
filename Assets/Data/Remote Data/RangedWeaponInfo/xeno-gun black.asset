@@ -27,7 +27,10 @@ MonoBehaviour:
   _projectilesPerShot: 1
   _shotConeAngle: 30
   _sounds:
-  - {fileID: 8300000, guid: c8e6d13c66db451478f7d0acb8f2a732, type: 3}
+  - {fileID: 8300000, guid: 7135119149350d64f811f58db2ca2268, type: 3}
+  - {fileID: 8300000, guid: df7814244937d184fb54a7c55dad9c1e, type: 3}
+  - {fileID: 8300000, guid: d37c3dd1221371547a63f115f3330659, type: 3}
+  - {fileID: 8300000, guid: 640358d96a448d14692b2d7cb1ea59e2, type: 3}
   _ammoLimit: 100
   _ammoAmount: 100
   _projectileLifetime: 0.2
