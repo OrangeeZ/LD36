@@ -113,7 +113,7 @@ public class Room : MonoBehaviour {
 			return null;
 		}
 
-		return _objectSpots.Where( _ => _.GetState() == EnvironmentObjectSpot.State.Empty ).RandomElement();
+		return _objectSpots.Where( _ => _.GetState() == EnvironmentObjectSpot.State.Empty&& !_.IsReserved ).RandomElement();
 	}
 
 	public Type GetRoomType() {

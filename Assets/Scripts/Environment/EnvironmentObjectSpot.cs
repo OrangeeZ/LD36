@@ -34,6 +34,8 @@ public class EnvironmentObjectSpot : AObject {
 
 	}
 
+	public bool IsReserved { get; private set; }
+
 	private void Start() {
 
 		if ( _state == State.Default ) {
@@ -71,6 +73,8 @@ public class EnvironmentObjectSpot : AObject {
 			Destroy( _viewInstance );
 
 			_state = State.Empty;
+
+			SetReserved( false );
 		}
 	}
 
@@ -115,6 +119,11 @@ public class EnvironmentObjectSpot : AObject {
 			default:
 				return _info.GetRandomPrefab();
 		}
+	}
+
+	public void SetReserved( bool value ) {
+
+		IsReserved = value;
 	}
 
 }

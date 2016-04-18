@@ -18854,11 +18854,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 11457676, guid: 8306d53d363131545886865d35e7fec2, type: 2}
       propertyPath: _orientationType
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 194672, guid: 8306d53d363131545886865d35e7fec2, type: 2}
       propertyPath: m_Name
-      value: ObjectSpot [LeftSide]
+      value: ObjectSpot [RightSide]
       objectReference: {fileID: 0}
     - target: {fileID: 149702, guid: 8306d53d363131545886865d35e7fec2, type: 2}
       propertyPath: m_Name
