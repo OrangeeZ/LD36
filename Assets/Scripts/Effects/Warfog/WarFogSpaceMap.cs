@@ -102,7 +102,7 @@ public class WarFogSpaceMap : MonoBehaviour {
 
 		for ( var i = 0; i < _warFogColors.Length; i++ ) {
 
-			_warFogColors[i].a = _visibilityMap[i];
+			_warFogColors[i].r = _visibilityMap[i];
 		}
 
 		_warFogTexture.SetPixels32( _warFogColors );
@@ -148,7 +148,7 @@ public class WarFogSpaceMap : MonoBehaviour {
 			DestroyImmediate( _warFogTexture );
 		}
 
-		_warFogTexture = new Texture2D( _cellsX, _cellsZ, TextureFormat.Alpha8, mipmap: false );
+		_warFogTexture = new Texture2D( _cellsX, _cellsZ, TextureFormat.RGB24, mipmap: false );
 		_warFogColors = _warFogTexture.GetPixels32();
 
 		_visibilityMap = new byte[_cellsX * _cellsZ];
