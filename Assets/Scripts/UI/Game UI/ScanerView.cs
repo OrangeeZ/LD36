@@ -168,7 +168,13 @@ namespace Assets.Scripts.UI.Game_UI
 
         private void OnCooldownPassed()
         {
-            SetState(ScanerState.Disable);
+	        if ( _scanerState == ScanerState.Active ) {
+
+				SetState( ScanerState.Disable );
+	        } else if ( _scanerState == ScanerState.Disable ) {
+		        
+				SetState( ScanerState.Ready );
+	        }
         }
     }
 }

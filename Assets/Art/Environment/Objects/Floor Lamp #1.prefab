@@ -28,7 +28,7 @@ GameObject:
   - 54: {fileID: 5473958}
   - 65: {fileID: 6553600}
   m_Layer: 0
-  m_Name: 'Case #1 Left'
+  m_Name: 'Floor Lamp #1'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -85,7 +85,7 @@ BoxCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 0.512148, y: 1.8036165, z: 1.0457764}
-  m_Center: {x: -0.014506817, y: 0.40180826, z: 0.33}
+  m_Center: {x: -0.014506817, y: 0.40180826, z: 0.44}
 --- !u!114 &11425166
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -127,7 +127,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1488498939
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 547cd711a5828d04fb7ff54cc98bef94, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 925019197d52a614eb9ddc0b8ab8bfb3, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

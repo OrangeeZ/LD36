@@ -21,3 +21,4 @@ MonoBehaviour:
   _universalPrefabs:
   - {fileID: 173986, guid: 1ddd6a80a9cd30140a265799786c029d, type: 2}
   - {fileID: 173986, guid: a941b182247acae4ab71fea1747a9613, type: 2}
+  - {fileID: 173986, guid: 125af4bd103657f47822775fa5a8413d, type: 2}

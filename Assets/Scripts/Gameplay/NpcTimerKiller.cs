@@ -27,12 +27,16 @@ public class NpcTimerKiller : MonoBehaviour {
 			if ( randomNpc != null ) {
 
 				Room.GetRandomNpc().Damage( 9999 );
+
+				Debug.Log( "Kill NPC" );
 			}
 		}
 	}
 
 	private void OnXenoDie( XenoDeadStateInfo.Dead eventObject ) {
 		
+		Debug.Log( "Reset timer" );
+
 		_timer.Reset();
 	}
 

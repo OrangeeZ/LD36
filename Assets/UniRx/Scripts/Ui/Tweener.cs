@@ -42,7 +42,6 @@ namespace UI.uGui.Animations
             if (_coroutine != null)
                 StopCoroutine(_coroutine);
             OnAnimationStop();
-            AnimaitonFinished.Invoke();
         }
 
         // Update is called once per frame
@@ -76,7 +75,9 @@ namespace UI.uGui.Animations
         protected virtual void OnAnimationFinished()
         {
             OnAnimationStop();
-        }
+
+			AnimaitonFinished.Invoke();
+		}
 
         protected virtual void Initialize()
         {
