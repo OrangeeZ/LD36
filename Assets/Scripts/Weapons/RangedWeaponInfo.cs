@@ -113,6 +113,9 @@ public class RangedWeaponInfo : WeaponInfo {
 
 				var projectile = GetProjectileInstance();
 				var targetDirection = ( target.Pawn.position - Character.Pawn.position ).Set( y: 0 ).normalized;
+
+				AttackDirection = targetDirection;
+
 				var projectileDirection = GetOffsetDirection( targetDirection, i );
 
 				var finalDamage = ModifierCalculator.CalculateFinalValue( ModifierType.BaseDamage,

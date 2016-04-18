@@ -2,6 +2,7 @@
 using UniRx;
 using UnityEngine;
 using System.Collections;
+using System.Runtime.Remoting.Channels;
 
 [CreateAssetMenu( menuName = "Create/States/Attack target" )]
 public class AttackStateInfo : CharacterStateInfo {
@@ -9,55 +10,58 @@ public class AttackStateInfo : CharacterStateInfo {
 	[SerializeField]
 	private bool _attackOnce = false;
 
-    [Serializable]
-    public class State : CharacterState<AttackStateInfo> {
+	[Serializable]
+	public class State : CharacterState<AttackStateInfo> {
 
-        private Character target;
+		private Character target;
 
-        public State( CharacterStateInfo info ) : base( info ) {
-        }
+		public State( CharacterStateInfo info ) : base( info ) {
+		}
 
-        public void SetTarget( Character targetCharacter ) {
+		public void SetTarget( Character targetCharacter ) {
 
-            if ( targetCharacter != character ) {
+			if ( targetCharacter != character ) {
 
-                target = targetCharacter;
-            }
-        }
+				target = targetCharacter;
+			}
+		}
 
-        public override bool CanBeSet() {
+		public override bool CanBeSet() {
 
 			var weapon = GetCurrentWeapon();
 
-			return target != null && weapon != null && weapon.CanAttack( target );
-        }
+			return target != null && weapon != null; // && weapon.CanAttack( target );
+		}
 
-        public override IEnumerable GetEvaluationBlock() {
+		public override IEnumerable GetEvaluationBlock() {
 
-	        var weapon = GetCurrentWeapon();
+			var weapon = GetCurrentWeapon();
 
-            while ( CanBeSet() ) {
+			while ( CanBeSet() ) {
 
 				weapon.Attack( target, character.Status.Info as EnemyCharacterStatusInfo );
 
+				character.Pawn.UpdateSpriteAnimationDirection( weapon.AttackDirection );
+
 				yield return null;
 
-	            if ( typedInfo._attackOnce ) {
-		            
+				if ( typedInfo._attackOnce ) {
+
 					break;
-	            }
-            }
-        }
+				}
+			}
+		}
 
-	    private Weapon GetCurrentWeapon() {
+		private RangedWeaponInfo.RangedWeapon GetCurrentWeapon() {
 
-		    return character.Inventory.GetArmSlotItem( ArmSlotType.Primary ) as Weapon;
-	    }
-    }
+			return character.Inventory.GetArmSlotItem( ArmSlotType.Primary ) as RangedWeaponInfo.RangedWeapon;
+		}
 
-    public override CharacterState GetState() {
+	}
 
-        return new State( this );
-    }
+	public override CharacterState GetState() {
+
+		return new State( this );
+	}
 
 }
