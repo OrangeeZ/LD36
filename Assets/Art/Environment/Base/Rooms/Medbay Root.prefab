@@ -5416,6 +5416,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _spriteRenderer: {fileID: 21287422}
+  _bias: 0
 --- !u!114 &11407610
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -5798,6 +5799,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _spriteRenderer: {fileID: 21213120}
+  _bias: 0
 --- !u!114 &11432304
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -6052,6 +6054,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _spriteRenderer: {fileID: 21269604}
+  _bias: 0
 --- !u!114 &11453774
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -6111,6 +6114,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _spriteRenderer: {fileID: 21280194}
+  _bias: 0
 --- !u!114 &11459266
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -6628,6 +6632,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _spriteRenderer: {fileID: 21221772}
+  _bias: 0
 --- !u!114 &11482108
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -6640,6 +6645,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _spriteRenderer: {fileID: 21278792}
+  _bias: 0
 --- !u!114 &11482318
 MonoBehaviour:
   m_ObjectHideFlags: 1

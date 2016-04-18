@@ -12,7 +12,7 @@ GameObject:
   - 95: {fileID: 9586800}
   - 114: {fileID: 11476022}
   m_Layer: 0
-  m_Name: Light2
+  m_Name: Light1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -39,7 +39,7 @@ Animator:
   m_GameObject: {fileID: 147280}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 0a7d7030c9230a244b388b041a6d142d, type: 2}
+  m_Controller: {fileID: 9100000, guid: 4db3180099f59094892df657d39bfb87, type: 2}
   m_CullingMode: 2
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
