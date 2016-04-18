@@ -16,7 +16,7 @@ public class SpriteRendererSorter : MonoBehaviour {
 
 		transform.hasChanged = false;
 
-		_spriteRenderer.sortingOrder = Mathf.RoundToInt( -_spriteRenderer.transform.position.z * 10f );
+		_spriteRenderer.sortingOrder = Mathf.RoundToInt( -_spriteRenderer.transform.position.z * 100f );
 	}
 
 	void Reset() {

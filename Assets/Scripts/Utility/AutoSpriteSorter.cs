@@ -9,7 +9,7 @@ public class AutoSpriteSorter : MonoBehaviour {
 		var sprites = GetComponentsInChildren<SpriteRenderer>();
 		foreach ( var each in sprites ) {
 
-			each.sortingOrder = Mathf.RoundToInt( -each.transform.position.z * 10f );
+			each.sortingOrder = Mathf.RoundToInt( -each.transform.position.z * 100f );
 
 			UnityEditor.EditorUtility.SetDirty( each );
 		}
