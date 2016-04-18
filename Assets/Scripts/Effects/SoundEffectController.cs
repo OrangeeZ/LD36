@@ -12,10 +12,22 @@ public class SoundEffectController : MonoBehaviour {
 	[SerializeField]
 	private AudioClip _doorClose;
 
+	[SerializeField]
+	private AudioClip _roomPowerDown;
+
 	// Use this for initialization
 	private void Start() {
 
 		EventSystem.Events.SubscribeOfType<DoorAnimationTrigger.StateChange>( OnDoorStateChange );
+		EventSystem.Events.SubscribeOfType<Room.EveryoneDied>( OnEveryoneDieInRoom );
+	}
+
+	private void OnEveryoneDieInRoom( Room.EveryoneDied eventObject ) {
+
+		if ( eventObject.Room.GetRoomType() != Room.RoomType.Default ) {
+
+			AudioSource.PlayClipAtPoint( _roomPowerDown, Vector3.zero );
+		}
 	}
 
 	private void OnDoorStateChange( DoorAnimationTrigger.StateChange eventObject ) {
