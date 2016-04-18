@@ -95,6 +95,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 456023988}
   - 114: {fileID: 456023987}
+  - 114: {fileID: 456023989}
   m_Layer: 0
   m_Name: Effect Spawner
   m_TagString: Untagged
@@ -127,6 +128,22 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 3
+--- !u!114 &456023989
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 456023986}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec6851a516bc5ed4fb82bf2fb65b428d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _doorOpen: {fileID: 8300000, guid: 8aa29bf323076234db986ee7f5688f38, type: 3}
+  _doorClose: {fileID: 8300000, guid: d7b19609ec69b814186735b756d18ef7, type: 3}
+  _roomPowerDown: {fileID: 8300000, guid: 69f38a28c744b9247b04ea09760e5623, type: 3}
+  _healbotHealSuccess: {fileID: 8300000, guid: 40155f5ed3b28a84d9e7a21b9625f947, type: 3}
+  _healbotHealFailed: {fileID: 8300000, guid: 25bac3a608b4e6349929771d8bacf7cd, type: 3}
 --- !u!1 &857275393
 GameObject:
   m_ObjectHideFlags: 0
@@ -176,6 +193,108 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
+--- !u!1 &864959399
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 864959401}
+  - 82: {fileID: 864959400}
+  m_Layer: 0
+  m_Name: Music
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!82 &864959400
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 864959399}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 26bdd40fa849d8c458a88b3c7a9a0465, type: 3}
+  m_PlayOnAwake: 1
+  m_Volume: 0.6
+  m_Pitch: 1
+  Loop: 1
+  Mute: 0
+  Spatialize: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+--- !u!4 &864959401
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 864959399}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 4
 --- !u!1 &1180975179
 GameObject:
   m_ObjectHideFlags: 0
@@ -246,6 +365,7 @@ GameObject:
   - 114: {fileID: 1247619346}
   - 114: {fileID: 1247619348}
   - 114: {fileID: 1247619349}
+  - 114: {fileID: 1247619350}
   m_Layer: 0
   m_Name: Gameplay Controller
   m_TagString: Untagged
@@ -290,7 +410,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 16cffed6869c8204d91df11a4aadbd9b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _interval: 15
+  _interval: 10
   _playerCharacterSpawner: {fileID: 1180975180}
 --- !u!114 &1247619349
 MonoBehaviour:
@@ -304,3 +424,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _motherSpawner: {fileID: 857275394}
+--- !u!114 &1247619350
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1247619345}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f71b92b5b161be34e86dfccf538fc1a2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _xenoMotherSpawner: {fileID: 857275394}
+  _blackAlienSpawnerPrefab: {fileID: 11429670, guid: 8a40381780e1bf748ad754117b889e59,
+    type: 2}
+  _playerCharacterSpawner: {fileID: 1180975180}

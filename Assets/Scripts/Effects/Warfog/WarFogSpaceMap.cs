@@ -306,7 +306,7 @@ public class WarFogSpaceMap : MonoBehaviour {
 		return false;
 	}
 
-	private void ClearVisible() {
+	public void ClearVisible() {
 
 		for ( var i = 0; i < _spaceMap.Length; ++i ) {
 

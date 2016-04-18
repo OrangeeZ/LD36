@@ -15,6 +15,13 @@ MonoBehaviour:
   MoveSpeed: 8
   Damage: 0
   MaxAcorns: 0
+  IdleSounds:
+  - {fileID: 8300000, guid: a00d1968ce2cd484e8cec89d41c70d7d, type: 3}
+  - {fileID: 8300000, guid: ce7ef3c5fa7e5144cb1fed294de056e9, type: 3}
+  - {fileID: 8300000, guid: 8810f755a69221847b9a7a7f65a6b1d7, type: 3}
+  DeathSounds:
+  - {fileID: 8300000, guid: 27b155e454b23814da69bd53ad76eb01, type: 3}
+  - {fileID: 8300000, guid: e4215e4c27909f64dbaef62e96520d14, type: 3}
   status:
     Strength:
       value: 0
@@ -25,8 +32,7 @@ MonoBehaviour:
   ItemsToDrop: []
   PawnPrefab: {fileID: 11453438, guid: fcbcf945ef08cd94aa0bdd24275adc9d, type: 2}
   DropChance: 0.3
-  EnemySpottedSound:
-  - {fileID: 8300000, guid: 7ad0210e7ee9442a3b8e85531b0d9cfb, type: 3}
+  EnemySpottedSound: []
   SpawnInterval: 25
   MaxLiveEnemiesPerSpawner: 6
   SpeakChance: 0.2

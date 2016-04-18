@@ -33,6 +33,9 @@ public class DeadStateInfo : CharacterStateInfo {
 
 				character.Pawn.SetActive( false );
 
+				var deathSound = character.Status.Info.DeathSounds.RandomElement();
+				AudioSource.PlayClipAtPoint( deathSound, character.Pawn.position );
+
 				if ( 1f.Random() <= character.dropProbability && !character.ItemsToDrop.IsNullOrEmpty() ) {
 
 					character.ItemsToDrop.RandomElement().DropItem( character.Pawn.transform );

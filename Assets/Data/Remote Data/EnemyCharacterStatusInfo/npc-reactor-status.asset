@@ -15,6 +15,10 @@ MonoBehaviour:
   MoveSpeed: 5
   Damage: 0
   MaxAcorns: 0
+  IdleSounds: []
+  DeathSounds:
+  - {fileID: 8300000, guid: 68c98402923022743a36cb244903c733, type: 3}
+  - {fileID: 8300000, guid: 5106e8da58cd4064d89c44e26db757d1, type: 3}
   status:
     Strength:
       value: 0

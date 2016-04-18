@@ -7,6 +7,12 @@ namespace Assets.Scripts.Level
 {
     public class DoorAnimationTrigger : MonoBehaviour
     {
+		public class StateChange : IEventBase {
+
+			public DoorAnimationTrigger Trigger;
+
+		}
+
         private List<Animator> _animators = new List<Animator>();
         [SerializeField]
         private BoxCollider _boxCollider;
@@ -60,6 +66,8 @@ namespace Assets.Scripts.Level
             _boxCollider.enabled = !state;
             IsOpen = state;
             _animators.ForEach(x => x.SetBool("Open", IsOpen));
+
+			EventSystem.RaiseEvent( new StateChange { Trigger =  this} );
         }
 
         private void Awake()

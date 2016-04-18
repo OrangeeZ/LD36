@@ -13,6 +13,9 @@ public class CharacterStatusInfo : ScriptableObject, ICsvConfigurable {
 
 	public float MaxAcorns;
 
+	public AudioClip[] IdleSounds;
+	public AudioClip[] DeathSounds;
+
 	[SerializeField]
 	private CharacterStatus status;
 
