@@ -32,6 +32,7 @@ public class EnvironmentNpcSpot : EnvironmentObjectSpot {
 			_state = State.Empty;
 		}
 	}
+
 	protected override void SetInfectedState() {
 
 		_spawner.Initialize();
