@@ -16,7 +16,8 @@ MonoBehaviour:
   Damage: 0
   MaxAcorns: 0
   IdleSounds: []
-  DeathSounds: []
+  DeathSounds:
+  - {fileID: 8300000, guid: af486cfcc6cfc49429b14fe9b5e1a145, type: 3}
   status:
     Strength:
       value: 0
@@ -28,7 +29,7 @@ MonoBehaviour:
   PawnPrefab: {fileID: 11453438, guid: 52b09ab4e47a1e048ba71df96f3e15eb, type: 2}
   DropChance: 0.3
   EnemySpottedSound:
-  - {fileID: 8300000, guid: 7ad0210e7ee9442a3b8e85531b0d9cfb, type: 3}
+  - {fileID: 8300000, guid: c5e17cef7d928ea4a99459707a8f1700, type: 3}
   SpawnInterval: 25
   MaxLiveEnemiesPerSpawner: 6
   SpeakChance: 0.2
