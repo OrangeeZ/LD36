@@ -794,11 +794,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 22463528, guid: 69743523e59dad543937b57b2667cdb1, type: 2}
       propertyPath: m_RootOrder
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 22426040, guid: 69743523e59dad543937b57b2667cdb1, type: 2}
       propertyPath: m_RootOrder
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 11478044, guid: 69743523e59dad543937b57b2667cdb1, type: 2}
       propertyPath: _alienCounter
