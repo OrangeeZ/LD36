@@ -8,14 +8,22 @@ using UnityStandardAssets.Effects;
 public class EffectSpawner : AObject {
 
 	public GameObject CharacterDeathEffect;
+	public GameObject BossDeathEffect;
 	public GameObject PropsDeathEffect;
 	public GameObject ShockGunEffect;
 
 	private void Start() {
 
 		EventSystem.Events.SubscribeOfType<Character.Died>( OnCharacterDie );
+		EventSystem.Events.SubscribeOfType<XenoBossDeadStateInfo.Dead>( OnXenoBossDie );
 		EventSystem.Events.SubscribeOfType<RangedWeaponInfo.RangedWeapon.Fire>( OnWeaponFire );
 		EventSystem.Events.SubscribeOfType<XenoTriggerEvent>( OnXenoTrigger );
+	}
+
+	private void OnXenoBossDie( XenoBossDeadStateInfo.Dead eventObject ) {
+
+		Instantiate( BossDeathEffect, eventObject.Character.Pawn.position, eventObject.Character.Pawn.rotation );
+
 	}
 
 	private void OnXenoTrigger( XenoTriggerEvent eventObject ) {
