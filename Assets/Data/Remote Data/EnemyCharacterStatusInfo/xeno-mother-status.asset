@@ -11,10 +11,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a505d78e5be8bc34eb07117209f0d1b6, type: 3}
   m_Name: xeno-mother-status
   m_EditorClassIdentifier: 
-  MaxHealth: 50
+  MaxHealth: 10
   MoveSpeed: 0
   Damage: 0
   MaxAcorns: 0
+  IdleSounds: []
+  DeathSounds: []
   status:
     Strength:
       value: 0
