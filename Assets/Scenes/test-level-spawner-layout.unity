@@ -411,6 +411,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 16cffed6869c8204d91df11a4aadbd9b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _vilhelmScream: {fileID: 8300000, guid: 52a400e5ac377ae48b44bc8682660aff, type: 3}
   _interval: 15
   _playerCharacterSpawner: {fileID: 1180975180}
 --- !u!114 &1247619349

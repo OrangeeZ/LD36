@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using Packages.EventSystem;
 using UniRx;
+using UnityEngine.UI;
 
 public class AlienLossController : MonoBehaviour {
 
@@ -11,6 +12,7 @@ public class AlienLossController : MonoBehaviour {
     private List<Character> _enemies = new List<Character>();
 
     public static int AlienCount = 0;
+	public int AliensRemaining { get; set; }
 
 	// Use this for initialization
 	private void Awake() {
@@ -23,6 +25,8 @@ public class AlienLossController : MonoBehaviour {
 
 		AlienCount--;
 
+		AliensRemaining = AlienCount;
+		
 		Debug.LogFormat( "Alien count: {0}", AlienCount );
 
 		if ( AlienCount == 0 ) {
@@ -37,7 +41,10 @@ public class AlienLossController : MonoBehaviour {
 
 		if ( eventObject.Character.Status.Info.name.Contains( "xen" ) ) {
             _enemies.Add(eventObject.Character);
-            AlienCount++;
+
+			AlienCount++;
+
+			AliensRemaining = AlienCount;
 		}
 	}
 
