@@ -48,10 +48,10 @@ public class EnemySpawner : SpawnerBase {
 
 		_startTime = 0.0f;
 
-		if ( SpawnLimit > 0 && _spawnCount >= SpawnLimit ) {
+		//if ( SpawnLimit > 0 && _spawnCount >= SpawnLimit ) {
 
-			return;
-		}
+		//	return;
+		//}
 		_spawnCount += 1;
 
 		_character = characterInfo.GetCharacter( startingPosition: transform.position, replacementStatusInfo: characterStatusInfo );

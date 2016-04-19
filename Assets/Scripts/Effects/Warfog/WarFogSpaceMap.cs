@@ -65,7 +65,7 @@ public class WarFogSpaceMap : MonoBehaviour {
 		var centerX = Mathf.RoundToInt( relativePosition.x / _cellSize );
 		var centerY = Mathf.RoundToInt( relativePosition.z / _cellSize );
 
-		_currentVisibilityMap = Time.frameCount % 2 == 0 ? _visibilityMap : _visibilityMapBackBuffer;
+		_currentVisibilityMap = _visibilityMap;;//Time.frameCount % 2 == 0 ? _visibilityMap : _visibilityMapBackBuffer;
 
 		SetPointVisible( centerY * _cellsX + centerX, true );
 
@@ -107,7 +107,7 @@ public class WarFogSpaceMap : MonoBehaviour {
 
 		for ( var i = 0; i < _warFogColors.Length; i++ ) {
 
-			_warFogColors[i].r = (byte)((_visibilityMap[i] - 1) / 2 + (_visibilityMapBackBuffer[i] - 1) / 2);
+			_warFogColors[i].r = _visibilityMap[i]; //( byte)((_visibilityMap[i] - 1) / 2 + (_visibilityMapBackBuffer[i] - 1) / 2);
 		}
 
 		_warFogTexture.SetPixels32( _warFogColors );
