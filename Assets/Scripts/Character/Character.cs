@@ -126,7 +126,7 @@ public class Character {
 		}
 
 		Health.Value -= amount;
-
+		
 		EventSystem.RaiseEvent( new RecievedDamage {Character = this, Damage = amount} );
 	}
 

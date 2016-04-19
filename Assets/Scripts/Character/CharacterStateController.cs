@@ -99,6 +99,18 @@ public class CharacterStateController {
 		UpdateEvaluationBlock();
 	}
 
+	public void ForceSetState( CharacterState newState ) {
+
+		if ( debug ) {
+
+			Debug.Log( string.Format( "{0}->{1}", currentState == null ? null : currentState.ToString(), newState ) );
+		}
+
+		currentState = newState;
+
+		UpdateEvaluationBlock();
+	}
+
 	public void TrySetState( CharacterStateInfo newStateInfo, bool allowEnterSameState = false ) {
 
 		TrySetState( GetStateByInfo( newStateInfo ), allowEnterSameState );

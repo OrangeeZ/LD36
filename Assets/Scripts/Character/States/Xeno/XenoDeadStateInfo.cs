@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using System.Collections.Generic;
 using Packages.EventSystem;
 using UniRx;
 using UnityEngine;
@@ -21,7 +22,7 @@ public class XenoDeadStateInfo : CharacterStateInfo {
 
 			base.Initialize( stateController );
 
-			character.Health.Where( _ => _ <= 0 ).Subscribe( _ => stateController.TrySetState( this ) );
+			character.Health.Where( _ => _ <= 0 ).Subscribe( _ => { stateController.ForceSetState( this ); } );
 		}
 
 		public override bool CanBeSet() {
@@ -31,8 +32,10 @@ public class XenoDeadStateInfo : CharacterStateInfo {
 
 		public override IEnumerable GetEvaluationBlock() {
 
+			Debug.Log( "Dead" );
+
 			EventSystem.RaiseEvent( new Dead {Character = character} );
-			
+
 			character.Pawn.ClearDestination();
 
 			if ( stateController == character.StateController ) {
