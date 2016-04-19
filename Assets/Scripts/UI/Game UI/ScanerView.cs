@@ -74,6 +74,7 @@ namespace Assets.Scripts.UI.Game_UI
 
         public void UpdateScanerData()
         {
+            if(_scanerState == ScanerState.NoSignal)return;
             _enemies.Clear();
             var nearestEnemyDistance = float.MaxValue;
             for (int i = 0; i < Character.Instances.Count; i++)
