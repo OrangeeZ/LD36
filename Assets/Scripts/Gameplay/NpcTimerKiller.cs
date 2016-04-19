@@ -6,6 +6,9 @@ using UniRx;
 public class NpcTimerKiller : MonoBehaviour {
 
 	[SerializeField]
+	private AudioClip _vilhelmScream;
+
+	[SerializeField]
 	private float _interval = 10f;
 
 	[SerializeField]
@@ -29,6 +32,8 @@ public class NpcTimerKiller : MonoBehaviour {
 			var characterRoom = Room.FindRoomForPosition( _playerCharacterSpawner.character.Pawn.position );
 			var randomNpc = Room.GetRandomNpc( roomToSkip: characterRoom );
 			if ( randomNpc != null ) {
+
+				AudioSource.PlayClipAtPoint( _vilhelmScream, randomNpc.Pawn.position );
 
 				randomNpc.Damage( 9999 );
 

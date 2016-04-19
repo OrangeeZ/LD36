@@ -8,81 +8,85 @@ using UniRx;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class GameUI : UIScreen
-{
+public class GameUI : UIScreen {
 
-    private Character _character;
+	private Character _character;
 
-    [SerializeField]
-    private HealthView _healthBar;
-    [SerializeField]
-    private WeaponView _weaponView;
-    [SerializeField]
-    private ScanerView _scanerController;
+	[SerializeField]
+	private HealthView _healthBar;
 
-    [SerializeField]
-    private Text _acornValue;
+	[SerializeField]
+	private WeaponView _weaponView;
 
-    [SerializeField]
-    private Image _whiteImage;
+	[SerializeField]
+	private ScanerView _scanerController;
 
+	[SerializeField]
+	private Text _acornValue;
 
-    private void Awake()
-    {
+	[SerializeField]
+	private Image _whiteImage;
 
-        EventSystem.Events.SubscribeOfType<PlayerCharacterSpawner.Spawned>(SetCharacter);
-        EventSystem.Events.SubscribeOfType<BossDeadStateInfo.Dead>(OnBossDead);
-    }
+	private AlienLossController _aliensLossController;
 
-    private void OnBossDead(BossDeadStateInfo.Dead dead)
-    {
+	[SerializeField]
+	private Text _alienCounter;
 
-        StartCoroutine(FadeAndWinScreen());
-    }
+	private void Awake() {
 
-    private IEnumerator FadeAndWinScreen()
-    {
+		EventSystem.Events.SubscribeOfType<PlayerCharacterSpawner.Spawned>( SetCharacter );
+		EventSystem.Events.SubscribeOfType<BossDeadStateInfo.Dead>( OnBossDead );
+	}
 
-        var fadeDuration = 2f;
+	private void Start() {
 
-        var from = _whiteImage.color;
-        var to = from;
-        to.a = 1f;
+		_aliensLossController = FindObjectOfType<AlienLossController>();
+	}
 
-        var timer = new AutoTimer(fadeDuration);
+	private void OnBossDead( BossDeadStateInfo.Dead dead ) {
 
-        while (timer.ValueNormalized < 1f)
-        {
+		StartCoroutine( FadeAndWinScreen() );
+	}
 
-            _whiteImage.color = Color.Lerp(from, to, timer.ValueNormalized);
+	private IEnumerator FadeAndWinScreen() {
 
-            yield return null;
-        }
-        //_whiteImage.CrossFadeAlpha( 0f, fadeDuration, ignoreTimeScale: true );
+		var fadeDuration = 2f;
 
-        //yield return new WaitForSeconds( fadeDuration );
+		var from = _whiteImage.color;
+		var to = from;
+		to.a = 1f;
 
-        foreach (var each in Character.Instances)
-        {
-            each.Dispose();
-        }
+		var timer = new AutoTimer( fadeDuration );
 
-        SceneManager.LoadScene(2);
-    }
+		while ( timer.ValueNormalized < 1f ) {
 
-    public void SetCharacter(PlayerCharacterSpawner.Spawned spawnedEvent)
-    {
-        _character = spawnedEvent.Character;
-        _healthBar.Initialize(_character);
-        _weaponView.Initialize(_character);
-        _scanerController.Initialize(_character);
-    }
+			_whiteImage.color = Color.Lerp( from, to, timer.ValueNormalized );
 
-    private void Update()
-    {
-        if (_character != null)
-        {
-        }
-    }
+			yield return null;
+		}
+		//_whiteImage.CrossFadeAlpha( 0f, fadeDuration, ignoreTimeScale: true );
+
+		//yield return new WaitForSeconds( fadeDuration );
+
+		foreach ( var each in Character.Instances ) {
+			each.Dispose();
+		}
+
+		SceneManager.LoadScene( 2 );
+	}
+
+	public void SetCharacter( PlayerCharacterSpawner.Spawned spawnedEvent ) {
+		_character = spawnedEvent.Character;
+		_healthBar.Initialize( _character );
+		_weaponView.Initialize( _character );
+		_scanerController.Initialize( _character );
+	}
+
+	private void Update() {
+		if ( _character != null ) {
+		}
+
+		_alienCounter.text = _aliensLossController.AliensRemaining.ToString();
+	}
 
 }

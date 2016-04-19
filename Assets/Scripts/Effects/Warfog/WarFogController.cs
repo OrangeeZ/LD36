@@ -5,10 +5,10 @@ using System.Collections.Generic;
 public class WarFogController : MonoBehaviour {
 
 	public static List<WarFogTracer> Tracers = new List<WarFogTracer>();
-
+	
 	[SerializeField]
 	private WarFogSpaceMap _warFogSpaceMap;
-
+	
 	void Update() {
 
 		foreach ( var each in Tracers ) {

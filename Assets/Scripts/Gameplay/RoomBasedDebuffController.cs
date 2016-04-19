@@ -26,7 +26,7 @@ public class RoomBasedDebuffController : MonoBehaviour {
 				break;
 
 			case Room.RoomType.Reactor:
-				playerCharacter.Pawn.GetComponent<WarFogTracer>().SetRadiusScale( 0.3f );
+				Camera.main.GetComponent<WarFogPostEffectRenderer>().SetBrightness( 0.4f );
 				break;
 		}
 	}

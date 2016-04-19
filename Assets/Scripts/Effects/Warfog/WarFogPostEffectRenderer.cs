@@ -24,6 +24,7 @@ public class WarFogPostEffectRenderer : MonoBehaviour {
 	private void Start() {
 
 		_material = new Material( _shader );
+		SetBrightness( 1f );
 	}
 
 	private void OnRenderImage( RenderTexture src, RenderTexture dest ) {
@@ -50,4 +51,8 @@ public class WarFogPostEffectRenderer : MonoBehaviour {
 		_material.SetMatrix( "_Camera2World", Camera.main.cameraToWorldMatrix );
 	}
 
+	public void SetBrightness( float value ) {
+
+		_material.SetFloat( "_WarFogBrightness", value );
+	}
 }
