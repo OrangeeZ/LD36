@@ -24,6 +24,9 @@ public class GameUI : UIScreen {
 	[SerializeField]
 	private Text _acornValue;
 
+    [SerializeField]
+    private GameObject _win;
+
 	[SerializeField]
 	private Image _whiteImage;
 
@@ -45,35 +48,9 @@ public class GameUI : UIScreen {
 
 	private void OnBossDead( BossDeadStateInfo.Dead dead ) {
 
-		StartCoroutine( FadeAndWinScreen() );
-	}
+        _win.SetActive(true);
 
-	private IEnumerator FadeAndWinScreen() {
-
-		var fadeDuration = 2f;
-
-		var from = _whiteImage.color;
-		var to = from;
-		to.a = 1f;
-
-		var timer = new AutoTimer( fadeDuration );
-
-		while ( timer.ValueNormalized < 1f ) {
-
-			_whiteImage.color = Color.Lerp( from, to, timer.ValueNormalized );
-
-			yield return null;
-		}
-		//_whiteImage.CrossFadeAlpha( 0f, fadeDuration, ignoreTimeScale: true );
-
-		//yield return new WaitForSeconds( fadeDuration );
-
-		foreach ( var each in Character.Instances ) {
-			each.Dispose();
-		}
-
-		SceneManager.LoadScene( 2 );
-	}
+    }
 
 	public void SetCharacter( PlayerCharacterSpawner.Spawned spawnedEvent ) {
 		_character = spawnedEvent.Character;

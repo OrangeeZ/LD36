@@ -79,7 +79,13 @@ namespace Assets.Scripts.Level
         private void Awake()
         {
             gameObject.GetComponentsInChildren<Animator>(true, _animators);
+            EventSystem.Events.SubscribeOfType<AlienLossController.AlienDied>(OnEliensDead);
             EventSystem.Events.SubscribeOfType<Room.EveryoneDied>(OnEveryoneDieInRoom);
+        }
+
+        private void OnEliensDead(AlienLossController.AlienDied alienDied)
+        {
+            _isLocked = false;
         }
 
         private void OnEveryoneDieInRoom(Room.EveryoneDied everyoneDiedEvent)

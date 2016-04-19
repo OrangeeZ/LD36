@@ -6,7 +6,12 @@ using UnityEngine.UI;
 
 public class AlienLossController : MonoBehaviour {
 
-	[SerializeField]
+    public class AlienDied : IEventBase
+    {
+ 
+    }
+
+    [SerializeField]
 	private EnemySpawner _motherSpawner;
 
     private List<Character> _enemies = new List<Character>();
@@ -31,7 +36,8 @@ public class AlienLossController : MonoBehaviour {
 
 		if ( AlienCount == 0 ) {
 
-			SpawnMother();
+            EventSystem.RaiseEvent(new AlienDied());
+            SpawnMother();
 
 			Debug.Log( "All aliens dead" );
 		}
@@ -63,17 +69,17 @@ public class AlienLossController : MonoBehaviour {
             }
         }
     }
-    void OnGUI() {
+  //  void OnGUI() {
 
-		if ( GUILayout.Button( "Spawn mother" ) ) {
+		//if ( GUILayout.Button( "Spawn mother" ) ) {
 
-			SpawnMother();
-		}
+		//	SpawnMother();
+		//}
 
-        if (GUILayout.Button("Kill All"))
-        {
-            KillAll();
-        }
-    }
+  //      if (GUILayout.Button("Kill All"))
+  //      {
+  //          KillAll();
+  //      }
+  //  }
 
 }
