@@ -172,18 +172,23 @@ public class MapCanvasController : MonoBehaviour
 
     private void OnEnable()
     {
-        foreach (var mapMarker in _mapMarkers)
-        {
-            if(mapMarker)
-                checkIn(mapMarker);
-        }
+        UpdateRadar();
     }
 
     #endregion
 
     #region Custom methods
 
-    private HashSet<MapMarker> _mapMarkers = new HashSet<MapMarker>(); 
+    private HashSet<MapMarker> _mapMarkers = new HashSet<MapMarker>();
+
+    public void UpdateRadar()
+    {
+        foreach (var mapMarker in _mapMarkers)
+        {
+            if (mapMarker)
+                checkIn(mapMarker);
+        }
+    }
 
     public void checkIn(MapMarker marker)
     {

@@ -19,7 +19,18 @@ public class MapMarker : MonoBehaviour
 
     /* Enables or disables this marker on the map
      */
-    public bool isActive = true;
+    [SerializeField]
+    private bool _isActive = true;
+
+    public bool isActive
+    {
+        get { return _isActive; }
+        set
+        {
+            _isActive = value;
+            MapCanvasController.Instance.UpdateRadar();
+        }
+    }
 
     public Image MarkerImage
     {
@@ -39,7 +50,8 @@ public class MapMarker : MonoBehaviour
 
     #region Unity methods
 
-    void Start () {
+    void Start()
+    {
         if (!markerSprite)
         {
             Debug.LogError(" Please, specify the marker sprite.");
@@ -59,10 +71,11 @@ public class MapMarker : MonoBehaviour
         markerImage.rectTransform.localScale = Vector3.one;
         markerImage.rectTransform.sizeDelta = new Vector2(markerSize, markerSize);
         markerImage.gameObject.SetActive(false);
-	}
+    }
 
 
-	void Update () {
+    void Update()
+    {
         MapCanvasController controller = MapCanvasController.Instance;
         if (!controller)
         {
@@ -70,7 +83,7 @@ public class MapMarker : MonoBehaviour
         }
         MapCanvasController.Instance.checkIn(this);
         markerImage.rectTransform.rotation = Quaternion.identity;
-	}
+    }
 
     void OnDestroy()
     {

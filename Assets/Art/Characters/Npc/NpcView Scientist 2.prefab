@@ -249,7 +249,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   markerSprite: {fileID: 21300000, guid: ae819122268936649b4e0e375376389d, type: 3}
   markerSize: 6
-  isActive: 1
+  _isActive: 1
 --- !u!135 &13574632
 SphereCollider:
   m_ObjectHideFlags: 1
