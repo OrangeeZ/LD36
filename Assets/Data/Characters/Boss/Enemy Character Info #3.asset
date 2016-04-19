@@ -9,10 +9,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c0c6887649bbe1c43a5a4fcc05c922f8, type: 3}
-  m_Name: 'Enemy Character Info #2'
+  m_Name: 'Enemy Character Info #3'
   m_EditorClassIdentifier: 
   statusInfo: {fileID: 0}
-  stateControllerInfo: {fileID: 11400000, guid: bb942430ab545194e8253e958c1d0fde,
+  stateControllerInfo: {fileID: 11400000, guid: 0173e4cbd76c1a440ba7d377a6c6ed2a,
     type: 2}
   weaponStateControllerInfo: {fileID: 11400000, guid: ca39cc5e84c2b3f43bb2345be11797cb,
     type: 2}
