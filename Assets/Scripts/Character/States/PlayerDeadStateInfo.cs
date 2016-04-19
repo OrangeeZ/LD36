@@ -1,5 +1,4 @@
 ﻿using System.Collections;
-using Packages.EventSystem;
 using UniRx;
 using UnityEngine;
 
@@ -28,8 +27,10 @@ public class PlayerDeadStateInfo : CharacterStateInfo {
 			character.Pawn.ClearDestination();
 
 			character.Pawn.ClearDestination();
-
-			if ( stateController == character.StateController ) {
+            var marker = character.Pawn.gameObject.GetComponent<MapMarker>();
+            if (marker != null)
+                marker.isActive = false;
+            if ( stateController == character.StateController ) {
 
 				character.Pawn.SetActive( false );
 

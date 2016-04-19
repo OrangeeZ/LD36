@@ -27,6 +27,7 @@ GameObject:
   - 114: {fileID: 11453438}
   - 195: {fileID: 19573878}
   - 65: {fileID: 6572612}
+  - 114: {fileID: 11423206}
   m_Layer: 0
   m_Name: XenoViewAgressive
   m_TagString: Untagged
@@ -172,6 +173,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _spriteRenderer: {fileID: 21230608}
+  _bias: 0
+--- !u!114 &11423206
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 146248}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 492392c310a924d4291d26c3c333296b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  markerSprite: {fileID: 21300000, guid: afb023e63c5f1b646a83ad530fad2a0e, type: 3}
+  markerSize: 7
+  isActive: 1
 --- !u!114 &11443988
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -194,6 +210,7 @@ MonoBehaviour:
   - {fileID: 21300100, guid: b2a7d75bb968d5a4b9493c3d100074b3, type: 3}
   - {fileID: 21300102, guid: b2a7d75bb968d5a4b9493c3d100074b3, type: 3}
   - {fileID: 21300104, guid: b2a7d75bb968d5a4b9493c3d100074b3, type: 3}
+  _animator: {fileID: 0}
 --- !u!114 &11453438
 MonoBehaviour:
   m_ObjectHideFlags: 1

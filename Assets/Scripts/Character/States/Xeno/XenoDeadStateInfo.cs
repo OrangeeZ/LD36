@@ -41,8 +41,11 @@ public class XenoDeadStateInfo : CharacterStateInfo {
 			if ( stateController == character.StateController ) {
 
 				character.Pawn.SetActive( false );
+			    var marker = character.Pawn.gameObject.GetComponent<MapMarker>();
+			    if (marker != null)
+			        marker.isActive = false;
 
-				var deathSound = character.Status.Info.DeathSounds.RandomElement();
+                var deathSound = character.Status.Info.DeathSounds.RandomElement();
 				AudioSource.PlayClipAtPoint( deathSound, character.Pawn.position );
 
 				if ( 1f.Random() <= character.dropProbability && !character.ItemsToDrop.IsNullOrEmpty() ) {
