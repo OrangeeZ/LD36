@@ -127,6 +127,10 @@ namespace Assets.Scripts.UI.Game_UI
 
         private void Update()
         {
+            if (Input.GetKeyUp(KeyCode.Space))
+            {
+                Activate();
+            }
             if (_scanerState != ScanerState.NoSignal 
                 && _scanerState != ScanerState.Disable 
                 && _scanerState != ScanerState.Ready)
