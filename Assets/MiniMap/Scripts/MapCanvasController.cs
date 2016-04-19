@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
+using System.Collections.Generic;
 
 [AddComponentMenu("MiniMap/Map canvas controller")]
 [RequireComponent(typeof(RectTransform))]
@@ -168,9 +169,21 @@ public class MapCanvasController : MonoBehaviour
         }
     }
 
+
+    private void OnEnable()
+    {
+        foreach (var mapMarker in _mapMarkers)
+        {
+            if(mapMarker)
+                checkIn(mapMarker);
+        }
+    }
+
     #endregion
 
     #region Custom methods
+
+    private HashSet<MapMarker> _mapMarkers = new HashSet<MapMarker>(); 
 
     public void checkIn(MapMarker marker)
     {
@@ -179,7 +192,7 @@ public class MapCanvasController : MonoBehaviour
             //error was already fired in Awake()
             return;
         }
-
+        _mapMarkers.Add(marker);
         float scaledRadarDistance = radarDistance * scale;
         float scaledMaxRadarDistance = maxRadarDistance * scale;
 

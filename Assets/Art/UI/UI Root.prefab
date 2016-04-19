@@ -2240,8 +2240,8 @@ MonoBehaviour:
   radarDistance: 6
   hideOutOfRadius: 1
   useOpacity: 1
-  maxRadarDistance: 10
-  rotateMap: 1
+  maxRadarDistance: 7
+  rotateMap: 0
   scale: 1
   minimalOpacity: 0.1
 --- !u!114 &11412582
@@ -3626,8 +3626,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_Color: {r: 0.19607842, g: 0.762069, b: 0.19607843, a: 1}
+  m_RaycastTarget: 0
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -6500,7 +6500,7 @@ RectTransform:
   m_GameObject: {fileID: 132288}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.99999994, y: 0.99999994, z: 0.99999994}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 22470704}
   m_RootOrder: 0
@@ -6734,16 +6734,16 @@ RectTransform:
   m_GameObject: {fileID: 133550}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.99999994, y: 0.99999994, z: 0.99999994}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 22460686}
   - {fileID: 22471718}
   m_Father: {fileID: 22419662}
   m_RootOrder: 0
-  m_AnchorMin: {x: 0.1026961, y: 0.06779753}
-  m_AnchorMax: {x: 0.90300006, y: 0.93126583}
-  m_AnchoredPosition: {x: 0.000031470954, y: 0.000015050173}
-  m_SizeDelta: {x: -0.000015259, y: 0.000061035}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 84, y: 84}
+  m_SizeDelta: {x: 133, y: 144}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &22471718
 RectTransform:
