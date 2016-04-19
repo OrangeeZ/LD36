@@ -12,6 +12,10 @@ namespace Assets.Scripts.Level
 			public DoorAnimationTrigger Trigger;
 
 		}
+        [SerializeField]
+        private GameObject _accessAvailable;
+        [SerializeField]
+        private GameObject _accessFailed;
 
         private List<Animator> _animators = new List<Animator>();
         [SerializeField]
@@ -65,6 +69,8 @@ namespace Assets.Scripts.Level
             if (IsOpen == state) return;
             _boxCollider.enabled = !state;
             IsOpen = state;
+            _accessAvailable.SetActive(IsOpen);
+            _accessFailed.SetActive(!IsOpen);
             _animators.ForEach(x => x.SetBool("Open", IsOpen));
 
 			EventSystem.RaiseEvent( new StateChange { Trigger =  this} );
