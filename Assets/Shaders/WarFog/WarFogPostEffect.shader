@@ -3,7 +3,7 @@
 	Properties
 	{
 		_MainTex("Texture", 2D) = "white" {}
-	_WarFogTexture("Texture", 2D) = "white" {}
+		_WarFogTexture("Texture", 2D) = "white" {}
 	}
 		SubShader
 	{
@@ -47,6 +47,7 @@
 			float4x4 _World2Texture;
 			float4x4 _ViewProjectInverse;
 			float4x4 _Camera2World;
+			fixed _WarFogBrightness;
 
 			fixed4 frag(v2f i) : SV_Target
 			{
@@ -72,7 +73,7 @@
 
 				//return tex2D(_WarFogTexture, worldCoords);
 
-				return lerp(half4(0, 0, 0, 0), color, tex2D(_WarFogTexture, worldCoords).r);
+				return lerp(half4(0, 0, 0, 0), color, tex2D(_WarFogTexture, worldCoords).r * _WarFogBrightness);
 			}
 			ENDCG
 		}
