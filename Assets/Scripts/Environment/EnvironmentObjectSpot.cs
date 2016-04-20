@@ -103,7 +103,7 @@ public class EnvironmentObjectSpot : AObject {
 
 		_viewInstance = Instantiate( GetRandomView() );
 		_viewInstance.transform.SetParent( transform, worldPositionStays: false );
-		_viewInstance.transform.rotation = Quaternion.identity;;
+		_viewInstance.transform.ResetLocalTransform();
 	}
 
 	private GameObject GetRandomView() {
