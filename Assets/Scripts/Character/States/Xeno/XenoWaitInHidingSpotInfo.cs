@@ -8,7 +8,10 @@ using UnityEngine;
 [CreateAssetMenu( menuName = "Create/States/Xeno/Wait in hiding spot" )]
 public class XenoWaitInHidingSpotInfo : CharacterStateInfo {
 
-	public class State : CharacterState<XenoWaitInHidingSpotInfo> {
+
+    [SerializeField]
+    private MapMarker _mapMarker;
+    public class State : CharacterState<XenoWaitInHidingSpotInfo> {
 
 		public State( CharacterStateInfo info ) : base( info ) {
 		}
@@ -44,14 +47,21 @@ public class XenoWaitInHidingSpotInfo : CharacterStateInfo {
 			if ( _hidingSpot != null ) {
 
 				var pawn = character.Pawn as EnemyCharacterPawn;
-
-				var fadeIn = pawn.Fade( isOut: false ).GetEnumerator();
+                var marker = _hidingSpot.gameObject.GetComponent<MapMarker>();
+                if (marker == null)
+                {
+                    marker = _hidingSpot.gameObject.AddComponent<MapMarker>();
+                    //marker.markerSprite = typedInfo._mapMarker.markerSprite;
+                    //marker.markerSize = typedInfo._mapMarker.markerSize;
+                }
+                marker.isActive = true;
+                var fadeIn = pawn.Fade( isOut: false ).GetEnumerator();
 				while ( fadeIn.MoveNext() ) {
 
 					yield return null;
 				}
-
-				var aggroCheckTimer = new AutoTimer( statusInfo.AutoAggroCheckInterval );
+                
+                var aggroCheckTimer = new AutoTimer( statusInfo.AutoAggroCheckInterval );
 
 				while ( !_isTriggered ) {
 
@@ -69,8 +79,8 @@ public class XenoWaitInHidingSpotInfo : CharacterStateInfo {
 
 					yield return null;
 				}
-
-				character.Pawn.SetActive( true );
+                marker.isActive = false;
+                character.Pawn.SetActive( true );
 
 				if ( _hidingSpot.GetState() == EnvironmentObjectSpot.State.Destroyed ) {
 

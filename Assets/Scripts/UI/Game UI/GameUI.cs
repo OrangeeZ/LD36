@@ -16,7 +16,7 @@ public class GameUI : UIScreen {
 	private WeaponView _weaponView;
 
 	[SerializeField]
-	private ScanerViewOld1 _scanerController;
+	private ScanerViewOld _scanerController;
 
 	[SerializeField]
 	private Text _acornValue;

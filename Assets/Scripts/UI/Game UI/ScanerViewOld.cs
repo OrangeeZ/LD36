@@ -72,7 +72,7 @@ namespace Assets.Scripts.UI.Game_UI
             for (int i = 0; i < Character.Instances.Count; i++)
             {
                 var charcter = Character.Instances[i];
-                if (charcter == null || !charcter.IsEnemy()) continue;
+                if (charcter == null || !charcter.IsEnemy()|| !charcter.Pawn.transform || !_character.Pawn) continue;
                 //todo add visual part of scaner
                 
                 var distance = Vector3.Distance(charcter.Pawn.position, _character.Pawn.position);

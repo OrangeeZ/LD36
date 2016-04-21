@@ -27,6 +27,7 @@ GameObject:
   - 114: {fileID: 11453438}
   - 195: {fileID: 19573878}
   - 65: {fileID: 6572612}
+  - 114: {fileID: 11456928}
   m_Layer: 0
   m_Name: NpcView Scientist 2
   m_TagString: Untagged
@@ -182,6 +183,7 @@ MonoBehaviour:
   - {fileID: 21300076, guid: b2a7d75bb968d5a4b9493c3d100074b3, type: 3}
   - {fileID: 21300078, guid: b2a7d75bb968d5a4b9493c3d100074b3, type: 3}
   - {fileID: 21300080, guid: b2a7d75bb968d5a4b9493c3d100074b3, type: 3}
+  _animator: {fileID: 0}
 --- !u!114 &11453438
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -233,6 +235,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _spriteRenderer: {fileID: 21230608}
+  _bias: 0
+--- !u!114 &11456928
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 146248}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 492392c310a924d4291d26c3c333296b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  markerSprite: {fileID: 21300000, guid: ae819122268936649b4e0e375376389d, type: 3}
+  markerSize: 6
+  _isActive: 1
 --- !u!135 &13574632
 SphereCollider:
   m_ObjectHideFlags: 1
