@@ -1,11 +1,8 @@
-﻿using System;
-using UnityEngine;
-using System.Collections;
+﻿using UnityEngine;
 using Assets.Scripts.UI.Game_UI;
 using Assets.UniRx.Scripts.Ui;
 using Packages.EventSystem;
 using UniRx;
-using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class GameUI : UIScreen {
@@ -19,7 +16,7 @@ public class GameUI : UIScreen {
 	private WeaponView _weaponView;
 
 	[SerializeField]
-	private ScanerViewOld _scanerController;
+	private ScanerViewOld1 _scanerController;
 
 	[SerializeField]
 	private Text _acornValue;
