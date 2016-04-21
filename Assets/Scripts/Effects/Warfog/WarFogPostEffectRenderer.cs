@@ -15,6 +15,8 @@ public class WarFogPostEffectRenderer : MonoBehaviour {
 	private Material _material;
 	private Texture2D _warFogTexture;
 
+	private float _brightness = 1f;
+
 	private void Awake() {
 
 		Instance = this;
@@ -30,10 +32,12 @@ public class WarFogPostEffectRenderer : MonoBehaviour {
 	private void OnRenderImage( RenderTexture src, RenderTexture dest ) {
 
 		//var blurredWarFog = _blurOptimized.BlurTexture( _warFogTexture );
-		
-		_material.SetTexture( "_WarFogTexture", _warFogTexture );
+
+		//_material.SetTexture( "_WarFogTexture", blurredWarFog );
+
 
 		Graphics.Blit( src, dest, _material );
+		//Graphics.Blit( blurredWarFog, dest, _material );
 
 		//RenderTexture.ReleaseTemporary( blurredWarFog );
 	}
@@ -41,6 +45,10 @@ public class WarFogPostEffectRenderer : MonoBehaviour {
 	public void SetTexture( WarFogSpaceMap spaceMap, Texture2D warFogTexture ) {
 
 		_warFogTexture = warFogTexture;
+
+		_material.SetTexture( "_WarFogTexture", _warFogTexture );
+
+		_material.SetFloat( "_WarFogBrightness", _brightness );
 
 		var spaceMapBounds = spaceMap.GetBounds();
 		_material.SetMatrix( "_World2Texture", Matrix4x4.TRS( Vector3.zero, Quaternion.identity, new Vector3( 1f / spaceMapBounds.size.x, 0, 1f / spaceMapBounds.size.z ) ) );
@@ -53,6 +61,6 @@ public class WarFogPostEffectRenderer : MonoBehaviour {
 
 	public void SetBrightness( float value ) {
 
-		_material.SetFloat( "_WarFogBrightness", value );
+		_brightness = value;
 	}
 }

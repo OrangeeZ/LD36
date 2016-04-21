@@ -153,7 +153,7 @@ public class WarFogSpaceMap : MonoBehaviour {
 			DestroyImmediate( _warFogTexture );
 		}
 
-		_warFogTexture = new Texture2D( _cellsX, _cellsZ, TextureFormat.RGB24, mipmap: false );
+		_warFogTexture = new Texture2D( _cellsX, _cellsZ, TextureFormat.RFloat, mipmap: false );
 		_warFogColors = _warFogTexture.GetPixels32();
 
 		_visibilityMap = new byte[_cellsX * _cellsZ];

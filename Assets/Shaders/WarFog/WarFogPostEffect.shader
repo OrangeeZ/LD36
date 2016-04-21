@@ -28,7 +28,6 @@
 			{
 				float2 uv : TEXCOORD0;
 				float4 vertex : SV_POSITION;
-				float3 ray : TEXCOORD1;
 			};
 
 			v2f vert(appdata v)
@@ -36,8 +35,6 @@
 				v2f o;
 				o.vertex = mul(UNITY_MATRIX_MVP, v.vertex);
 				o.uv = v.uv;
-				//o.screenPos = ComputeScreenPos(o.vertex);
-				//o.ray = mul(UNITY_MATRIX_MV, v.vertex).xyz * float3(-1, -1, 1);
 				return o;
 			}
 
@@ -52,26 +49,24 @@
 			fixed4 frag(v2f i) : SV_Target
 			{
 				float4 color = tex2D(_MainTex, i.uv);
-
+/*
 				fixed depth = tex2D(_CameraDepthTexture, i.uv.xy) * 2 - 1;
 
 				if (Linear01Depth(depth) > 0.99)
 				{
 					return 0;
 				}
-
+*/
 				fixed4 clipSpacePosition = 0;
 				clipSpacePosition.xy = i.uv.xy * 2 - 1;
-				clipSpacePosition.z = depth;
+				clipSpacePosition.y *= -1;
+				clipSpacePosition.z = 0;
 				clipSpacePosition.w = 1;
 
 				fixed4 worldPosition = mul(_ViewProjectInverse, clipSpacePosition);
 				worldPosition /= worldPosition.w;
 
 				half2 worldCoords = mul(_World2Texture, worldPosition).xz - half2(0.5, 0.5);
-				//worldCoords.x *= -1;
-
-				//return tex2D(_WarFogTexture, worldCoords);
 
 				return lerp(half4(0, 0, 0, 0), color, tex2D(_WarFogTexture, worldCoords).r * _WarFogBrightness);
 			}
