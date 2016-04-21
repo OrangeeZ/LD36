@@ -16,7 +16,7 @@ namespace Assets.Scripts.UI.Game_UI
         Disable,
         Active
     }
-    public class ScanerView : MonoBehaviour
+    public class ScanerViewOld : MonoBehaviour
     {
         [SerializeField]
         private float _detectRange = 10f;
@@ -93,6 +93,10 @@ namespace Assets.Scripts.UI.Game_UI
             }
             if (_enemies.Count > 0)
             {
+                var delta = nearestEnemyDistance / _detectRange;
+                var soundVolume = Mathf.Lerp(1, 0, delta);
+                var delay = Mathf.Lerp(_minSoundDelay, _maxSoundDelay, delta);
+                PlaySound(soundVolume, delay);
                 SetState(ScanerState.Warning);
                 SetEnemyMarkersState(_enemies.Count, true);
             }
@@ -100,10 +104,6 @@ namespace Assets.Scripts.UI.Game_UI
             {
                 SetState(ScanerState.Clear);
             }
-            var delta = nearestEnemyDistance / _detectRange;
-            var soundVolume = Mathf.Lerp(1, 0, delta);
-            var delay = Mathf.Lerp(_minSoundDelay, _maxSoundDelay, delta);
-            PlaySound(soundVolume, delay);
         }
 
         //====private methods

@@ -19,7 +19,7 @@ public class GameUI : UIScreen {
 	private WeaponView _weaponView;
 
 	[SerializeField]
-	private ScanerView _scanerController;
+	private ScanerViewOld _scanerController;
 
 	[SerializeField]
 	private Text _acornValue;
