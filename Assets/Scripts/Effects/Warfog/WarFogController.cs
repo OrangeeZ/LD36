@@ -17,5 +17,7 @@ public class WarFogController : MonoBehaviour {
 		}
 
 		_warFogSpaceMap.SubmitTexture();
+
+		GetComponentInChildren<MeshRenderer>().material.mainTexture = _warFogSpaceMap.GetTexture();
 	}
 }

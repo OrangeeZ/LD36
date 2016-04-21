@@ -24,6 +24,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 471576}
   - 212: {fileID: 21224484}
+  - 114: {fileID: 11406626}
   m_Layer: 0
   m_Name: Dust
   m_TagString: Untagged
@@ -50,12 +51,25 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 119846}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.5318558, y: -0.6, z: 8.1215105}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 471576}
   m_Father: {fileID: 0}
   m_RootOrder: 0
+--- !u!114 &11406626
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 187592}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cfdd86aa0b453e948a81bcafc319d1cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _spriteRenderer: {fileID: 21224484}
+  _bias: 1
 --- !u!212 &21224484
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -80,7 +94,7 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -928017195
+  m_SortingLayerID: -1191805587
   m_SortingOrder: 6577
   m_Sprite: {fileID: 21300000, guid: ff9e4eae19e30f34fb339085cae71700, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}

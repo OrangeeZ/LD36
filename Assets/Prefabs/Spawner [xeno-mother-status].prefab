@@ -10,7 +10,7 @@ GameObject:
   - 4: {fileID: 471158}
   - 114: {fileID: 11429670}
   m_Layer: 0
-  m_Name: Spawner [xeno-black-status]
+  m_Name: Spawner [xeno-mother-status]
   m_TagString: Untagged
   m_Icon: {fileID: -1412012063857583412, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0

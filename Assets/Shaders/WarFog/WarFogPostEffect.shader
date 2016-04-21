@@ -59,7 +59,9 @@
 */
 				fixed4 clipSpacePosition = 0;
 				clipSpacePosition.xy = i.uv.xy * 2 - 1;
+#if UNITY_UV_STARTS_AT_TOP
 				clipSpacePosition.y *= -1;
+#endif
 				clipSpacePosition.z = 0;
 				clipSpacePosition.w = 1;
 
@@ -68,7 +70,7 @@
 
 				half2 worldCoords = mul(_World2Texture, worldPosition).xz - half2(0.5, 0.5);
 
-				return lerp(half4(0, 0, 0, 0), color, tex2D(_WarFogTexture, worldCoords).r * _WarFogBrightness);
+				return lerp(half4(0, 0, 0, 0.5), color, tex2D(_WarFogTexture, worldCoords).r * _WarFogBrightness);
 			}
 			ENDCG
 		}
