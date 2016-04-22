@@ -70,7 +70,7 @@
 
 				half2 worldCoords = mul(_World2Texture, worldPosition).xz - half2(0.5, 0.5);
 
-				return lerp(half4(0, 0, 0, 0.5), color, tex2D(_WarFogTexture, worldCoords).r * _WarFogBrightness);
+				return lerp(half4(0, 0, 0, 0), color, tex2D(_WarFogTexture, worldCoords).r * _WarFogBrightness);
 			}
 			ENDCG
 		}

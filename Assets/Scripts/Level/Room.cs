@@ -21,15 +21,18 @@ public class Room : MonoBehaviour {
 	}
 
 	public struct EveryoneDied : IEventBase {
+
 		public Room Room;
+
 	}
 
-    public struct CharacterDied : IEventBase
-    {
-        public Room Room;
-    }
+	public struct CharacterDied : IEventBase {
 
-    [SerializeField]
+		public Room Room;
+
+	}
+
+	[SerializeField]
 	private RoomType _roomType;
 
 	[SerializeField]
@@ -81,16 +84,14 @@ public class Room : MonoBehaviour {
 		}
 	}
 
-    public List<Character> GetRoomCharacters(RoomType roomType)
-    {
-        var room = _instances.FirstOrDefault(x => x.GetRoomType() == roomType);
-        return room == null ? null : room._charactersInRoom;
-    } 
+	public List<Character> GetRoomCharacters( RoomType roomType ) {
+		var room = _instances.FirstOrDefault( x => x.GetRoomType() == roomType );
+		return room == null ? null : room._charactersInRoom;
+	}
 
-    public static List<Room> GetRooms()
-    {
-        return _instances;
-    }
+	public static List<Room> GetRooms() {
+		return _instances;
+	}
 
 	public static void InitializeAll() {
 
@@ -122,18 +123,12 @@ public class Room : MonoBehaviour {
 
 	public EnvironmentObjectSpot FindRandomObjectSpot( Vector3 position ) {
 
-		if ( _objectSpots.All( _ => _.GetState() != EnvironmentObjectSpot.State.Empty ) ) {
-
-			return null;
-		}
-
-		return _objectSpots.Where( _ => _.GetState() == EnvironmentObjectSpot.State.Empty&& !_.IsReserved ).RandomElement();
+		return _objectSpots.Where( _ => ( _.GetState() == EnvironmentObjectSpot.State.Empty || _.GetState() == EnvironmentObjectSpot.State.Destroyed ) && !_.IsReserved ).RandomElement();
 	}
 
-    public List<Character> GetCharacters()
-    {
-        return _charactersInRoom;
-    }
+	public List<Character> GetCharacters() {
+		return _charactersInRoom;
+	}
 
 	public RoomType GetRoomType() {
 
@@ -149,7 +144,7 @@ public class Room : MonoBehaviour {
 		return transform.localToWorldMatrix.MultiplyPoint3x4( randomExtents + _bounds.center );
 	}
 
-	public static Character GetRandomNpc(Room roomToSkip) {
+	public static Character GetRandomNpc( Room roomToSkip ) {
 
 		var allNpcs = _instances.Where( _ => _ != roomToSkip ).SelectMany( _ => _._charactersInRoom );
 
@@ -159,8 +154,8 @@ public class Room : MonoBehaviour {
 	private void OnCharacterDie( Character.Died diedEvent ) {
 
 		if ( _charactersInRoom.Remove( diedEvent.Character ) ) {
-            EventSystem.RaiseEvent(new CharacterDied() { Room = this });
-            if ( _charactersInRoom.IsEmpty() ) {
+			EventSystem.RaiseEvent( new CharacterDied() {Room = this} );
+			if ( _charactersInRoom.IsEmpty() ) {
 
 				EventSystem.RaiseEvent( new EveryoneDied {Room = this} );
 			}

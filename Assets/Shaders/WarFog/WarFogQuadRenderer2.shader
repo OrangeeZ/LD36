@@ -51,7 +51,7 @@
 				fixed4 col = 0;
 				
 				col.a = 1 - tex2D(_MainTex, i.uv);
-				clip(col.a - 0.1);
+				clip(col.a - 0.5);
 				// apply fog
 				return col;
 			}
