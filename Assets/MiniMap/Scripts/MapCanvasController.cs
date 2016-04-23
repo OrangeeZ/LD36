@@ -34,7 +34,7 @@ public class MapCanvasController : MonoBehaviour
 
 
             }
-           
+
 
             return _instance;
         }
@@ -46,7 +46,7 @@ public class MapCanvasController : MonoBehaviour
     #region Public
 
     /* Transform of the player that will be shown in the center of the map
-     */ 
+     */
     public Transform playerTransform;
 
     /* Distance from which the objects will be shown on the map
@@ -151,7 +151,7 @@ public class MapCanvasController : MonoBehaviour
 
     }
 
-	void Update () 
+    void Update()
     {
         if (!playerTransform)
         {
@@ -169,9 +169,26 @@ public class MapCanvasController : MonoBehaviour
         }
     }
 
+
+    private void OnEnable()
+    {
+        UpdateRadar();
+    }
+
     #endregion
 
     #region Custom methods
+
+    private HashSet<MapMarker> _mapMarkers = new HashSet<MapMarker>();
+
+    public void UpdateRadar()
+    {
+        foreach (var mapMarker in _mapMarkers)
+        {
+            if (mapMarker)
+                checkIn(mapMarker);
+        }
+    }
 
     public void checkIn(MapMarker marker)
     {
@@ -180,7 +197,7 @@ public class MapCanvasController : MonoBehaviour
             //error was already fired in Awake()
             return;
         }
-
+        _mapMarkers.Add(marker);
         float scaledRadarDistance = radarDistance * scale;
         float scaledMaxRadarDistance = maxRadarDistance * scale;
 
@@ -193,9 +210,9 @@ public class MapCanvasController : MonoBehaviour
             {
                 if (hideOutOfRadius)
                 {
-                    if (marker.isVisible()) 
-                    { 
-                        marker.hide(); 
+                    if (marker.isVisible())
+                    {
+                        marker.hide();
                     }
                     return;
                 }
@@ -203,15 +220,15 @@ public class MapCanvasController : MonoBehaviour
                 {
                     if (distance > scaledMaxRadarDistance)
                     {
-                        if (marker.isVisible()) 
-                        { 
-                            marker.hide(); 
+                        if (marker.isVisible())
+                        {
+                            marker.hide();
                         }
                         return;
                     }
                     else
                     {
-                        if (useOpacity) 
+                        if (useOpacity)
                         {
                             float opacityRange = scaledMaxRadarDistance - scaledRadarDistance;
                             if (opacityRange <= 0)
@@ -262,7 +279,7 @@ public class MapCanvasController : MonoBehaviour
 
     private float distanceToPlayer(Vector3 other)
     {
-        
+
         return Vector2.Distance(new Vector2(playerTransform.position.x, playerTransform.position.z), new Vector2(other.x, other.z));
     }
 

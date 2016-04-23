@@ -8,7 +8,7 @@ using UnityEngine;
 namespace Assets.Scripts.UI.Game_UI
 {
 
-    public class ScanerViewOld : MonoBehaviour
+    public class ScanerView : MonoBehaviour
     {
         [SerializeField]
         private float _detectRange = 10f;
