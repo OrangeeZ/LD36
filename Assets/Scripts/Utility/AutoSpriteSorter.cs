@@ -19,9 +19,9 @@ public class AutoSpriteSorter : MonoBehaviour {
 
 			if ( each.name.ToLower().Contains( "wall" ) ) {
 				
-				DestroyImmediate( each.GetComponent<WarFogOccluder>() );
+				DestroyImmediate( each.GetComponent<WarFog.Occluder>() );
 
-				var occluder = each.gameObject.AddComponent<WarFogOccluder>();
+				var occluder = each.gameObject.AddComponent<WarFog.Occluder>();
 				occluder.SetLocalBounds( _warFogOccluderBounds );
 				occluder.SetAdditionalAngle( _warFogOccluderAngle );
 			}

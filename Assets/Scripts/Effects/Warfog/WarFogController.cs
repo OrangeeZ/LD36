@@ -2,22 +2,35 @@
 using System.Collections;
 using System.Collections.Generic;
 
-public class WarFogController : MonoBehaviour {
+namespace WarFog {
 
-	public static List<WarFogTracer> Tracers = new List<WarFogTracer>();
-	
-	[SerializeField]
-	private WarFogSpaceMap _warFogSpaceMap;
-	
-	void Update() {
+	public class WarFogController : MonoBehaviour {
 
-		foreach ( var each in Tracers ) {
+		public static List<Tracer> Tracers = new List<Tracer>();
 
-			each.Trace( _warFogSpaceMap );
+		[SerializeField]
+		private DistanceField _distanceField;
+
+		private void Start() {
+
+			_distanceField.GenerateTracingData();
+			//_distanceField.SubmitTexture();
 		}
 
-		_warFogSpaceMap.SubmitTexture();
+		private void Update() {
 
-		GetComponentInChildren<MeshRenderer>().material.mainTexture = _warFogSpaceMap.GetTexture();
+			foreach ( var each in Tracers ) {
+
+				WarFogRenderer.Instance.SetTracerPosition( each.transform.position );
+
+//				each.Trace( _distanceField );
+			}
+
+			_distanceField.SubmitTexture();
+
+//			GetComponentInChildren<MeshRenderer>().material.mainTexture = _distanceField.GetTexture();
+		}
+
 	}
+
 }

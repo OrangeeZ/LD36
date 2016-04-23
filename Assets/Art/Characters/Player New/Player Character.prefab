@@ -29,7 +29,7 @@ GameObject:
   - 65: {fileID: 6582520}
   - 114: {fileID: 11498648}
   - 143: {fileID: 14355484}
-  - 114: {fileID: 11413062}
+  - 114: {fileID: 11476466}
   m_Layer: 0
   m_Name: Player Character
   m_TagString: Untagged
@@ -139,20 +139,8 @@ MonoBehaviour:
   _sphereCollider: {fileID: 0}
   _characterController: {fileID: 14355484}
   _subTransform: {fileID: 0}
-  _warFogTracer: {fileID: 11413062}
+  _warFogTracer: {fileID: 0}
   _spriteAnimationController: {fileID: 11457672}
---- !u!114 &11413062
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 141358}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d71470b9752d35645bdd63df0e0ecc9b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _radius: 15
 --- !u!114 &11443828
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -187,6 +175,7 @@ MonoBehaviour:
   - {fileID: 21300060, guid: b2a7d75bb968d5a4b9493c3d100074b3, type: 3}
   - {fileID: 21300062, guid: b2a7d75bb968d5a4b9493c3d100074b3, type: 3}
   - {fileID: 21300064, guid: b2a7d75bb968d5a4b9493c3d100074b3, type: 3}
+  _animator: {fileID: 0}
 --- !u!114 &11473544
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -200,6 +189,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _spriteRenderer: {fileID: 21281000}
   _bias: 0
+--- !u!114 &11476466
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 141358}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6684f116227aff14cab96a7edc86ab57, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _radius: 5
 --- !u!114 &11498648
 MonoBehaviour:
   m_ObjectHideFlags: 1
