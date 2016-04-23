@@ -51,8 +51,8 @@ public class XenoWaitInHidingSpotInfo : CharacterStateInfo {
                 if (marker == null)
                 {
                     marker = _hidingSpot.gameObject.AddComponent<MapMarker>();
-                    //marker.markerSprite = typedInfo._mapMarker.markerSprite;
-                    //marker.markerSize = typedInfo._mapMarker.markerSize;
+                    marker.markerSprite = typedInfo._mapMarker.markerSprite;
+                    marker.markerSize = typedInfo._mapMarker.markerSize;
                 }
                 marker.isActive = true;
                 var fadeIn = pawn.Fade( isOut: false ).GetEnumerator();

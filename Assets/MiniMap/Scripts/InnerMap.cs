@@ -3,6 +3,7 @@ using UnityEngine.UI;
 using System.Collections;
 
 [AddComponentMenu("MiniMap/Inner map")]
+[RequireComponent(typeof(Image))]
 public class InnerMap : MonoBehaviour {
 
     private RectTransform _innerMapRect;
