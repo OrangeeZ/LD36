@@ -17,7 +17,7 @@ namespace Assets.Scripts.UI.Game_UI
         [SerializeField]
         private float _maxSoundDelay = 3f;
         [SerializeField]
-        private float _duration = 10f;
+        private float _duration = 5f;
         [SerializeField]
         private float _reloadDuration = 10f;
         [SerializeField]
@@ -36,7 +36,7 @@ namespace Assets.Scripts.UI.Game_UI
         private Character _character;
         private List<Character> _enemy = new List<Character>();
         private float _lastActivationSoundTime;
-        private float _lasActivateTime;
+        private float _lastActivateTime;
         private const string _warningState = "Warning";
         private const string _disableState = "Disable";
         private const string _enableState = "Ready";
@@ -47,7 +47,7 @@ namespace Assets.Scripts.UI.Game_UI
         public void Initialize(Character character)
         {
             _character = character;
-            _lasActivateTime = -_reloadDuration;
+            _lastActivateTime = -_reloadDuration;
             _animation.AnimaitonFinished.AddListener(OnCooldownPassed);
             EventSystem.Events.SubscribeOfType<Room.EveryoneDied>(OnEveryoneDieInRoom);
             SetState(ScanerState.Ready);
@@ -59,10 +59,10 @@ namespace Assets.Scripts.UI.Game_UI
         {
             Debug.Log("Try Activate Scaner");
             if (_scanerState == ScanerState.Active || _scanerState == ScanerState.NoSignal) return;
-            var time = Time.timeSinceLevelLoad - _lasActivateTime;
-            if (_reloadDuration > time) return;
+            var time = Time.timeSinceLevelLoad - _lastActivateTime;
+            if (_reloadDuration + _duration > time) return;
             Debug.Log("Launch Scaner");
-            _lasActivateTime = Time.timeSinceLevelLoad;
+            _lastActivateTime = Time.timeSinceLevelLoad;
             SetState(ScanerState.Active);
         }
 
@@ -127,7 +127,7 @@ namespace Assets.Scripts.UI.Game_UI
                 && _scanerState != ScanerState.Disable 
                 && _scanerState != ScanerState.Ready)
             {
-                var time = Time.timeSinceLevelLoad - _lasActivateTime;
+                var time = Time.timeSinceLevelLoad - _lastActivateTime;
                 var state = _duration > time;
                 if (!state)
                 {
