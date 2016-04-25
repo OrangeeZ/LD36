@@ -3,16 +3,17 @@ using System.Collections;
 
 namespace WarFog {
 
-public class OccluderDistanceTester : MonoBehaviour {
+	public class OccluderDistanceTester : MonoBehaviour {
 
-	[SerializeField]
-	private Occluder _targetOccluder;
+		[SerializeField]
+		private Occluder _targetOccluder;
 
-	void OnDrawGizmos() {
+		void OnDrawGizmos() {
 
-		Debug.Log( Mathf.Sqrt( _targetOccluder.GetSquareDistanceToPoint( transform.position ) ) );
-		Debug.Log( _targetOccluder.IsAffectingPoint( transform.position ) );
+			Debug.Log( Mathf.Sqrt( _targetOccluder.GetSquareDistanceToPoint( transform.position ) ) );
+			Debug.Log( _targetOccluder.IsAffectingPoint( transform.position ) );
+		}
+
 	}
 
-}
 }

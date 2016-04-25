@@ -15,6 +15,7 @@
 			CGPROGRAM
 			#pragma vertex vert
 			#pragma fragment frag
+			#pragma fragmentoption ARB_precision_hint_fastest
 
 			#include "UnityCG.cginc"
 
@@ -22,6 +23,7 @@
 			{
 				float4 vertex : POSITION;
 				float2 uv : TEXCOORD0;
+				float3 normal : TEXCOORD1;
 			};
 
 			struct v2f
@@ -41,85 +43,89 @@
 			}
 
 			sampler2D _MainTex;
-			sampler2D _WarFogTexture;
-			sampler2D _CameraDepthTexture;
+			sampler2D_float _WarFogTexture;
+			sampler2D_float _CameraDepthTexture;
 			float4x4 _World2Texture;
 			float4x4 _ViewProjectInverse;
 			float4x4 _Camera2World;
-			fixed _WarFogBrightness;
+			half _WarFogBrightness;
 			fixed _MaxFieldDistance;
-			fixed3 _WorldTracerPosition;
+			float3 _WorldTracerPosition;
 
-            fixed4 GetWorldPosition(fixed2 uv)
+            float3 GetWorldPosition(float2 uv)
             {
                 #if UNITY_UV_STARTS_AT_TOP
                     uv.y = 1 - uv.y;
                 #endif
 
-                fixed depth = (SAMPLE_DEPTH_TEXTURE(_CameraDepthTexture, uv.xy) * 2 - 1);
+                float depth = (SAMPLE_DEPTH_TEXTURE(_CameraDepthTexture, uv.xy));
+				depth = lerp(UNITY_NEAR_CLIP_VALUE, 1, (depth));
 
-                if (Linear01Depth(depth) > 0.99)
-                {
-                    return 0;
-                }
-
-                fixed4 clipSpacePosition = 0;
+                float4 clipSpacePosition = 0;
                 clipSpacePosition.xy = uv.xy * 2 - 1;
                 clipSpacePosition.z = depth;
                 clipSpacePosition.w = 1;
 
-                fixed4 worldPosition = mul(_ViewProjectInverse, clipSpacePosition);
+                float4 worldPosition = mul(_ViewProjectInverse, clipSpacePosition);
                 worldPosition /= worldPosition.w;
 
-                return worldPosition;
+                return worldPosition.xyz;
             }
 
-			float SampleDistanceField(fixed4 worldPosition)
+			float SampleDistanceField(float3 worldPosition)
 			{
-    			half2 worldCoords = mul(_World2Texture, worldPosition).xz - half2(0.5, 0.5);
+    			float4 worldCoords = mul(_World2Texture, worldPosition.xyzz);
+    			worldCoords.xz -= float2(0.5, 0.5);
 
-                return pow(tex2D(_WarFogTexture, worldCoords).a, 1.1) * _MaxFieldDistance;// - 1 / _MaxFieldDistance;
+                return pow(tex2D(_WarFogTexture, worldCoords.xz).r, 1.2) * _MaxFieldDistance;// - 1 / _MaxFieldDistance;
 			}
 
 			fixed4 frag(v2f i) : SV_Target
 			{
-			    half2 uv = i.uv;
-				float4 color = tex2D(_MainTex, uv);
+			    float2 uv = i.uv;
+				fixed4 color = tex2D(_MainTex, uv);
 
-                half threshold = 0.0001;
+                fixed threshold = 0.01;
 
-                fixed4 worldPosition = GetWorldPosition(uv);
-                fixed3 direction = (_WorldTracerPosition - worldPosition).xyz;
+                float3 worldPosition = GetWorldPosition(uv);
+                float3 direction = (_WorldTracerPosition - worldPosition);
                 direction.y = 0;
 
                 //return (direction / _MaxFieldDistance).xyzz;
 
                 //return ((direction / _MaxFieldDistance).xyzy + 1) / 2;
 
-                fixed distanceToLight = length(direction);
+                float distanceToLight = abs(length(direction));
                 direction /= distanceToLight;
 
-                fixed distanceFieldValue = 0;//SampleDistanceField(worldPosition);
+				float distanceFieldValue = 0;//SampleDistanceField(worldPosition);
+
+				//float depth = (SAMPLE_DEPTH_TEXTURE(_CameraDepthTexture, uv.xy));
+				//depth = lerp(UNITY_NEAR_CLIP_VALUE, 1, (depth));
+				
+				//return Linear01Depth(depth);
 
                 //return lerp(color, sqrt(SampleDistanceField(worldPosition) / _MaxFieldDistance), 0.5);
 
                 fixed itr = 0;
-                for (; itr < 30; ++itr)
+                for (; itr < 20; ++itr)
                 {
-                    if (distanceToLight <= 0) return color;
-
-                    worldPosition.xyz += direction * distanceFieldValue;
+                    worldPosition += direction * distanceFieldValue;
 
                     distanceFieldValue = SampleDistanceField(worldPosition);
 
-                    if (distanceFieldValue < threshold) break;
+                    //if (distanceFieldValue < threshold) return 0;//distanceToLight / _MaxFieldDistance;
 
                     distanceToLight -= distanceFieldValue;
+					
+					if (distanceToLight <= 0) return color;
                 }
 
-                return 0;
+return lerp(color, fixed4(0, 0, 0, 0), saturate(40 * pow(distanceToLight / _MaxFieldDistance, 1)));
 
-				return lerp(half4(0, 0, 0, 0), color, distanceFieldValue * _WarFogBrightness);
+                return fixed4(0.5, 0.5, 0.5, 1);
+
+				return lerp(float4(0, 0, 0, 0), color, distanceFieldValue * _WarFogBrightness);
 			}
 			ENDCG
 		}

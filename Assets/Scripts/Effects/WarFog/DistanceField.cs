@@ -75,6 +75,10 @@ namespace WarFog {
 				}
 			}
 
+			#if UNITY_EDITOR
+				UnityEditor.SceneManagement.EditorSceneManager.MarkAllScenesDirty();
+			#endif
+
 			GenerateTracingData();
 		}
 
@@ -85,7 +89,7 @@ namespace WarFog {
 				DestroyImmediate( _distanceFieldTexture );
 			}
 
-			_distanceFieldTexture = new Texture2D( _cellsX, _cellsZ, TextureFormat.Alpha8, mipmap: false, linear: true );
+			_distanceFieldTexture = new Texture2D( _cellsX, _cellsZ, TextureFormat.RGB24, mipmap: false, linear: true );
 			_distanceFieldTextureColors = _distanceFieldTexture.GetPixels();
 
 			UpdateDistanceTextureData();
@@ -95,7 +99,7 @@ namespace WarFog {
 
 			for ( var i = 0; i < _distanceFieldTextureColors.Length; i++ ) {
 
-				_distanceFieldTextureColors[i].a = (_field[i] / _maxFieldDistance);//new Color( _field[i] / _maxFieldDistance, 0, 0, 1 ).r;//.linear.r;
+				_distanceFieldTextureColors[i].r = (_field[i] / _maxFieldDistance);//new Color( _field[i] / _maxFieldDistance, 0, 0, 1 ).r;//.linear.r;
 			}
 
 			_distanceFieldTexture.SetPixels( _distanceFieldTextureColors );

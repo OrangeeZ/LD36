@@ -198,7 +198,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b55c5d50ea4dfe40a19be98bdee1d3e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _shader: {fileID: 4800000, guid: cf813c492959dd6418b492a129169ca6, type: 3}
+  _raytraceShader: {fileID: 4800000, guid: cf813c492959dd6418b492a129169ca6, type: 3}
+  _blendShader: {fileID: 0}
 --- !u!114 &11423386
 MonoBehaviour:
   m_ObjectHideFlags: 1

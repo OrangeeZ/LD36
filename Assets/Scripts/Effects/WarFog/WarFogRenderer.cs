@@ -7,9 +7,13 @@ namespace WarFog {
 		public static WarFogRenderer Instance { get; private set; }
 
 		[SerializeField]
-		private Shader _shader;
+		private Shader _raytraceShader;
 
-		private Material _material;
+		[SerializeField]
+		private Shader _blendShader;
+
+		private Material _raytraceMaterial;
+		private Material _blendMaterial;
 		private Texture2D _warFogTexture;
 
 		private float _brightness = 1f;
@@ -18,7 +22,7 @@ namespace WarFog {
 
 			Instance = this;
 
-			_material = new Material( _shader );
+			_raytraceMaterial = new Material( _raytraceShader );
 		}
 
 		// Use this for initialization
@@ -33,10 +37,14 @@ namespace WarFog {
 
 			//var blurredWarFog = _blurOptimized.BlurTexture( _warFogTexture );
 
-			//_material.SetTexture( "_WarFogTexture", blurredWarFog );
+			//_raytraceMaterial.SetTexture( "_WarFogTexture", blurredWarFog );
 
-			Graphics.Blit( src, dest, _material );
-			//Graphics.Blit( blurredWarFog, dest, _material );
+			var halfResBufer = RenderTexture.GetTemporary( UnityEngine.Screen.width, UnityEngine.Screen.height, 0 );
+			Graphics.Blit( src, halfResBufer, _raytraceMaterial );
+
+			Graphics.Blit( halfResBufer, dest );
+			RenderTexture.ReleaseTemporary( halfResBufer );
+			//Graphics.Blit( blurredWarFog, dest, _raytraceMaterial );
 
 			//RenderTexture.ReleaseTemporary( blurredWarFog );
 		}
@@ -45,42 +53,40 @@ namespace WarFog {
 //
 //			_warFogTexture = warFogTexture;
 //
-//			_material.SetTexture( "_WarFogTexture", _warFogTexture );
+//			_raytraceMaterial.SetTexture( "_WarFogTexture", _warFogTexture );
 //
-//			_material.SetFloat( "_WarFogBrightness", _brightness );
+//			_raytraceMaterial.SetFloat( "_WarFogBrightness", _brightness );
 //
 //			var spaceMapBounds = spaceMap.GetBounds();
-//			_material.SetMatrix( "_World2Texture", Matrix4x4.TRS( Vector3.zero, Quaternion.identity, new Vector3( 1f / spaceMapBounds.size.x, 0, 1f / spaceMapBounds.size.z ) ) );
+//			_raytraceMaterial.SetMatrix( "_World2Texture", Matrix4x4.TRS( Vector3.zero, Quaternion.identity, new Vector3( 1f / spaceMapBounds.size.x, 0, 1f / spaceMapBounds.size.z ) ) );
 //
 //			var inverseViewProjectionMatrix = ( Camera.main.projectionMatrix * Camera.main.worldToCameraMatrix ).inverse;
-//			_material.SetMatrix( "_ViewProjectInverse", inverseViewProjectionMatrix );
+//			_raytraceMaterial.SetMatrix( "_ViewProjectInverse", inverseViewProjectionMatrix );
 //
-//			_material.SetMatrix( "_Camera2World", Camera.main.cameraToWorldMatrix );
+//			_raytraceMaterial.SetMatrix( "_Camera2World", Camera.main.cameraToWorldMatrix );
 //		}
 
 		public void SetTexture( DistanceField distanceField, Texture2D warFogTexture ) {
 
 			_warFogTexture = warFogTexture;
 
+			_raytraceMaterial.SetTexture( "_WarFogTexture", _warFogTexture );
 
-
-			_material.SetTexture( "_WarFogTexture", _warFogTexture );
-
-			_material.SetFloat( "_WarFogBrightness", _brightness );
-			_material.SetFloat( "_MaxFieldDistance", distanceField.GetMaxFieldDistance());
+			_raytraceMaterial.SetFloat( "_WarFogBrightness", _brightness );
+			_raytraceMaterial.SetFloat( "_MaxFieldDistance", distanceField.GetMaxFieldDistance() );
 
 			var spaceMapBounds = distanceField.GetBounds();
-			_material.SetMatrix( "_World2Texture", Matrix4x4.TRS( Vector3.zero, Quaternion.identity, new Vector3( 1f / spaceMapBounds.size.x, 0, 1f / spaceMapBounds.size.z ) ) );
+			_raytraceMaterial.SetMatrix( "_World2Texture", Matrix4x4.TRS( Vector3.zero, Quaternion.identity, new Vector3( 1f / spaceMapBounds.size.x, 0, 1f / spaceMapBounds.size.z ) ) );
 
-			var inverseViewProjectionMatrix = ( Camera.main.projectionMatrix * Camera.main.worldToCameraMatrix ).inverse;
-			_material.SetMatrix( "_ViewProjectInverse", inverseViewProjectionMatrix );
+			var inverseViewProjectionMatrix = GL.GetGPUProjectionMatrix( Camera.main.projectionMatrix * Camera.main.worldToCameraMatrix, renderIntoTexture: false ).inverse;
+			_raytraceMaterial.SetMatrix( "_ViewProjectInverse", inverseViewProjectionMatrix );
 
-			_material.SetMatrix( "_Camera2World", Camera.main.cameraToWorldMatrix );
+			_raytraceMaterial.SetMatrix( "_Camera2World", Camera.main.cameraToWorldMatrix );
 		}
 
 		public void SetTracerPosition( Vector3 position ) {
 
-			_material.SetVector( "_WorldTracerPosition", position );
+			_raytraceMaterial.SetVector( "_WorldTracerPosition", position );
 		}
 
 		public void SetBrightness( float value ) {
