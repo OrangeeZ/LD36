@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UniRx;
 
 public class UseItemStateInfo : CharacterStateInfo {
 
@@ -11,7 +12,6 @@ public class UseItemStateInfo : CharacterStateInfo {
 
 		public State( CharacterStateInfo info )
 			: base( info ) {
-
 		}
 
 		public override bool CanBeSet() {

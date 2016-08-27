@@ -5,6 +5,8 @@ public class CharacterPawn : CharacterPawnBase {
 
 	public bool canFollowDestination;
 
+	public RoomDeviceListener RoomDeviceListener;
+
 	[SerializeField]
 	private float _gunYOffset = 0.5f;
 

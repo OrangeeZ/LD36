@@ -8,9 +8,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c0c3c59d954743247aca68b3343e71b6, type: 3}
-  m_Name: Jump
+  m_Script: {fileID: 11500000, guid: 49148d27330e0b14a8c4b9ff34e3b9f3, type: 3}
+  m_Name: Default Gun Behaviour
   m_EditorClassIdentifier: 
-  animatorStateName: 
-  weaponAnimatorStateName: 
-  _jumpImpulse: 20

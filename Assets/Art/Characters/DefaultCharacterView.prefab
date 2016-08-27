@@ -312,8 +312,8 @@ MonoBehaviour:
   _weaponAnimationController: {fileID: 0}
   canFollowDestination: 0
   _gunYOffset: 0.5
-  _weight: 10
-  _startingHeight: 5
+  _weight: 5
+  _isGroundedChangeDelay: 0.1
   _rotationToDirectionSpeed: 100
   _sphereCollider: {fileID: 0}
   _characterController: {fileID: 143000010942876986}
