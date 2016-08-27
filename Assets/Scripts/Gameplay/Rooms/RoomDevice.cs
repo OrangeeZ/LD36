@@ -14,20 +14,60 @@ public class RoomDevice : MonoBehaviour {
 
 	}
 
+	public RoomInfo RoomInfo;
+
 	public State CurrentState;
 
 	public UnityEvent OnInteract;
 
+	private float _health;
+	private float _cooldown;
+
+	private void Start() {
+
+		SetFixed();
+	}
+
+	private void Update() {
+
+		if ( RoomInfo.CanWork && !IsBroken() ) {
+
+			CarStateController.Instance.Speed += RoomInfo.SpeedAdd * Time.deltaTime;
+		}
+
+		if ( _cooldown > 0 ) {
+
+			_cooldown -= Time.deltaTime;
+		}
+	}
+
+	public void Damage( float value ) {
+
+		if ( !RoomInfo.CanBeBroken ) {
+
+			return;
+		}
+
+		_health -= value;
+	}
+
+	public bool IsBroken() {
+
+		return RoomInfo.CanBeBroken && _health <= 0;
+	}
+
 	public void SetFixed() {
 
-		CurrentState = State.Active;
+		_health = RoomInfo.Durability;
 	}
 
 	public void Interact() {
 
-		if ( OnInteract != null ) {
-			
-			OnInteract.Invoke();
+		if ( RoomInfo.CanBeActive && _cooldown <= 0 ) {
+
+			_cooldown = RoomInfo.RechargeTime;
+
+			//Activate skill
 		}
 	}
 
