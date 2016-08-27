@@ -1,6 +1,5 @@
 ﻿using UnityEngine;
 using System.Collections;
-using Assets.Scripts.Level;
 using Packages.EventSystem;
 using UniRx;
 
@@ -24,7 +23,6 @@ public class SoundEffectController : MonoBehaviour {
 	// Use this for initialization
 	private void Start() {
 
-		EventSystem.Events.SubscribeOfType<DoorAnimationTrigger.StateChange>( OnDoorStateChange );
 		EventSystem.Events.SubscribeOfType<Room.EveryoneDied>( OnEveryoneDieInRoom );
 
 		EventSystem.Events.SubscribeOfType<HealbotObject.TriedHeal>( OnTryHeal );
@@ -42,15 +40,4 @@ public class SoundEffectController : MonoBehaviour {
 			AudioSource.PlayClipAtPoint( _roomPowerDown, Camera.main.transform.position );
 		}
 	}
-
-	private void OnDoorStateChange( DoorAnimationTrigger.StateChange eventObject ) {
-
-		AudioSource.PlayClipAtPoint( eventObject.Trigger.IsOpen ? _doorOpen : _doorClose, eventObject.Trigger.transform.position );
-	}
-
-	// Update is called once per frame
-	private void Update() {
-
-	}
-
 }

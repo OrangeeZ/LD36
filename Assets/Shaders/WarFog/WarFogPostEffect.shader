@@ -1,4 +1,6 @@
-﻿Shader "Hidden/WarFogPostEffect"
+﻿// Upgrade NOTE: replaced '_Object2World' with 'unity_ObjectToWorld'
+
+Shader "Hidden/WarFogPostEffect"
 {
 	Properties
 	{
@@ -38,7 +40,7 @@
 				v2f o;
 				o.vertex = mul(UNITY_MATRIX_MVP, v.vertex);
 				o.uv = v.uv;
-				o.worldPos = mul(_Object2World, v.vertex);
+				o.worldPos = mul(unity_ObjectToWorld, v.vertex);
 				return o;
 			}
 

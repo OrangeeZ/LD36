@@ -16,9 +16,6 @@ public class GameUI : UIScreen {
 	private WeaponView _weaponView;
 
 	[SerializeField]
-	private ScanerView _scanerController;
-
-	[SerializeField]
 	private Text _acornValue;
 
     [SerializeField]
@@ -26,8 +23,6 @@ public class GameUI : UIScreen {
 
 	[SerializeField]
 	private Image _whiteImage;
-
-	private AlienLossController _aliensLossController;
 
 	[SerializeField]
 	private Text _alienCounter;
@@ -40,7 +35,6 @@ public class GameUI : UIScreen {
 
 	private void Start() {
 
-		_aliensLossController = FindObjectOfType<AlienLossController>();
 	}
 
 	private void OnBossDead( BossDeadStateInfo.Dead dead ) {
@@ -53,14 +47,5 @@ public class GameUI : UIScreen {
 		_character = spawnedEvent.Character;
 		_healthBar.Initialize( _character );
 		_weaponView.Initialize( _character );
-		_scanerController.Initialize( _character );
 	}
-
-	private void Update() {
-		if ( _character != null ) {
-		}
-
-		_alienCounter.text = _aliensLossController.AliensRemaining.ToString();
-	}
-
 }

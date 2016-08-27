@@ -30,10 +30,8 @@ public class DeadStateInfo : CharacterStateInfo {
 			character.Pawn.ClearDestination();
 
 			if ( stateController == character.StateController ) {
-                var marker = character.Pawn.gameObject.GetComponent<MapMarker>();
-                if (marker != null)
-                    marker.isActive = false;
-                character.Pawn.SetActive( false );
+
+				character.Pawn.SetActive( false );
 
 				var deathSound = character.Status.Info.DeathSounds.RandomElement();
 				AudioSource.PlayClipAtPoint( deathSound, character.Pawn.position );

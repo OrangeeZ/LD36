@@ -26,11 +26,7 @@ public class PlayerDeadStateInfo : CharacterStateInfo {
 
 			character.Pawn.ClearDestination();
 
-			character.Pawn.ClearDestination();
-            var marker = character.Pawn.gameObject.GetComponent<MapMarker>();
-            if (marker != null)
-                marker.isActive = false;
-            if ( stateController == character.StateController ) {
+			if ( stateController == character.StateController ) {
 
 				character.Pawn.SetActive( false );
 

@@ -10,7 +10,7 @@ GameObject:
   - 4: {fileID: 471158}
   - 114: {fileID: 11429670}
   m_Layer: 0
-  m_Name: Spawner [xeno-black-status]
+  m_Name: Spawner [xeno-mother-status]
   m_TagString: Untagged
   m_Icon: {fileID: -1412012063857583412, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -25,6 +25,7 @@ Transform:
   m_LocalRotation: {x: -0.047581557, y: 0.9955263, z: 0.011101202, w: 0.08087075}
   m_LocalPosition: {x: -8.7, y: -0.73, z: -0.74}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
