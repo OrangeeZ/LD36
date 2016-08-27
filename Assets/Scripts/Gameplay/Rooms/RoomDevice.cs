@@ -18,19 +18,9 @@ public class RoomDevice : MonoBehaviour {
 
 	public UnityEvent OnInteract;
 
-	[SerializeField]
-	private float _timeUntilBroken;
-
-	private float _brokenProgress;
-
 	public void SetFixed() {
 
-		_brokenProgress = 0f;
-	}
-
-	private void Update() {
-
-		_brokenProgress += Time.deltaTime;
+		CurrentState = State.Active;
 	}
 
 	public void Interact() {

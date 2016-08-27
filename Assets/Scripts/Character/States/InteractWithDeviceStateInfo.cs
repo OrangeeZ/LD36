@@ -2,6 +2,7 @@
 using System.Collections;
 using UniRx;
 
+[CreateAssetMenu( menuName = "Create/States/Interact With Device" )]
 public class InteractWithDeviceStateInfo : CharacterStateInfo {
 
 	public float duration = .5f;
@@ -10,35 +11,45 @@ public class InteractWithDeviceStateInfo : CharacterStateInfo {
 
 		public State( CharacterStateInfo info )
 			: base( info ) {
+		}
+
+		private RoomDevice _roomDevice;
+
+		public override void Initialize( CharacterStateController stateController ) {
+
+			base.Initialize( stateController );
 
 			Observable.EveryUpdate().Subscribe( CheckInput );
 		}
 
 		public override bool CanBeSet() {
 
-			return character.Pawn.RoomDeviceListener.RoomDevice != null;
+			return _roomDevice != null;
 		}
 
 		public override IEnumerable GetEvaluationBlock() {
 
 			var timer = new AutoTimer( typedInfo.duration );
-			var device = character.Pawn.RoomDeviceListener.RoomDevice;
 
 			while ( timer.ValueNormalized < 1 ) {
 
 				yield return null;
 			}
 
-			device.SetFixed();
-			device.Interact();
+			_roomDevice.SetFixed();
+			_roomDevice.Interact();
+
+			_roomDevice = null;
 		}
 
 		private void CheckInput( long ticks ) {
 
 			if ( Input.GetButton( "Interact" ) ) {
-				
+
+				_roomDevice = character.Pawn.RoomDeviceListener.RoomDevice;
+
 				stateController.TrySetState( this );
-			}
+            }
 		}
 
 	}
