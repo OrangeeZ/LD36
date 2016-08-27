@@ -73,11 +73,12 @@ namespace csv {
 
 		public Dictionary<string, string> Raw { get { return _values; } }
 
-		public T Get<T>( string name ) {
-			return Get<T>( _values[name] );
+		public void Get<T>( string name, out T value  ) {
+
+			value = Get<T>( name );
 		}
 
-		public T GetSafe<T>( string name ) {
+		public T Get<T>( string name ) {
 			return Get( name, default ( T ) );
 		}
 

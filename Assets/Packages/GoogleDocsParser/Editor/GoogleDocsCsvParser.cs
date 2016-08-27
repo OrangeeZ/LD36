@@ -79,7 +79,9 @@ public static class GoogleDocsCsvParser {
 
 			if ( csvConfigurable != null ) {
 				var configurable = csvConfigurable;
+
 				ParseObjectFieldsAndProperties( configurable, CreateValues( fieldNames, row ) );
+				ProcessObject( configurable, CreateValues( fieldNames, row ) );
 			} else {
 				ParseFields2( row, instance, fieldNames );
 			}
@@ -147,7 +149,8 @@ public static class GoogleDocsCsvParser {
 				break;
 			}
 
-			dict.Add( row[0], row[1] );
+			//dict[row[0].TrimEnd( ' ' )] = row[1];
+			dict.Add( row[0].TrimEnd( ' ' ), row[1] );
 
 			row = parser.Read();
 		}
@@ -165,7 +168,11 @@ public static class GoogleDocsCsvParser {
 				continue;
 			}
 
-			dict.Add( fieldNames[i], row[i] );
+			var lowerRow = row[i].ToLower();
+			if ( lowerRow == "yes" ) row[i] = "true";
+			if ( lowerRow == "no" ) row[i] = "false";
+
+			dict[fieldNames[i].TrimEnd( ' ' )] = row[i];
 		}
 
 		return new Values( dict );
@@ -194,8 +201,8 @@ public static class GoogleDocsCsvParser {
 	}
 
 	private static ScriptableObject GetOrCreate( string typeName, string instanceName ) {
-		var assembly = typeof ( ICanBurn ).Assembly;
-		var type = assembly.GetExportedTypes().First( ( x ) => x.Name.Equals( typeName, StringComparison.InvariantCultureIgnoreCase ) );
+		var assembly = Assembly.GetAssembly( typeof ( ICsvConfigurable ) );
+		var type = assembly.GetExportedTypes().First( ( x ) => x.FullName.Equals( typeName, StringComparison.InvariantCultureIgnoreCase ) );
 		if ( type == null ) {
 			Debug.LogWarningFormat( "Type {0} not found", typeName );
 			return null;
@@ -226,17 +233,10 @@ public static class GoogleDocsCsvParser {
 	private static void ParseObjectFieldsAndProperties( ICsvConfigurable target, Values values ) {
 
 		var type = target.GetType();
-		if ( type.BaseType != null ) {
-
-			type = type.BaseType;
-		}
 
 		var fields = type.GetFields( BindingFlags.Public | BindingFlags.FlattenHierarchy | BindingFlags.Instance );
-		//var properties = type.GetProperties( BindingFlags.SetField | BindingFlags.Public );
 
 		foreach ( var each in fields ) {
-
-			//Debug.Log( target + "  "+ each );
 
 			ParseObjectField( target, each, values );
 		}
@@ -244,11 +244,13 @@ public static class GoogleDocsCsvParser {
 
 	private static void ParseObjectField( ICsvConfigurable target, FieldInfo fieldInfo, Values values ) {
 
-		var attribute = fieldInfo.GetCustomAttributes( typeof ( RemotePropertyAttribute ), inherit: false ).FirstOrDefault() as RemotePropertyAttribute;
+		var attribute = fieldInfo.GetCustomAttributes( typeof ( RemotePropertyAttribute ), inherit: false ).OfType<RemotePropertyAttribute>().FirstOrDefault();
 
 		if ( attribute != null ) {
 
-			var fieldValue = Convert.ChangeType( values.Get( attribute.PropertyName, string.Empty ), fieldInfo.FieldType );
+			var value = values.Get<string>( attribute.PropertyName, string.Empty );
+
+			var fieldValue = Convert.ChangeType( value, fieldInfo.FieldType );
 
 			fieldInfo.SetValue( target, fieldValue );
 		}
