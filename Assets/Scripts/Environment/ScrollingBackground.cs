@@ -3,7 +3,7 @@ using System.Collections;
 
 public class ScrollingBackground : MonoBehaviour {
 
-	public Rotator[] Targets;
+	public GameObject[] Targets;
 
 	public AnimationCurve RotationSpeedCurve;
 	public float SpeedScale = 0.5f;
