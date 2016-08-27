@@ -37,7 +37,7 @@ public class CharacterPawnBase : AObject {
 		speed = newSpeed;
 	}
 
-	public virtual void MoveDirection( Vector3 direction ) {
+	public virtual void MoveHorizontal( Vector3 direction ) {
 
 		transform.position += speed * direction * Time.deltaTime;
 	}

@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using UniRx;
+using UnityEngine;
 
 public class CharacterPawn : CharacterPawnBase {
 
@@ -11,7 +12,7 @@ public class CharacterPawn : CharacterPawnBase {
 	private float _weight = 1f;
 
 	[SerializeField]
-	private float _startingHeight = 5;
+	private float _isGroundedChangeDelay = 0.2f;
 
 	[SerializeField]
 	private float _rotationToDirectionSpeed = 100;
@@ -35,11 +36,18 @@ public class CharacterPawn : CharacterPawnBase {
 	[SerializeField]
 	private CharacterSpriteAnimationController _spriteAnimationController;
 
+	private float _lastGroundedTime = 0f;
+
 	protected virtual void Update() {
 
 		if ( _characterController != null ) {
 
 			_characterController.Move( Vector3.down * Time.deltaTime * _weight );
+
+			if ( _characterController.isGrounded ) {
+
+				_lastGroundedTime = Time.time;
+			}
 		}
 	}
 
@@ -48,7 +56,7 @@ public class CharacterPawn : CharacterPawnBase {
 		return position + Vector3.up * _gunYOffset;
 	}
 
-	public override void MoveDirection( Vector3 direction ) {
+	public override void MoveHorizontal( Vector3 direction ) {
 
 		var directionDelta = direction * speed * Time.deltaTime;
 
@@ -61,6 +69,20 @@ public class CharacterPawn : CharacterPawnBase {
 		}
 
 		UpdateSpriteAnimationDirection( direction );
+	}
+
+	public void MoveVertical( ref float impulse, float deltaTime ) {
+
+		impulse += Physics.gravity.y * _weight * deltaTime;
+		var delta = impulse * Vector3.up;
+
+		if ( _characterController == null ) {
+
+			position += delta * deltaTime;
+		} else {
+
+			_characterController.Move( delta * deltaTime );
+		}
 	}
 
 	public override void SetDestination( Vector3 destination ) {
@@ -115,6 +137,11 @@ public class CharacterPawn : CharacterPawnBase {
 		var directionY = (int) Mathf.Clamp( -direction.z * 100, -1, 1 );
 
 		_spriteAnimationController.UpdateDirection( directionX, directionY );
+	}
+
+	public bool IsGrounded() {
+
+		return Time.time - _lastGroundedTime < _isGroundedChangeDelay;
 	}
 
 }

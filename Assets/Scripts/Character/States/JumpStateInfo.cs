@@ -1,24 +1,32 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-[CreateAssetMenu( menuName = "Create/States/Move" )]
-public class MoveStateInfo : CharacterStateInfo {
+[CreateAssetMenu( menuName = "Create/States/Jump" )]
+public class JumpStateInfo : CharacterStateInfo {
 
-	public class State : CharacterState<MoveStateInfo> {
+	[SerializeField]
+	private float _jumpImpulse = 5f;
+
+	private class State : CharacterState<JumpStateInfo> {
 
 		public State( CharacterStateInfo info ) : base( info ) {
 		}
 
 		public override bool CanBeSet() {
 
-			return GetMoveDirection().magnitude > 0 && character.Pawn.IsGrounded() && !Input.GetButton( "Jump" );
+			return character.Pawn.IsGrounded() && Input.GetButton( "Jump" );
 		}
 
 		public override IEnumerable GetEvaluationBlock() {
 
-			while ( CanBeSet() ) {
+			var impulse = typedInfo._jumpImpulse;
+
+			while ( impulse > 0 ) {
+
+				impulse += Physics.gravity.y * deltaTime;
 
 				character.Pawn.MoveHorizontal( GetMoveDirection() );
+				character.Pawn.MoveVertical( ref impulse, deltaTime );
 
 				yield return null;
 			}
