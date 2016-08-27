@@ -3,6 +3,8 @@ using System.Collections;
 
 public class CarStateController : MonoBehaviour {
 
+	public static CarStateController Instance { get; private set; }
+
 	public float Speed;
 	public float Health;
 
@@ -10,6 +12,11 @@ public class CarStateController : MonoBehaviour {
 	public RoomDevice Engine;
 
 	public CarStateDebuff[] EveryFrameDebuffs;
+
+	private void Awake() {
+
+		Instance = this;
+	}
 
 	private void Update() {
 

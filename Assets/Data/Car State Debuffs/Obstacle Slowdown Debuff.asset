@@ -11,5 +11,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc4404b2a41ffad48be1b05281fdb9a4, type: 3}
   m_Name: Obstacle Slowdown Debuff
   m_EditorClassIdentifier: 
-  IntactDamage: 0
-  BrokenDamage: 0
+  IntactPenalty: 5
+  BrokenPenalty: 10
