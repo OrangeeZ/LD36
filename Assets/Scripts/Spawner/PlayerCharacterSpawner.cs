@@ -44,11 +44,11 @@ public class PlayerCharacterSpawner : MonoBehaviour {
 
 			character.Inventory.AddItem( each );
 		}
+		
+		var weaponInfo = startingWeapon;
+		if ( characterStatusInfo != null ) {
 
-		var weaponInfo = characterStatusInfo.BaseWeapon as WeaponInfo;
-		if ( startingWeapon != null ) {
-
-			weaponInfo = startingWeapon;
+			startingWeapon = startingWeapon ?? characterStatusInfo.BaseWeapon;
 		}
 
 		if ( weaponInfo != null ) {

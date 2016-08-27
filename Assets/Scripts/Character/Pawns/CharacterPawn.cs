@@ -39,7 +39,7 @@ public class CharacterPawn : CharacterPawnBase {
 
 		if ( _characterController != null ) {
 
-			_characterController.Move( Vector3.down * Time.deltaTime * 2f );
+			_characterController.Move( Vector3.down * Time.deltaTime * _weight );
 		}
 	}
 
