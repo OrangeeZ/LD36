@@ -25,6 +25,17 @@ public class PlayerCharacterSpawner : MonoBehaviour {
 	
 	public Character character;
 
+	[SerializeField]
+	private bool _initializeOnStart;
+
+	void Start() {
+
+		if ( _initializeOnStart ) {
+			
+			Initialize();
+		}
+	}
+
 	public void Initialize() {
 
 		character = characterInfo.GetCharacter( startingPosition: transform.position, replacementStatusInfo: characterStatusInfo );
