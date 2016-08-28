@@ -4,6 +4,7 @@ using System.Collections;
 public class CarStateController : MonoBehaviour {
 
 	public static CarStateController Instance { get; private set; }
+	public float SpeedNormalized { get { return Speed / GlobalGameInfo.MaxSpeed; } }
 
 	public float Speed;
 	public float Health;

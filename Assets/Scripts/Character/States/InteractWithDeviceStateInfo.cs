@@ -29,7 +29,7 @@ public class InteractWithDeviceStateInfo : CharacterStateInfo {
 
 		public override IEnumerable GetEvaluationBlock() {
 
-			var timer = new AutoTimer( typedInfo.duration );
+			var timer = new AutoTimer( typedInfo.duration / character.StatModifier );
 
 			while ( timer.ValueNormalized < 1 ) {
 
@@ -41,7 +41,7 @@ public class InteractWithDeviceStateInfo : CharacterStateInfo {
 				_roomDevice.SetFixed();
 			} else {
 
-				_roomDevice.Interact();
+				_roomDevice.Interact(character);
 			}
 
 			_roomDevice = null;

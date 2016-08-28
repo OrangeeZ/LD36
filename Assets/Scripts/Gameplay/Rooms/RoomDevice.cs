@@ -34,7 +34,7 @@ public class RoomDevice : MonoBehaviour {
 
 			_cooldown -= Time.deltaTime;
 		} else {
-
+			
 			if ( !RoomDeviceInfo.CanBeActive && !IsBroken() ) {
 
 				_roomEffect.Activate();
@@ -67,7 +67,7 @@ public class RoomDevice : MonoBehaviour {
 		return RoomDeviceInfo.CanBeActive && _cooldown <= 0;
 	}
 
-	public void Interact() {
+	public void Interact(Character targetCharacter) {
 
 		if ( IsBroken() ) {
 
@@ -81,6 +81,8 @@ public class RoomDevice : MonoBehaviour {
 
 		var isSupercharge = CheckSupercharge();
 
+		_roomEffect.TargetCharacter = targetCharacter;
+		
 		if ( isSupercharge ) {
 
 			_cooldown = RoomDeviceInfo.SuperchargeTime * RoomDeviceInfo.SuperchargeHits;
@@ -90,6 +92,7 @@ public class RoomDevice : MonoBehaviour {
 
 			_cooldown = RoomDeviceInfo.RechargeTime;
 
+			_roomEffect.Duration = RoomDeviceInfo.RechargeTime;
 			_roomEffect.Activate();
 		}
 	}
@@ -98,6 +101,7 @@ public class RoomDevice : MonoBehaviour {
 
 		for ( var i = 0; i < RoomDeviceInfo.SuperchargeHits; i++ ) {
 
+			_roomEffect.Duration = RoomDeviceInfo.SuperchargeTime;
 			_roomEffect.Activate();
 
 			yield return new WaitForSeconds( RoomDeviceInfo.SuperchargeTime );

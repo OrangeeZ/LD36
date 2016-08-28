@@ -52,6 +52,8 @@ public class Character {
 
 	private readonly CompositeDisposable _compositeDisposable = new CompositeDisposable();
 
+	public float StatModifier = 1f;
+
 	public Character( CharacterPawn pawn, IInputSource inputSource, CharacterStatus status, CharacterStateController stateController, CharacterStateController weaponStateController, int teamId, CharacterInfo info ) {
 
 		Status = status;

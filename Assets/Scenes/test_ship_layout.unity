@@ -929,6 +929,7 @@ Transform:
   - {fileID: 23239212}
   - {fileID: 1417487987}
   - {fileID: 541776582}
+  - {fileID: 1121374125}
   m_Father: {fileID: 0}
   m_RootOrder: 1
 --- !u!114 &574823207
@@ -1101,6 +1102,48 @@ Transform:
   m_PrefabParentObject: {fileID: 4000010945897258, guid: 1d9ee86bc88378c4ab3c2082ca6afbf6,
     type: 2}
   m_PrefabInternal: {fileID: 600133130}
+--- !u!1001 &645884514
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 1121374125}
+    m_Modifications:
+    - target: {fileID: 4000013321958958, guid: c22f27ed68aeb004c9fcd2096d867c9a, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 0.02533245
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000013321958958, guid: c22f27ed68aeb004c9fcd2096d867c9a, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: -0.8379617
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000013321958958, guid: c22f27ed68aeb004c9fcd2096d867c9a, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: -1.7404718
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000013321958958, guid: c22f27ed68aeb004c9fcd2096d867c9a, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000013321958958, guid: c22f27ed68aeb004c9fcd2096d867c9a, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000013321958958, guid: c22f27ed68aeb004c9fcd2096d867c9a, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000013321958958, guid: c22f27ed68aeb004c9fcd2096d867c9a, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 0.0000029504295
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000013321958958, guid: c22f27ed68aeb004c9fcd2096d867c9a, type: 2}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: c22f27ed68aeb004c9fcd2096d867c9a, type: 2}
+  m_IsPrefabParent: 0
 --- !u!1001 &656495889
 Prefab:
   m_ObjectHideFlags: 0
@@ -1152,6 +1195,11 @@ Transform:
   m_PrefabParentObject: {fileID: 4000012692802762, guid: dcf74c209584e0b4f9c4fc32970dbe35,
     type: 2}
   m_PrefabInternal: {fileID: 656495889}
+--- !u!4 &713419011 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 4000013321958958, guid: c22f27ed68aeb004c9fcd2096d867c9a,
+    type: 2}
+  m_PrefabInternal: {fileID: 645884514}
 --- !u!1001 &737984370
 Prefab:
   m_ObjectHideFlags: 0
@@ -1914,6 +1962,77 @@ Transform:
   m_PrefabParentObject: {fileID: 4000011207268982, guid: e8c7731e2bf616d4ca476cf3a0b2c315,
     type: 2}
   m_PrefabInternal: {fileID: 1117098792}
+--- !u!1 &1121374124
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 1121374125}
+  - 114: {fileID: 1121374127}
+  - 135: {fileID: 1121374126}
+  m_Layer: 8
+  m_Name: Drugs Device
+  m_TagString: Untagged
+  m_Icon: {fileID: -964228994112308473, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1121374125
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1121374124}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -2.24, y: -3.7300005, z: -2.52}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_Children:
+  - {fileID: 713419011}
+  m_Father: {fileID: 574823206}
+  m_RootOrder: 3
+--- !u!135 &1121374126
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1121374124}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 1.85
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1121374127
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1121374124}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ca8b6170e9aa6c44b2a2e3dcd3b818d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  RoomDeviceInfo: {fileID: 11400000, guid: acee84c811bb96e468331b3ad7c10474, type: 2}
+  OnInteract:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_MethodName: 
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
 --- !u!1001 &1188602743
 Prefab:
   m_ObjectHideFlags: 0

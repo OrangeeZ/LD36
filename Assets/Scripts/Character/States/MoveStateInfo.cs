@@ -18,6 +18,7 @@ public class MoveStateInfo : CharacterStateInfo {
 
 			while ( CanBeSet() ) {
 
+				character.Pawn.SetSpeed( character.Status.MoveSpeed.Value * character.StatModifier );
 				character.Pawn.MoveHorizontal( GetMoveDirection() );
 
 				yield return null;
