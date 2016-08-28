@@ -69,7 +69,13 @@ public class RoomDevice : MonoBehaviour {
 
 	public void Interact() {
 
+		if ( IsBroken() ) {
+
+			return;
+		}
+
 		if ( !IsInteractive() ) {
+
 			return;
 		}
 

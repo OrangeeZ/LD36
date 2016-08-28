@@ -24,7 +24,7 @@ public class InteractWithDeviceStateInfo : CharacterStateInfo {
 
 		public override bool CanBeSet() {
 
-			return _roomDevice != null && _roomDevice.IsInteractive();
+			return _roomDevice != null && ( _roomDevice.IsInteractive() || _roomDevice.IsBroken() );
 		}
 
 		public override IEnumerable GetEvaluationBlock() {
@@ -36,8 +36,13 @@ public class InteractWithDeviceStateInfo : CharacterStateInfo {
 				yield return null;
 			}
 
-			_roomDevice.SetFixed();
-			_roomDevice.Interact();
+			if ( _roomDevice.IsBroken() ) {
+
+				_roomDevice.SetFixed();
+			} else {
+
+				_roomDevice.Interact();
+			}
 
 			_roomDevice = null;
 		}
@@ -49,7 +54,7 @@ public class InteractWithDeviceStateInfo : CharacterStateInfo {
 				_roomDevice = character.Pawn.RoomDeviceListener.RoomDevice;
 
 				stateController.TrySetState( this );
-            }
+			}
 		}
 
 	}
