@@ -24,7 +24,7 @@ public class InteractWithDeviceStateInfo : CharacterStateInfo {
 
 		public override bool CanBeSet() {
 
-			return _roomDevice != null;
+			return _roomDevice != null && _roomDevice.IsInteractive();
 		}
 
 		public override IEnumerable GetEvaluationBlock() {

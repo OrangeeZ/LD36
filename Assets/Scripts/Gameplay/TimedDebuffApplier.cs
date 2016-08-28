@@ -3,7 +3,7 @@ using System.Collections;
 
 public class TimedDebuffApplier : MonoBehaviour {
 
-	public CarStateDebuff[] Debuffs;
+	//public CarStateDebuff[] Debuffs;
 	public CarStateController Target;
 
 	public float Interval = 3f;
@@ -14,7 +14,7 @@ public class TimedDebuffApplier : MonoBehaviour {
 			
 			yield return new WaitForSeconds( Interval );
 
-			Debuffs.RandomElement().ApplyTo( Target );
+			//Debuffs.RandomElement().ApplyTo( Target );
 		}
 	}
 

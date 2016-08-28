@@ -11,19 +11,9 @@ public class CarStateController : MonoBehaviour {
 	public RoomDevice Wheels;
 	public RoomDevice Engine;
 
-	public CarStateDebuff[] EveryFrameDebuffs;
-
 	private void Awake() {
 
 		Instance = this;
-	}
-
-	private void Update() {
-
-		for ( var i = 0; i < EveryFrameDebuffs.Length; i++ ) {
-
-			EveryFrameDebuffs[i].ApplyTo( this );
-		}
 	}
 
 }

@@ -95,26 +95,26 @@ public static class GoogleDocsCsvParser {
 		var parser = new CsvParser( csvReader );
 		var row = parser.Read(); // get first row and
 
-		if ( string.IsNullOrEmpty( type ) ) {
-			// Read Type info
-			if ( row[0] == "type" ) {
-				type = row[1];
+		//if ( string.IsNullOrEmpty( type ) ) {
+		//	// Read Type info
+		//	if ( row[0] == "type" ) {
+		//		type = row[1];
 
-				row = parser.Read();
-			} else {
-				Debug.LogError( "Worksheet must declare 'Type' in first wor" );
-				return;
-			}
-		}
+		//		row = parser.Read();
+		//	} else {
+		//		Debug.LogError( "Worksheet must declare 'Type' in first wor" );
+		//		return;
+		//	}
+		//}
 
 		// Read fields
-		while ( row != null && row[0] != "ID" ) {
-			row = parser.Read();
-		}
-		if ( row == null ) {
-			Debug.LogError( "Can't find header!" );
-			return;
-		}
+		//while ( row != null && row[0] != "ID" ) {
+		//	row = parser.Read();
+		//}
+		//if ( row == null ) {
+		//	Debug.LogError( "Can't find header!" );
+		//	return;
+		//}
 
 		var instanceName = csv.Utility.FixName( type, postfix );
 		var instance = GetOrCreate( type, instanceName );

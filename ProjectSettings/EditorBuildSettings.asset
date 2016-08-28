@@ -9,7 +9,7 @@ EditorBuildSettings:
     path: Assets/Scenes/Loader.unity
   - enabled: 1
     path: Assets/Scenes/UISystem.unity
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/test-level-spawner-layout.unity
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/final-level-layout.unity
