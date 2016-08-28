@@ -119,7 +119,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   RoomDeviceInfo: {fileID: 11400000, guid: f5bb6d7bdf5ed4e4c8951466597435f9, type: 2}
-  CurrentState: 0
   OnInteract:
     m_PersistentCalls:
       m_Calls:
@@ -513,6 +512,69 @@ Transform:
   m_PrefabParentObject: {fileID: 4000010806079612, guid: 084bc925edc812146a4ad3e8f107860f,
     type: 2}
   m_PrefabInternal: {fileID: 569214298}
+--- !u!1 &573890235
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 573890237}
+  - 20: {fileID: 573890236}
+  m_Layer: 0
+  m_Name: Background Camera
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!20 &573890236
+Camera:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 573890235}
+  m_Enabled: 1
+  serializedVersion: 2
+  m_ClearFlags: 1
+  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_NormalizedViewPortRect:
+    serializedVersion: 2
+    x: 0
+    y: 0
+    width: 1
+    height: 1
+  near clip plane: 0.3
+  far clip plane: 1000
+  field of view: 60
+  orthographic: 1
+  orthographic size: 12
+  m_Depth: -2
+  m_CullingMask:
+    serializedVersion: 2
+    m_Bits: 512
+  m_RenderingPath: -1
+  m_TargetTexture: {fileID: 0}
+  m_TargetDisplay: 0
+  m_TargetEye: 3
+  m_HDR: 0
+  m_OcclusionCulling: 1
+  m_StereoConvergence: 10
+  m_StereoSeparation: 0.022
+  m_StereoMirrorMode: 0
+--- !u!4 &573890237
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 573890235}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -13.86582, y: 14.1, z: -30.5}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 7
 --- !u!1 &574823204
 GameObject:
   m_ObjectHideFlags: 0
@@ -545,8 +607,6 @@ MonoBehaviour:
   Health: 100
   Wheels: {fileID: 1944392729}
   Engine: {fileID: 23239211}
-  EveryFrameDebuffs:
-  - {fileID: 11400000, guid: 83e046a143c90ce45a341fb2630617e5, type: 2}
 --- !u!4 &574823206
 Transform:
   m_ObjectHideFlags: 0
@@ -574,8 +634,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae322e234acfcff48b49e40f79379834, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Debuffs:
-  - {fileID: 11400000, guid: d648ca20b8b88154b979e8cf4f66582d, type: 2}
   Target: {fileID: 574823205}
   Interval: 3
 --- !u!1 &644024420
@@ -900,7 +958,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &923938245
 Transform:
   m_ObjectHideFlags: 0
@@ -1029,7 +1087,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   RoomDeviceInfo: {fileID: 11400000, guid: b5fde48ea27cf1142b70cc1d47ea8f7d, type: 2}
-  CurrentState: 0
   OnInteract:
     m_PersistentCalls:
       m_Calls:
@@ -1331,7 +1388,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4000013415694818, guid: 9763bb6394dde1446b66715079975607, type: 2}
       propertyPath: m_LocalPosition.y
-      value: -22.8
+      value: -25.2
       objectReference: {fileID: 0}
     - target: {fileID: 4000013415694818, guid: 9763bb6394dde1446b66715079975607, type: 2}
       propertyPath: m_LocalPosition.z
@@ -1378,6 +1435,10 @@ Prefab:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 9b92931c5210ef548a4386c21dbac2fd, type: 2}
+    - target: {fileID: 1000011141398056, guid: 9763bb6394dde1446b66715079975607, type: 2}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9763bb6394dde1446b66715079975607, type: 2}
   m_IsPrefabParent: 0
@@ -1444,7 +1505,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 1322191519}
   - 114: {fileID: 1322191518}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Scrolling Background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1603,7 +1664,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1460945166}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 16.49, z: 0}
+  m_LocalPosition: {x: -21.92, y: 12.4, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
@@ -1711,6 +1772,10 @@ Prefab:
       propertyPath: m_LocalScale.z
       value: 3169.571
       objectReference: {fileID: 0}
+    - target: {fileID: 1000011141398056, guid: 9763bb6394dde1446b66715079975607, type: 2}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9763bb6394dde1446b66715079975607, type: 2}
   m_IsPrefabParent: 0
@@ -1816,7 +1881,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   RoomDeviceInfo: {fileID: 11400000, guid: 62bd3fa255c2e4a469c930a9dd401473, type: 2}
-  CurrentState: 0
   OnInteract:
     m_PersistentCalls:
       m_Calls:
@@ -1859,7 +1923,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4000013415694818, guid: 9763bb6394dde1446b66715079975607, type: 2}
       propertyPath: m_LocalPosition.y
-      value: -38.3
+      value: -40.3
       objectReference: {fileID: 0}
     - target: {fileID: 4000013415694818, guid: 9763bb6394dde1446b66715079975607, type: 2}
       propertyPath: m_LocalPosition.z
@@ -1906,6 +1970,10 @@ Prefab:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 4f248787aaa3b6640b884740042c0ec5, type: 2}
+    - target: {fileID: 1000011141398056, guid: 9763bb6394dde1446b66715079975607, type: 2}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9763bb6394dde1446b66715079975607, type: 2}
   m_IsPrefabParent: 0

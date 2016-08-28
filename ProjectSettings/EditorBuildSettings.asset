@@ -13,3 +13,7 @@ EditorBuildSettings:
     path: Assets/Scenes/test-level-spawner-layout.unity
   - enabled: 0
     path: Assets/Scenes/final-level-layout.unity
+  - enabled: 1
+    path: Assets/Scenes/test-character.unity
+  - enabled: 1
+    path: Assets/Scenes/test_ship_layout.unity
