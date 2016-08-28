@@ -14,6 +14,7 @@ public class RoomDevice : MonoBehaviour {
 	private float _cooldown;
 
 	private RoomEffect _roomEffect;
+	public bool IsBeingRepared { get; set; }
 
 	private void Start() {
 

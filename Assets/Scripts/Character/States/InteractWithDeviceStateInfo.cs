@@ -31,6 +31,8 @@ public class InteractWithDeviceStateInfo : CharacterStateInfo {
 
 			var timer = new AutoTimer( typedInfo.duration / character.StatModifier );
 
+			_roomDevice.IsBeingRepared = true;
+
 			while ( timer.ValueNormalized < 1 ) {
 
 				yield return null;
@@ -43,6 +45,8 @@ public class InteractWithDeviceStateInfo : CharacterStateInfo {
 
 				_roomDevice.Interact(character);
 			}
+
+			_roomDevice.IsBeingRepared = false;
 
 			_roomDevice = null;
 		}
