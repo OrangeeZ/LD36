@@ -8,12 +8,20 @@ public class CarStateController : MonoBehaviour {
 	public float Speed;
 	public float Health;
 
-	public RoomDevice Wheels;
-	public RoomDevice Engine;
+	public GlobalGameInfo GlobalGameInfo;
 
 	private void Awake() {
 
 		Instance = this;
+
+		Speed = GlobalGameInfo.StartSpeed;
+	}
+
+	void Update() {
+
+		Speed -= GlobalGameInfo.GlobalSpeedLow * Time.deltaTime;
+
+		Speed = Speed.Clamped( 0, GlobalGameInfo.MaxSpeed );
 	}
 
 }

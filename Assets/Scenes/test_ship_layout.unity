@@ -914,8 +914,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Speed: 100
   Health: 100
-  Wheels: {fileID: 0}
-  Engine: {fileID: 23239211}
+  GlobalGameInfo: {fileID: 11400000, guid: b975e78bb2eb269479c7b2ee851976ec, type: 2}
 --- !u!4 &574823206
 Transform:
   m_ObjectHideFlags: 0
@@ -931,7 +930,7 @@ Transform:
   - {fileID: 1417487987}
   - {fileID: 541776582}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 1
 --- !u!114 &574823207
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1444,6 +1443,49 @@ Transform:
   m_PrefabParentObject: {fileID: 4000010265387288, guid: 9b406a783ed36ba468e99cc1a98dda90,
     type: 2}
   m_PrefabInternal: {fileID: 856058675}
+--- !u!1 &903393939
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 903393941}
+  - 114: {fileID: 903393940}
+  m_Layer: 0
+  m_Name: Engine Attackers
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &903393940
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 903393939}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 149f6b7c23337f34e9a5b6d9b2ff669b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _roomDevice: {fileID: 23239211}
+  _enemyPrefabs:
+  - {fileID: 114000012755200354, guid: a50352d748f77024495eb7335957c73e, type: 2}
+--- !u!4 &903393941
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 903393939}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -9.113169, y: 11.32, z: 1.38}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 2
 --- !u!1001 &908610197
 Prefab:
   m_ObjectHideFlags: 0
@@ -2214,34 +2256,6 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
---- !u!1 &1503368207
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
-  m_Component:
-  - 4: {fileID: 1503368208}
-  m_Layer: 0
-  m_Name: Rooms
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1503368208
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1503368207}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -21.458939, y: 9.136102, z: 1.6635857}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 1
 --- !u!1001 &1509235894
 Prefab:
   m_ObjectHideFlags: 0
@@ -3701,3 +3715,46 @@ Transform:
   m_PrefabParentObject: {fileID: 4000011207268982, guid: e8c7731e2bf616d4ca476cf3a0b2c315,
     type: 2}
   m_PrefabInternal: {fileID: 2105069033}
+--- !u!1 &2120166436
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 2120166438}
+  - 114: {fileID: 2120166437}
+  m_Layer: 0
+  m_Name: Wheel Attackers
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &2120166437
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2120166436}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 149f6b7c23337f34e9a5b6d9b2ff669b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _roomDevice: {fileID: 541776584}
+  _enemyPrefabs:
+  - {fileID: 114000012755200354, guid: a50352d748f77024495eb7335957c73e, type: 2}
+--- !u!4 &2120166438
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2120166436}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -9.113169, y: 11.32, z: 1.38}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 3

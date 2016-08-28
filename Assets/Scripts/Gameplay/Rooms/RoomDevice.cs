@@ -35,7 +35,7 @@ public class RoomDevice : MonoBehaviour {
 			_cooldown -= Time.deltaTime;
 		} else {
 
-			if ( !RoomDeviceInfo.CanBeActive ) {
+			if ( !RoomDeviceInfo.CanBeActive && !IsBroken() ) {
 
 				_roomEffect.Activate();
 			}
