@@ -9,10 +9,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 68e24dc44ddbd24478c2f4e5172e54ea, type: 3}
-  m_Name: right
+  m_Name: pink-robot
   m_EditorClassIdentifier: 
   Id: 
-  Effect: Right
+  Effect: 
   CanWork: 0
   CanBeActive: 0
   RechargeTime: 0

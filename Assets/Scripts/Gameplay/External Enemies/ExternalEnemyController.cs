@@ -5,6 +5,9 @@ using System.Collections.Generic;
 public class ExternalEnemyController : MonoBehaviour {
 
 	[SerializeField]
+	private ExternalEnemyInfo _enemyInfo;
+
+	[SerializeField]
 	private RoomDevice _roomDevice;
 	
 	[SerializeField]
@@ -22,9 +25,24 @@ public class ExternalEnemyController : MonoBehaviour {
 			
 			yield return new WaitForSeconds( _spawnInterval );
 
-			_roomDevice.Damage( 100f );
+			var enemyInstance = Instantiate( _enemyPrefabs.RandomElement(), transform.position, Quaternion.identity ) as ExternalEnemy;
 
-			_spawnedEnemies.Add( Instantiate( _enemyPrefabs.RandomElement() ) );
+			enemyInstance.AttackCount = _enemyInfo.Type == ExternalEnemyType.Permanent ? int.MaxValue : 1;
+			enemyInstance.AttackInterval = _enemyInfo.AttackCooldown;
+			enemyInstance.Damage = _enemyInfo.Damage;
+			enemyInstance.AttackTarget = _roomDevice;
+            enemyInstance.Controller = this;
+
+			enemyInstance.Initialize();
+
+			_spawnedEnemies.Add( enemyInstance );
 		}
+	}
+
+	public void RemoveEnemy( ExternalEnemy enemy ) {
+
+		_spawnedEnemies.Remove( enemy );
+
+		Destroy( enemy.gameObject );
 	}
 }

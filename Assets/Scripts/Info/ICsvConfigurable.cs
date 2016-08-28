@@ -1,11 +1,12 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-
 #if UNITY_EDITOR
 using UnityEditor;
+
 #endif
 
 namespace csv {
@@ -71,11 +72,20 @@ namespace csv {
 			_values = values;
 		}
 
-		public Dictionary<string, string> Raw { get { return _values; } }
+		public Dictionary<string, string> Raw {
+			get { return _values; }
+		}
 
-		public void Get<T>( string name, out T value  ) {
+		public void Get<T>( string name, out T value ) {
 
 			value = Get<T>( name );
+		}
+
+		public void GetEnum<T>( string name, out T value ) {
+
+			var stringValue = Get<string>( name );
+
+			value = (T)Enum.Parse( typeof ( T ), stringValue );
 		}
 
 		public T Get<T>( string name ) {
@@ -121,7 +131,7 @@ namespace csv {
 			var assetName = Get( name, string.Empty );
 
 			if ( fixName ) {
-				
+
 				assetName = Utility.FixName( assetName );
 			}
 

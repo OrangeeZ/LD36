@@ -12,15 +12,15 @@ MonoBehaviour:
   m_Name: left
   m_EditorClassIdentifier: 
   Id: 
-  Effect: Control
+  Effect: Left
   CanWork: 0
-  CanBeActive: 1
-  RechargeTime: 10
+  CanBeActive: 0
+  RechargeTime: 0
   EffectValue: 0
   HasSupercharge: 0
   SuperchargeChance: 0
   SuperchargeTime: 0
   SuperchargeValue: 0
   SuperchargeHits: 0
-  CanBeBroken: 1
-  Durability: 100
+  CanBeBroken: 0
+  Durability: 0
