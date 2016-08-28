@@ -12,11 +12,9 @@ MonoBehaviour:
   m_Name: right
   m_EditorClassIdentifier: 
   Id: 
-  Effect: control
+  Effect: 0
   CanWork: 0
-  SpeedAdd: 0
   CanBeActive: 1
-  CanRecharge: 1
   RechargeTime: 10
   EffectValue: 0
   HasSupercharge: 0

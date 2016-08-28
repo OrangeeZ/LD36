@@ -12,11 +12,9 @@ MonoBehaviour:
   m_Name: motor
   m_EditorClassIdentifier: 
   Id: 
-  Effect: engine
+  Effect: 0
   CanWork: 0
-  SpeedAdd: 0
   CanBeActive: 1
-  CanRecharge: 1
   RechargeTime: 10
   EffectValue: 50
   HasSupercharge: 1

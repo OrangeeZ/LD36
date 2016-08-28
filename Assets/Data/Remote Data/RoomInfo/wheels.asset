@@ -12,13 +12,11 @@ MonoBehaviour:
   m_Name: wheels
   m_EditorClassIdentifier: 
   Id: 
-  Effect: wheel
+  Effect: 0
   CanWork: 1
-  SpeedAdd: 3
   CanBeActive: 0
-  CanRecharge: 0
   RechargeTime: 0
-  EffectValue: 0
+  EffectValue: 3
   HasSupercharge: 0
   SuperchargeChance: 0
   SuperchargeTime: 0

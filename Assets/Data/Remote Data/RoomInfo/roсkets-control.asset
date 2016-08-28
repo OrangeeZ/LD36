@@ -12,11 +12,9 @@ MonoBehaviour:
   m_Name: "ro\u0441kets-control"
   m_EditorClassIdentifier: 
   Id: 
-  Effect: "ro\u0441kets"
+  Effect: 0
   CanWork: 0
-  SpeedAdd: 0
   CanBeActive: 1
-  CanRecharge: 1
   RechargeTime: 10
   EffectValue: 5
   HasSupercharge: 1

@@ -4,14 +4,24 @@ using csv;
 
 public class RoomInfo : ScriptableObject, ICsvConfigurable {
 
+	public enum EffectType {
+
+		Control,
+		Wheel,
+		Engine,
+		Oil,
+		Rockets,
+		Flame,
+		Drug
+
+	}
+
 	public string Id;
-	public string Effect;
+	public EffectType Effect;
 
 	public bool CanWork;
-	public float SpeedAdd;
 
 	public bool CanBeActive;
-	public bool CanRecharge;
 	public float RechargeTime;
 
 	public float EffectValue;
@@ -27,13 +37,11 @@ public class RoomInfo : ScriptableObject, ICsvConfigurable {
 
 	public void Configure( Values values ) {
 
-		Effect = values.Get<string>( "Effect" );
+		Effect = values.Get<EffectType>( "Effect" );
 
 		CanWork = values.Get<bool>( "Work" );
-		SpeedAdd = values.Get<float>( "AddSpeed" );
 
 		CanBeActive = values.Get<bool>( "Active" );
-		CanRecharge = values.Get<bool>( "Recharge" );
 		RechargeTime = values.Get<float>( "RechargeTime" );
 
 		EffectValue = values.Get<float>( "EffValue" );

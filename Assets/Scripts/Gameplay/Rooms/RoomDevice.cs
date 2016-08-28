@@ -29,12 +29,7 @@ public class RoomDevice : MonoBehaviour {
 	}
 
 	private void Update() {
-
-		if ( RoomInfo.CanWork && !IsBroken() ) {
-
-			CarStateController.Instance.Speed += RoomInfo.SpeedAdd * Time.deltaTime;
-		}
-
+		
 		if ( _cooldown > 0 ) {
 
 			_cooldown -= Time.deltaTime;
