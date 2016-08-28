@@ -1,0 +1,16 @@
+# Blender v2.77 (sub 0) OBJ File: 'props.blend'
+# www.blender.org
+mtllib room_floor_large.mtl
+o Plane.001_Plane
+v -4.000000 0.000000 2.500000
+v 4.000000 0.000000 2.500000
+v -4.000000 0.000000 -2.500000
+v 4.000000 0.000000 -2.500000
+vt 0.0091 0.9918
+vt 0.0091 0.6893
+vt 0.5145 0.6893
+vt 0.5145 0.9918
+vn 0.0000 1.0000 0.0000
+usemtl room_a
+s off
+f 3/1/1 1/2/1 2/3/1 4/4/1
