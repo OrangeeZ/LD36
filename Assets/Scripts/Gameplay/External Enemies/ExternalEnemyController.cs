@@ -15,20 +15,25 @@ public class ExternalEnemyController : MonoBehaviour {
 
 	private List<ExternalEnemy> _spawnedEnemies;
 
-	private float _spawnInterval = 5f;
+	private float _spawnInterval = 16f;
 
 	IEnumerator Start() {
 
 		_spawnedEnemies = new List<ExternalEnemy>();
 
+		var nextSpawnDistance = _enemyInfo.SpawnRange;
+
 		while ( true ) {
 			
-			yield return new WaitForSeconds( _spawnInterval );
+			yield return new WaitUntil( () => nextSpawnDistance < CarStateController.Instance.Distance );
+
+			nextSpawnDistance += _enemyInfo.SpawnRange;
 
 			var enemyInstance = Instantiate( _enemyPrefabs.RandomElement(), transform.position, Quaternion.identity ) as ExternalEnemy;
 
 			enemyInstance.AttackCount = _enemyInfo.Type == ExternalEnemyType.Permanent ? int.MaxValue : 1;
 			enemyInstance.AttackInterval = _enemyInfo.AttackCooldown;
+			enemyInstance.EnemyInfo = _enemyInfo;
 			enemyInstance.Damage = _enemyInfo.Damage;
 			enemyInstance.AttackTarget = _roomDevice;
             enemyInstance.Controller = this;

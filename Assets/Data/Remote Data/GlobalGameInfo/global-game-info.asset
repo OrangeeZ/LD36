@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Name: global-game-info
   m_EditorClassIdentifier: 
   MaxSpeed: 350
-  StartSpeed: 0
+  StartSpeed: 100
   GlobalSpeedLow: 3
   EnterpriseSpeedStart: 300
   EnterpriseSpeedStop: 280

@@ -2,9 +2,16 @@
 using UnityEngine;
 using System.Collections;
 using System.Reflection;
+using Packages.EventSystem;
 using UnityEngine.Events;
 
 public class RoomDevice : MonoBehaviour {
+
+	public class Activated : IEventBase {
+
+		public RoomDevice Device;
+
+	}
 
 	public RoomDeviceInfo RoomDeviceInfo;
 
@@ -35,7 +42,7 @@ public class RoomDevice : MonoBehaviour {
 
 			_cooldown -= Time.deltaTime;
 		} else {
-			
+
 			if ( !RoomDeviceInfo.CanBeActive && !IsBroken() ) {
 
 				_roomEffect.Activate();
@@ -68,7 +75,7 @@ public class RoomDevice : MonoBehaviour {
 		return RoomDeviceInfo.CanBeActive && _cooldown <= 0;
 	}
 
-	public void Interact(Character targetCharacter) {
+	public void Interact( Character targetCharacter ) {
 
 		if ( IsBroken() ) {
 
@@ -83,7 +90,7 @@ public class RoomDevice : MonoBehaviour {
 		var isSupercharge = CheckSupercharge();
 
 		_roomEffect.TargetCharacter = targetCharacter;
-		
+
 		if ( isSupercharge ) {
 
 			_cooldown = RoomDeviceInfo.SuperchargeTime * RoomDeviceInfo.SuperchargeHits;
@@ -96,6 +103,8 @@ public class RoomDevice : MonoBehaviour {
 			_roomEffect.Duration = RoomDeviceInfo.RechargeTime;
 			_roomEffect.Activate();
 		}
+
+		EventSystem.RaiseEvent( new Activated {Device = this} );
 	}
 
 	private IEnumerator SuperchargeLoop() {

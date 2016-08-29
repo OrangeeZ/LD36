@@ -8,10 +8,16 @@ public class ExternalEnemy : MonoBehaviour {
 	public float AttackInterval;
 	public RoomDevice AttackTarget;
 	public ExternalEnemyController Controller;
+	public ExternalEnemyInfo EnemyInfo { get; set; }
 
-	public void Initialize() {
+	public virtual void Initialize() {
 
 		StartCoroutine( AttackLoop() );
+	}
+
+	public void Destroy() {
+
+		Controller.RemoveEnemy( this );
 	}
 
 	private IEnumerator Approach() {
@@ -39,7 +45,7 @@ public class ExternalEnemy : MonoBehaviour {
 			yield return new WaitForSeconds( AttackInterval );
 		}
 
-		Controller.RemoveEnemy( this );
+		Destroy();
 	}
 
 }

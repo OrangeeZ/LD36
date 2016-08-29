@@ -3,7 +3,7 @@ using System.Collections;
 using csv;
 
 public class RoomDeviceInfo : ScriptableObject, ICsvConfigurable {
-	
+
 	public string Id;
 	public string Effect;
 

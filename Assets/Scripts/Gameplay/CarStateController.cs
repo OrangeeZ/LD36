@@ -4,10 +4,17 @@ using System.Collections;
 public class CarStateController : MonoBehaviour {
 
 	public static CarStateController Instance { get; private set; }
-	public float SpeedNormalized { get { return Speed / GlobalGameInfo.MaxSpeed; } }
+
+	public float SpeedNormalized {
+		get { return Speed / GlobalGameInfo.MaxSpeed; }
+	}
+
+	public float DistanceNormalized {
+		get { return Speed / 500; }
+	}
 
 	public float Speed;
-	public float Health;
+	public float Distance;
 
 	public GlobalGameInfo GlobalGameInfo;
 
@@ -18,9 +25,11 @@ public class CarStateController : MonoBehaviour {
 		Speed = GlobalGameInfo.StartSpeed;
 	}
 
-	void Update() {
+	private void Update() {
 
 		Speed -= GlobalGameInfo.GlobalSpeedLow * Time.deltaTime;
+
+		Distance += ( Speed / 60f ) * Time.deltaTime;
 
 		Speed = Speed.Clamped( 0, GlobalGameInfo.MaxSpeed );
 	}
